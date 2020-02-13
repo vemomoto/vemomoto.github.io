@@ -88,15 +88,6 @@
 <div class="viewcode-block" id="RouteChoiceModel.set_fitting_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html#hybrid_vector_model.route_choice_model.RouteChoiceModel.set_fitting_data">[docs]</a>    <span class="k">def</span> <span class="nf">set_fitting_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dayData</span><span class="p">,</span> <span class="n">shiftData</span><span class="p">,</span> <span class="n">inspectedRoutes</span><span class="p">,</span>
                           <span class="n">routeLengths</span><span class="p">,</span> <span class="n">trafficModel</span><span class="p">,</span> <span class="n">complianceRate</span><span class="p">,</span>
                           <span class="n">properDataRate</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;    </span>
-<span class="sd">        asdasd asd asd asd asd asd asd asd asd asd asd asd asd asd asdasdasd asd asd asd asd asd asd asd sad ad asd</span>
-<span class="sd">        :param dayData:</span>
-<span class="sd">        :param shiftData:</span>
-<span class="sd">        :param inspectedRoutes:</span>
-<span class="sd">        :param routeLengths:</span>
-<span class="sd">        :param trafficModel:</span>
-<span class="sd">        :param complianceRate:</span>
-<span class="sd">        &#39;&#39;&#39;</span>
         
         <span class="c1">#self.trafficModel = trafficModel</span>
         <span class="k">def</span> <span class="nf">intervalProbability</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -434,6 +425,21 @@
     
     
 <div class="viewcode-block" id="RouteChoiceModel.fit"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html#hybrid_vector_model.route_choice_model.RouteChoiceModel.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">improveGuess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fits the route choice model.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        guess : float[]</span>
+<span class="sd">            Guess for the maximum likelihood estimate.</span>
+<span class="sd">        improveGuess : bool</span>
+<span class="sd">            If ``True``, :py:obj:`guess` will be used as initial guess for the </span>
+<span class="sd">            model fit. Otherwise, it will be used as the maximum likelihood</span>
+<span class="sd">            estimate.</span>
+<span class="sd">        disp : bool</span>
+<span class="sd">            Whether partial results shall be printed.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fit_prepared</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The model has not been provided with data for&quot;</span><span class="p">,</span> 

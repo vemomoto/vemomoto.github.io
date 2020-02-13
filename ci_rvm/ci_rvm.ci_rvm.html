@@ -74,11 +74,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.create_profile_plots" title="ci_rvm.ci_rvm.create_profile_plots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_profile_plots</span></code></a>(profile_result, index)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_CI_bound</span></code></a>(index, target, x0, fun, jac, …)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_CI_bound</span></code></a>(index, target, x0, fun, jac, hess)</p></td>
+<td><p>Finds an end point of a profile likelihood confidence interval.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="ci_rvm.ci_rvm.find_profile_CI_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_profile_CI_bound</span></code></a>(index, direction, x0, …)</p></td>
-<td><p></p></td>
+<td><p>Finds the profile likelihood confidence interval for a parameter.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_profile_CI_bound_steps" title="ci_rvm.ci_rvm.find_profile_CI_bound_steps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_profile_CI_bound_steps</span></code></a>(index, x0, fun, …)</p></td>
 <td><p></p></td>
@@ -156,13 +156,59 @@
 
 <dl class="function">
 <dt id="ci_rvm.ci_rvm.find_CI_bound">
-<code class="sig-name descname">find_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index: index of the parameter to consider</em>, <em class="sig-param">target: target log-likelihood l*</em>, <em class="sig-param">x0: maximum likelihood estimator (MLE)</em>, <em class="sig-param">fun: log-likelihood function</em>, <em class="sig-param">jac: gradient of fun</em>, <em class="sig-param">hess: hessian of fun</em>, <em class="sig-param">forward: True</em>, <em class="sig-param">if right end point of CI is sought</em>, <em class="sig-param">else False = True</em>, <em class="sig-param">fun0: log-likelihood at MLE = None</em>, <em class="sig-param">jac0: gradient of log-liekelihood at MLE = None</em>, <em class="sig-param">hess0: Hessian of log-likelihood at MLE = None</em>, <em class="sig-param">nmax: maximal number of iterations = 200</em>, <em class="sig-param">nchecks: maximal number of trust-region changes per iteration = 65</em>, <em class="sig-param">apprxtol: relative tolerance between f and its approximation = 0.5</em>, <em class="sig-param">resulttol: tolerance of the result (f and norm(jac)) = 0.001</em>, <em class="sig-param">singtol: tolerance for singularity checks = 0.0001</em>, <em class="sig-param">minstep: controls the minimal radius of the trust region = 1e-05</em>, <em class="sig-param">radiusFactor: In [1</em>, <em class="sig-param">2]. Controls how quickly the trust region decreases = 1.5</em>, <em class="sig-param">infstep: Stepsize after which a parameter is deemed unestimbale = 10000000000.0</em>, <em class="sig-param">maxRadius: radius of the trust region in the last iteration = 10000.0</em>, <em class="sig-param">disp: whether to print a status message in each iteration = True</em>, <em class="sig-param">track_x: whether to return the parameter trace = False</em>, <em class="sig-param">track_f: whether to return the log-likelihood trace = False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_CI_bound" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">find_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">target</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">forward=True</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">jac0=None</em>, <em class="sig-param">hess0=None</em>, <em class="sig-param">nmax=200</em>, <em class="sig-param">nchecks=65</em>, <em class="sig-param">apprxtol=0.5</em>, <em class="sig-param">resulttol=0.001</em>, <em class="sig-param">singtol=0.0001</em>, <em class="sig-param">minstep=1e-05</em>, <em class="sig-param">radiusFactor=1.5</em>, <em class="sig-param">infstep=10000000000.0</em>, <em class="sig-param">maxRadius=10000.0</em>, <em class="sig-param">disp=True</em>, <em class="sig-param">track_x=False</em>, <em class="sig-param">track_f=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_CI_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds an end point of a profile likelihood confidence interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – Index of the parameter of interest.</p></li>
+<li><p><strong>target</strong> (<em>float</em>) – Target log-likelihood l* (typically a quantile of the
+chi-sqared distribution).</p></li>
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>fun</strong> (<em>callable</em>) – Log-likelihood function.</p></li>
+<li><p><strong>jac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
+<li><p><strong>hess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
+<li><p><strong>forward</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code>, if right end point of the confidence interval is sought, else
+<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>fun0</strong> (<em>float</em>) – log-likelihood at the MLE.</p></li>
+<li><p><strong>jac0</strong> (<em>float</em><em>[</em><em>]</em>) – Gradient of the log-liekelihood at the MLE.</p></li>
+<li><p><strong>hess0</strong> (<em>float</em><em>[</em><em>]</em><em>[</em><em>]</em>) – Hessian of the log-likelihood at the MLE.</p></li>
+<li><p><strong>nmax</strong> (<em>int</em>) – Maximal number of iterations.</p></li>
+<li><p><strong>nchecks</strong> (<em>int</em>) – Maximal number of trust-region changes per iteration.</p></li>
+<li><p><strong>apprxtol</strong> (<em>float</em>) – Relative tolerance between <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code> and its approximation.</p></li>
+<li><p><strong>resulttol</strong> (<em>float</em>) – Tolerance of the result (<code class="docutils literal notranslate"><span class="pre">fun</span></code> and <code class="docutils literal notranslate"><span class="pre">norm(jac))</span></code>.</p></li>
+<li><p><strong>singtol</strong> (<em>float</em>) – Tolerance for singularity checks.</p></li>
+<li><p><strong>minstep</strong> (<em>int</em>) – Controls the minimal radius of the trust region.</p></li>
+<li><p><strong>radiusFactor</strong> (<em>float</em>) – Controls how quickly the trust region decreases. Must be in [1, 2].</p></li>
+<li><p><strong>infstep</strong> (<em>float</em>) – Stepsize after which a parameter is deemed unestimbale.</p></li>
+<li><p><strong>maxRadius</strong> (<em>float</em>) – Rradius of the trust region in the last iteration.</p></li>
+<li><p><strong>disp</strong> (<em>bool</em>) – Whether to print a status message in each iteration.</p></li>
+<li><p><strong>track_x</strong> (<em>bool</em>) – Whether to return the parameter trace.</p></li>
+<li><p><strong>track_f</strong> (<em>bool</em>) – Whether to return the log-likelihood trace.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="ci_rvm.ci_rvm.find_profile_CI_bound">
 <code class="sig-name descname">find_profile_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">direction</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">*args</em>, <em class="sig-param">vm=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Finds the profile likelihood confidence interval for a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – Index of the parameter of interest.</p></li>
+<li><p><strong>direction</strong> (<em>int</em>) – If <code class="docutils literal notranslate"><span class="pre">-1</span></code>, we search for the left end point of the confidence interval;
+if <code class="docutils literal notranslate"><span class="pre">1</span></code>, we search for the right end point of the confidence interval</p></li>
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>fun</strong> (<em>callable</em>) – Log-likelihood function.</p></li>
+<li><p><strong>jac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
+<li><p><strong>hess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
+<li><p><strong>fun0</strong> (<em>float</em>) – log-likelihood at the MLE.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="ci_rvm.ci_rvm.find_profile_CI_bound_steps">

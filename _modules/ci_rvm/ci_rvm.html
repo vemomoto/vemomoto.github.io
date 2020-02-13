@@ -51,6 +51,8 @@
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize._trustregion_exact</span> <span class="kn">import</span> <span class="n">IterativeSubproblem</span>
 
+<span class="kn">from</span> <span class="nn">vemomoto_core.tools.doc_utils</span> <span class="kn">import</span> <span class="n">inherit_doc</span>
+
 
 
 <div class="viewcode-block" id="round_str"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.round_str">[docs]</a><span class="k">def</span> <span class="nf">round_str</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
@@ -230,28 +232,11 @@
     
     <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
-        
-<div class="viewcode-block" id="find_profile_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound">[docs]</a><span class="k">def</span> <span class="nf">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
-                          <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-    
-    <span class="k">if</span> <span class="n">fun0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-    
-    <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span>
-    
-    <span class="k">if</span> <span class="n">vm</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
-                                 <span class="n">direction</span><span class="p">,</span> <span class="n">fun0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
-                             <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="find_profile_CI_bound_steps"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound_steps">[docs]</a><span class="k">def</span> <span class="nf">find_profile_CI_bound_steps</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
-                          <span class="n">stepn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
-                          <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                                <span class="n">stepn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+                                <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
     
@@ -476,30 +461,75 @@
                    <span class="mi">5</span><span class="p">:</span><span class="s2">&quot;Unspecified error&quot;</span>
                    <span class="p">}</span>
 
-<div class="viewcode-block" id="find_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI_bound">[docs]</a><span class="k">def</span> <span class="nf">find_CI_bound</span><span class="p">(</span>
-        <span class="n">index</span><span class="p">:</span> <span class="s2">&quot;index of the parameter to consider&quot;</span><span class="p">,</span> 
-        <span class="n">target</span><span class="p">:</span> <span class="s2">&quot;target log-likelihood l*&quot;</span><span class="p">,</span> 
-        <span class="n">x0</span><span class="p">:</span> <span class="s2">&quot;maximum likelihood estimator (MLE)&quot;</span><span class="p">,</span> 
-        <span class="n">fun</span><span class="p">:</span> <span class="s2">&quot;log-likelihood function&quot;</span><span class="p">,</span> 
-        <span class="n">jac</span><span class="p">:</span> <span class="s2">&quot;gradient of fun&quot;</span><span class="p">,</span> 
-        <span class="n">hess</span><span class="p">:</span> <span class="s2">&quot;hessian of fun&quot;</span><span class="p">,</span> 
-        <span class="n">forward</span><span class="p">:</span> <span class="s2">&quot;True, if right end point of CI is sought, else False&quot;</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
-        <span class="n">fun0</span><span class="p">:</span> <span class="s2">&quot;log-likelihood at MLE&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-        <span class="n">jac0</span><span class="p">:</span> <span class="s2">&quot;gradient of log-liekelihood at MLE&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-        <span class="n">hess0</span><span class="p">:</span> <span class="s2">&quot;Hessian of log-likelihood at MLE&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-        <span class="n">nmax</span><span class="p">:</span> <span class="s2">&quot;maximal number of iterations&quot;</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> 
-        <span class="n">nchecks</span><span class="p">:</span> <span class="s2">&quot;maximal number of trust-region changes per iteration&quot;</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
-        <span class="n">apprxtol</span><span class="p">:</span> <span class="s2">&quot;relative tolerance between f and its approximation&quot;</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="c1">#0.2 a 0.8 b</span>
-        <span class="n">resulttol</span><span class="p">:</span> <span class="s2">&quot;tolerance of the result (f and norm(jac))&quot;</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="c1">#g</span>
-        <span class="n">singtol</span><span class="p">:</span> <span class="s2">&quot;tolerance for singularity checks&quot;</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="c1">#1e-5, i</span>
-        <span class="n">minstep</span><span class="p">:</span> <span class="s2">&quot;controls the minimal radius of the trust region&quot;</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> 
-        <span class="n">radiusFactor</span><span class="p">:</span> <span class="s2">&quot;In [1, 2]. Controls how quickly the trust region decreases&quot;</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
-        <span class="n">infstep</span><span class="p">:</span> <span class="s2">&quot;Stepsize after which a parameter is deemed unestimbale&quot;</span> <span class="o">=</span> <span class="mf">1e10</span><span class="p">,</span> 
-        <span class="n">maxRadius</span><span class="p">:</span> <span class="s2">&quot;radius of the trust region in the last iteration&quot;</span> <span class="o">=</span> <span class="mf">1e4</span><span class="p">,</span>
-        <span class="n">disp</span><span class="p">:</span> <span class="s2">&quot;whether to print a status message in each iteration&quot;</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
-        <span class="n">track_x</span><span class="p">:</span> <span class="s2">&quot;whether to return the parameter trace&quot;</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
-        <span class="n">track_f</span><span class="p">:</span> <span class="s2">&quot;whether to return the log-likelihood trace&quot;</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-    
+<div class="viewcode-block" id="find_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI_bound">[docs]</a><span class="k">def</span> <span class="nf">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
+        <span class="n">forward</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+        <span class="n">fun0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">jac0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">hess0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">nmax</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> 
+        <span class="n">nchecks</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
+        <span class="n">apprxtol</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="c1">#0.2 a 0.8 b</span>
+        <span class="n">resulttol</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="c1">#g</span>
+        <span class="n">singtol</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="c1">#1e-5, i</span>
+        <span class="n">minstep</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> 
+        <span class="n">radiusFactor</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">infstep</span> <span class="o">=</span> <span class="mf">1e10</span><span class="p">,</span> 
+        <span class="n">maxRadius</span> <span class="o">=</span> <span class="mf">1e4</span><span class="p">,</span>
+        <span class="n">disp</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+        <span class="n">track_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+        <span class="n">track_f</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Finds an end point of a profile likelihood confidence interval.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    index : int</span>
+<span class="sd">        Index of the parameter of interest.</span>
+<span class="sd">    target : float</span>
+<span class="sd">        Target log-likelihood l* (typically a quantile of the </span>
+<span class="sd">        chi-sqared distribution).</span>
+<span class="sd">    x0 : float[]</span>
+<span class="sd">        Maximum likelihood estimate (MLE) of the paramters.</span>
+<span class="sd">    fun : callable</span>
+<span class="sd">        Log-likelihood function.</span>
+<span class="sd">    jac : callable</span>
+<span class="sd">        Gradient of :py:obj:`fun`. </span>
+<span class="sd">    hess : callable</span>
+<span class="sd">        Hessian of :py:obj:`fun`.</span>
+<span class="sd">    forward : bool</span>
+<span class="sd">        ``True``, if right end point of the confidence interval is sought, else </span>
+<span class="sd">        ``False``.</span>
+<span class="sd">    fun0 : float</span>
+<span class="sd">        log-likelihood at the MLE.</span>
+<span class="sd">    jac0 : float[]</span>
+<span class="sd">        Gradient of the log-liekelihood at the MLE.</span>
+<span class="sd">    hess0 : float[][]</span>
+<span class="sd">        Hessian of the log-likelihood at the MLE.</span>
+<span class="sd">    nmax : int</span>
+<span class="sd">        Maximal number of iterations.</span>
+<span class="sd">    nchecks : int</span>
+<span class="sd">        Maximal number of trust-region changes per iteration.</span>
+<span class="sd">    apprxtol : float</span>
+<span class="sd">        Relative tolerance between :py:obj:`fun` and its approximation.</span>
+<span class="sd">    resulttol : float</span>
+<span class="sd">        Tolerance of the result (``fun`` and ``norm(jac))``.</span>
+<span class="sd">    singtol : float</span>
+<span class="sd">        Tolerance for singularity checks.</span>
+<span class="sd">    minstep : int</span>
+<span class="sd">        Controls the minimal radius of the trust region. </span>
+<span class="sd">    radiusFactor : float</span>
+<span class="sd">        Controls how quickly the trust region decreases. Must be in [1, 2].</span>
+<span class="sd">    infstep : float</span>
+<span class="sd">        Stepsize after which a parameter is deemed unestimbale.</span>
+<span class="sd">    maxRadius : float</span>
+<span class="sd">        Rradius of the trust region in the last iteration.</span>
+<span class="sd">    disp : bool</span>
+<span class="sd">        Whether to print a status message in each iteration.</span>
+<span class="sd">    track_x : bool</span>
+<span class="sd">        Whether to return the parameter trace.</span>
+<span class="sd">    track_f : bool</span>
+<span class="sd">        Whether to return the log-likelihood trace.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nuisance_minstep</span> <span class="o">=</span> <span class="mf">1e-3</span>
     
     <span class="c1"># ----- PREPARATION --------------------------------------------------------</span>
@@ -1510,6 +1540,36 @@
                              <span class="n">f_track</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f_track</span><span class="p">),</span>
                              <span class="n">message</span><span class="o">=</span><span class="n">STATUS_MESSAGES</span><span class="p">[</span><span class="n">status</span><span class="p">]</span>
                              <span class="p">)</span></div>
+
+<div class="viewcode-block" id="find_profile_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI_bound</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
+                          <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Finds the profile likelihood confidence interval for a parameter.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    direction : int</span>
+<span class="sd">        If ``-1``, we search for the left end point of the confidence interval;</span>
+<span class="sd">        if ``1``, we search for the right end point of the confidence interval</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="k">if</span> <span class="n">fun0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    
+    <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span>
+    
+    <span class="k">if</span> <span class="n">vm</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
+                                 <span class="n">direction</span><span class="p">,</span> <span class="n">fun0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
+                             <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
     
 <div class="viewcode-block" id="test2"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.test2">[docs]</a><span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
     <span class="n">H</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mf">2.23327686e+03</span><span class="p">,</span><span class="mf">3.99193784e+02</span><span class="p">,</span><span class="mf">4.74986638e-01</span><span class="p">,</span><span class="o">-</span><span class="mf">8.55852404e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">7.08365052e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">3.87178313e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">4.71627573e+00</span><span class="p">,</span><span class="mf">5.01847818e+02</span><span class="p">,</span><span class="mf">1.44515881e-01</span><span class="p">,</span><span class="mf">2.09204344e+02</span><span class="p">,</span><span class="o">-</span><span class="mf">2.02882521e+03</span><span class="p">,</span><span class="mf">6.66055028e+03</span><span class="p">],</span>
@@ -1837,20 +1897,26 @@
     
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
     
+
 <div class="viewcode-block" id="plot3d"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.plot3d">[docs]</a><span class="k">def</span> <span class="nf">plot3d</span><span class="p">():</span>
     <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
     
     <span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
-
+    <span class="kn">import</span> <span class="nn">algopy</span>
+    <span class="kn">from</span> <span class="nn">numdifftools</span> <span class="kn">import</span> <span class="n">nd_algopy</span>
     
     
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">xx</span><span class="p">):</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xx</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">8</span><span class="o">*</span><span class="n">algopy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">))</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">algopy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">20</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">30</span>
         <span class="k">return</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">xx</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xx</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span>
     
-    <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="o">-</span><span class="n">f</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="o">-</span><span class="n">f2</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
     <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
     
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
@@ -1896,6 +1962,7 @@
     <span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span>
     
     <span class="n">xCyl</span><span class="p">,</span> <span class="n">zCyl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mf">1.02</span><span class="p">:</span><span class="mf">0.02</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.05</span><span class="p">]</span>
+    <span class="n">xCyl</span><span class="p">,</span> <span class="n">zCyl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mf">1.02</span><span class="p">:</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mf">0.05</span><span class="p">]</span>
     <span class="n">yCyl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">xCyl</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
     
     
@@ -1913,30 +1980,31 @@
     <span class="n">mlab</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
     
     <span class="n">wScale</span> <span class="o">=</span> <span class="mf">0.4</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    s = mlab.surf(x, y, z, colormap=&#39;viridis&#39;, #extent=[0, 2, 0, 1, 0, 1],</span>
-<span class="sd">             line_width=1, warp_scale=wScale,</span>
-<span class="sd">             representation=&#39;surface&#39;, transparent=True, opacity=0.7)</span>
-<span class="sd">    mlab.axes(nb_labels=0, xlabel=&quot;x1&quot;, ylabel=&quot;x2&quot;, zlabel=&quot;ln(L)&quot;,</span>
-<span class="sd">              )</span>
-<span class="sd">    sA = mlab.surf(x1, y1, zApprox, colormap=&#39;bone&#39;, #extent=[0, 2, 0, 1, 0, 1],</span>
-<span class="sd">              line_width=1, warp_scale=wScale,</span>
-<span class="sd">              representation=&#39;wireframe&#39;)</span>
-<span class="sd">    #mlab.axes(nb_labels=0, xlabel=&quot;x1&quot;, ylabel=&quot;x2&quot;, zlabel=&quot;ln(L)&quot;,</span>
-<span class="sd">    #          )</span>
-<span class="sd">    mlab.points3d(x0, y0, f0*wScale, resolution=20, color=(.9, .5,.3), scale_factor=.1)</span>
-<span class="sd">    #&#39;&#39;&#39;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">surf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="c1">#extent=[0, 2, 0, 1, 0, 1],</span>
+             <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">warp_scale</span><span class="o">=</span><span class="n">wScale</span><span class="p">,</span>
+             <span class="n">representation</span><span class="o">=</span><span class="s1">&#39;wireframe&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+             <span class="c1">#representation=&#39;surface&#39;, transparent=True, opacity=0.7)</span>
+    <span class="n">mlab</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">nb_labels</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;x2&quot;</span><span class="p">,</span> <span class="n">zlabel</span><span class="o">=</span><span class="s2">&quot;ln(L)&quot;</span><span class="p">,</span>
+              <span class="p">)</span>
     <span class="n">sc1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x0</span><span class="o">+</span><span class="n">xCyl</span><span class="p">,</span> <span class="n">y0</span><span class="o">+</span><span class="n">yCyl</span><span class="p">,</span> <span class="n">zCyl</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">,</span> <span class="c1">#extent=[0, 2, 0, 1, 0, 1],</span>
              <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1">#warp_scale=wScale,</span>
              <span class="n">representation</span><span class="o">=</span><span class="s1">&#39;surface&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
     <span class="n">sc2</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x0</span><span class="o">+</span><span class="n">xCyl</span><span class="p">,</span> <span class="n">y0</span><span class="o">-</span><span class="n">yCyl</span><span class="p">,</span> <span class="n">zCyl</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">,</span> <span class="c1">#extent=[0, 2, 0, 1, 0, 1],</span>
              <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1">#warp_scale=wScale,</span>
              <span class="n">representation</span><span class="o">=</span><span class="s1">&#39;surface&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-    <span class="n">s1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">surf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">*</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="c1">#8.2, </span>
-                   <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;gist_earth&#39;</span><span class="p">,</span> 
-              <span class="n">representation</span><span class="o">=</span><span class="s1">&#39;wireframe&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">warp_scale</span><span class="o">=</span><span class="n">wScale</span> <span class="c1">#&#39;auto&#39;</span>
-              <span class="c1">#extent=[0, 1, 0, 1, 0, 1]</span>
-              <span class="p">)</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    sA = mlab.surf(x1, y1, zApprox, colormap=&#39;bone&#39;, #extent=[0, 2, 0, 1, 0, 1],</span>
+<span class="sd">              line_width=1, warp_scale=wScale,</span>
+<span class="sd">              representation=&#39;wireframe&#39;)</span>
+<span class="sd">    #mlab.axes(nb_labels=0, xlabel=&quot;x1&quot;, ylabel=&quot;x2&quot;, zlabel=&quot;ln(L)&quot;,</span>
+<span class="sd">    #          )</span>
+<span class="sd">    mlab.points3d(x0, y0, f0*wScale, resolution=20, color=(.9, .5,.3), scale_factor=.1)</span>
+<span class="sd">    s1 = mlab.surf(x, y, z*0+3, #8.2, </span>
+<span class="sd">                   colormap=&#39;gist_earth&#39;, </span>
+<span class="sd">              representation=&#39;wireframe&#39;, line_width=1, warp_scale=wScale #&#39;auto&#39;</span>
+<span class="sd">              #extent=[0, 1, 0, 1, 0, 1]</span>
+<span class="sd">              )</span>
+<span class="sd">    #&#39;&#39;&#39;</span>
     <span class="n">mlab</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="c1">#mlab.axes()</span>
     <span class="c1">#mlab.outline()</span>
@@ -1994,6 +2062,9 @@
     
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">plot3d</span><span class="p">()</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
     <span class="kn">import</span> <span class="nn">algopy</span>
     <span class="c1">#plot3d()</span>
     <span class="n">test</span><span class="p">()</span>

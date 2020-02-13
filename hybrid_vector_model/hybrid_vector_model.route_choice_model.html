@@ -92,7 +92,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.route_choice_model.RouteChoiceModel.fit" title="hybrid_vector_model.route_choice_model.RouteChoiceModel.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>([guess, improveGuess, disp])</p></td>
-<td><p></p></td>
+<td><p>Fits the route choice model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.route_choice_model.RouteChoiceModel.get_confidence_intervals" title="hybrid_vector_model.route_choice_model.RouteChoiceModel.get_confidence_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_confidence_intervals</span></code></a>([fileName, show])</p></td>
 <td><p></p></td>
@@ -101,7 +101,7 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.route_choice_model.RouteChoiceModel.set_fitting_data" title="hybrid_vector_model.route_choice_model.RouteChoiceModel.set_fitting_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fitting_data</span></code></a>(dayData, shiftData, …)</p></td>
-<td><p>asdasd asd asd asd asd asd asd asd asd asd asd asd asd asd asdasdasd asd asd asd asd asd asd asd sad ad asd</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -118,7 +118,19 @@
 <dl class="method">
 <dt id="hybrid_vector_model.route_choice_model.RouteChoiceModel.fit">
 <code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">guess=None</em>, <em class="sig-param">improveGuess=False</em>, <em class="sig-param">disp=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/route_choice_model.html#RouteChoiceModel.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.route_choice_model.RouteChoiceModel.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Fits the route choice model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guess</strong> (<em>float</em><em>[</em><em>]</em>) – Guess for the maximum likelihood estimate.</p></li>
+<li><p><strong>improveGuess</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">guess</span></code> will be used as initial guess for the
+model fit. Otherwise, it will be used as the maximum likelihood
+estimate.</p></li>
+<li><p><strong>disp</strong> (<em>bool</em>) – Whether partial results shall be printed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.route_choice_model.RouteChoiceModel.fitted">
@@ -143,14 +155,7 @@
 <dl class="method">
 <dt id="hybrid_vector_model.route_choice_model.RouteChoiceModel.set_fitting_data">
 <code class="sig-name descname">set_fitting_data</code><span class="sig-paren">(</span><em class="sig-param">dayData</em>, <em class="sig-param">shiftData</em>, <em class="sig-param">inspectedRoutes</em>, <em class="sig-param">routeLengths</em>, <em class="sig-param">trafficModel</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/route_choice_model.html#RouteChoiceModel.set_fitting_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.route_choice_model.RouteChoiceModel.set_fitting_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>asdasd asd asd asd asd asd asd asd asd asd asd asd asd asd asdasdasd asd asd asd asd asd asd asd sad ad asd
-:param dayData:
-:param shiftData:
-:param inspectedRoutes:
-:param routeLengths:
-:param trafficModel:
-:param complianceRate:</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -169,6 +174,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">route_choice_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model.statsutils.html">statsutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model.traveltime_model.html">traveltime_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model.boater_movement_model.html">boater_movement_model</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ci_rvm.html">ci_rvm</a></li>
