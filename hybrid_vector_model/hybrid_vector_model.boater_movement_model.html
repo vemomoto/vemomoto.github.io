@@ -114,8 +114,7 @@ All implemented methods and constants must be adjusted!</p>
 <td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code>, but must use autograd’s functions instead of numpy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_sink_covariates</span></code></a>(covariates)</p></td>
-<td><p><p>#</p>
-</p></td>
+<td><p>Process sink covariates before saving them.</p></td>
 </tr>
 </tbody>
 </table>
@@ -162,7 +161,7 @@ a vector in the parameter space of the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dynamicParameters</strong> (<em>double</em><em>[</em><em>]</em>) – Free parameters. The parameters that are not held constant.</p></li>
+<li><p><strong>dynamicParameters</strong> (<em>float</em><em>[</em><em>]</em>) – Free parameters. The parameters that are not held constant.</p></li>
 <li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
 to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
@@ -214,9 +213,14 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 <dl class="method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates">
 <em class="property">static </em><code class="sig-name descname">process_sink_covariates</code><span class="sig-paren">(</span><em class="sig-param">covariates</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.process_sink_covariates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates" title="Permalink to this definition">¶</a></dt>
-<dd><p>#
-Convert number of campgrounds, pointsOfInterest, and marinas to
-presence/absebce data to avoid identifiability issues</p>
+<dd><p>Process sink covariates before saving them.</p>
+<p>This method is applied to the sink covariates before they are saved.
+The method can be used to compute derived covariates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>covariates</strong> (<em>float</em><em>[</em><em>]</em>) – Covariates describing the attractiveness of sinks</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

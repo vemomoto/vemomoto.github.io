@@ -99,11 +99,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">postalCodeDists</span> <span class="o">=</span> <span class="n">postalCodeDistances</span> <span class="o">*</span> <span class="mf">0.001</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">dists</span> <span class="o">=</span> <span class="n">distances</span> <span class="o">*</span> <span class="mf">0.0001</span>
         
-<div class="viewcode-block" id="TrafficFactorModel.process_sink_covariates"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TrafficFactorModel.process_sink_covariates"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates">[docs]</a>    <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="o">.</span><span class="n">process_sink_covariates</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">process_sink_covariates</span><span class="p">(</span><span class="n">covariates</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;#</span>
 <span class="sd">        Convert number of campgrounds, pointsOfInterest, and marinas to </span>
-<span class="sd">        presence/absebce data to avoid identifiability issues</span>
+<span class="sd">        presence/absence data to avoid identifiability issues</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">covariates</span><span class="p">[</span><span class="s2">&quot;campgrounds&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covariates</span><span class="p">[</span><span class="s2">&quot;campgrounds&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
         <span class="n">covariates</span><span class="p">[</span><span class="s2">&quot;pointsOfInterest&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">covariates</span><span class="p">[</span><span class="s2">&quot;pointsOfInterest&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -647,7 +647,7 @@
     <span class="c1">#&quot;&quot;&quot;</span>
     <span class="n">flowParameters</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1">#best parameters one more parameter </span>
-    <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;covariates&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> 
+    <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> 
         <span class="p">[</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">]</span>
         <span class="p">)</span>
     <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
@@ -655,17 +655,17 @@
         <span class="p">)</span>
     <span class="n">nullParameters</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1">#best parameters one more parameter </span>
-    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;covariates&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;covariates&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;covariates&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1">#nullParameters[&quot;covariates&quot;][:3] = True</span>
+    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#nullParameters[&quot;considered&quot;][:3] = True</span>
     <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">])</span>
     <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.42643338e-01</span><span class="p">,</span> <span class="mf">5.15536529e+04</span><span class="p">])</span>
     
-    <span class="c1">#print(TrafficFactorModel.convert_parameters(None, flowParameters[&quot;paramters&quot;][2:], flowParameters[&quot;covariates&quot;][2:]))</span>
+    <span class="c1">#print(TrafficFactorModel.convert_parameters(None, flowParameters[&quot;paramters&quot;][2:], flowParameters[&quot;considered&quot;][2:]))</span>
     <span class="c1">#sys.exit()</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    #best parameters one less parameter </span>
-<span class="sd">    flowParameters[&quot;covariates&quot;] = np.array( </span>
+<span class="sd">    flowParameters[&quot;considered&quot;] = np.array( </span>
 <span class="sd">        [True,True,True,False,False,False,True,False,True,False,True,False,True,False,False,False,False,False,True,False,False,False,True,True]</span>
 <span class="sd">        )</span>
 <span class="sd">    flowParameters[&quot;paramters&quot;] = np.array(</span>
@@ -673,7 +673,7 @@
 <span class="sd">        )</span>
 <span class="sd">    </span>
 <span class="sd">    #best parameters</span>
-<span class="sd">    flowParameters[&quot;covariates&quot;] = np.array( </span>
+<span class="sd">    flowParameters[&quot;considered&quot;] = np.array( </span>
 <span class="sd">        [True,True,True,False,False,False,True,False,True,False,True,False,True,True,False,False,False,False,True,False,False,False,True,True]</span>
 <span class="sd">        )</span>
 <span class="sd">    flowParameters[&quot;paramters&quot;] = np.array(</span>
@@ -683,7 +683,7 @@
 <span class="sd">    </span>
 <span class="sd">    </span>
 <span class="sd">    # best parameters old parameterization</span>
-<span class="sd">    flowParameters[&quot;covariates&quot;] = np.array( </span>
+<span class="sd">    flowParameters[&quot;considered&quot;] = np.array( </span>
 <span class="sd">        [True,True,True,False,False,False,True,False,True,False,True,False,True,True,False,False,False,False,True,False,False,False,True,True]</span>
 <span class="sd">        )</span>
 <span class="sd">    flowParameters[&quot;paramters&quot;] = np.array(</span>

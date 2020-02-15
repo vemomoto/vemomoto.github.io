@@ -99,34 +99,19 @@ or <cite>lake</cite>.</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_distribution_plot" title="hybrid_vector_model.hybrid_vector_model.create_distribution_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_distribution_plot</span></code></a>(X, observed[, …])</p></td>
-<td><p></p></td>
+<td><p>Creates a plot of a given discrete distribution.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_observed_predicted_mean_error_plot</span></code></a>(…)</p></td>
-<td><p></p></td>
+<td><p>Create an observed vs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files" title="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_observed_predicted_mean_error_plot_from_files</span></code></a>(…)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_predicted_observed_box_plot" title="hybrid_vector_model.hybrid_vector_model.create_predicted_observed_box_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_predicted_observed_box_plot</span></code></a>(…[, …])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.draw_operating_hour_reward" title="hybrid_vector_model.hybrid_vector_model.draw_operating_hour_reward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_operating_hour_reward</span></code></a>(kappa)</p></td>
-<td><p></p></td>
+<td><p>Creates an observed vs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="hybrid_vector_model.hybrid_vector_model.nbinom_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbinom_fit</span></code></a>(data)</p></td>
-<td><p></p></td>
+<td><p>Fits a negative binomial distribution to given data</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit_test" title="hybrid_vector_model.hybrid_vector_model.nbinom_fit_test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbinom_fit_test</span></code></a>(n, k1, k2[, p])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.non_join" title="hybrid_vector_model.hybrid_vector_model.non_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_join</span></code></a>(string1, string2)</p></td>
-<td><p>Joins two strings if they are not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.probability_equal_lengths_for_distinct_paths" title="hybrid_vector_model.hybrid_vector_model.probability_equal_lengths_for_distinct_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probability_equal_lengths_for_distinct_paths</span></code></a>([…])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw_predicted_observed</span></code></a>(fileName1, fileName2)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw_predicted_observed</span></code></a>(fileName1, fileName2)</p></td>
+<td><p>Redraws predicted versus oberved plots generated earlier.</p></td>
 </tr>
 </tbody>
 </table>
@@ -260,7 +245,7 @@ a vector in the parameter space of the model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dynamicParameters</strong> (<em>double</em><em>[</em><em>]</em>) – Free parameters. The parameters that are not held constant.</p></li>
+<li><p><strong>dynamicParameters</strong> (<em>float</em><em>[</em><em>]</em>) – Free parameters. The parameters that are not held constant.</p></li>
 <li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
 to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
@@ -385,26 +370,22 @@ model.</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_count_distributions_NB</span></code></a>([…])</p></td>
-<td><p></p></td>
+<td><p>Checks whether the observed data may be normally distributed.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_distributions</span></code></a>(stationID, fromID, toID)</p></td>
-<td><p></p></td>
+<td><p>Compares distributions of agent obervations via Anderson-Darling tests and comparative plots of the observed and predicted cumulitive mass functions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_travel_time_distributions</span></code></a>([saveFileName])</p></td>
-<td><p></p></td>
+<td><p>Compares agents’ travel time distributions at different survey locations.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_budget_plots</span></code></a>(minBudget, maxBudget[, …])</p></td>
-<td><p></p></td>
+<td><p>Creates plots of the inspection success and price per inspected agent dependent on the invested budget.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_caracteristic_plot</span></code></a>(characteristic, values)</p></td>
-<td><p></p></td>
+<td><p>Creates a plot of the characteristics of the optimal inspection policy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_quality_plots</span></code></a>([worstLabelNo, …])</p></td>
-<td><p><div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Todo</p>
-<p>Compute mean at stations only, incorporate timing later.</p>
-</div>
-</p></td>
+<td><p>Creates predicted vs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_road_network" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_road_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_road_network</span></code></a>([fileNameEdges, …])</p></td>
 <td><p>Creates and preprocesses a route network</p></td>
@@ -422,34 +403,34 @@ model.</p></li>
 <td><p>Determines the shortest distances between all considered origins and</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_flow_model</span></code></a>([permutations, refit, …])</p></td>
-<td><p></p></td>
+<td><p>Fits the traffic flow (gravity) model.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_route_choice_model</span></code></a>([refit, guess, …])</p></td>
 <td><p>Fits the route choice model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_PMF_observation_prediction</span></code></a>(staionID, …)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_PMF_observation_prediction</span></code></a>(stationID, …)</p></td>
+<td><p>Determines the observed and predicted probability mass function for agent counts between specific origin-destination pairs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_normalized_observation_prediction</span></code></a>([…])</p></td>
-<td><p></p></td>
+<td><p>Returns the mean observed and predicted agent counts at survey locations, thereby scaling the values so that they should come from a normal distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_measure" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pair_distribution_measure</span></code></a>([measure, …])</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pair_distribution_property</span></code></a>([…])</p></td>
+<td><p>Computes a property of the distribution of the agent flow between origin-destination pairs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pair_observation_prediction</span></code></a>([predictions])</p></td>
-<td><p></p></td>
+<td><p>Returnes predicted and observed agent counts by origin-destination pair.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_station_mean_variance</span></code></a>([stationIndices, …])</p></td>
-<td><p></p></td>
+<td><p>Returns the mean agent traffic that could be observed at survey locations and the respective vairances.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_station_observation_prediction</span></code></a>([predictions])</p></td>
-<td><p></p></td>
+<td><p>Returns observed and predicted agent counts for the inspection locations for which data are available.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">investigate_profile_likelihood</span></code></a>(x0, …[, …])</p></td>
-<td><p>staticmethod(function) -&gt; method</p></td>
+<td><p>Searches the profile likelihood confidence interval for a given parameter.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_log_likelihood</span></code></a>([considered, …])</p></td>
-<td><p>“# Maximizes the likelihood of the hybrid model</p></td>
+<td><p>Maximizes the likelihood of the hybrid model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_log_likelihood_static</span></code></a>(…[, …])</p></td>
 <td><p>Maximizes the likelihood of the hybrid model.</p></td>
@@ -458,10 +439,10 @@ model.</p></li>
 <td><p>Constructs a new <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">HybridVectorModel</span></code></a>, thereby reusing saved previous results if possible.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimize_inspection_station_operation</span></code></a>(…[, …])</p></td>
-<td><p></p></td>
+<td><p>Computes the optimal locations for agent inspections.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_traffic_factor_model</span></code></a>()</p></td>
-<td><p></p></td>
+<td><p>Prepares the traffic factor model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess_survey_data</span></code></a>([redo])</p></td>
 <td><p>Takes the raw survey data and preprocesses them for the model fit.</p></td>
@@ -482,10 +463,10 @@ model.</p></li>
 <td><p>Saves the model to the file <code class="docutils literal notranslate"><span class="pre">fileName</span></code>.vmm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_model_predictions</span></code></a>([fileName])</p></td>
-<td><p></p></td>
+<td><p>Computes and saves model predictions by origin, destination, origin-destination pair, and inspection location.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_simulated_observations</span></code></a>([parameters, …])</p></td>
-<td><p></p></td>
+<td><p>Simulate observation data that would be obtained if the model were True.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_compliance_rate</span></code></a>(complianceRate)</p></td>
 <td><p>Sets the boaters’ compliance rate (for stopping at inspection/survey</p></td>
@@ -497,49 +478,140 @@ model.</p></li>
 <td><p>Determines which origins are considered in the model fit.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_traffic_factor_model_class</span></code></a>([…])</p></td>
-<td><p></p></td>
+<td><p>Sets the class representing the traffic factor (gravity) model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simulate_count_data</span></code></a>(stationTimes, day, …)</p></td>
-<td><p></p></td>
+<td><p>Simulate observation data that would be obtained one one day if the model were True.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_1_1_regression</span></code></a>([minSampleSize, …])</p></td>
-<td><p></p></td>
+<td><p>Tests whether the model results are biased.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB">
 <code class="sig-name descname">check_count_distributions_NB</code><span class="sig-paren">(</span><em class="sig-param">minDataSetSize=20</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.check_count_distributions_NB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Checks whether the observed data may be normally distributed.</p>
+<p>Computes p-values for the test with null hypothesis
+<cite>H0: Data are negative binomially distributed</cite>. If the p-values are
+high, we cannot reject the hypothesis and may conclude that the negative
+binomial distribution is modelling the data appropriately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minDataSetSize</strong> (<em>int</em>) – It is necessary that parts of the considered data are identically
+distributed and that the samples are large enough. <code class="xref py py-obj docutils literal notranslate"><span class="pre">minDataSetSize</span></code>
+sets the minimal size of such a data set.</p></li>
+<li><p><strong>fileName</strong> (<em>str</em>) – Names of the files to which plots of the resulting p-values will be
+saved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions">
 <code class="sig-name descname">compare_distributions</code><span class="sig-paren">(</span><em class="sig-param">stationID</em>, <em class="sig-param">fromID</em>, <em class="sig-param">toID</em>, <em class="sig-param">xMax=None</em>, <em class="sig-param">saveFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.compare_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Compares distributions of agent obervations via Anderson-Darling
+tests and comparative plots of the observed and
+predicted cumulitive mass functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stationID</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="hybrid_vector_model.hybrid_vector_model.IDTYPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">IDTYPE</span></code></a>) – ID of the survey location where the considered data have been
+collected. Can be an array.</p></li>
+<li><p><strong>fromID</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="hybrid_vector_model.hybrid_vector_model.IDTYPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">IDTYPE</span></code></a>) – ID of the origin of the considered agents. Can be an array.</p></li>
+<li><p><strong>toID</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="hybrid_vector_model.hybrid_vector_model.IDTYPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">IDTYPE</span></code></a>) – ID of the destination of the considered agents. Can be an array.</p></li>
+<li><p><strong>xMax</strong> (<em>int</em>) – Count value up to which the probablity mass function is plotted
+at least. If not given, the probability mass function will be
+computed up to the maximal observed count value.</p></li>
+<li><p><strong>saveFileName</strong> (<em>str</em>) – File name for plots. If <code class="docutils literal notranslate"><span class="pre">None</span></code> no plots will be saved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions">
 <code class="sig-name descname">compare_travel_time_distributions</code><span class="sig-paren">(</span><em class="sig-param">saveFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.compare_travel_time_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Compares agents’ travel time distributions at different survey
+locations.</p>
+<p>Conducts likelihood ratio tests evaluating whether multiple
+distributions are equal and plots the respective best-fitting time
+distributions at different locations.</p>
+<p>Compares not only travel time distributions at different locations but
+also travel time distributions of local and long-distance travellers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>saveFileName</strong> (<em>str</em>) – File name for plots.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots">
 <code class="sig-name descname">create_budget_plots</code><span class="sig-paren">(</span><em class="sig-param">minBudget</em>, <em class="sig-param">maxBudget</em>, <em class="sig-param">nSteps=10</em>, <em class="sig-param">**optim_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_budget_plots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates plots of the inspection success and price per inspected
+agent dependent on the invested budget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minBudget</strong> (<em>float</em>) – Minimal budget to be considered.</p></li>
+<li><p><strong>maxBudget</strong> (<em>float</em>) – Maximal budget to be considered.</p></li>
+<li><p><strong>nSteps</strong> (<em>int</em>) – Number of budget values to be considered.</p></li>
+<li><p><strong>**optim_kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to
+<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimize_inspection_station_operation</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot">
 <code class="sig-name descname">create_caracteristic_plot</code><span class="sig-paren">(</span><em class="sig-param">characteristic</em>, <em class="sig-param">values</em>, <em class="sig-param">characteristicName=None</em>, <em class="sig-param">valueNames=None</em>, <em class="sig-param">**optim_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_caracteristic_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a plot of the characteristics of the optimal inspection
+policy.</p>
+<p>The probability that an agent chooses a time while the inspection
+station is operated is plotted against the expected number of infested
+agents at the inspection stations for all used inspection stations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>characteristic</strong> (<em>callable/str</em>) – Property or argument whose impact on the results shall be studeied.
+If of type <cite>callable</cite>, for each entry <code class="docutils literal notranslate"><span class="pre">val</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code>,
+<code class="docutils literal notranslate"><span class="pre">callable(self,</span> <span class="pre">val)</span></code> will be executed. If of type <cite>str</cite>, it will
+be interpreted as a keyword argument of
+<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimize_inspection_station_operation</span></code></a>, which will be set
+to <code class="docutils literal notranslate"><span class="pre">val</span></code>.</p></li>
+<li><p><strong>values</strong> (<em>arr</em>) – Array of argument values.</p></li>
+<li><p><strong>characteristicName</strong> (<em>str</em>) – Name of the property/argument that is studied. Used as axis label in
+the plot and to generate file names.</p></li>
+<li><p><strong>valueNames</strong> (<em>str</em>) – Names of the values of the characteristic (used for the legend).</p></li>
+<li><p><strong>**optim_kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to
+<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimize_inspection_station_operation</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots">
 <code class="sig-name descname">create_quality_plots</code><span class="sig-paren">(</span><em class="sig-param">worstLabelNo=5</em>, <em class="sig-param">saveFileName=None</em>, <em class="sig-param">comparisonFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_quality_plots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots" title="Permalink to this definition">¶</a></dt>
-<dd><div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Compute mean at stations only, incorporate timing later.
-This could speed up the procedure significatnly.</p>
-</div>
+<dd><p>Creates predicted vs. observed plots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>worstLabelNo</strong> (<em>self</em>) – Number of data points that shall be labelled with their respective
+IDs. The data points will be labelled in order of the largest
+deviance between predictions and observations.</p></li>
+<li><p><strong>saveFileName</strong> (<em>str</em>) – Name of the file where the plot and the data used to generate it will
+be saved.</p></li>
+<li><p><strong>comparisonFileName</strong> (<em>str</em>) – Name of the file where alternative results are saved. These results will
+be loaded and plotted for comparison.</p></li>
+<li><p><strong>. todo:</strong> (<em>~+~</em>) – Compute mean at stations only, incorporate timing later.: This could speed up the procedure significatnly.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -729,7 +801,37 @@ destinations, and destinations and postal code area centres</p>
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model">
 <code class="sig-name descname">fit_flow_model</code><span class="sig-paren">(</span><em class="sig-param">permutations=None</em>, <em class="sig-param">refit=False</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">continueFlowOptimization=False</em>, <em class="sig-param">get_CI=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.fit_flow_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Fits the traffic flow (gravity) model.</p>
+<p>Fits one or multiple candidates for the traffic flow model and selects
+the model with minimal AIC value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>permutations</strong> (<em>bool</em><em>[</em><em>]</em><em>[</em><em>]</em>) – Each row corresponds to a parameter combination of a models that
+is to be considered. For each parameter that could be potentially
+included, the row must contain a boolean value. Do only include
+parameters included in the traffic factor model. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+the <code class="xref py py-attr docutils literal notranslate"><span class="pre">PERMUTATIONS</span></code> given
+in the traffic factor model class will be considered. If this
+attribute is not implemented, only the full model will be considered.</p></li>
+<li><p><strong>refit</strong> (<em>bool</em>) – Whether to repeat the fitting procedure if the model has been
+fitted earlier.</p></li>
+<li><p><strong>flowParameters</strong> (<em>dict</em>) – Dictionary with the keys <code class="docutils literal notranslate"><span class="pre">&quot;covariates&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;paramters&quot;</span></code>
+that provides an initial guess for the optimization or the
+corresponding solution. <code class="docutils literal notranslate"><span class="pre">&quot;covariates&quot;</span></code> contains a <cite>bool[]</cite> with
+the considered parameter combination (see <code class="xref py py-obj docutils literal notranslate"><span class="pre">permutations</span></code>);
+<code class="docutils literal notranslate"><span class="pre">&quot;covariates&quot;</span></code> contains a <cite>float[]</cite> with the values for the
+parameters where <code class="docutils literal notranslate"><span class="pre">flowParameters[&quot;considered&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>continueFlowOptimization</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="xref py py-obj docutils literal notranslate"><span class="pre">flowParameters</span></code> will be used as initial
+guess. Otherwise, they will be considered as the optimal
+parameters.</p></li>
+<li><p><strong>get_CI</strong> (<em>bool</em>) – Whether confidence intervals shall be computed after the model
+has been fitted. Note that no confidence intervals will be computed,
+if <code class="docutils literal notranslate"><span class="pre">continueFlowOptimization</span> <span class="pre">is</span> <span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model">
@@ -754,61 +856,202 @@ after the model has been fitted.</p></li>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction">
-<code class="sig-name descname">get_PMF_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">staionID</em>, <em class="sig-param">fromID</em>, <em class="sig-param">toID</em>, <em class="sig-param">xMax=None</em>, <em class="sig-param">getBestPMF=True</em>, <em class="sig-param">getPureObservations=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_PMF_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">get_PMF_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">stationID</em>, <em class="sig-param">fromID</em>, <em class="sig-param">toID</em>, <em class="sig-param">xMax=None</em>, <em class="sig-param">getBestPMF=True</em>, <em class="sig-param">getPureObservations=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_PMF_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the observed and predicted probability mass function for
+agent counts between specific origin-destination pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stationID</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="hybrid_vector_model.hybrid_vector_model.IDTYPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">IDTYPE</span></code></a>) – ID of the survey location where the considered data have been
+collected. Can be an array.</p></li>
+<li><p><strong>fromID</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="hybrid_vector_model.hybrid_vector_model.IDTYPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">IDTYPE</span></code></a>) – ID of the origin of the considered agents. Can be an array.</p></li>
+<li><p><strong>toID</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="hybrid_vector_model.hybrid_vector_model.IDTYPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">IDTYPE</span></code></a>) – ID of the destination of the considered agents. Can be an array.</p></li>
+<li><p><strong>xMax</strong> (<em>int</em>) – Count value up to which the probablity mass function is plotted
+at least. If not given, the probability mass function will be
+computed up to the maximal observed count value.</p></li>
+<li><p><strong>getBestPMF</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a negative binomial distribution will be fitted
+directly to the observed data. This can be helpful if it is of
+interest whether the observations come from a negative binomial
+distribution.</p></li>
+<li><p><strong>getPureObservations</strong> (<em>bool</em>) – Whether the pure observed count data shall be returned in addition
+to the other results.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction">
 <code class="sig-name descname">get_normalized_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">minSampleSize=20</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_normalized_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the mean observed and predicted agent counts at survey
+locations, thereby scaling the values so that they should come from
+a normal distribution.</p>
+<p>Only data obtained between a specific daytime interval will be
+considered to ensure individual observations are identically distributed
+and will yield a normal distribution when added together.</p>
+<dl class="simple">
+<dt>minSampleSize<span class="classifier">int</span></dt><dd><p>The minimal number of survey shifts that must be available before
+a survey location can be considered. If this value is too low, the
+resulting values will not follow an approximate normal distribution.
+If the value is too large, no data will be available to compute the
+results.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
-<dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_measure">
-<code class="sig-name descname">get_pair_distribution_measure</code><span class="sig-paren">(</span><em class="sig-param">measure=&lt;bound method rv_generic.mean of &lt;scipy.stats._discrete_distns.nbinom_gen object&gt;&gt;</em>, <em class="sig-param">arg=None</em>, <em class="sig-param">pair=None</em>, <em class="sig-param">shiftStart=None</em>, <em class="sig-param">shiftEnd=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_distribution_measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_measure" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property">
+<code class="sig-name descname">get_pair_distribution_property</code><span class="sig-paren">(</span><em class="sig-param">dist_property=&lt;bound method rv_generic.mean of &lt;scipy.stats._discrete_distns.nbinom_gen object&gt;&gt;</em>, <em class="sig-param">arg=None</em>, <em class="sig-param">pair=None</em>, <em class="sig-param">shiftStart=None</em>, <em class="sig-param">shiftEnd=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_distribution_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes a property of the distribution of the agent flow
+between origin-destination pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pair</strong> (<em>tuple</em>) – Source-sink pair for which the factor shall be determined.
+This is the source-sink pair of interest (the indices of the source and
+the sink, NOT their IDs. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the factors for all source-sink
+combinations are computed).</p></li>
+<li><p><strong>dist_property</strong> (<em>callable</em>) – The distribution property of interest. Must be properties
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.nbinom</span></code>. Can also be a list of
+properties.</p></li>
+<li><p><strong>arg</strong> (<em>float</em>) – Additional argument for <code class="xref py py-obj docutils literal notranslate"><span class="pre">dist_property</span></code>. For example which
+quantile is desired, if <cite>dist_property==nbinom.ppf</cite>. Can also be
+of type <cite>float[]</cite>.</p></li>
+<li><p><strong>pair</strong> – The origin-destination pair(s) of interest as <code class="docutils literal notranslate"><span class="pre">(fromIndex,</span> <span class="pre">toIndex)</span></code>
+respectively. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the property will be computed for all
+origin-destination pairs.</p></li>
+<li><p><strong>shiftStart</strong> (<em>[</em><em>0</em><em>, </em><em>24</em><em>)</em>) – The end of the time interval(s) for which the parameters shall be
+computed. Must be given in a 24h format. That is, 14.5 represents
+2:30PM. If not given, travel timing will be neglected and the
+complete daily traffic flow will be considered.</p></li>
+<li><p><strong>stationIndex</strong> (<em>shiftEnd</em>) – Index of the survey location to be considered. If not given,
+route choice will be neglected and the complete traffic flow will
+be computed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction">
 <code class="sig-name descname">get_pair_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">predictions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returnes predicted and observed agent counts by origin-destination
+pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predictions</strong> (<em>struct</em><em>[</em><em>]</em>) – If the predictions have been computed earlier, they can be provided
+as this argument. Otherwise the predictions will be computed anew.
+Must be the results of <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_station_mean_variance()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance">
 <code class="sig-name descname">get_station_mean_variance</code><span class="sig-paren">(</span><em class="sig-param">stationIndices=None</em>, <em class="sig-param">shiftStart=0</em>, <em class="sig-param">shiftEnd=24</em>, <em class="sig-param">getStationResults=True</em>, <em class="sig-param">getPairResults=False</em>, <em class="sig-param">fullCompliance=False</em>, <em class="sig-param">correctData=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_station_mean_variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the mean agent traffic that could be observed at survey
+locations and the respective vairances.</p>
+<p>The values are returned both for all agents and the agents
+coming from infested origins only, respectively.</p>
+<p>The traffic can be returned either per survey location or per
+origin-destination pair (assuming that surveys were conducted at the
+given locations and time intervals).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stationIndices</strong> (<em>int</em><em>[</em><em>]</em>) – Indices of the locations for which the traffic estimate is desired.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the traffic for all potential survey locations will
+be returned. The same location can be mentioned multiple times to
+model multiple inspection shifts on different days.</p></li>
+<li><p><strong>shiftStart</strong> (<em>[</em><em>0</em><em>, </em><em>24</em><em>)</em>) – The start of the time interval for which the agent counts shall be
+estimated. Must be given in a 24h format. That is, 14.5 represents
+2:30PM. Can also be an array, which then must have the same length
+as <code class="xref py py-obj docutils literal notranslate"><span class="pre">stationIndices</span></code>.</p></li>
+<li><p><strong>shiftStart</strong> – The end of the time interval for which the agent counts shall be
+estimated. Must be given in a 24h format. That is, 14.5 represents
+2:30PM. Can also be an array, which then must have the same length
+as <code class="xref py py-obj docutils literal notranslate"><span class="pre">stationIndices</span></code>.</p></li>
+<li><p><strong>getStationResults</strong> (<em>bool</em>) – Whether the estimates shall be returned by survey location.</p></li>
+<li><p><strong>getPairResults</strong> (<em>bool</em>) – Whether estimates shall be returned by origin-destination pair.</p></li>
+<li><p><strong>~+~</strong> – </p></li>
+<li><p><strong>todo:</strong> (<em>.</em>) – This method can be made much more efficient, if the road: choice probabilities and the k values are computed once for each
+origin-destination pair or inspection location only. That is,
+we would not need to reconsider teh same location multiple times.
+This would speed up this method by orders of magnitude.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction">
 <code class="sig-name descname">get_station_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">predictions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_station_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns observed and predicted agent counts for the inspection
+locations for which data are available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predictions</strong> (<em>struct</em><em>[</em><em>]</em>) – If the predictions have been computed earlier, they can be provided
+as this argument. Otherwise the predictions will be computed anew.
+Must be the results of <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_station_mean_variance()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood">
 <code class="sig-name descname">investigate_profile_likelihood</code><span class="sig-paren">(</span><em class="sig-param">x0</em>, <em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">considered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">**profile_LL_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.investigate_profile_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="Permalink to this definition">¶</a></dt>
-<dd><p>staticmethod(function) -&gt; method</p>
-<p>Convert a function to be a static method.</p>
-<p>A static method does not receive an implicit first argument.
-To declare a static method, use this idiom:</p>
-<blockquote>
-<div><dl>
-<dt>class C:</dt><dd><p>&#64;staticmethod
-def f(arg1, arg2, …):</p>
-<blockquote>
-<div><p>…</p>
-</div></blockquote>
+<dd><p>Searches the profile likelihood confidence interval for a given
+parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>processedSurveyData</strong> (<em>dict</em>) – Processed survey data, which are computed with <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess_survey_data()</span></code></a></p></li>
+<li><p><strong>lengthsOfPotentialRoutes</strong> (<a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.csr_matrix_nd" title="vemomoto_core.npcollections.npext.csr_matrix_nd"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix_nd</span></code></a>) – For each origin-destination pair the lengths of all potential
+(i.e. admissible) agent routes.</p></li>
+<li><p><strong>trafficFactorModel</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrafficFactorModel</span></code></a>) – Traffic factor model used to determine the strengths of the agent
+flows between the individual origin-destination pairs.</p></li>
+<li><p><strong>routeChoiceParameters</strong> (<em>float</em><em>[</em><em>]</em>) – Route choice parameters. The first entry is the probability to
+select an inadmissible path. The second entry is the exponent
+controlling the preference for shorter paths. The third entry is
+the probability that a given suvey location is on a randomly
+selected inadmissible path.</p></li>
+<li><p><strong>complianceRate</strong> (<em>float</em>) – Proportion of agents stopping at survey/inspection stations.</p></li>
+<li><p><strong>properDataRate</strong> (<em>float</em>) – Fraction of agents providing inconsistent, incomplete, or wrong
+data.</p></li>
+<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.             The first two entries must refer to the proportionality constant
+and the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> and will be assumed to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>approximationNumber</strong> (<em>int</em>) – Degree of the Taylor approximation that is to be used. The higher
+this number the more precise the likelihood will be but also the
+longer will the computation take. Must be <cite>&gt;= 1</cite>.</p></li>
+</ul>
 </dd>
 </dl>
-</div></blockquote>
-<p>It can be called either on the class (e.g. C.f()) or on an instance
-(e.g. C().f()).  The instance is ignored except for its class.</p>
-<p>Static methods in Python are similar to those found in Java or C++.
-For a more advanced concept, see the classmethod builtin.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood">
 <code class="sig-name descname">maximize_log_likelihood</code><span class="sig-paren">(</span><em class="sig-param">considered=None</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="Permalink to this definition">¶</a></dt>
-<dd><p>“# Maximizes the likelihood of the hybrid model</p>
+<dd><p>Maximizes the likelihood of the hybrid model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.             The first two entries must refer to the proportionality constant
+and the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> and will be assumed to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>approximationNumber</strong> (<em>int</em>) – Degree of the Taylor approximation that is to be used. The higher
+this number the more precise the likelihood will be but also the
+longer will the computation take. Must be <cite>&gt;= 1</cite>.</p></li>
+<li><p><strong>flowParameters</strong> (<em>float</em><em>[</em><em>]</em>) – If given, a model with these parameters will be used and assumed
+as being the best-fitting model.</p></li>
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Will be used as initial guess if given and if
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">flowParameters</span></code> is not given.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -818,6 +1061,26 @@ For a more advanced concept, see the classmethod builtin.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>processedSurveyData</strong> (<em>dict</em>) – Processed survey data, which are computed with <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess_survey_data()</span></code></a></p></li>
+<li><p><strong>lengthsOfPotentialRoutes</strong> (<a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.csr_matrix_nd" title="vemomoto_core.npcollections.npext.csr_matrix_nd"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix_nd</span></code></a>) – For each origin-destination pair the lengths of all potential
+(i.e. admissible) agent routes.</p></li>
+<li><p><strong>trafficFactorModel</strong> (<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrafficFactorModel</span></code></a>) – Traffic factor model used to determine the strengths of the agent
+flows between the individual origin-destination pairs.</p></li>
+<li><p><strong>routeChoiceParameters</strong> (<em>float</em><em>[</em><em>]</em>) – Route choice parameters. The first entry is the probability to
+select an inadmissible path. The second entry is the exponent
+controlling the preference for shorter paths. The third entry is
+the probability that a given suvey location is on a randomly
+selected inadmissible path.</p></li>
+<li><p><strong>complianceRate</strong> (<em>float</em>) – Proportion of agents stopping at survey/inspection stations.</p></li>
+<li><p><strong>properDataRate</strong> (<em>float</em>) – Fraction of agents providing inconsistent, incomplete, or wrong
+data.</p></li>
+<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.             The first two entries must refer to the proportionality constant
+and the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> and will be assumed to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>approximationNumber</strong> (<em>int</em>) – Degree of the Taylor approximation that is to be used. The higher
+this number the more precise the likelihood will be but also the
+longer will the computation take. Must be <cite>&gt;= 1</cite>.</p></li>
 <li><p><strong>flowParameters</strong> (<em>float</em><em>[</em><em>]</em>) – If given, a model with these parameters will be used and assumed
 as being the best-fitting model.</p></li>
 <li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Will be used as initial guess if given and if
@@ -1157,12 +1420,75 @@ flow model</p></li>
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation">
 <code class="sig-name descname">optimize_inspection_station_operation</code><span class="sig-paren">(</span><em class="sig-param">costShift</em>, <em class="sig-param">costSite</em>, <em class="sig-param">costBound</em>, <em class="sig-param">shiftLength</em>, <em class="sig-param">nightPremium=None</em>, <em class="sig-param">allowedShifts=None</em>, <em class="sig-param">costRoundCoeff=1</em>, <em class="sig-param">baseTimeInv=24</em>, <em class="sig-param">ignoreRandomFlow=False</em>, <em class="sig-param">integer=True</em>, <em class="sig-param">timeout=1000</em>, <em class="sig-param">perturbation=1e-06</em>, <em class="sig-param">fancyRounding=True</em>, <em class="sig-param">full_result=False</em>, <em class="sig-param">extended_info=False</em>, <em class="sig-param">init_greedy=True</em>, <em class="sig-param">saveFile=True</em>, <em class="sig-param">loadFile=True</em>, <em class="sig-param">fileNameAddition=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.optimize_inspection_station_operation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Computes the optimal locations for agent inspections.</p>
+<p>Maximizes the number of agents who are inspected at least once given a
+certain budget and other constraints for operation.</p>
+<p>The inspections are assumed to be conducted in shifts of given lengths.
+The best results will be obtained, if the number of possible shifts per
+day is an integer. However, other shift lengths are possible as well.</p>
+<p>The day will need to be discretized. The method will take efforts to
+make the input match a discretization scheme so that not more time
+intervals than necessary need to be considered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>costShift</strong> (<em>float</em>) – Costs per (daytime) inspection shift.</p></li>
+<li><p><strong>costSite</strong> (<em>float</em>) – Costs per used inspection site.</p></li>
+<li><p><strong>costBound</strong> (<em>float</em>) – Budget for the overall costs.</p></li>
+<li><p><strong>shiftLength</strong> (<em>int/float</em>) – If given as <cite>int</cite>, length of an inspection shift measured in time steps;
+if given as <cite>float</cite>, approximate length of an inspection shift.</p></li>
+<li><p><strong>nightPremium</strong> (<em>(</em><em>&gt;=0</em><em>, </em><em>[</em><em>0</em><em>,</em><em>24</em><em>)</em><em>, </em><em>[</em><em>0</em><em>,</em><em>24</em><em>)</em><em>)</em>) – Describes additional costs for overnight inspections. Must be
+given as a tuple <code class="docutils literal notranslate"><span class="pre">(nightcost,</span> <span class="pre">start,</span> <span class="pre">end)</span></code>, whereby <code class="docutils literal notranslate"><span class="pre">nightcost</span></code>
+is the cost for an overnight inspection shift, and <code class="docutils literal notranslate"><span class="pre">start</span></code> and
+<code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> denote the time interval in which the
+additional costs are due (24h format). Note that <code class="docutils literal notranslate"><span class="pre">nightcost</span></code>
+refers to a complete inspection shift conducted in the time interval
+of additional costs. In practice, however, the costs will only
+increased for the fraction of a shift that overlaps with the given
+time interval of additional costs.</p></li>
+<li><p><strong>allowedShifts</strong> (<em>int</em><em>[</em><em>]</em><em>/float</em><em>[</em><em>]</em>) – List of permitted shift starting times measured in time units (if
+given as <cite>int[]</cite>) or as time points in the 24h format (if given as
+<cite>float[]</cite>).</p></li>
+<li><p><strong>costRoundCoeff</strong> (<em>float</em>) – Specifies up to which fraction of the smallest cost the costs are
+rounded. Rounding can increase the efficiency of the approach
+significantly.</p></li>
+<li><p><strong>baseTimeInv</strong> (<em>int/float</em>) – Number of time intervals per day (if given as <cite>int</cite>) or approximate
+length of one time interval in the 24h format (if given as <cite>float</cite>).</p></li>
+<li><p><strong>ignoreRandomFlow</strong> (<em>bool</em>) – Indicates whether traffic via inadmissibe routes shall be ignored.
+This traffic noise adds uncertainty to the results but may lead to
+overall more precise estimates.</p></li>
+<li><p><strong>integer</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the solver applies an integer programming algorithm
+to solve the optimization problem. Otherwise a greedy rounding
+scheme based on linear programming will be used (potentially faster
+but with lower performance guarantee).</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – Timeout for internal optimization routines (in seconds).</p></li>
+<li><p><strong>perturbation</strong> (<em>float</em>) – Perturbation added to make one inspection shift slightly more
+effective. This is needed for tie breaking only.</p></li>
+<li><p><strong>fancyRounding</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> a more sophisticated rounding scheme will be applied.</p></li>
+<li><p><strong>full_result</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the optimized variables will be returned in addition
+to the expected numer of inspected agents under the optimal
+solution.</p></li>
+<li><p><strong>extended_info</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the covered fraction of the total agent flow and the
+used inspection locations (according to the optimal solution) will
+be returned in addition to other results.</p></li>
+<li><p><strong>init_greedy</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the greedy rounding algorithm will be used as initial
+condition for the integer optimization algorithm. Use in conjunction
+with <code class="docutils literal notranslate"><span class="pre">integer=True</span></code>.</p></li>
+<li><p><strong>saveFile</strong> (<em>bool</em>) – Whether to save the optimization results to a file.</p></li>
+<li><p><strong>loadFile</strong> (<em>boold</em>) – Whetehr the results may be loaded from a file if available.</p></li>
+<li><p><strong>fileNameAddition</strong> (<em>str</em>) – Addition to the generated file name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model">
 <code class="sig-name descname">prepare_traffic_factor_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.prepare_traffic_factor_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Prepares the traffic factor model.</p>
+<p>This may be necessary if derived covariates shall be used and these
+derived covariates do not depend on paramters that shall be fitted.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data">
@@ -1402,12 +1728,37 @@ file name will be used.</p>
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions">
 <code class="sig-name descname">save_model_predictions</code><span class="sig-paren">(</span><em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_model_predictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Computes and saves model predictions by origin, destination,
+origin-destination pair, and inspection location.</p>
+<p>Saves the estimated mean traffic and</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fileName</strong> (<em>str</em>) – Base of the file name to which the predictions shall be saved.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations">
-<code class="sig-name descname">save_simulated_observations</code><span class="sig-paren">(</span><em class="sig-param">parameters=None</em>, <em class="sig-param">covariates=None</em>, <em class="sig-param">shiftNumber=None</em>, <em class="sig-param">dayNumber=None</em>, <em class="sig-param">stationSets=None</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_simulated_observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">save_simulated_observations</code><span class="sig-paren">(</span><em class="sig-param">parameters=None</em>, <em class="sig-param">considered=None</em>, <em class="sig-param">shiftNumber=None</em>, <em class="sig-param">dayNumber=None</em>, <em class="sig-param">stationSets=None</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_simulated_observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate observation data that would be obtained if the model were
+True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>float</em><em>[</em><em>]</em>) – Parameters for the traffic flow (gravity) model.</p></li>
+<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
+<li><p><strong>shiftNumber</strong> (<em>int</em>) – Number of observation shifts to be considered.</p></li>
+<li><p><strong>dayNumber</strong> (<em>int</em>) – Number of days on which the shifts were conducted.</p></li>
+<li><p><strong>stationSets</strong> (<em>int</em><em>[</em><em>]</em><em>[</em><em>]</em>) – Sets/lists of survey location IDs at which inspections could be
+conducted simultaneously.</p></li>
+<li><p><strong>fileName</strong> (<em>str</em>) – Name of the file to which the generated observations shall be saved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate">
@@ -1463,17 +1814,57 @@ ignored.</p>
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class">
 <code class="sig-name descname">set_traffic_factor_model_class</code><span class="sig-paren">(</span><em class="sig-param">trafficFactorModel_class=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_traffic_factor_model_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the class representing the traffic factor (gravity) model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trafficFactorModel_class</strong> (<em>class</em>) – Class of the traffic factor model. Must inherit from
+<a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrafficFactorModel</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data">
-<code class="sig-name descname">simulate_count_data</code><span class="sig-paren">(</span><em class="sig-param">stationTimes</em>, <em class="sig-param">day</em>, <em class="sig-param">parameters</em>, <em class="sig-param">covariates</em>, <em class="sig-param">limitToOneObservation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.simulate_count_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">simulate_count_data</code><span class="sig-paren">(</span><em class="sig-param">stationTimes</em>, <em class="sig-param">day</em>, <em class="sig-param">parameters</em>, <em class="sig-param">considered</em>, <em class="sig-param">limitToOneObservation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.simulate_count_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate observation data that would be obtained one one day if the
+model were True.</p>
+<p>For each boater, start, end, and path are returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stationTimes</strong> (<em>dict</em>) – Keys: indices of the survey locations; values: 2-tuples for start
+and end time of the survey shift at that location (in 24h format).</p></li>
+<li><p><strong>day</strong> (<em>int</em>) – ID for that day.</p></li>
+<li><p><strong>parameters</strong> (<em>float</em><em>[</em><em>]</em>) – Parameters for the traffic flow (gravity) model.</p></li>
+<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
+<li><p><strong>limitToOneObservation</strong> (<em>bool</em>) – Whether an agent travelling on an inadmissible route can be observed
+at one location only (as assumed when we fit the route choice model)
+or at multiple locations.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression">
 <code class="sig-name descname">test_1_1_regression</code><span class="sig-paren">(</span><em class="sig-param">minSampleSize=20</em>, <em class="sig-param">saveFileName=None</em>, <em class="sig-param">comparisonFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.test_1_1_regression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tests whether the model results are biased.</p>
+<p>Compares predicted and observed values and tests the null hypothesis
+that the model yields unbiased estimates. If we obtain a high p-value
+and are unable to reject this hypothesis, we may assume that the model
+dies a good job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>saveFileName</strong> (<em>str</em>) – File name for a plot depicting the test and to save the results.</p></li>
+<li><p><strong>comparisonFileName</strong> (<em>str</em>) – File name to load results from a different model or different
+data set for comparison.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -1713,62 +2104,92 @@ of currently considered sources</p></li>
 <dl class="function">
 <dt id="hybrid_vector_model.hybrid_vector_model.create_distribution_plot">
 <code class="sig-name descname">create_distribution_plot</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">observed</em>, <em class="sig-param">predicted=None</em>, <em class="sig-param">best=None</em>, <em class="sig-param">yLabel='PMF'</em>, <em class="sig-param">title=''</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_distribution_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_distribution_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot">
-<code class="sig-name descname">create_observed_predicted_mean_error_plot</code><span class="sig-paren">(</span><em class="sig-param">predicted</em>, <em class="sig-param">observed</em>, <em class="sig-param">error=None</em>, <em class="sig-param">constError=None</em>, <em class="sig-param">errorFunctions=None</em>, <em class="sig-param">regressionResult=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">title=''</em>, <em class="sig-param">fileName=None</em>, <em class="sig-param">comparisonFileName=None</em>, <em class="sig-param">logScale=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files">
-<code class="sig-name descname">create_observed_predicted_mean_error_plot_from_files</code><span class="sig-paren">(</span><em class="sig-param">fileName1</em>, <em class="sig-param">fileName2</em>, <em class="sig-param">extension=''</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot_from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.create_predicted_observed_box_plot">
-<code class="sig-name descname">create_predicted_observed_box_plot</code><span class="sig-paren">(</span><em class="sig-param">observedData</em>, <em class="sig-param">median</em>, <em class="sig-param">quartile1</em>, <em class="sig-param">quartile3</em>, <em class="sig-param">percentile5</em>, <em class="sig-param">percentile95</em>, <em class="sig-param">mean</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">title=''</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_predicted_observed_box_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_predicted_observed_box_plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.draw_operating_hour_reward">
-<code class="sig-name descname">draw_operating_hour_reward</code><span class="sig-paren">(</span><em class="sig-param">kappa</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#draw_operating_hour_reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.draw_operating_hour_reward" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.nbinom_fit">
-<code class="sig-name descname">nbinom_fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#nbinom_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.nbinom_fit_test">
-<code class="sig-name descname">nbinom_fit_test</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">k1</em>, <em class="sig-param">k2</em>, <em class="sig-param">p=0.4</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#nbinom_fit_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit_test" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.non_join">
-<code class="sig-name descname">non_join</code><span class="sig-paren">(</span><em class="sig-param">string1</em>, <em class="sig-param">string2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#non_join"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.non_join" title="Permalink to this definition">¶</a></dt>
-<dd><p>Joins two strings if they are not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if either of the input strings is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd><p>Creates a plot of a given discrete distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string1</strong> (<em>str</em>) – First string</p></li>
-<li><p><strong>string2</strong> (<em>str</em>) – Second string</p></li>
+<li><p><strong>X</strong> (<em>float</em><em>[</em><em>]</em>) – Values that could be observed.</p></li>
+<li><p><strong>observed</strong> (<em>float</em><em>[</em><em>]</em>) – Observed cumulative density (non-parametric estimate of the cumulative
+mass function).</p></li>
+<li><p><strong>predicted</strong> (<em>float</em><em>[</em><em>]</em>) – Predicted cumulative density.</p></li>
+<li><p><strong>best</strong> (<em>float</em><em>[</em><em>]</em>) – Second predicted cumulative density (different prediction method).</p></li>
+<li><p><strong>yLabel</strong> (<em>str</em>) – Label of the y axis.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title of the plot.</p></li>
+<li><p><strong>fileName</strong> (<em>str</em>) – Name of the file that the plot shall be saved to.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
-<dt id="hybrid_vector_model.hybrid_vector_model.probability_equal_lengths_for_distinct_paths">
-<code class="sig-name descname">probability_equal_lengths_for_distinct_paths</code><span class="sig-paren">(</span><em class="sig-param">edgeNumber=1000</em>, <em class="sig-param">upperBound=None</em>, <em class="sig-param">resultPrecision=0.1</em>, <em class="sig-param">machinePrecision=1e-15</em>, <em class="sig-param">experiments=100000</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#probability_equal_lengths_for_distinct_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.probability_equal_lengths_for_distinct_paths" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot">
+<code class="sig-name descname">create_observed_predicted_mean_error_plot</code><span class="sig-paren">(</span><em class="sig-param">predicted</em>, <em class="sig-param">observed</em>, <em class="sig-param">error=None</em>, <em class="sig-param">constError=None</em>, <em class="sig-param">errorFunctions=None</em>, <em class="sig-param">regressionResult=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">title=''</em>, <em class="sig-param">saveFileName=None</em>, <em class="sig-param">comparisonFileName=None</em>, <em class="sig-param">logScale=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an observed vs. predicted plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicted</strong> (<em>float</em><em>[</em><em>]</em>) – Array of predicted values.</p></li>
+<li><p><strong>observed</strong> (<em>float</em><em>[</em><em>]</em>) – Array of observed values.</p></li>
+<li><p><strong>errorFunctions</strong> (<em>callable</em><em>[</em><em>]</em>) – Two methods for the lower and the upper predicted error (e.g. 95%
+confidence interval). Both of these methods must take the predicted
+value and return the repsective expected bound for the observations.
+If given, the area between these function will be plotted as a shaded
+area.</p></li>
+<li><p><strong>regressionResult</strong> (<em>float</em><em>[</em><em>]</em>) – Slope and intercept of an observed vs. prediction regression. If given,
+the regression line will be plotted.</p></li>
+<li><p><strong>labels</strong> (<em>str</em><em>[</em><em>]</em>) – Labels for the data points.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title of the plot</p></li>
+<li><p><strong>saveFileName</strong> (<em>str</em>) – <p>Name of the file where the plot and the data used to generate it will
+be saved.</p>
+<p>~+~</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that only predicted and observed values will be saved.</p>
+</div>
+</p></li>
+<li><p><strong>comparisonFileName</strong> (<em>str</em>) – Name of the file where alternative results are saved. These results will
+be loaded and plotted for comparison.</p></li>
+<li><p><strong>logScale</strong> (<em>bool</em>) – Whether to plot on a log-log scale.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files">
+<code class="sig-name descname">create_observed_predicted_mean_error_plot_from_files</code><span class="sig-paren">(</span><em class="sig-param">fileName1</em>, <em class="sig-param">fileName2</em>, <em class="sig-param">extension=''</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot_from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an observed vs. predicted plot from saved data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName1</strong> (<em>str</em>) – Name of the file from which the primary data shall be loaded.</p></li>
+<li><p><strong>fileName2</strong> (<em>str</em>) – Name of the file from which comparison data shall be loaded.</p></li>
+<li><p><strong>extension</strong> (<em>str</em>) – Extension to add to both file names.</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_observed_predicted_mean_error_plot()</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="hybrid_vector_model.hybrid_vector_model.nbinom_fit">
+<code class="sig-name descname">nbinom_fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#nbinom_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits a negative binomial distribution to given data</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed">
 <code class="sig-name descname">redraw_predicted_observed</code><span class="sig-paren">(</span><em class="sig-param">fileName1</em>, <em class="sig-param">fileName2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#redraw_predicted_observed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Redraws predicted versus oberved plots generated earlier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName1</strong> (<em>str</em>) – Name of the file from which the primary data shall be loaded.</p></li>
+<li><p><strong>fileName2</strong> (<em>str</em>) – Name of the file from which comparison data shall be loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 
