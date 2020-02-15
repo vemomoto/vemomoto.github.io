@@ -640,7 +640,7 @@
                 
  
     <span class="k">def</span> <span class="nf">__add_virtual_destination_vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">vertexType</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;        Creates vertices that represent the destinations</span>
+        <span class="sd">&quot;&quot;&quot;Creates vertices that represent the destinations</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
@@ -920,11 +920,11 @@
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span>
     
-<div class="viewcode-block" id="BaseTrafficFactorModel.convert_parameters"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dynamicParameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseTrafficFactorModel.convert_parameters"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dynamicParameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts an array of given parameters to an array of standard (maximal)</span>
 <span class="sd">        length and in the parameter domain of the model.</span>
 <span class="sd">        </span>
-<span class="sd">        Not all parameters may be considered in the model (to avoid overfitting)</span>
+<span class="sd">        Not all parameters may be parametersConsidered in the model (to avoid overfitting)</span>
 <span class="sd">        Furthermore, some parameters must be constrained to be positive or </span>
 <span class="sd">        within a certain interval. In this method, the parameter vector </span>
 <span class="sd">        (containing only the values of the free parameters) is transformed to </span>
@@ -934,17 +934,17 @@
 <span class="sd">        ----------</span>
 <span class="sd">        dynamicParameters : float[] </span>
 <span class="sd">            Free parameters. The parameters that are not held constant.</span>
-<span class="sd">        considered : bool[] </span>
+<span class="sd">        parametersConsidered : bool[] </span>
 <span class="sd">            Which parameters are free? Is ``True`` at the entries corresponding </span>
-<span class="sd">            to the parameters that are free. ``considered`` must have exactly as </span>
+<span class="sd">            to the parameters that are free. ``parametersConsidered`` must have exactly as </span>
 <span class="sd">            many ``True`` entries as the length of ``dynamicParameters``</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">considered</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-        <span class="n">result</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">parametersConsidered</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span>
         <span class="k">return</span> <span class="n">result</span></div>
     
-<div class="viewcode-block" id="BaseTrafficFactorModel.get_mean_factor"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseTrafficFactorModel.get_mean_factor"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a factor proportional to the mean traveller flow between the</span>
 <span class="sd">        source-sink pair ``pair`` or all sources and sinks (if ``pair is None``)</span>
 <span class="sd">        </span>
@@ -957,9 +957,9 @@
 <span class="sd">        ----------</span>
 <span class="sd">        parameters : double[] </span>
 <span class="sd">            Contains the free model parameters.</span>
-<span class="sd">        considered : bool[] </span>
+<span class="sd">        parametersConsidered : bool[] </span>
 <span class="sd">            Which parameters are free? Is ``True`` at the entries corresponding </span>
-<span class="sd">            to the parameters that are free. ``considered`` must have exactly as </span>
+<span class="sd">            to the parameters that are free. ``parametersConsidered`` must have exactly as </span>
 <span class="sd">            many ``True`` entries as the length of ``dynamicParameters``.</span>
 <span class="sd">        pair : (int, int) </span>
 <span class="sd">            Source-sink pair for which the factor shall be determined.</span>
@@ -971,7 +971,7 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.get_mean_factor_autograd"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">get_mean_factor</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">get_mean_factor_autograd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_mean_factor_autograd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Same as :py:meth:`get_mean_factor`, but must use autograd&#39;s functions </span>
 <span class="sd">        instead of numpy. </span>
 <span class="sd">        </span>
@@ -989,7 +989,7 @@
 <span class="sd">            in `get_mean_factor` already and leave this method untouched.</span>
 <span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_mean_factor</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_mean_factor</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.process_source_covariates"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_source_covariates">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">process_source_covariates</span><span class="p">(</span><span class="n">covariates</span><span class="p">):</span>
@@ -1986,13 +1986,13 @@
     <span class="c1">#@staticmethod</span>
     <span class="c1">#@inherit_doc(BaseTrafficFactorModel.get_mean_factor)</span>
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="o">.</span><span class="n">get_mean_factor</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_get_k_value_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_k_value_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the ``k`` parameter of the negative binomial distribution.</span>
 <span class="sd">        </span>
 <span class="sd">        The value is computed accoring to the gravity model implemented in the</span>
 <span class="sd">        ``trafficFactorModel``.</span>
 <span class="sd">        </span>
-<span class="sd">        Note that in contrast to the ``trafficFactorModel``,  Similarly, ``considered`` must have entries</span>
+<span class="sd">        Note that in contrast to the ``trafficFactorModel``,  Similarly, ``parametersConsidered`` must have entries</span>
 <span class="sd">        for these parameters, which will be assumed to be ``True``.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -2003,34 +2003,34 @@
 <span class="sd">            &gt;!The first two entries must refer to the proportionality constant </span>
 <span class="sd">            and the parameter ``q``, which is `1-mean/variance`. The remaining </span>
 <span class="sd">            parameters are used to compute the traffic factor.</span>
-<span class="sd">        considered #</span>
+<span class="sd">        parametersConsidered #</span>
 <span class="sd">            &gt;!The first two entries must refer to the proportionality constant </span>
 <span class="sd">            and the parameter ``q`` and will be assumed to be ``True``.</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   
         <span class="n">c0</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">q</span>  <span class="c1"># reparameterization k-&gt;mu</span>
-        <span class="k">return</span> <span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">get_mean_factor</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">considered</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> 
+        <span class="k">return</span> <span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">get_mean_factor</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> 
                                                   <span class="n">pair</span><span class="p">)</span> <span class="o">*</span> <span class="n">c0</span>
     
     <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_get_k_value_static</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_get_k_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_k_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;#Returns the ``k`` parameter of the negative binomial distribution.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_get_k_value_static</span><span class="p">(</span>
-            <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">pair</span><span class="p">)</span>
+            <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">pair</span><span class="p">)</span>
     
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_get_k_value_static</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_get_k_value_autograd_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_k_value_autograd_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Same as :py:meth:`_get_k_value_static`, but must use autograd&#39;s </span>
 <span class="sd">        functions instead of numpy. &quot;&quot;&quot;</span>
         
         <span class="n">q</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   
         <span class="n">c0</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">q</span>  <span class="c1"># reparameterization k-&gt;mu</span>
         <span class="k">return</span> <span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">get_mean_factor_autograd</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> 
-                                                           <span class="n">considered</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="o">*</span> <span class="n">c0</span>
+                                                           <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="o">*</span> <span class="n">c0</span>
     
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="o">.</span><span class="n">convert_parameters</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_convert_parameters_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_convert_parameters_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2043,17 +2043,17 @@
         
         <span class="k">return</span> <span class="p">([</span><span class="n">convert_R_pos</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">convert_R_0_1</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> 
                  <span class="o">+</span> <span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">convert_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> 
-                                                         <span class="n">considered</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+                                                         <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
     
     <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_convert_parameters_static</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-            <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="p">)</span>
+            <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="p">)</span>
         
     <span class="c1">#@staticmethod</span>
     <span class="c1">#@inherit_doc(_get_k_value_static)</span>
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_get_k_value_static</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_negLogLikelihood</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">_negLogLikelihood</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> 
                           <span class="n">pairIndices</span><span class="p">,</span> <span class="n">stationPairIndices</span><span class="p">,</span> <span class="n">observedNoisePairs</span><span class="p">,</span>
                           <span class="n">routeProbabilities</span><span class="p">,</span> 
                           <span class="n">stationRouteProbabilities</span><span class="p">,</span>
@@ -2148,13 +2148,13 @@
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                                    <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                                    <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
         
         <span class="n">c1</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">c2</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">routeChoiceParameters</span>
         
         <span class="n">kMatrix</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_get_k_value_static</span><span class="p">(</span>
-                    <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
         
         
         <span class="n">kMatrix</span> <span class="o">=</span> <span class="n">kMatrix</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> 
@@ -2241,7 +2241,7 @@
     
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_negLogLikelihood</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_negLogLikelihood_autograd</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span>
-                                   <span class="n">considered</span><span class="p">,</span> <span class="n">pairIndices</span><span class="p">,</span> 
+                                   <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pairIndices</span><span class="p">,</span> 
                                    <span class="n">stationPairIndices</span><span class="p">,</span> <span class="n">observedNoisePairs</span><span class="p">,</span>
                                    <span class="n">routeProbabilities</span><span class="p">,</span> 
                                    <span class="n">stationRouteProbabilities</span><span class="p">,</span>
@@ -2262,7 +2262,7 @@
         
         <span class="k">if</span> <span class="n">convertParameters</span><span class="p">:</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                                <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                                <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
         
@@ -2270,7 +2270,7 @@
         <span class="n">c2</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">routeChoiceParameters</span>
             
         <span class="n">kMatrix</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_get_k_value_autograd_static</span><span class="p">(</span>
-                    <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
         
         <span class="n">kMatrix</span> <span class="o">=</span> <span class="n">kMatrix</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">kMatrix</span><span class="o">.</span><span class="n">size</span><span class="p">,))</span> 
         
@@ -2378,7 +2378,7 @@
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_negLogLikelihood</span><span class="p">,</span> <span class="n">set_compliance_rate</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_get_nLL_funs</span><span class="p">(</span><span class="n">processedSurveyData</span><span class="p">,</span> <span class="n">lengthsOfPotentialRoutes</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">,</span>
                       <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">complianceRate</span><span class="p">,</span> <span class="n">properDataRate</span><span class="p">,</span>
-                      <span class="n">considered</span><span class="p">,</span> <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+                      <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the model&#39;s negative log-likelihood function and its </span>
 <span class="sd">        derivatives.</span>
 <span class="sd">        </span>
@@ -2395,8 +2395,8 @@
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="k">if</span> <span class="n">considered</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">considered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parametersConsidered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         
         <span class="n">fullCountData</span> <span class="o">=</span> <span class="n">processedSurveyData</span><span class="p">[</span><span class="s2">&quot;fullCountData&quot;</span><span class="p">]</span>
         <span class="n">consideredPathLengths</span> <span class="o">=</span> <span class="n">processedSurveyData</span><span class="p">[</span><span class="s2">&quot;consideredPathLengths&quot;</span><span class="p">]</span> 
@@ -2444,7 +2444,7 @@
         
         
         <span class="k">def</span> <span class="nf">negLogLikelihood</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span> 
-            <span class="k">return</span> <span class="n">_negLogLikelihood</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> 
+            <span class="k">return</span> <span class="n">_negLogLikelihood</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> 
                    <span class="n">pairIndices</span><span class="p">,</span> <span class="n">stationPairIndices</span><span class="p">,</span> 
                    <span class="n">observedNoisePairs</span><span class="p">,</span> <span class="n">routeProbabilities</span><span class="p">,</span> 
                    <span class="n">stationRouteProbabilities</span><span class="p">,</span> <span class="n">stationIndices</span><span class="p">,</span> <span class="n">p_shift</span><span class="p">,</span> 
@@ -2455,7 +2455,7 @@
         
         <span class="k">def</span> <span class="nf">negLogLikelihood_autograd</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">convertParameters</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">_negLogLikelihood_autograd</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span>
-                   <span class="n">considered</span><span class="p">,</span> <span class="n">pairIndices</span><span class="p">,</span> <span class="n">stationPairIndices</span><span class="p">,</span> 
+                   <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pairIndices</span><span class="p">,</span> <span class="n">stationPairIndices</span><span class="p">,</span> 
                    <span class="n">observedNoisePairs</span><span class="p">,</span> <span class="n">routeProbabilities</span><span class="p">,</span> 
                    <span class="n">stationRouteProbabilities</span><span class="p">,</span> <span class="n">stationIndices</span><span class="p">,</span> <span class="n">p_shift</span><span class="p">,</span> 
                    <span class="n">shiftDataP_shift</span><span class="p">,</span> <span class="n">observedNoiseP_shift</span><span class="p">,</span> <span class="n">p_shift_mean</span><span class="p">,</span> 
@@ -2475,7 +2475,7 @@
                                        <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                        <span class="n">complianceRate</span><span class="p">,</span>
                                        <span class="n">properDataRate</span><span class="p">,</span>
-                                       <span class="n">considered</span><span class="p">,</span> 
+                                       <span class="n">parametersConsidered</span><span class="p">,</span> 
                                        <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                        <span class="n">flowParameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                        <span class="n">x0</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -2500,7 +2500,7 @@
                                                       <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                                       <span class="n">complianceRate</span><span class="p">,</span>
                                                       <span class="n">properDataRate</span><span class="p">,</span>
-                                                      <span class="n">considered</span><span class="p">,</span> 
+                                                      <span class="n">parametersConsidered</span><span class="p">,</span> 
                                                       <span class="n">approximationNumber</span><span class="p">)</span>
         
         
@@ -2508,15 +2508,15 @@
             
             <span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)]</span>
             
-            <span class="n">considered</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">parametersConsidered</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
             
-            <span class="k">for</span> <span class="n">bound</span> <span class="ow">in</span> <span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">BOUNDS</span><span class="p">[</span><span class="n">considered</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]:</span>
+            <span class="k">for</span> <span class="n">bound</span> <span class="ow">in</span> <span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">BOUNDS</span><span class="p">[</span><span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]:</span>
                 <span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">bound</span><span class="p">))</span>
                 
             <span class="k">if</span> <span class="n">x0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
                 
-                <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">considered</span><span class="p">))</span>
+                <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">))</span>
                 <span class="n">negLogLikelihood</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
                 <span class="n">negLogLikelihood_autograd</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
                 
@@ -2524,11 +2524,11 @@
                                                    <span class="n">popsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="c1">#300, </span>
                                                    <span class="c1">#popsize=20, maxiter=2, </span>
                                                    <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">considered</span><span class="p">)</span>          
+                <span class="nb">print</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">)</span>          
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GA result&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
                 <span class="n">x0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">xOriginal</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                    <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">jacOriginal</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">xOriginal</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">OptimizeResult</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> 
@@ -2538,7 +2538,7 @@
                                            <span class="n">nhev</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;parameters checked&quot;</span><span class="p">)</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">xOriginal</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                    <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">jacOriginal</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">xOriginal</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             
             
@@ -2550,9 +2550,9 @@
                                   <span class="n">jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="o">=</span><span class="n">hess</span><span class="p">,</span>
                                   <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span>
                                                         <span class="s2">&quot;iprint&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">considered</span><span class="p">)</span>          
+            <span class="nb">print</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">)</span>          
             <span class="n">result2</span><span class="o">.</span><span class="n">xOriginal</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                    <span class="n">result2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">result2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
             <span class="n">result2</span><span class="o">.</span><span class="n">jacOriginal</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">result2</span><span class="o">.</span><span class="n">xOriginal</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L-BFGS-B&quot;</span><span class="p">,</span> <span class="n">result2</span><span class="p">)</span>
             
@@ -2565,9 +2565,9 @@
                                   <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span> 
                                            <span class="s2">&quot;iprint&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
                                   <span class="n">method</span><span class="o">=</span><span class="s2">&quot;SLSQP&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">considered</span><span class="p">)</span>          
+            <span class="nb">print</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">)</span>          
             <span class="n">result2</span><span class="o">.</span><span class="n">xOriginal</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                    <span class="n">result2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">result2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
             <span class="n">result2</span><span class="o">.</span><span class="n">jacOriginal</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">result2</span><span class="o">.</span><span class="n">xOriginal</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SLSQP&quot;</span><span class="p">,</span> <span class="n">result2</span><span class="p">)</span>         
             <span class="k">if</span> <span class="n">result2</span><span class="o">.</span><span class="n">fun</span> <span class="o">&lt;</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">:</span>
@@ -2589,9 +2589,9 @@
                                             <span class="n">fun</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> 
                                             <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ValueError thrown&quot;</span><span class="p">)</span>
                 
-            <span class="nb">print</span><span class="p">(</span><span class="n">considered</span><span class="p">)</span>          
+            <span class="nb">print</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">)</span>          
             <span class="n">result2</span><span class="o">.</span><span class="n">xOriginal</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                    <span class="n">result2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                    <span class="n">result2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
             <span class="n">result2</span><span class="o">.</span><span class="n">jacOriginal</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">result2</span><span class="o">.</span><span class="n">xOriginal</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;trust-exact&quot;</span><span class="p">,</span> <span class="n">result2</span><span class="p">)</span>         
             <span class="k">if</span> <span class="n">result2</span><span class="o">.</span><span class="n">fun</span> <span class="o">&lt;</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">:</span>
@@ -2606,16 +2606,16 @@
                                        <span class="n">nhev</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;parameters checked&quot;</span><span class="p">)</span>
             <span class="n">result</span><span class="o">.</span><span class="n">xOriginal</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                <span class="n">flowParameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                <span class="n">flowParameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
             <span class="n">result</span><span class="o">.</span><span class="n">jacOriginal</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">xOriginal</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             
             <span class="n">checkParametersO</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_convert_parameters_static</span><span class="p">(</span>
-                <span class="n">flowParameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
+                <span class="n">flowParameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">)</span>
         
         <span class="k">return</span> <span class="n">result</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.maximize_log_likelihood"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">maximize_log_likelihood_static</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">maximize_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">considered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">maximize_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                 <span class="n">flowParameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;# Maximizes the likelihood of the hybrid model&quot;&quot;&quot;</span>
         <span class="n">routeChoiceParameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">routeChoiceModel</span><span class="o">.</span><span class="n">parameters</span>
@@ -2624,7 +2624,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">processedSurveyData</span><span class="p">,</span> 
                 <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">lengthsOfPotentialRoutes</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">complianceRate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properDataRate</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">complianceRate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properDataRate</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> 
                 <span class="n">approximationNumber</span><span class="p">,</span> <span class="n">flowParameters</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span></div>
     
     
@@ -2633,7 +2633,7 @@
                                 <span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                 <span class="n">complianceRate</span><span class="p">,</span>
                                 <span class="n">properDataRate</span><span class="p">,</span>
-                                <span class="n">considered</span><span class="p">,</span> 
+                                <span class="n">parametersConsidered</span><span class="p">,</span> 
                                 <span class="n">index</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span>
                                 <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
                                 <span class="n">profile_LL_args</span><span class="o">=</span><span class="p">{}):</span>
@@ -2654,7 +2654,7 @@
                                                       <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                                       <span class="n">complianceRate</span><span class="p">,</span>
                                                       <span class="n">properDataRate</span><span class="p">,</span>
-                                                      <span class="n">considered</span><span class="p">,</span> 
+                                                      <span class="n">parametersConsidered</span><span class="p">,</span> 
                                                       <span class="n">approximationNumber</span><span class="p">)</span> 
         
         <span class="n">negLogLikelihood_autograd_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">negLogLikelihood_autograd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   
@@ -2671,7 +2671,7 @@
                                        <span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                        <span class="n">complianceRate</span><span class="p">,</span>
                                        <span class="n">properDataRate</span><span class="p">,</span>
-                                       <span class="n">considered</span><span class="p">,</span> 
+                                       <span class="n">parametersConsidered</span><span class="p">,</span> 
                                        <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                        <span class="o">**</span><span class="n">profile_LL_args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;# Searches the profile likelihood confidence interval for a given</span>
@@ -2684,7 +2684,7 @@
                                                       <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                                       <span class="n">complianceRate</span><span class="p">,</span>
                                                       <span class="n">properDataRate</span><span class="p">,</span>
-                                                      <span class="n">considered</span><span class="p">,</span> 
+                                                      <span class="n">parametersConsidered</span><span class="p">,</span> 
                                                       <span class="n">approximationNumber</span><span class="p">)</span> 
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Investigating the profile likelihood&quot;</span><span class="p">)</span>
@@ -2702,14 +2702,14 @@
         
         <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
         
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c0&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">LABELS</span><span class="p">[</span><span class="n">considered</span><span class="p">[</span><span class="mi">2</span><span class="p">:]])</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c0&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="o">.</span><span class="n">LABELS</span><span class="p">[</span><span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">2</span><span class="p">:]])</span>
         
         <span class="n">indices</span><span class="p">,</span> <span class="n">directions</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">iterproduct</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
         
         
         <span class="n">const_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">processedSurveyData</span><span class="p">,</span> <span class="n">lengthsOfPotentialRoutes</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">,</span> 
                       <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">complianceRate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properDataRate</span><span class="p">,</span>
-                      <span class="n">considered</span><span class="p">]</span>
+                      <span class="n">parametersConsidered</span><span class="p">]</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Creating confidence intervals&quot;</span><span class="p">)</span>
         <span class="c1">#try: #, max_workers=13</span>
@@ -2722,12 +2722,12 @@
             <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">directions</span><span class="p">,</span> <span class="n">mapObj</span><span class="p">):</span>
                 <span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">][(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">direction</span><span class="o">==-</span><span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
                               <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> 
-                                        <span class="n">considered</span><span class="p">))[</span><span class="n">considered</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
+                                        <span class="n">parametersConsidered</span><span class="p">))[</span><span class="n">parametersConsidered</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Printing confidence intervals and creating profile plots&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
         
-        <span class="n">x0Orig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">considered</span><span class="p">))[</span><span class="n">considered</span><span class="p">]</span>
+        <span class="n">x0Orig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">))[</span><span class="n">parametersConsidered</span><span class="p">]</span>
         
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">intv</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
             <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">intv</span>
@@ -2855,12 +2855,12 @@
 <span class="sd">            Whether to repeat the fitting procedure if the model has been </span>
 <span class="sd">            fitted earlier.</span>
 <span class="sd">        flowParameters : dict</span>
-<span class="sd">            Dictionary with the keys ``&quot;covariates&quot;`` and ``&quot;paramters&quot;`` </span>
+<span class="sd">            Dictionary with the keys ``&quot;parametersConsidered&quot;`` and ``&quot;parameters&quot;`` </span>
 <span class="sd">            that provides an initial guess for the optimization or the </span>
-<span class="sd">            corresponding solution. ``&quot;covariates&quot;`` contains a `bool[]` with </span>
+<span class="sd">            corresponding solution. ``&quot;parametersConsidered&quot;`` contains a `bool[]` with </span>
 <span class="sd">            the considered parameter combination (see :py:obj:`permutations`);</span>
-<span class="sd">            ``&quot;covariates&quot;`` contains a `float[]` with the values for the </span>
-<span class="sd">            parameters where ``flowParameters[&quot;considered&quot;]`` is ``True``.</span>
+<span class="sd">            ``&quot;parameters&quot;`` contains a `float[]` with the values for the </span>
+<span class="sd">            parameters where ``flowParameters[&quot;parametersConsidered&quot;]`` is ``True``.</span>
 <span class="sd">        continueFlowOptimization : bool</span>
 <span class="sd">            If ``True``, the :py:obj:`flowParameters` will be used as initial </span>
 <span class="sd">            guess. Otherwise, they will be considered as the optimal </span>
@@ -2919,7 +2919,7 @@
                     <span class="ow">and</span> <span class="s2">&quot;covariates&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span>
                     <span class="ow">and</span> <span class="s2">&quot;AIC&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">):</span>
                 <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]]</span>
-                <span class="n">permutations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]])</span>
+                <span class="n">permutations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">]])</span>
             <span class="k">else</span><span class="p">:</span> 
                 <span class="n">x0</span> <span class="o">=</span> <span class="n">repeat</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
             
@@ -2951,19 +2951,19 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">continueFlowOptimization</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximize_log_likelihood</span><span class="p">(</span>
-                                  <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">],</span> 
+                                  <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">],</span> 
                                   <span class="n">x0</span><span class="o">=</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">])</span>
                 <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">]</span>
                 <span class="n">fittedModel</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maximize_log_likelihood</span><span class="p">(</span>
-                                  <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">],</span> 
+                                  <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">],</span> 
                                   <span class="n">flowParameters</span><span class="o">=</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">])</span>
                 <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]]</span>
             <span class="n">nLL</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span>
             <span class="n">LLs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nLL</span><span class="p">)</span>
-            <span class="n">AICs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="n">nLL</span><span class="p">)]</span>
-            <span class="n">permutations</span> <span class="o">=</span> <span class="p">[</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]]</span>
+            <span class="n">AICs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="n">nLL</span><span class="p">)]</span>
+            <span class="n">permutations</span> <span class="o">=</span> <span class="p">[</span><span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">]]</span>
             <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span>
@@ -2994,12 +2994,13 @@
                                             <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                  
             
-        <span class="k">if</span> <span class="p">(</span><span class="n">flowParameters</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="s2">&quot;flowModelData&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">or</span>
-            <span class="s2">&quot;AIC&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;AIC&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">AIC</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;flowModelData&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">or</span>
+            <span class="s2">&quot;AIC&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;AIC&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">AIC</span>
+            <span class="ow">or</span> <span class="p">(</span><span class="n">flowParameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">continueFlowOptimization</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s2">&quot;AIC&quot;</span><span class="p">:</span> <span class="n">AIC</span><span class="p">,</span>
                 <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">,</span>
-                <span class="s2">&quot;covariates&quot;</span><span class="p">:</span> <span class="n">permutations</span><span class="p">[</span><span class="n">bestIndex</span><span class="p">]</span>
+                <span class="s2">&quot;parametersConsidered&quot;</span><span class="p">:</span> <span class="n">covariates</span>
                 <span class="p">}</span>
                     
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span>
@@ -3279,7 +3280,7 @@
 <span class="sd">            be computed.</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">covariates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span>
+        <span class="n">covariates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">]</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">],</span> 
                                               <span class="n">covariates</span><span class="p">)</span>
         <span class="n">q</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -3517,7 +3518,7 @@
             <span class="n">relevantStationIndexToStationIndex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">spot</span>
         
         <span class="n">originInfested</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="p">[</span><span class="s2">&quot;infested&quot;</span><span class="p">]</span>
-        <span class="n">covariates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span> 
+        <span class="n">covariates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">]</span> 
         <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">],</span> <span class="n">covariates</span><span class="p">)</span>
         <span class="n">routeLengths</span> <span class="o">=</span> <span class="n">roadNetwork</span><span class="o">.</span><span class="n">lengthsOfPotentialRoutes</span><span class="o">.</span><span class="n">data</span>
         
@@ -4987,25 +4988,6 @@
                       <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">comparisonFileName</span><span class="p">,</span> <span class="s2">&quot;_scaled&quot;</span><span class="p">)</span>
                       <span class="p">)</span>
         
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        modelData = self.flowModelData</span>
-<span class="sd">        p = 1-self._convert_parameters(modelData[&quot;parameters&quot;], modelData[&quot;considered&quot;])[1]</span>
-<span class="sd">        def errFuncUp(x):</span>
-<span class="sd">            result = normaldist.ppf(0.975, x, np.sqrt(x/p))</span>
-<span class="sd">            result[np.isnan(result)] = 0</span>
-<span class="sd">            return result</span>
-<span class="sd">        def errFuncLow(x):</span>
-<span class="sd">            result = normaldist.ppf(0.025, x, np.sqrt(x/p))</span>
-<span class="sd">            result[np.isnan(result)] = 0</span>
-<span class="sd">            return result</span>
-<span class="sd">        </span>
-<span class="sd">        create_observed_predicted_mean_error_plot(X, regressionData[&quot;observedMean&quot;], None, None,</span>
-<span class="sd">                                                  (errFuncLow, errFuncUp),</span>
-<span class="sd">                      title=&quot;Observed vs. Predicted Regression Analysis&quot;,</span>
-<span class="sd">                      fileName=saveFileName + &quot;Reg&quot;</span>
-<span class="sd">                      )</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.create_quality_plots"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">create_observed_predicted_mean_error_plot</span><span class="p">)</span>
@@ -5279,7 +5261,7 @@
         
     
 <div class="viewcode-block" id="HybridVectorModel.simulate_count_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_convert_parameters_static</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">simulate_count_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stationTimes</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">simulate_count_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stationTimes</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span>
                             <span class="n">limitToOneObservation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Simulate observation data that would be obtained one one day if the </span>
 <span class="sd">        model were True.</span>
@@ -5303,10 +5285,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">routeLengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">lengthsOfPotentialRoutes</span><span class="o">.</span><span class="n">data</span>
         
-        <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">)</span>
         
         <span class="n">pRandom</span><span class="p">,</span> <span class="n">routeExp</span><span class="p">,</span> <span class="n">pObserve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">routeChoiceModel</span><span class="o">.</span><span class="n">parameters</span>
-        <span class="n">kMatrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_k_value</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">)</span> 
+        <span class="n">kMatrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_k_value</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">)</span> 
         
         <span class="n">q</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         
@@ -5406,7 +5388,7 @@
         <span class="k">return</span> <span class="n">observations</span><span class="p">,</span> <span class="n">multObservations</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.save_simulated_observations"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">simulate_count_data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">save_simulated_observations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">considered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">save_simulated_observations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                     <span class="n">shiftNumber</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                     <span class="n">dayNumber</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                     <span class="n">stationSets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -5432,12 +5414,12 @@
             
         <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
-            <span class="n">considered</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span>
+            <span class="n">parametersConsidered</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;parametersConsidered&quot;</span><span class="p">]</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Simulating observations for static parameters&quot;</span><span class="p">,</span> 
-                  <span class="n">parameters</span><span class="p">,</span> <span class="s2">&quot;with considered parameters&quot;</span><span class="p">,</span> <span class="n">considered</span><span class="p">)</span>    
+                  <span class="n">parameters</span><span class="p">,</span> <span class="s2">&quot;with considered parameters&quot;</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">)</span>    
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">travelTimeModel</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">travelTimeModel</span><span class="o">.</span><span class="n">kappa</span><span class="p">)</span>
+        <span class="c1">#self.prst(self.travelTimeModel.location, self.travelTimeModel.kappa)</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="n">shiftNumber</span><span class="p">:</span>
             <span class="n">shiftData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">surveyData</span><span class="p">[</span><span class="s2">&quot;shiftData&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -5502,7 +5484,7 @@
                                               <span class="n">shiftData</span><span class="p">[</span><span class="s2">&quot;shiftEnd&quot;</span><span class="p">][</span><span class="n">shiftIndex</span><span class="p">])</span>
             <span class="n">obsData</span><span class="p">,</span> <span class="n">cData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulate_count_data</span><span class="p">(</span>
                 <span class="n">stationTimes</span><span class="p">,</span> <span class="n">shiftData</span><span class="p">[</span><span class="s2">&quot;dayIndex&quot;</span><span class="p">][</span><span class="n">dayStartIndex</span><span class="p">],</span> <span class="n">parameters</span><span class="p">,</span> 
-                <span class="n">considered</span><span class="p">)</span>
+                <span class="n">parametersConsidered</span><span class="p">)</span>
             <span class="n">observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obsData</span><span class="p">)</span>
             <span class="n">size</span> <span class="o">+=</span> <span class="n">obsData</span><span class="o">.</span><span class="n">size</span>
             <span class="k">for</span> <span class="n">obsNo</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">cData</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -5768,11 +5750,6 @@
             <span class="c1">#                               model.fileName + str(parameters))</span>
         <span class="k">return</span> <span class="n">model</span>    </div></div>
             
-
-
-<span class="c1">#print(HybridVectorModel._get_k_value.__doc__)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">maximize_log_likelihood_static</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
-<span class="c1">#print(HybridVectorModel._get_nLL_funs.__doc__)</span>
 </pre></div>
 
           </div>

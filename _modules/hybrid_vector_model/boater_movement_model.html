@@ -156,7 +156,7 @@
                        <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
                        <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
     
-    <span class="c1">#     A0     A^    Pr0     Pr^   </span>
+     
     <span class="n">PERMUTATIONS</span> <span class="o">=</span> <span class="p">[</span>
          <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
          <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
@@ -181,8 +181,8 @@
     <span class="p">]</span>
     
 <div class="viewcode-block" id="TrafficFactorModel.convert_parameters"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>     
-                           <span class="n">dynamicParameters</span><span class="p">:</span><span class="s2">&quot;(double[]) Free parameters&quot;</span><span class="p">,</span> 
-                           <span class="n">considered</span><span class="p">:</span><span class="s2">&quot;(bool[]) Which parameters are free&quot;</span><span class="p">):</span>
+                           <span class="n">dynamicParameters</span><span class="p">,</span> 
+                           <span class="n">parametersConsidered</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;#</span>
 <span class="sd">        Converts an array of given parameters to an array of standard (maximal)</span>
 <span class="sd">        length and in the parameter domain of the model</span>
@@ -190,51 +190,51 @@
 <span class="sd">        See `BaseTrafficFactorModel.convert_parameters`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">considered</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">parametersConsidered</span><span class="p">)</span>
         <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_R_pos</span><span class="p">(</span><span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
             
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>    
-            <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
                 <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_R_pos</span><span class="p">(</span><span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
                 <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_R_pos</span><span class="p">(</span><span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_R_pos</span><span class="p">(</span><span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">18</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_R_pos</span><span class="p">(</span><span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="n">ag</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">considered</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span>
             <span class="n">result</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">=</span> <span class="n">dynamicParameters</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">result</span></div>
     
-<div class="viewcode-block" id="TrafficFactorModel.get_mean_factor"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="TrafficFactorModel.get_mean_factor"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;# </span>
 <span class="sd">        Gravity model for a factor proportional to the traffic flow</span>
 <span class="sd">        between a jurisdiction and a lake.</span>
@@ -285,21 +285,21 @@
                 <span class="n">dists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dists</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">]</span>
         
         <span class="c1"># lake size covariates</span>
-        <span class="n">cons_l0</span><span class="p">,</span> <span class="n">cons_l1</span><span class="p">,</span> <span class="n">cons_l2</span><span class="p">,</span> <span class="n">cons_l3</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">cons_l0</span><span class="p">,</span> <span class="n">cons_l1</span><span class="p">,</span> <span class="n">cons_l2</span><span class="p">,</span> <span class="n">cons_l3</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
         <span class="n">l0</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
         
         <span class="c1"># lake infrastructure covariates</span>
         <span class="n">li0</span><span class="p">,</span> <span class="n">li1</span><span class="p">,</span> <span class="n">li2</span><span class="p">,</span> <span class="n">li3</span><span class="p">,</span> <span class="n">li4</span><span class="p">,</span> <span class="n">li5</span><span class="p">,</span> <span class="n">li6</span><span class="p">,</span> <span class="n">li7</span><span class="p">,</span> <span class="n">li8</span><span class="p">,</span> <span class="n">li9</span><span class="p">,</span> <span class="n">li10</span><span class="p">,</span> <span class="n">li11</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
         <span class="n">cons_li0</span><span class="p">,</span> <span class="n">cons_li1</span><span class="p">,</span> <span class="n">cons_li2</span><span class="p">,</span> <span class="n">cons_li3</span><span class="p">,</span> <span class="n">cons_li4</span><span class="p">,</span> <span class="n">cons_li5</span><span class="p">,</span> <span class="n">cons_li6</span><span class="p">,</span> \
-            <span class="n">cons_li7</span><span class="p">,</span> <span class="n">cons_li8</span><span class="p">,</span> <span class="n">cons_li9</span><span class="p">,</span> <span class="n">cons_li10</span><span class="p">,</span> <span class="n">cons_li11</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
+            <span class="n">cons_li7</span><span class="p">,</span> <span class="n">cons_li8</span><span class="p">,</span> <span class="n">cons_li9</span><span class="p">,</span> <span class="n">cons_li10</span><span class="p">,</span> <span class="n">cons_li11</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
         
         <span class="c1"># jurisdiction covariates</span>
         <span class="n">j0</span><span class="p">,</span> <span class="n">j1</span><span class="p">,</span> <span class="n">j2</span><span class="p">,</span> <span class="n">j3</span><span class="p">,</span> <span class="n">j4</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
-        <span class="n">cons_j0</span><span class="p">,</span> <span class="n">cons_j1</span><span class="p">,</span> <span class="n">cons_j2</span><span class="p">,</span> <span class="n">cons_j3</span><span class="p">,</span> <span class="n">cons_j4</span> <span class="o">=</span> <span class="n">jur_cons</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
+        <span class="n">cons_j0</span><span class="p">,</span> <span class="n">cons_j1</span><span class="p">,</span> <span class="n">cons_j2</span><span class="p">,</span> <span class="n">cons_j3</span><span class="p">,</span> <span class="n">cons_j4</span> <span class="o">=</span> <span class="n">jur_cons</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
         
         <span class="c1"># distance covariate</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span>
-        <span class="n">cons_d</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span>
+        <span class="n">cons_d</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span>
         
         <span class="n">exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span>
         
@@ -396,7 +396,7 @@
         
         <span class="k">return</span> <span class="p">(</span><span class="n">lakeAttractivity</span> <span class="o">*</span> <span class="n">jurisdictionCapacity</span><span class="p">)</span> <span class="o">*</span> <span class="n">shortestDistances</span></div>
     
-<div class="viewcode-block" id="TrafficFactorModel.get_mean_factor_autograd"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor_autograd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">considered</span><span class="p">):</span>
+<div class="viewcode-block" id="TrafficFactorModel.get_mean_factor_autograd"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor_autograd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;#</span>
 <span class="sd">        Autograd version of `get_mean_factor`. The numpy functions are replaced</span>
 <span class="sd">        by autograd functions to allow for automatic differentiation. This is</span>
@@ -421,21 +421,21 @@
         <span class="n">power</span> <span class="o">=</span> <span class="n">ag</span><span class="o">.</span><span class="n">power</span>
         
         <span class="c1"># lake size covariates</span>
-        <span class="n">cons_l0</span><span class="p">,</span> <span class="n">cons_l1</span><span class="p">,</span> <span class="n">cons_l2</span><span class="p">,</span> <span class="n">cons_l3</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">cons_l0</span><span class="p">,</span> <span class="n">cons_l1</span><span class="p">,</span> <span class="n">cons_l2</span><span class="p">,</span> <span class="n">cons_l3</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
         <span class="n">l0</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
         
         <span class="c1"># lake infrastructure covariates</span>
         <span class="n">li0</span><span class="p">,</span> <span class="n">li1</span><span class="p">,</span> <span class="n">li2</span><span class="p">,</span> <span class="n">li3</span><span class="p">,</span> <span class="n">li4</span><span class="p">,</span> <span class="n">li5</span><span class="p">,</span> <span class="n">li6</span><span class="p">,</span> <span class="n">li7</span><span class="p">,</span> <span class="n">li8</span><span class="p">,</span> <span class="n">li9</span><span class="p">,</span> <span class="n">li10</span><span class="p">,</span> <span class="n">li11</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
         <span class="n">cons_li0</span><span class="p">,</span> <span class="n">cons_li1</span><span class="p">,</span> <span class="n">cons_li2</span><span class="p">,</span> <span class="n">cons_li3</span><span class="p">,</span> <span class="n">cons_li4</span><span class="p">,</span> <span class="n">cons_li5</span><span class="p">,</span> <span class="n">cons_li6</span><span class="p">,</span> \
-            <span class="n">cons_li7</span><span class="p">,</span> <span class="n">cons_li8</span><span class="p">,</span> <span class="n">cons_li9</span><span class="p">,</span> <span class="n">cons_li10</span><span class="p">,</span> <span class="n">cons_li11</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
+            <span class="n">cons_li7</span><span class="p">,</span> <span class="n">cons_li8</span><span class="p">,</span> <span class="n">cons_li9</span><span class="p">,</span> <span class="n">cons_li10</span><span class="p">,</span> <span class="n">cons_li11</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
         
         <span class="c1"># jurisdiction covariates</span>
         <span class="n">j0</span><span class="p">,</span> <span class="n">j1</span><span class="p">,</span> <span class="n">j2</span><span class="p">,</span> <span class="n">j3</span><span class="p">,</span> <span class="n">j4</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
-        <span class="n">cons_j0</span><span class="p">,</span> <span class="n">cons_j1</span><span class="p">,</span> <span class="n">cons_j2</span><span class="p">,</span> <span class="n">cons_j3</span><span class="p">,</span> <span class="n">cons_j4</span> <span class="o">=</span> <span class="n">jur_cons</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
+        <span class="n">cons_j0</span><span class="p">,</span> <span class="n">cons_j1</span><span class="p">,</span> <span class="n">cons_j2</span><span class="p">,</span> <span class="n">cons_j3</span><span class="p">,</span> <span class="n">cons_j4</span> <span class="o">=</span> <span class="n">jur_cons</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span>
         
         <span class="c1"># distance covariate</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span>
-        <span class="n">cons_d</span> <span class="o">=</span> <span class="n">considered</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span>
+        <span class="n">cons_d</span> <span class="o">=</span> <span class="n">parametersConsidered</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span>
         
         <span class="k">if</span> <span class="n">cons_l1</span> <span class="ow">or</span> <span class="n">cons_l0</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">cons_l0</span><span class="p">:</span>
@@ -528,202 +528,31 @@
  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="viewcode-block" id="example"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.example">[docs]</a><span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Shows how an example model can be fitted.</span>
+<span class="sd">    </span>
+<span class="sd">    The files for the example are provided in the subfolder ``Example``.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="c1">#nbinom_fit_test(1000, 1, 100, 0.5)</span>
-    <span class="c1">#print(probability_equal_lengths_for_distinct_paths(1000, 1e5))</span>
-    <span class="c1">#sys.exit()</span>
-    
-    <span class="c1">#draw_operating_hour_reward(1.05683124)</span>
-    <span class="c1">#sys.exit()</span>
-    
-    <span class="n">restart</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># Reuse earlier results if possible</span>
     <span class="n">restart</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1">#print(&quot;test4&quot;)</span>
-     
-      
-    <span class="c1">#&quot;&quot;&quot; </span>
     
-    <span class="n">stationSets</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;6b&#39;</span><span class="p">]),</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">&#39;14&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;6b&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;18b&#39;</span><span class="p">]),</span>
-        <span class="p">]</span>
+    <span class="c1"># declare the file names    </span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span>
+    <span class="n">fileNameEdges</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;Edges.csv&quot;</span><span class="p">)</span>
+    <span class="n">fileNameVertices</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;Vertices.csv&quot;</span><span class="p">)</span>
+    <span class="n">fileNameOrigins</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;PopulationData.csv&quot;</span><span class="p">)</span>
+    <span class="n">fileNameDestinations</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;LakeData.csv&quot;</span><span class="p">)</span>
+    <span class="n">fileNamePostalCodeAreas</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;PostalCodeAreas.csv&quot;</span><span class="p">)</span>
+    <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;SurveyData.csv&quot;</span><span class="p">)</span>
+    <span class="n">complianceRate</span> <span class="o">=</span> <span class="mf">0.8</span>
     
-    <span class="n">fileNameEdges</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full.csv&quot;</span>
-    <span class="n">fileNameVertices</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_vertices.csv&quot;</span>
-    <span class="n">fileNameOrigins</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_populationData.csv&quot;</span>
-    <span class="n">fileNameDestinations</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_lakeData.csv&quot;</span>
-    <span class="n">fileNamePostalCodeAreas</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_postal_code_areas.csv&quot;</span>
-    <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_observations.csv&quot;</span>
-    <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_observations_new2.csv&quot;</span>
-    <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="s2">&quot;shortExample3_SimulatedObservations.csv&quot;</span>
-    <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="s2">&quot;shortExample1_SimulatedObservations.csv&quot;</span>
-    <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="s2">&quot;LakeNetworkExample_full_observations_new.csv&quot;</span>
-    <span class="n">fileNameComparison</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="n">complianceRate</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="c1"># File name of the model</span>
+    <span class="n">fileNameSave</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span>
     
-    <span class="n">fileNameSave</span> <span class="o">=</span> <span class="s2">&quot;shortExample3&quot;</span>
-    <span class="n">fileNameSave</span> <span class="o">=</span> <span class="s2">&quot;shortExample2&quot;</span>
-    <span class="n">fileNameSaveNull</span> <span class="o">=</span> <span class="s2">&quot;shortExampleNull&quot;</span>
-    <span class="n">fileNameSave</span> <span class="o">=</span> <span class="s2">&quot;shortExample1&quot;</span>
+    <span class="n">routeParameters</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    fileNameEdges = &quot;LakeNetworkExample_mini.csv&quot;</span>
-<span class="sd">    fileNameVertices = &quot;LakeNetworkExample_mini_vertices.csv&quot;</span>
-<span class="sd">    fileNameOrigins = &quot;LakeNetworkExample_mini_populationData.csv&quot;</span>
-<span class="sd">    fileNameDestinations = &quot;LakeNetworkExample_mini_lakeData.csv&quot;</span>
-<span class="sd">    fileNamePostalCodeAreas = &quot;LakeNetworkExample_mini_postal_code_areas.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;LakeNetworkExample_mini_observations.csv&quot;</span>
-<span class="sd">    </span>
-<span class="sd">    #fileNameEdges = &quot;LakeNetworkExample_small.csv&quot;</span>
-<span class="sd">    #fileNameVertices = &quot;LakeNetworkExample_small_vertices.csv&quot;</span>
-<span class="sd">    </span>
-<span class="sd">    fileNameSave = &quot;debugExample&quot;</span>
-<span class="sd">    #&#39;&#39;&#39;</span>
-    <span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">    fileNameEdges = &quot;ExportEdges_HighwayTraffic.csv&quot; </span>
-<span class="sd">    fileNameEdges = &quot;ExportEdges.csv&quot; </span>
-<span class="sd">    fileNameVertices = &quot;ExportVertices.csv&quot;</span>
-<span class="sd">    fileNameOrigins = &quot;ExportPopulation.csv&quot;</span>
-<span class="sd">    fileNameDestinations = &quot;ExportLakes.csv&quot;</span>
-<span class="sd">    fileNamePostalCodeAreas = &quot;ExportPostal_Code_Data.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ZebraMusselSimulation_1.3-0.35-0.8-1.2-11000_SimulatedObservations.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ZebraMusselSimulation_1.4-0.2-0.8-1.2-1_SimulatedObservations.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ZebraMusselSimulation_1.4-0.2-0.8-1.2-1_SimulatedObservationsFalseAdded.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ExportBoaterSurveyFalseRemoved.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ZebraMusselSimulation_1.4-0.2-0.8-1.2-11000_SimulatedObservations.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ZebraMusselSimulation_1.6-0.2-0.8-1.1-1_SimulatedObservations.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ExportBoaterSurvey.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ExportBoaterSurvey_HR_fit.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ExportBoaterSurvey_HR_val.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ExportBoaterSurvey_HR_with_days_fit.csv&quot;</span>
-<span class="sd">    fileNameObservations = &quot;ExportBoaterSurvey_HR_with_days_validation.csv&quot;</span>
-<span class="sd">    complianceRate = 0.7959</span>
-<span class="sd">    </span>
-<span class="sd">    fileNameSave = &quot;Sim_1.4-0.1-0.8-1.1-1_PathTest&quot; # for road network only.</span>
-<span class="sd">    fileNameSave = &quot;Sim_1.4-0.2-1-1-1_HR_opt&quot; # for optimization of inspection locations</span>
-<span class="sd">    fileNameSave = &quot;Sim_1.4-0.2-1-1-1_HR_HW_1&quot; </span>
-<span class="sd">    fileNameSave = &quot;Sim_1.4-0.2-1-1-1_HR_val&quot; # for validation</span>
-<span class="sd">    fileNameComparison = fileNameSave</span>
-<span class="sd">    fileNameSave = &quot;Sim_1.4-0.2-1-1-1_HR_HW&quot; #for fit and road traffic estimates</span>
-<span class="sd">    fileNameSaveNull = &quot;Sim_1.4-0.2-1-1-1_HR_HW_null&quot; #for fit and road traffic estimates</span>
-<span class="sd">    fileNameSaveNull = &quot;Sim_1.4-0.2-1-1-1_HR_val_null&quot; #for fit and road traffic estimates</span>
-<span class="sd">    #&quot;&quot;&quot;</span>  
-     
-    <span class="c1">#redraw_predicted_observed(fileNameSave, fileNameComparison)</span>
-    <span class="c1">#sys.exit()</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting test. (2)&quot;</span><span class="p">)</span>
-     
-    <span class="c1">#print(&quot;Seed&quot;)</span>
-    
-    <span class="c1">#np.random.seed() </span>
-    
-    <span class="n">routeParameters</span> <span class="o">=</span> <span class="p">(</span> 
-                          <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                       <span class="p">)</span>
-    <span class="c1">#&quot;&quot;&quot;</span>
-    <span class="c1">#&quot;&quot;&quot;</span>
-    <span class="n">flowParameters</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c1">#best parameters one more parameter </span>
-    <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> 
-        <span class="p">[</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">]</span>
-        <span class="p">)</span>
-    <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-        <span class="p">[</span><span class="o">-</span><span class="mf">1.71042747e+01</span><span class="p">,</span><span class="mf">1.15230704e+00</span><span class="p">,</span><span class="mf">1.23546394e+03</span><span class="p">,</span><span class="mf">5.55260234e+00</span><span class="p">,</span><span class="mf">3.50775439e+00</span><span class="p">,</span><span class="mf">2.53985567e+01</span><span class="p">,</span><span class="mf">1.01026970e+03</span><span class="p">,</span><span class="mf">8.86681452e+02</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.8065007296786513</span><span class="p">,</span><span class="mf">2.69364013e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">3.44611446e+00</span><span class="p">]</span>
-        <span class="p">)</span>
-    <span class="n">nullParameters</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c1">#best parameters one more parameter </span>
-    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flowParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1">#nullParameters[&quot;considered&quot;][:3] = True</span>
-    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">])</span>
-    <span class="n">nullParameters</span><span class="p">[</span><span class="s2">&quot;paramters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.42643338e-01</span><span class="p">,</span> <span class="mf">5.15536529e+04</span><span class="p">])</span>
-    
-    <span class="c1">#print(TrafficFactorModel.convert_parameters(None, flowParameters[&quot;paramters&quot;][2:], flowParameters[&quot;considered&quot;][2:]))</span>
-    <span class="c1">#sys.exit()</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    #best parameters one less parameter </span>
-<span class="sd">    flowParameters[&quot;considered&quot;] = np.array( </span>
-<span class="sd">        [True,True,True,False,False,False,True,False,True,False,True,False,True,False,False,False,False,False,True,False,False,False,True,True]</span>
-<span class="sd">        )</span>
-<span class="sd">    flowParameters[&quot;paramters&quot;] = np.array(</span>
-<span class="sd">        [-1.71042747e+01,1.15230704e+00,1.23546394e+03,5.55260234e+00,3.50775439e+00,2.53985567e+01,1.171835466180462,-1.8065007296786513,2.69364013e+00,-3.44611446e+00]</span>
-<span class="sd">        )</span>
-<span class="sd">    </span>
-<span class="sd">    #best parameters</span>
-<span class="sd">    flowParameters[&quot;considered&quot;] = np.array( </span>
-<span class="sd">        [True,True,True,False,False,False,True,False,True,False,True,False,True,True,False,False,False,False,True,False,False,False,True,True]</span>
-<span class="sd">        )</span>
-<span class="sd">    flowParameters[&quot;paramters&quot;] = np.array(</span>
-<span class="sd">        [-1.71042747e+01,1.15230704e+00,1.23546394e+03,5.55260234e+00,3.50775439e+00,2.53985567e+01,1.01026970e+03,8.86681452e+02,-1.8065007296786513,2.69364013e+00,-3.44611446e+00]</span>
-<span class="sd">        )</span>
-<span class="sd">        </span>
-<span class="sd">    </span>
-<span class="sd">    </span>
-<span class="sd">    # best parameters old parameterization</span>
-<span class="sd">    flowParameters[&quot;considered&quot;] = np.array( </span>
-<span class="sd">        [True,True,True,False,False,False,True,False,True,False,True,False,True,True,False,False,False,False,True,False,False,False,True,True]</span>
-<span class="sd">        )</span>
-<span class="sd">    flowParameters[&quot;paramters&quot;] = np.array(</span>
-<span class="sd">        [-1.71042747e+01,1.15230704e+00,1.23646394e+03,6.55260234e+00,4.50775439e+00,2.63985567e+01,1.01126970e+03,8.87681452e+02,1.64227810e-01,2.69364013e+00,-3.44611446e+00]</span>
-<span class="sd">        )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">routeChoiceParameters</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.048790208690779414</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.661288616999463</span><span class="p">,</span> <span class="mf">0.0573827962901976</span><span class="p">]</span>
-    <span class="n">nullRouteChoiceParameters</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">]</span>
-    <span class="n">travelTimeParameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">14.00344885</span><span class="p">,</span>  <span class="mf">1.33680321</span><span class="p">])</span>
-    <span class="n">nullTravelTimeParameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">])</span>
-    <span class="n">properDataRate</span> <span class="o">=</span> <span class="mf">0.9300919842312746</span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    nullModel = HybridVectorModel.new(</span>
-<span class="sd">                fileNameBackup=fileNameSaveNull, </span>
-<span class="sd">                trafficFactorModel_class=TrafficFactorModel,</span>
-<span class="sd">                fileNameEdges=fileNameEdges,</span>
-<span class="sd">                fileNameVertices=fileNameVertices,</span>
-<span class="sd">                fileNameOrigins=fileNameOrigins,</span>
-<span class="sd">                fileNameDestinations=fileNameDestinations,</span>
-<span class="sd">                fileNamePostalCodeAreas=fileNamePostalCodeAreas,</span>
-<span class="sd">                fileNameObservations=fileNameObservations,</span>
-<span class="sd">                complianceRate=complianceRate,</span>
-<span class="sd">                preprocessingArgs=None,</span>
-<span class="sd">                #preprocessingArgs=(10,10,10),</span>
-<span class="sd">                #considerInfested=True, </span>
-<span class="sd">                #findPotentialRoutes=True,</span>
-<span class="sd">                edgeLengthRandomization=0.001,</span>
-<span class="sd">                routeParameters=(1.0001, 0.9999, 0.5, 2), </span>
-<span class="sd">                readSurveyData=True,</span>
-<span class="sd">                properDataRate=properDataRate,</span>
-<span class="sd">                #createRouteChoiceModel=True,</span>
-<span class="sd">                fitRouteChoiceModel=True,</span>
-<span class="sd">                #readOriginData=True,</span>
-<span class="sd">                #readOriginData=True, </span>
-<span class="sd">                travelTimeParameters=nullTravelTimeParameters, </span>
-<span class="sd">                fitTravelTimeModel=True,</span>
-<span class="sd">                fitFlowModel=True,</span>
-<span class="sd">                routeChoiceParameters=nullRouteChoiceParameters, #continueRouteChoiceOptimization=True,</span>
-<span class="sd">                flowParameters=nullParameters, #continueTrafficFactorOptimization=True, #readDestinationData=True,  readPostalCodeAreaData=True, , #  #findPotentialRoutes=True, #  extrapolateCountData=True , # #readSurveyData=True   ###  #  #   findPotentialRoutes=False ,  readSurveyData=True </span>
-<span class="sd">                restart=restart, #readSurveyData=True, </span>
-<span class="sd">                )</span>
-<span class="sd">    sys.exit()</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="n">fileNameBackup</span><span class="o">=</span><span class="n">fileNameSave</span><span class="p">,</span> 
                 <span class="n">trafficFactorModel_class</span><span class="o">=</span><span class="n">TrafficFactorModel</span><span class="p">,</span>
@@ -735,231 +564,14 @@
                 <span class="n">fileNameObservations</span><span class="o">=</span><span class="n">fileNameObservations</span><span class="p">,</span>
                 <span class="n">complianceRate</span><span class="o">=</span><span class="n">complianceRate</span><span class="p">,</span>
                 <span class="n">preprocessingArgs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="c1">#preprocessingArgs=(10,10,10),</span>
-                <span class="c1">#considerInfested=True, </span>
-                <span class="c1">#findPotentialRoutes=True,</span>
                 <span class="n">edgeLengthRandomization</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
                 <span class="n">routeParameters</span><span class="o">=</span><span class="n">routeParameters</span><span class="p">,</span> 
-                <span class="c1">#readSurveyData=True,</span>
-                <span class="n">properDataRate</span><span class="o">=</span><span class="n">properDataRate</span><span class="p">,</span>
-                <span class="c1">#createRouteChoiceModel=True,</span>
-                <span class="c1">#fitRouteChoiceModel=True,</span>
-                <span class="c1">#readOriginData=True,</span>
-                <span class="c1">#readOriginData=True, </span>
-                <span class="n">fitFlowModel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">routeChoiceParameters</span><span class="o">=</span><span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">continueRoutChoiceOptimization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">flowParameters</span><span class="o">=</span><span class="n">flowParameters</span><span class="p">,</span> <span class="n">continueTrafficFactorOptimization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#readDestinationData=True,  readPostalCodeAreaData=True, , #  #findPotentialRoutes=True, #  extrapolateCountData=True , # #readSurveyData=True   ###  #  #   findPotentialRoutes=False ,  readSurveyData=True </span>
-                <span class="n">travelTimeParameters</span><span class="o">=</span><span class="n">travelTimeParameters</span><span class="p">,</span> 
-                <span class="c1">#fitTravelTimeModel=True,</span>
-                <span class="n">restart</span><span class="o">=</span><span class="n">restart</span><span class="p">,</span> <span class="c1">#readSurveyData=True, </span>
-                <span class="p">)</span>
-    <span class="c1">#model.compare_travel_time_distributions(model.fileName)</span>
+                <span class="n">restart</span><span class="o">=</span><span class="n">restart</span>
+                <span class="p">)</span></div>
     
-    <span class="c1">#sys.exit()</span>
-    
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    model = saveobject.load_object(fileNameSave + &quot;.vmm&quot;)</span>
-<span class="sd">    #&#39;&#39;&#39;</span>
-    <span class="c1">#&quot;&quot;&quot;</span>
-    <span class="c1">#model.save_model_predictions()</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    model.save_simulated_observations(shiftNumber=2500, dayNumber=600, </span>
-<span class="sd">                                      stationSets=stationSets)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="c1">#&quot;&quot;&quot;</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">create_quality_plots</span><span class="p">(</span><span class="n">saveFileName</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">fileName</span><span class="p">,</span> <span class="n">worstLabelNo</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                               <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">fileNameComparison</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">test_1_1_regression</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">saveFileName</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">fileName</span><span class="p">,</span>
-                              <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">fileNameComparison</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">fileName</span><span class="p">)</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">save_simulated_observations</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">check_count_distributions_NB</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">fileName</span><span class="o">+</span><span class="s2">&quot;-pvals&quot;</span><span class="p">)</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-    <span class="c1">#&quot;&quot;&quot;</span>
-    <span class="c1">#&#39;&#39;&#39;</span>
-    <span class="c1">#model.optimize_inspection_station_placement(20, saveFileName=model.fileName)</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">13.</span><span class="p">,</span> <span class="mf">14.</span><span class="p">,</span> <span class="mf">16.</span><span class="p">,</span> <span class="mf">18.</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="mf">23.</span><span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
-    <span class="n">allowedShifts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    RouteChoiceModel.NOISEBOUND = 0.2</span>
-<span class="sd">    print(&quot;Setting noise bound to&quot;, RouteChoiceModel.NOISEBOUND)</span>
-<span class="sd">    model.fit_route_model(routeParameters, True)</span>
-<span class="sd">    RouteChoiceModel.NOISEBOUND = 0.02</span>
-<span class="sd">    print(&quot;Setting noise bound to&quot;, RouteChoiceModel.NOISEBOUND)</span>
-<span class="sd">    model.fit_route_model(routeParameters, True)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="n">routeChoiceParamCandidates</span> <span class="o">=</span> <span class="p">[</span>
-                                  <span class="kc">None</span><span class="p">,</span>
-                                  <span class="p">[</span><span class="mf">0.00739813</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.80269191</span><span class="p">,</span> <span class="mf">0.7815986</span><span class="p">],</span>
-                                  <span class="p">[</span><span class="mf">0.19972783</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.69001292</span><span class="p">,</span> <span class="mf">0.012684587</span><span class="p">],</span>
-                                  <span class="p">]</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    RouteChoiceModel.NOISEBOUND = 0.2</span>
-<span class="sd">    for r in routeChoiceParamCandidates:</span>
-<span class="sd">        print(&quot;Setting Route Choice parameters to&quot;, r)</span>
-<span class="sd">        model.fit_route_model(routeParameters, True, np.array(r))</span>
-<span class="sd">        model.fit_flow_model(flowParameters=flowParameters, continueFlowOptimization=True,</span>
-<span class="sd">                             refit=True)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-        
-    <span class="k">def</span> <span class="nf">setRouteParameters</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">NOISEBOUND</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">fit_route_model</span><span class="p">(</span><span class="n">routeParameters</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">get_CI</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">refit</span><span class="p">:</span>
-                <span class="n">m</span><span class="o">.</span><span class="n">fit_flow_model</span><span class="p">(</span><span class="n">flowParameters</span><span class="o">=</span><span class="n">flowParameters</span><span class="p">,</span> <span class="n">continueFlowOptimization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                 <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">get_CI</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">setNoise</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Set noise to&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">NOISEBOUND</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">routeParams</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">routeModel</span><span class="p">[</span><span class="s2">&quot;routeChoiceModel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-            <span class="n">routeParams</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">fit_route_model</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">routeParams</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">get_CI</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">defaultArgs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">costShift</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">costSite</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">shiftLength</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span> <span class="n">costRoundCoeff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                       <span class="n">nightPremium</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">baseTimeInv</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
-                       <span class="n">init_greedy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">costBound</span><span class="o">=</span><span class="mf">80.</span><span class="p">)</span><span class="c1">#, loadFile=False) </span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    model.set_infested(b&#39;J54145&#39;)</span>
-<span class="sd">    model.set_infested(b&#39;J54170&#39;)</span>
-<span class="sd">    model.set_infested(b&#39;J54185&#39;)</span>
-<span class="sd">    model.fileName += &quot;Idaho&quot;</span>
-<span class="sd">    #&quot;&quot;&quot;</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">save_model_predictions</span><span class="p">()</span>
-    
-    <span class="c1">#model.fileName += &quot;_noinit_&quot;</span>
-    <span class="c1">#model.create_caracteristic_plot(&quot;costBound&quot;, [20., 80., 160.], **defaultArgs)</span>
-    <span class="c1">#model.create_budget_plots(5, 75, 15, **defaultArgs)</span>
-    <span class="c1">#model.create_budget_plots(55, 100, 10, **defaultArgs)</span>
-    <span class="c1">#model.create_budget_plots(100, 150, 11, **defaultArgs)</span>
-    <span class="c1">#model.create_budget_plots(135, 150, 4, **defaultArgs)</span>
-    
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-    <span class="c1">#model.create_budget_plots(5, 150, 30, **defaultArgs)</span>
-    
-    
-    <span class="n">model</span><span class="o">.</span><span class="n">create_caracteristic_plot</span><span class="p">(</span><span class="s2">&quot;costBound&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">25.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">],</span> <span class="n">characteristicName</span><span class="o">=</span><span class="s2">&quot;Budget&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">defaultArgs</span><span class="p">)</span>
-    
-    <span class="c1">#model.create_caracteristic_plot(setRouteParameters, routeChoiceParamCandidates, </span>
-    <span class="c1">#                                &quot;NoiseRefit&quot;, [0.047, 0.007, 0.2],</span>
-    <span class="c1">#                                **defaultArgs)</span>
-    <span class="n">noise</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
-    <span class="c1">#model.create_caracteristic_plot(setNoise, noise, &quot;Noise level&quot;, **defaultArgs)</span>
-    
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">ignoreRandomFlow</span> <span class="ow">in</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="c1">#profile(&quot;model.optimize_inspection_station_operation(2, 1, 30, 6., allowedShifts=allowedShifts, costRoundCoeff=1, baseTimeInv=18, ignoreRandomFlow=ignoreRandomFlow, saveFileName=model.fileName)&quot;, </span>
-        <span class="c1">#        globals(), locals()) </span>
-        <span class="c1">#&quot;&quot;&quot;        </span>
-        <span class="n">model</span><span class="o">.</span><span class="n">optimize_inspection_station_operation</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="c1">#80</span>
-                                                    <span class="c1">#allowedShifts=allowedShifts, #[6, 8, 10, 11, 12, 14], </span>
-                                                    <span class="n">costRoundCoeff</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
-                                                    <span class="n">nightPremium</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-                                                    <span class="n">baseTimeInv</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
-                                                    <span class="n">ignoreRandomFlow</span><span class="o">=</span><span class="n">ignoreRandomFlow</span><span class="p">,</span>
-                                                    <span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                                    <span class="n">extended_info</span><span class="o">=</span><span class="kc">True</span>
-                                                    <span class="p">)</span>
-    <span class="c1">#&#39;&#39;&#39;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    print(find_shortest_path(model.roadNetwork.vertices.array,</span>
-<span class="sd">                             model.roadNetwork.edges.array,</span>
-<span class="sd">                             0, 9))</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    stations = [b&#39;386&#39;, b&#39;307&#39;, b&#39;28&#39;]</span>
-<span class="sd">        </span>
-<span class="sd">    fromIDs = [b&#39;J54130&#39;, b&#39;J54181&#39;, b&#39;J54173&#39;]</span>
-<span class="sd">    </span>
-<span class="sd">    toIDs = [b&#39;L329518145A&#39;, b&#39;L328961702A&#39;, b&#39;L328974235A&#39;]</span>
-<span class="sd">    </span>
-<span class="sd">    ps = []</span>
-<span class="sd">    for stationID, fromID, toID in iterproduct(stations, fromIDs, toIDs):</span>
-<span class="sd">        #print(&quot;Consider journeys from&quot;, fromID, &quot;to&quot;, toID, &quot;observed at&quot;, </span>
-<span class="sd">        #      stationID)</span>
-<span class="sd">        fname = model.fileName + str(stationID + fromID + toID)</span>
-<span class="sd">        p = model.compare_distributions(stationID, fromID, toID, 15, saveFileName=fname)</span>
-<span class="sd">        if p is not None:</span>
-<span class="sd">            ps.append(p)</span>
-<span class="sd">    </span>
-<span class="sd">    try:</span>
-<span class="sd">        print(&quot;p distribution:&quot;, np.min(ps), np.max(ps), np.histogram(ps))</span>
-<span class="sd">    except Exception:</span>
-<span class="sd">        pass</span>
-<span class="sd">       </span>
-<span class="sd">    #&quot;&quot;&quot;</span>
-    <span class="c1">#model.compare_distributions(b&#39;3&#39;, b&#39;1&#39;, b&#39;L1&#39;, 15, saveFileName=model.fileName)</span>
-    <span class="c1">#model.test_1_1_regression(20, routeParameters[0], model.fileName + str(routeParameters[0]))</span>
-    <span class="c1">#model.save_simulated_observations(shiftNumber=1000, fileName=model.fileName+&quot;1000&quot;)</span>
-    <span class="c1">#model.save_simulated_observations()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    considered = np.array([True] * 7)</span>
-<span class="sd">    #considered[2] = False</span>
-<span class="sd">    #x0Stat = (np.log(5), np.sqrt(-np.log(0.7)), np.sqrt(-np.log(.1)), -3, np.sqrt(-np.log(0.1))) </span>
-<span class="sd">    #x0Flex = np.array((np.log(2), 1, np.log(1), -1, 1, 1, -2))</span>
-<span class="sd">    x0Stat = (1, 0.5, 5, -3, 1.5) </span>
-<span class="sd">    x0Stat = (5.5, 0.5, 1.5, -3, 1.5) </span>
-<span class="sd">    x0Flex = np.array((2, 1, 1, -1, 1, 1, -2))</span>
-<span class="sd">    x0 = np.array((*x0Stat, *x0Flex[considered]))</span>
-<span class="sd">    #model.simulate_count_data_test(5, x0, covariates=considered)</span>
-<span class="sd">    model.save_simulated_observations(x0, considered, &quot;area&quot;, shiftNumber=2000, fileName=model.fileName+&quot;1000&quot;)</span>
-<span class="sd">    #&quot;&quot;&quot;</span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    </span>
-<span class="sd">    #profile(&quot;network = TransportNetwork(fileNameEdges, fileNameVertices)&quot;, globals(), locals())</span>
-<span class="sd">    if exists(fileNameSave) and not restart:</span>
-<span class="sd">        print(&quot;Loading file...&quot;)</span>
-<span class="sd">        network = saveobject.load_object(fileNameSave)</span>
-<span class="sd">        print(&quot;Edge number&quot;, len(network.edges))</span>
-<span class="sd">        print(&quot;Edge size&quot;, network.edges.size)</span>
-<span class="sd">    else:</span>
-<span class="sd">        network = TransportNetwork(fileNameEdges, fileNameVertices)</span>
-<span class="sd">        print(&quot;Edge number&quot;, len(network.edges))</span>
-<span class="sd">        network.lock = None </span>
-<span class="sd">        print(&quot;Saving file...&quot;)</span>
-<span class="sd">        saveobject.save_object(network, fileNameSave)</span>
-<span class="sd">    </span>
-<span class="sd">    #network.find_potential_routes(1.5, .2)</span>
-<span class="sd">    #profile(&quot;network.find_potential_routes(1.5, .2)&quot;, globals(), locals())  </span>
-<span class="sd">    #print(&quot;Timed execution:&quot;, Timer(network.find_potential_routes).timeit(1))</span>
-<span class="sd">    #network.find_alternative_paths_test(1.5)</span>
-<span class="sd">    for stretch, lo, prune in (</span>
-<span class="sd">                               (1.25, .1, .7),</span>
-<span class="sd">                               (1.5, .2, .7),</span>
-<span class="sd">                               (1.25, .2, .7),</span>
-<span class="sd">                               (1.25, .1, 1),</span>
-<span class="sd">                               (1.25, .2, 1),</span>
-<span class="sd">                               (1.5, .2, 1),</span>
-<span class="sd">                               ):</span>
-<span class="sd">        print(&quot;Timed execution:&quot;, Timer(&quot;network.find_potential_routes(stretch, lo, prune)&quot;, globals=locals()).timeit(1))</span>
-<span class="sd">        print(&quot;=&quot;*80)</span>
-<span class="sd">        print()</span>
-<span class="sd">        print(&quot;=&quot;*80)</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
     
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1">#f = &quot;ZebraMusselSimulation_1.4-0.2-1-1-1_HR_opt[3.5, 1, 50.0, 8, (1.2, 22, 6), 0].dat&quot;</span>
-    <span class="c1">#o = saveobject.load_object(f)</span>
-    <span class="c1">#print(o)</span>
-    
-    
-    <span class="n">main</span><span class="p">()</span>
-    <span class="c1"># LD_PRELOAD=../anaconda3/lib/libmkl_core.so python ...</span>
+    <span class="n">example</span><span class="p">()</span>
 </pre></div>
 
           </div>

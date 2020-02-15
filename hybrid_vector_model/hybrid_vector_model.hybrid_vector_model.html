@@ -172,13 +172,13 @@ flow between sources and sinks.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_parameters</span></code></a>(dynamicParameters, considered)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_parameters</span></code></a>(dynamicParameters, …)</p></td>
 <td><p>Converts an array of given parameters to an array of standard (maximal) length and in the parameter domain of the model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor</span></code></a>(parameters, considered[, pair])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor</span></code></a>(parameters, parametersConsidered)</p></td>
 <td><p>Returns a factor proportional to the mean traveller flow between the</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor_autograd</span></code></a>(parameters, considered)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor_autograd</span></code></a>(parameters, …)</p></td>
 <td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code>, but must use autograd’s functions instead of numpy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_sink_covariates</span></code></a>(covariates)</p></td>
@@ -234,10 +234,10 @@ model (see <a class="reference internal" href="#hybrid_vector_model.hybrid_vecto
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters">
-<code class="sig-name descname">convert_parameters</code><span class="sig-paren">(</span><em class="sig-param">dynamicParameters</em>, <em class="sig-param">considered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.convert_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">convert_parameters</code><span class="sig-paren">(</span><em class="sig-param">dynamicParameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.convert_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts an array of given parameters to an array of standard (maximal)
 length and in the parameter domain of the model.</p>
-<p>Not all parameters may be considered in the model (to avoid overfitting)
+<p>Not all parameters may be parametersConsidered in the model (to avoid overfitting)
 Furthermore, some parameters must be constrained to be positive or
 within a certain interval. In this method, the parameter vector
 (containing only the values of the free parameters) is transformed to
@@ -246,8 +246,8 @@ a vector in the parameter space of the model</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dynamicParameters</strong> (<em>float</em><em>[</em><em>]</em>) – Free parameters. The parameters that are not held constant.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
 </ul>
 </dd>
@@ -256,7 +256,7 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor">
-<code class="sig-name descname">get_mean_factor</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">considered</em>, <em class="sig-param">pair=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_mean_factor</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">pair=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a factor proportional to the mean traveller flow between the
 source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p>
 <p>~+~</p>
@@ -269,8 +269,8 @@ raise an error.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parameters</strong> (<em>double</em><em>[</em><em>]</em>) – Contains the free model parameters.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.</p></li>
 <li><p><strong>pair</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) – Source-sink pair for which the factor shall be determined.
 This is the source-sink pair of interest (the indices of the source and
@@ -283,7 +283,7 @@ combinations are computed).</p></li>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd">
-<code class="sig-name descname">get_mean_factor_autograd</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">considered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_mean_factor_autograd</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code></a>, but must use autograd’s functions
 instead of numpy.</p>
 <p>This function is necessary to compute derivatives with automatic
@@ -302,8 +302,8 @@ in <cite>get_mean_factor</cite> already and leave this method untouched.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parameters</strong> (<em>double</em><em>[</em><em>]</em>) – Contains the free model parameters.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.</p></li>
 </ul>
 </dd>
@@ -432,7 +432,7 @@ model.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">investigate_profile_likelihood</span></code></a>(x0, …[, …])</p></td>
 <td><p>Searches the profile likelihood confidence interval for a given parameter.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_log_likelihood</span></code></a>([considered, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_log_likelihood</span></code></a>([…])</p></td>
 <td><p>Maximizes the likelihood of the hybrid model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_log_likelihood_static</span></code></a>(…[, …])</p></td>
@@ -819,12 +819,12 @@ in the traffic factor model class will be considered. If this
 attribute is not implemented, only the full model will be considered.</p></li>
 <li><p><strong>refit</strong> (<em>bool</em>) – Whether to repeat the fitting procedure if the model has been
 fitted earlier.</p></li>
-<li><p><strong>flowParameters</strong> (<em>dict</em>) – Dictionary with the keys <code class="docutils literal notranslate"><span class="pre">&quot;covariates&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;paramters&quot;</span></code>
+<li><p><strong>flowParameters</strong> (<em>dict</em>) – Dictionary with the keys <code class="docutils literal notranslate"><span class="pre">&quot;parametersConsidered&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;parameters&quot;</span></code>
 that provides an initial guess for the optimization or the
-corresponding solution. <code class="docutils literal notranslate"><span class="pre">&quot;covariates&quot;</span></code> contains a <cite>bool[]</cite> with
+corresponding solution. <code class="docutils literal notranslate"><span class="pre">&quot;parametersConsidered&quot;</span></code> contains a <cite>bool[]</cite> with
 the considered parameter combination (see <code class="xref py py-obj docutils literal notranslate"><span class="pre">permutations</span></code>);
-<code class="docutils literal notranslate"><span class="pre">&quot;covariates&quot;</span></code> contains a <cite>float[]</cite> with the values for the
-parameters where <code class="docutils literal notranslate"><span class="pre">flowParameters[&quot;considered&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">&quot;parameters&quot;</span></code> contains a <cite>float[]</cite> with the values for the
+parameters where <code class="docutils literal notranslate"><span class="pre">flowParameters[&quot;parametersConsidered&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>continueFlowOptimization</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="xref py py-obj docutils literal notranslate"><span class="pre">flowParameters</span></code> will be used as initial
 guess. Otherwise, they will be considered as the optimal
 parameters.</p></li>
@@ -1002,7 +1002,7 @@ Must be the results of <a class="reference internal" href="#hybrid_vector_model.
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood">
-<code class="sig-name descname">investigate_profile_likelihood</code><span class="sig-paren">(</span><em class="sig-param">x0</em>, <em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">considered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">**profile_LL_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.investigate_profile_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">investigate_profile_likelihood</code><span class="sig-paren">(</span><em class="sig-param">x0</em>, <em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">**profile_LL_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.investigate_profile_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Searches the profile likelihood confidence interval for a given
 parameter.</p>
 <dl class="field-list simple">
@@ -1022,8 +1022,8 @@ selected inadmissible path.</p></li>
 <li><p><strong>complianceRate</strong> (<em>float</em>) – Proportion of agents stopping at survey/inspection stations.</p></li>
 <li><p><strong>properDataRate</strong> (<em>float</em>) – Fraction of agents providing inconsistent, incomplete, or wrong
 data.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.             The first two entries must refer to the proportionality constant
 and the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> and will be assumed to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>approximationNumber</strong> (<em>int</em>) – Degree of the Taylor approximation that is to be used. The higher
@@ -1036,13 +1036,13 @@ longer will the computation take. Must be <cite>&gt;= 1</cite>.</p></li>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood">
-<code class="sig-name descname">maximize_log_likelihood</code><span class="sig-paren">(</span><em class="sig-param">considered=None</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">maximize_log_likelihood</code><span class="sig-paren">(</span><em class="sig-param">parametersConsidered=None</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximizes the likelihood of the hybrid model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.             The first two entries must refer to the proportionality constant
 and the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> and will be assumed to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>approximationNumber</strong> (<em>int</em>) – Degree of the Taylor approximation that is to be used. The higher
@@ -1059,7 +1059,7 @@ as being the best-fitting model.</p></li>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static">
-<em class="property">static </em><code class="sig-name descname">maximize_log_likelihood_static</code><span class="sig-paren">(</span><em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">considered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood_static"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">maximize_log_likelihood_static</code><span class="sig-paren">(</span><em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood_static"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximizes the likelihood of the hybrid model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1077,8 +1077,8 @@ selected inadmissible path.</p></li>
 <li><p><strong>complianceRate</strong> (<em>float</em>) – Proportion of agents stopping at survey/inspection stations.</p></li>
 <li><p><strong>properDataRate</strong> (<em>float</em>) – Fraction of agents providing inconsistent, incomplete, or wrong
 data.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.             The first two entries must refer to the proportionality constant
 and the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> and will be assumed to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>approximationNumber</strong> (<em>int</em>) – Degree of the Taylor approximation that is to be used. The higher
@@ -1743,15 +1743,15 @@ origin-destination pair, and inspection location.</p>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations">
-<code class="sig-name descname">save_simulated_observations</code><span class="sig-paren">(</span><em class="sig-param">parameters=None</em>, <em class="sig-param">considered=None</em>, <em class="sig-param">shiftNumber=None</em>, <em class="sig-param">dayNumber=None</em>, <em class="sig-param">stationSets=None</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_simulated_observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_simulated_observations</code><span class="sig-paren">(</span><em class="sig-param">parameters=None</em>, <em class="sig-param">parametersConsidered=None</em>, <em class="sig-param">shiftNumber=None</em>, <em class="sig-param">dayNumber=None</em>, <em class="sig-param">stationSets=None</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_simulated_observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate observation data that would be obtained if the model were
 True.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parameters</strong> (<em>float</em><em>[</em><em>]</em>) – Parameters for the traffic flow (gravity) model.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
 <li><p><strong>shiftNumber</strong> (<em>int</em>) – Number of observation shifts to be considered.</p></li>
 <li><p><strong>dayNumber</strong> (<em>int</em>) – Number of days on which the shifts were conducted.</p></li>
@@ -1828,7 +1828,7 @@ ignored.</p>
 
 <dl class="method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data">
-<code class="sig-name descname">simulate_count_data</code><span class="sig-paren">(</span><em class="sig-param">stationTimes</em>, <em class="sig-param">day</em>, <em class="sig-param">parameters</em>, <em class="sig-param">considered</em>, <em class="sig-param">limitToOneObservation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.simulate_count_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">simulate_count_data</code><span class="sig-paren">(</span><em class="sig-param">stationTimes</em>, <em class="sig-param">day</em>, <em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">limitToOneObservation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.simulate_count_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate observation data that would be obtained one one day if the
 model were True.</p>
 <p>For each boater, start, end, and path are returned.</p>
@@ -1839,8 +1839,8 @@ model were True.</p>
 and end time of the survey shift at that location (in 24h format).</p></li>
 <li><p><strong>day</strong> (<em>int</em>) – ID for that day.</p></li>
 <li><p><strong>parameters</strong> (<em>float</em><em>[</em><em>]</em>) – Parameters for the traffic flow (gravity) model.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
 <li><p><strong>limitToOneObservation</strong> (<em>bool</em>) – Whether an agent travelling on an inadmissible route can be observed
 at one location only (as assumed when we fit the route choice model)

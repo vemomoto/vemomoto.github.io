@@ -63,8 +63,8 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.main" title="hybrid_vector_model.boater_movement_model.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.example" title="hybrid_vector_model.boater_movement_model.example"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example</span></code></a>()</p></td>
+<td><p>Shows how an example model can be fitted.</p></td>
 </tr>
 </tbody>
 </table>
@@ -102,13 +102,13 @@ jurisdictions and lakes.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_parameters</span></code></a>(dynamicParameters, considered)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_parameters</span></code></a>(dynamicParameters, …)</p></td>
 <td><p>Converts an array of given parameters to an array of standard (maximal) length and in the parameter domain of the model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor</span></code></a>(parameters, considered[, pair])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor</span></code></a>(parameters, parametersConsidered)</p></td>
 <td><p>Returns a factor proportional to the mean traveller flow between the</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor_autograd</span></code></a>(parameters, considered)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor_autograd</span></code></a>(parameters, …)</p></td>
 <td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code>, but must use autograd’s functions instead of numpy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_sink_covariates</span></code></a>(covariates)</p></td>
@@ -148,10 +148,10 @@ jurisdictions and lakes.</p>
 
 <dl class="method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters">
-<code class="sig-name descname">convert_parameters</code><span class="sig-paren">(</span><em class="sig-param">dynamicParameters: (double[]) Free parameters</em>, <em class="sig-param">considered: (bool[]) Which parameters are free</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.convert_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">convert_parameters</code><span class="sig-paren">(</span><em class="sig-param">dynamicParameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.convert_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts an array of given parameters to an array of standard (maximal)
 length and in the parameter domain of the model.</p>
-<p>Not all parameters may be considered in the model (to avoid overfitting)
+<p>Not all parameters may be parametersConsidered in the model (to avoid overfitting)
 Furthermore, some parameters must be constrained to be positive or
 within a certain interval. In this method, the parameter vector
 (containing only the values of the free parameters) is transformed to
@@ -160,8 +160,8 @@ a vector in the parameter space of the model</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dynamicParameters</strong> (<em>float</em><em>[</em><em>]</em>) – Free parameters. The parameters that are not held constant.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code></p></li>
 </ul>
 </dd>
@@ -170,15 +170,15 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 
 <dl class="method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor">
-<code class="sig-name descname">get_mean_factor</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">considered</em>, <em class="sig-param">pair=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_mean_factor</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">pair=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a factor proportional to the mean traveller flow between the
 source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parameters</strong> (<em>double</em><em>[</em><em>]</em>) – Contains the free model parameters.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.</p></li>
 <li><p><strong>pair</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) – Source-sink pair for which the factor shall be determined.
 This is the source-sink pair of interest (the indices of the source and
@@ -191,7 +191,7 @@ combinations are computed).</p></li>
 
 <dl class="method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd">
-<code class="sig-name descname">get_mean_factor_autograd</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">considered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_mean_factor_autograd</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code></a>, but must use autograd’s functions
 instead of numpy.</p>
 <p>This function is necessary to compute derivatives with automatic
@@ -200,8 +200,8 @@ differentiation.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parameters</strong> (<em>double</em><em>[</em><em>]</em>) – Contains the free model parameters.</p></li>
-<li><p><strong>considered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
-to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">considered</span></code> must have exactly as
+<li><p><strong>parametersConsidered</strong> (<em>bool</em><em>[</em><em>]</em>) – Which parameters are free? Is <code class="docutils literal notranslate"><span class="pre">True</span></code> at the entries corresponding
+to the parameters that are free. <code class="docutils literal notranslate"><span class="pre">parametersConsidered</span></code> must have exactly as
 many <code class="docutils literal notranslate"><span class="pre">True</span></code> entries as the length of <code class="docutils literal notranslate"><span class="pre">dynamicParameters</span></code>.</p></li>
 </ul>
 </dd>
@@ -224,9 +224,11 @@ The method can be used to compute derived covariates</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="hybrid_vector_model.boater_movement_model.main">
-<code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="hybrid_vector_model.boater_movement_model.example">
+<code class="sig-name descname">example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#example"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows how an example model can be fitted.</p>
+<p>The files for the example are provided in the subfolder <code class="docutils literal notranslate"><span class="pre">Example</span></code>.</p>
+</dd></dl>
 
 </div>
 

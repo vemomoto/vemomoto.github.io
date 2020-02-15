@@ -36,9 +36,6 @@
             
   <h1>Source code for lopaths.graph</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Created on 05.07.2016</span>
-
-<span class="sd">@author: Samuel</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span> <span class="k">as</span> <span class="n">iterproduct</span><span class="p">,</span> <span class="n">repeat</span><span class="p">,</span> <span class="n">starmap</span><span class="p">,</span> <span class="n">count</span> <span class="k">as</span> <span class="n">itercount</span>
@@ -106,7 +103,6 @@
 
 <div class="viewcode-block" id="FlexibleGraph"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlexibleGraph">[docs]</a><span class="k">class</span> <span class="nc">FlexibleGraph</span><span class="p">(</span><span class="n">HierarchichalPrinter</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    classdocs</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">edgeData</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">vertexData</span><span class="p">,</span> 
@@ -198,12 +194,6 @@
                             <span class="k">break</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="k">break</span>
-                        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                        warnings.warn(&quot;An edge from &quot; + str(otherVertex) </span>
-<span class="sd">                                      + &quot; to &quot; + str(thisVertex) </span>
-<span class="sd">                                      + &quot; did already exist. I &quot; + </span>
-<span class="sd">                                      &quot;overwrote it.&quot;)</span>
-<span class="sd">                        &quot;&quot;&quot;</span>
             
                 <span class="n">vertexDataList</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">otherVertex</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span>
                 
@@ -518,18 +508,12 @@
         
 <div class="viewcode-block" id="FastGraph"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FastGraph">[docs]</a><span class="k">class</span> <span class="nc">FastGraph</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">DocMetaSuperclass</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    classdocs</span>
 <span class="sd">    &#39;&#39;&#39;</span>
         
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flexibleGraph</span><span class="p">):</span>
         
         <span class="c1">#can leave vertexIDs as iterator???</span>
         <span class="n">rawVertexData</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">flexibleGraph</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
-        <span class="c1">#vertexIDs = np.fromiter(vertexIDs, </span>
-        <span class="c1">#                        dtype=flexibleGraph.vertices.array.ID.dtype)</span>
-        <span class="c1">#vertexIDs = np.rec.array(vertexIDs, dtype={&quot;names&quot;:[&quot;ID&quot;], </span>
-        <span class="c1">#                                           &quot;formats&quot;:[vertexIDs.dtype]},</span>
-        <span class="c1">#                         copy=False)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">significanceLabel</span> <span class="o">=</span> <span class="n">flexibleGraph</span><span class="o">.</span><span class="n">significanceLabel</span>
         
@@ -783,9 +767,6 @@
                              <span class="n">deepcopy</span><span class="p">(</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;successors&quot;</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
                              <span class="n">vertices</span><span class="o">.</span><span class="n">considered</span><span class="p">])</span>
         
-        <span class="c1">#vertices.array.tmp_predecessors = vertices.array.predecessors</span>
-        <span class="c1">#vertices.array.tmp_successors = vertices.array.successors</span>
-        
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;posix&#39;</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Parallelization with shared memory is ony possible &quot;</span>
                           <span class="o">+</span> <span class="s2">&quot;on Unix-based systems. Thus, the code will not be &quot;</span>
@@ -802,32 +783,9 @@
         <span class="n">changeIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">edgeSize</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">size</span>
         
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        vertexA = np.nonzero(vertexArr[&quot;ID&quot;]== b&#39;255754&#39;)[0]</span>
-<span class="sd">        vertexB = np.nonzero(vertexArr[&quot;ID&quot;]== b&#39;255412&#39;)[0]</span>
-<span class="sd">        vertexX = np.nonzero(vertexArr[&quot;ID&quot;]== b&#39;255746&#39;)[0]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># break statement, if all edges are bounded</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Computing reach bounds smaller than&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
-            
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            print(&quot;predA&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexA][&quot;predecessors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;sucA&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexA][&quot;successors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;predB&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexB][&quot;predecessors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;sucB&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexB][&quot;successors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;predX&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexX][&quot;predecessors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;sucX&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexX][&quot;successors&quot;][0].keys())])</span>
-<span class="sd">            </span>
-<span class="sd">            print(&quot;tmp_predA&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexA][&quot;tmp_predecessors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;tmp_sucA&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexA][&quot;tmp_successors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;tmp_predB&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexB][&quot;tmp_predecessors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;tmp_sucB&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexB][&quot;tmp_successors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;tmp_predX&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexX][&quot;tmp_predecessors&quot;][0].keys())])</span>
-<span class="sd">            print(&quot;tmp_sucX&quot;, vertexArr[&quot;ID&quot;][list(vertexArr[vertexX][&quot;tmp_successors&quot;][0].keys())])</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            
             
             <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">edges</span><span class="o">.</span><span class="n">changeIndex</span> <span class="o">==</span> <span class="n">changeIndex</span> 
                     <span class="ow">or</span> <span class="ow">not</span> <span class="n">edgeSize</span> <span class="o">==</span> <span class="n">edges</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
@@ -931,32 +889,10 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">edgeArr</span><span class="p">[</span><span class="s2">&quot;considered&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">():</span> <span class="c1"># break statement for loop</span>
                 <span class="k">break</span>
             
-            <span class="c1">#DEBUG           </span>
-            <span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">            for edge in edgeArr[toBeDeleted]:</span>
-<span class="sd">                fromIndex, toIndex = edge.fromIndex, edge.toIndex</span>
-<span class="sd">                if fromIndex not in tmp_predecessorsArr[toIndex]:</span>
-<span class="sd">                    print(edge)</span>
-<span class="sd">                    print(vertexArr[toIndex])</span>
-<span class="sd">                if toIndex not in tmp_successorsArr[fromIndex]:</span>
-<span class="sd">                    print(edge)</span>
-<span class="sd">                    print(vertexArr[fromIndex])</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            <span class="c1">#/DEBUG            </span>
-                
             <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edgeArr</span><span class="p">[</span><span class="n">toBeDeleted</span><span class="p">]:</span>
                 <span class="n">fromIndex</span><span class="p">,</span> <span class="n">toIndex</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;fromIndex&quot;</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;toIndex&quot;</span><span class="p">]</span>
                 <span class="k">del</span> <span class="n">tmp_predecessorsArr</span><span class="p">[</span><span class="n">toIndex</span><span class="p">][</span><span class="n">fromIndex</span><span class="p">]</span>
                 <span class="k">del</span> <span class="n">tmp_successorsArr</span><span class="p">[</span><span class="n">fromIndex</span><span class="p">][</span><span class="n">toIndex</span><span class="p">]</span>
-                <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                if ((fromIndex == vertexA and toIndex == vertexX) or</span>
-<span class="sd">                    (fromIndex == vertexX and toIndex == vertexA) or</span>
-<span class="sd">                    (fromIndex == vertexB and toIndex == vertexX) or</span>
-<span class="sd">                    (fromIndex == vertexX and toIndex == vertexB)):</span>
-<span class="sd">                    print(&quot;Delete2&quot;, vertexArr[&quot;ID&quot;][fromIndex], vertexArr[&quot;ID&quot;][toIndex],</span>
-<span class="sd">                          edge[&quot;reachBound&quot;])</span>
-<span class="sd">                &quot;&quot;&quot;</span>
-                
                 
                 <span class="c1"># add penalties</span>
                 <span class="k">if</span> <span class="n">outPenaltyArr</span><span class="p">[</span><span class="n">fromIndex</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;reachBound&quot;</span><span class="p">]:</span>
@@ -968,21 +904,9 @@
         
         <span class="bp">self</span><span class="o">.</span><span class="n">__convert_edge_reaches_to_vertex_reaches</span><span class="p">()</span>
         
-        <span class="sd">&quot;&quot;&quot; DEBUG</span>
-<span class="sd">        vi = {r[&quot;ID&quot;]:i for i, r in enumerate(vertexArr)}</span>
-<span class="sd">        v = vertexArr</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
         <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">remove_fields</span><span class="p">(</span><span class="n">temporaryVerticesFields</span><span class="p">)</span>
         
-        <span class="c1"># Uncomment, if done with testing !!!!!!!!!!!!!</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">remove_fields</span><span class="p">(</span><span class="n">temporaryEdgesFields</span><span class="p">)</span>
-        
-        
-        <span class="c1"># DEBUG ONLY</span>
-        <span class="c1">#np.savetxt(&quot;edgesOut.txt&quot;, self.edges.get_array()[[&quot;ID&quot;, &quot;fromID&quot;, &quot;toID&quot;, &quot;cost&quot;, &quot;reachBound&quot;]].astype(np.ndarray))</span>
-        <span class="c1">#np.savetxt(&quot;verticesOut.txt&quot;, self.vertices.get_array())</span>
-        <span class="c1"># \DEBUG</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">__sort_neighbors</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span>
@@ -995,15 +919,6 @@
                                          <span class="n">pruneConstant</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
                                          <span class="n">counter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         
-        <span class="c1">#DEBUG ONLY</span>
-        <span class="c1">#root = self.vertices.array.ID[rootIndex]</span>
-        <span class="c1">#if root == b&#39;606021&#39;:</span>
-        <span class="c1">#    print(&#39;bla11&#39;)</span>
-        <span class="c1">#if root == b&#39;9&#39;:</span>
-        <span class="c1">#    print(&#39;bla9&#39;)</span>
-        <span class="c1">#print(pruneConstant)</span>
-        <span class="c1">#print(counter)</span>
-        <span class="c1">#/DEBUG</span>
         <span class="k">if</span> <span class="n">counter</span><span class="p">:</span>
             <span class="n">percentage</span> <span class="o">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">percentage</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="n">percentage</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1146,12 +1061,6 @@
                 <span class="n">boundableEdges</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">leafIndexInTree</span><span class="p">,</span> <span class="n">leafData</span><span class="p">[</span><span class="s2">&quot;edge&quot;</span><span class="p">]))</span>
         
         
-        <span class="c1">#DEBUG ONLY:</span>
-        <span class="c1">#tt = deepcopy(tree)</span>
-        <span class="c1">#tt.add_fields(&quot;vertexID&quot;, self.vertices.array.ID.dtype, self.vertices.get_array().ID[tree.get_array().vertexIndex])</span>
-        <span class="c1">#/DEBUG</span>
-        
-         
         <span class="c1"># compute height of elements in tree. Thereby, assign to each vertex</span>
         <span class="c1"># the height of its parent, if it would be reached through this vertex</span>
         <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1289,16 +1198,6 @@
         <span class="n">inPenalty</span> <span class="o">=</span> <span class="n">vertexData</span><span class="p">[</span><span class="s2">&quot;inPenalty_original&quot;</span><span class="p">]</span>
         <span class="n">outPenalty</span> <span class="o">=</span> <span class="n">vertexData</span><span class="p">[</span><span class="s2">&quot;outPenalty&quot;</span><span class="p">]</span>
         
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DEBUG = (vertexData[&quot;ID&quot;] == b&#39;800458&#39; or</span>
-<span class="sd">                 vertexData[&quot;ID&quot;] == b&#39;788942&#39; or</span>
-<span class="sd">                 vertexData[&quot;ID&quot;] == b&#39;1230440&#39; or</span>
-<span class="sd">                 vertexData[&quot;ID&quot;] == b&#39;524762&#39; or</span>
-<span class="sd">                 vertexData[&quot;ID&quot;] == b&#39;638452&#39;)</span>
-<span class="sd">        </span>
-<span class="sd">        if DEBUG:</span>
-<span class="sd">            print(vertexData[&quot;ID&quot;])</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">maxEdgeLength</span> <span class="ow">and</span> <span class="n">successors</span> <span class="ow">and</span> <span class="n">predecessors</span><span class="p">:</span>
             <span class="n">successorEdgeList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">successors</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
             <span class="n">predecessorEdgeList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">predecessors</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -1308,7 +1207,6 @@
             <span class="n">maxSucVal1</span> <span class="o">=</span> <span class="n">lengthArr</span><span class="p">[</span><span class="n">successorEdgeList</span><span class="p">[</span><span class="n">maxSuc1</span><span class="p">]]</span>
             <span class="n">maxPred2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">lengthArr</span><span class="p">[</span><span class="n">predecessorEdgeList</span><span class="p">])</span>
             <span class="n">maxPredVal2</span> <span class="o">=</span> <span class="n">lengthArr</span><span class="p">[</span><span class="n">predecessorEdgeList</span><span class="p">[</span><span class="n">maxPred2</span><span class="p">]]</span>
-            <span class="c1">#if DEBUG: print(vertexData[&quot;ID&quot;], maxSucVal1, maxPredVal2, lengthArr[successorEdgeList], lengthArr[predecessorEdgeList])</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">del</span> <span class="n">predecessorEdgeList</span><span class="p">[</span><span class="n">predecessorList</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">successorList</span><span class="p">[</span><span class="n">maxSuc1</span><span class="p">])]</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
@@ -1324,16 +1222,12 @@
             <span class="k">if</span> <span class="n">successorEdgeList</span><span class="p">:</span>
                 <span class="n">maxLen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maxPredVal2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">lengthArr</span><span class="p">[</span><span class="n">successorEdgeList</span><span class="p">]),</span> <span class="n">maxLen</span><span class="p">)</span>
                 
-            <span class="c1">#if DEBUG: print(vertexData[&quot;ID&quot;], maxLen)</span>
-                
             <span class="k">if</span> <span class="n">maxLen</span> <span class="o">&gt;</span> <span class="n">maxEdgeLength</span><span class="p">:</span>
-                <span class="c1">#if DEBUG: print(vertexData[&quot;ID&quot;], &quot;return inf&quot;, maxLen, maxEdgeLength)</span>
                 <span class="k">if</span> <span class="n">vertexWeights</span><span class="p">:</span>
                     <span class="n">vertexWeights</span><span class="p">[</span><span class="n">vertexIndex</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
                     <span class="k">return</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-        <span class="c1">#if DEBUG: print(vertexData[&quot;ID&quot;], &quot;not rejected&quot;) </span>
                 
         <span class="k">if</span> <span class="n">expansionBound</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">stopper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
@@ -1418,8 +1312,6 @@
         <span class="n">previousNeighbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">iterchain</span><span class="p">(</span><span class="n">successors</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> 
                                           <span class="n">predecessors</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
         
-        <span class="c1">#DEBUG = vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255746&#39;</span>
-        
         <span class="n">vertexArr</span><span class="p">[</span><span class="s2">&quot;unbounded&quot;</span><span class="p">][</span><span class="n">vertexIndex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         
         <span class="k">if</span> <span class="n">vertexArr</span><span class="p">[</span><span class="s2">&quot;significant&quot;</span><span class="p">][</span><span class="n">vertexIndex</span><span class="p">]:</span>
@@ -1441,7 +1333,6 @@
             
             <span class="c1"># introduce new edges</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">successor</span> <span class="o">==</span> <span class="n">predecessor</span><span class="p">:</span>
-                <span class="c1">#if DEBUG: print(&quot;predecessor, successor&quot;, vertexArr[&quot;ID&quot;][predecessor], vertexArr[&quot;ID&quot;][successor])</span>
                 <span class="n">newLength</span> <span class="o">=</span> <span class="n">lengthArr</span><span class="p">[</span><span class="n">successorEdge</span><span class="p">]</span> <span class="o">+</span> <span class="n">lengthArr</span><span class="p">[</span><span class="n">predecessorEdge</span><span class="p">]</span>
                 
                 <span class="k">if</span> <span class="n">newLength</span> <span class="o">&gt;</span> <span class="n">maxEdgeLength</span><span class="p">:</span>
@@ -1502,25 +1393,12 @@
                 <span class="n">changeIndex</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">changeIndex</span>
             
         <span class="c1"># delete old edges     </span>
-        <span class="c1">#if DEBUG:</span>
-        <span class="c1">#    print(&quot;successors&quot;, vertexArr[&quot;ID&quot;][list(successors.keys())])   </span>
-        <span class="c1">#    print(&quot;predecessors&quot;, vertexArr[&quot;ID&quot;][list(predecessors.keys())])   </span>
         <span class="k">for</span> <span class="n">items</span><span class="p">,</span> <span class="n">neighborArr</span> <span class="ow">in</span> <span class="p">((</span><span class="n">successors</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">tmp_predecessorArr</span><span class="p">),</span>
                                    <span class="p">(</span><span class="n">predecessors</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">tmp_successorArr</span><span class="p">)):</span>   
             <span class="k">for</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
                 <span class="c1">#neighborArr[neighbor].pop(vertexIndex, None)</span>
                 <span class="k">del</span> <span class="n">neighborArr</span><span class="p">[</span><span class="n">neighbor</span><span class="p">][</span><span class="n">vertexIndex</span><span class="p">]</span>
                 <span class="n">consideredArr</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-                <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                if ((vertexArr[&quot;ID&quot;][neighbor] == b&#39;255746&#39; and vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255412&#39;) or</span>
-<span class="sd">                    (vertexArr[&quot;ID&quot;][neighbor] == b&#39;255412&#39; and vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255746&#39;) or</span>
-<span class="sd">                    (vertexArr[&quot;ID&quot;][neighbor] == b&#39;255746&#39; and vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255754&#39;) or</span>
-<span class="sd">                    (vertexArr[&quot;ID&quot;][neighbor] == b&#39;255754&#39; and vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255746&#39;) or</span>
-<span class="sd">                    (vertexArr[&quot;ID&quot;][neighbor] == b&#39;255754&#39; and vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255412&#39;) or</span>
-<span class="sd">                    (vertexArr[&quot;ID&quot;][neighbor] == b&#39;255412&#39; and vertexArr[&quot;ID&quot;][vertexIndex] == b&#39;255754&#39;)):</span>
-<span class="sd">                    print(&quot;Delete&quot;, vertexArr[&quot;ID&quot;][vertexIndex], vertexArr[&quot;ID&quot;][neighbor])</span>
-<span class="sd">                &quot;&quot;&quot;</span>
-                
                 
         <span class="k">if</span> <span class="n">replaceEdges</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">neighborArr</span> <span class="ow">in</span> <span class="p">((</span><span class="n">successors</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">predecessorArr</span><span class="p">),</span>
@@ -1795,7 +1673,6 @@
         <span class="k">if</span> <span class="n">getPath</span><span class="p">:</span>
             <span class="n">fromIndexArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="o">.</span><span class="n">fromIndex</span>
             <span class="n">toIndexArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="o">.</span><span class="n">toIndex</span>
-            <span class="c1">#originalEdgeArr = edgeArr[[&quot;originalEdge1&quot;, &quot;originalEdge2&quot;]]</span>
             <span class="n">originalEdgeArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="p">[[</span><span class="s2">&quot;originalEdge2&quot;</span><span class="p">,</span> <span class="s2">&quot;originalEdge1&quot;</span><span class="p">]]</span>
             <span class="n">isShortcutArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="o">.</span><span class="n">originalEdge1</span> <span class="o">&gt;=</span> <span class="mi">0</span>
             
@@ -1826,34 +1703,6 @@
     
 <div class="viewcode-block" id="FlowPointGraph.find_shortest_distance_array"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_shortest_distance_array">[docs]</a>    <span class="k">def</span> <span class="nf">find_shortest_distance_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromIndices</span><span class="p">,</span> <span class="n">toIndices</span><span class="p">):</span>
         
-        <span class="c1">############################## Profiling ###############################</span>
-        <span class="n">profiling</span> <span class="o">=</span> <span class="kc">False</span>
-        
-        <span class="k">if</span> <span class="n">profiling</span><span class="p">:</span>
-            <span class="n">taskLength</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fromIndices</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">toIndices</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span>
-            <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">taskLength</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="n">taskLength</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">taskLength</span><span class="p">:</span>
-                <span class="n">fromIndex</span> <span class="o">=</span> <span class="n">fromIndices</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-                <span class="n">toIndex</span> <span class="o">=</span> <span class="n">toIndices</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;profiling find_shortest_distance from&quot;</span><span class="p">,</span> 
-                      <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">fromIndex</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">],</span> <span class="s2">&quot;to&quot;</span><span class="p">,</span> 
-                      <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">toIndex</span><span class="p">][</span><span class="s2">&quot;ID&quot;</span><span class="p">])</span>
-                <span class="n">line_profile</span> <span class="o">=</span> <span class="n">line_profiler</span><span class="o">.</span><span class="n">LineProfiler</span><span class="p">(</span><span class="n">find_shortest_distance</span><span class="p">)</span>
-                <span class="n">line_profile</span><span class="o">.</span><span class="n">runcall</span><span class="p">(</span><span class="n">find_shortest_distance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> 
-                                <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">fromIndex</span><span class="p">,</span> <span class="n">toIndex</span><span class="p">)</span>
-                <span class="c1">#profile.print_stats()</span>
-                <span class="n">line_profile</span><span class="o">.</span><span class="n">dump_stats</span><span class="p">(</span><span class="s2">&quot;shPath&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.lprof&quot;</span><span class="p">)</span>
-                <span class="c1">#line_profile.print_stats()</span>
-                <span class="n">profile</span><span class="p">(</span><span class="s2">&quot;find_shortest_distance(self.vertices.array, self.edges.array, fromIndex, toIndex)&quot;</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span> <span class="nb">locals</span><span class="p">())</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;%&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">()</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;%&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
-            
-            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-            <span class="k">return</span> 
-        
-        
-        <span class="c1">########################################################################</span>
-        
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Computing shortest distance array&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
         <span class="n">sinkNumber</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">toIndices</span><span class="p">)</span>
@@ -1873,7 +1722,6 @@
         
         <span class="n">printCounter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">combinationNumber</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
         
-        <span class="c1">#&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">ProcessPoolExecutor_ext</span><span class="p">(</span><span class="n">cpu_count</span><span class="p">,</span> <span class="n">const_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
                 <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
                         <span class="n">find_shortest_distance</span><span class="p">,</span>
@@ -1887,20 +1735,10 @@
                     <span class="k">if</span> <span class="n">percentage</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="n">percentage</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                     <span class="n">dists</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="n">sinkNumber</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="n">sinkNumber</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        any(starmap(find_shortest_pathX,</span>
-<span class="sd">                        zip(Repeater(self), </span>
-<span class="sd">                        sourceSinkCombinations[:,0],</span>
-<span class="sd">                        sourceSinkCombinations[:,1],</span>
-<span class="sd">                        Repeater(False))))</span>
-<span class="sd">        sys.exit()</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">dists</span></div>
         
 <div class="viewcode-block" id="FlowPointGraph.find_alternative_paths"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_alternative_paths">[docs]</a>    <span class="k">def</span> <span class="nf">find_alternative_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromIndices</span><span class="p">,</span> <span class="n">toIndices</span><span class="p">,</span> 
-                               <span class="c1">#fromVertexClassIndices=None,</span>
-                               <span class="c1">#classViaIndices=None,</span>
                                <span class="n">shortestDistances</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                <span class="n">stretchConstant</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>         <span class="c1"># (1 + epsilon)</span>
                                <span class="n">localOptimalityConstant</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># alpha</span>
@@ -1920,9 +1758,6 @@
         
         <span class="n">testResults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:{},</span> <span class="s2">&quot;result&quot;</span><span class="p">:{}}</span>
         
-        <span class="c1">#DEBIND = np.nonzero(self.vertices.array[&quot;ID&quot;]==b&#39;OJ531&#39;)[0] #[0]</span>
-        
-        <span class="c1">#print(DEBIND, self.vertices.array[DEBIND])</span>
         
         <span class="n">startTime</span> <span class="o">=</span> <span class="n">startTimeTot</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         
@@ -1942,9 +1777,6 @@
                               <span class="s2">&quot;subgraphs.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">dists</span> <span class="o">=</span> <span class="n">shortestDistances</span>
-        <span class="c1">#dists = np.ones(15).reshape((3,5))*7</span>
-        
-        <span class="c1">#completeDists = dists</span>
         
         <span class="n">endTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">][</span><span class="s2">&quot;shortest path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span>
@@ -1961,21 +1793,14 @@
 
         <span class="n">startIndices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">fromIndices</span><span class="p">,</span> <span class="n">toIndices</span><span class="p">))</span>
         
-        
-        <span class="c1">#closestSourceQueue = MultiprocessingQueue()</span>
         <span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
         <span class="n">closestSourceQueue</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
-        
-        <span class="c1">#closestSourceQueue = ThreadQueue()</span>
         
         <span class="n">cpu_count</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">CPU_COUNT</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">sinkNumber</span><span class="o">//</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">const_args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">],</span> 
                       <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;inspection&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">),</span>
                       <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">stretchConstant</span><span class="p">,</span>
                       <span class="n">localOptimalityConstant</span><span class="p">,</span> <span class="n">closestSourceQueue</span><span class="p">]</span>
-        
-        <span class="c1">#for profiling only</span>
-        <span class="n">const_args_tree</span> <span class="o">=</span> <span class="n">const_args</span>
         
         <span class="n">taskLength</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">startIndices</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Labelling vertices.&quot;</span><span class="p">)</span>
@@ -1985,11 +1810,7 @@
         
         <span class="n">labelData</span> <span class="o">=</span> <span class="p">[]</span>
         
-        <span class="c1">#vertexDistances = np.empty((self.vertices.size, </span>
-        <span class="c1">#                            sourceNumber+sinkNumber))</span>
-        <span class="c1">#vertexDistances.fill(np.nan)</span>
         <span class="n">closestSourceDists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
-        <span class="c1">#sharedArgs = []</span>
         <span class="n">edgesVisitedSources</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
         <span class="n">edgesVisitedSinks</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
         
@@ -1998,9 +1819,6 @@
             <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_grow_bounded_tree</span><span class="p">,</span>
                               <span class="n">fromIndices</span><span class="p">,</span> <span class="n">Repeater</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span> <span class="n">min_source_dists</span><span class="p">,</span>
                               <span class="n">max_source_dists</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-            <span class="c1">#mapObj = pool.map(FlowPointGraph._grow_bounded_tree,</span>
-            <span class="c1">#                  itercount(), fromIndices, Repeater(True), Repeater(True), </span>
-            <span class="c1">#                  chunksize=1)</span>
             <span class="n">decreaseThread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span>
                         <span class="n">target</span><span class="o">=</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_decrease_closest_source_distance</span><span class="p">,</span> 
                         <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">closestSourceQueue</span><span class="p">,</span> <span class="n">closestSourceDists</span><span class="p">)</span>
@@ -2026,7 +1844,6 @@
                               <span class="n">toIndices</span><span class="p">,</span> 
                               <span class="n">Repeater</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="n">min_sink_dists</span><span class="p">,</span> <span class="n">max_sink_dists</span><span class="p">,</span> 
                               <span class="n">chunksize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-            <span class="c1">#                 tasklength=sinkNumber, min_chunksize=2)</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mapObj</span><span class="p">):</span>
                 <span class="n">percentageDone</span> <span class="o">=</span> <span class="n">printCounter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">percentageDone</span><span class="p">:</span>
@@ -2037,12 +1854,6 @@
                         <span class="n">edgesVisitedSinks</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
                 <span class="n">labelData</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
                 
-        <span class="c1">#infty = closestSourceDists==np.inf</span>
-        <span class="c1">#print(&quot;infty-Elements&quot;, np.sum(infty))</span>
-        <span class="c1">#print(&quot;mean bound&quot;, np.mean(closestSourceDists[~infty]))</span>
-        <span class="c1">#print(&quot;median bound&quot;, np.median(closestSourceDists[~infty]))</span>
-        
-        <span class="c1">#print(&quot;TotalSum&quot;, sum(edgesVisitedString))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Vertex labelling done.&quot;</span><span class="p">)</span>
         <span class="n">endTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">][</span><span class="s2">&quot;labelling&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span>
@@ -2053,14 +1864,9 @@
         
         
         <span class="n">consideredEdges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">edgesVisitedSinks</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        plateauPeakEdges = consideredEdges</span>
-<span class="sd">        print(&quot;Skip finding plateau peaks.&quot;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">plateauPeakEdges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_plateau_peaks</span><span class="p">(</span><span class="n">consideredEdges</span><span class="p">,</span> 
                                                     <span class="n">edgesVisitedSources</span><span class="p">,</span>
                                                     <span class="n">edgesVisitedSinks</span><span class="p">)</span>
-        <span class="c1">#&quot;&quot;&quot;</span>
         
         <span class="n">endTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s2">&quot;number plateau peaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">plateauPeakEdges</span><span class="p">)</span>
@@ -2078,16 +1884,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
         
         
-        <span class="c1">#print(&quot;plateau peaks:&quot;, len(plateauPeakEdges))</span>
-        <span class="c1">#print(&quot;unique plateau peaks:&quot;, len(np.unique(self.edges.array[&quot;toIndex&quot;][plateauPeakEdges])))</span>
-        
         <span class="n">findPairProduct</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">edgesVisitedSources</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">edgesVisitedSinks</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">findPairProduct</span><span class="p">,</span> 
                                      <span class="n">plateauPeakEdges</span><span class="p">)))</span>
         
         
         <span class="n">plateauPeakEdges</span> <span class="o">=</span> <span class="n">plateauPeakEdges</span><span class="p">[</span><span class="n">order</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-        <span class="c1">#print(&quot;DEBIND in plateauPeakEdges&quot;, DEBIND in plateauPeakEdges)</span>
         
         
         <span class="n">taskLength</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">plateauPeakEdges</span><span class="p">)</span>
@@ -2125,11 +1927,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Determining unique candidates per plateau.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
         
-        <span class="n">roundNo</span> <span class="o">=</span> <span class="mi">8</span>
         <span class="n">taskLength</span> <span class="o">=</span> <span class="n">sourceNumber</span><span class="o">*</span><span class="n">sinkNumber</span>
         <span class="n">printCounter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">taskLength</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">)</span>
-        <span class="c1">#sourceDistances = round_rel(sourceDistances, roundNo)</span>
-        <span class="c1">#sinkDistances = round_rel(sinkDistances, roundNo)</span>
         
         <span class="n">const_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">dists</span><span class="p">,</span> <span class="n">sourceDistances</span><span class="p">,</span> <span class="n">sinkDistances</span><span class="p">,</span> 
                       <span class="n">stretchConstant</span><span class="p">,</span> 
@@ -2188,10 +1987,7 @@
         <span class="c1"># Therefore, we can merge the vertices only, if we find a smart way</span>
         <span class="c1"># to keep the number of considered pairs small.</span>
         
-        <span class="c1">#cpu_count = 1 #!!!!!!!!</span>
         <span class="n">countVia</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#debug only</span>
-        <span class="c1">#countPrunedDouble = 0 #debug only</span>
-        <span class="c1">#countPrunedFar = 0 #debug only</span>
         <span class="n">countNotLO</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#debug only</span>
         <span class="n">disorder</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">taskLength</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">disorder</span><span class="p">)</span>
@@ -2212,51 +2008,7 @@
         <span class="n">const_args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> 
                       <span class="n">labelData</span><span class="p">,</span> <span class="n">viaData</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="p">,</span>
                       <span class="n">acceptionFactor</span><span class="p">,</span> <span class="n">rejectionFactor</span><span class="p">]</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        #DEBUG</span>
-<span class="sd">        for d, a in zip(disorder, self.edges.array[&quot;toIndex&quot;][plateauPeakEdges[disorder]]):</span>
-<span class="sd">            print(&quot;bla&quot;, d)</span>
-<span class="sd">            FlowPointGraph.find_admissible_via_vertices(*const_args, d, a)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         
-        
-        
-        <span class="c1">############################## Profiling ###############################</span>
-        <span class="n">profiling</span> <span class="o">=</span> <span class="kc">False</span>
-        
-        <span class="k">if</span> <span class="n">profiling</span><span class="p">:</span>
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            for index in 0, 1, 2:</span>
-<span class="sd">                profile = line_profiler.LineProfiler(FlowPointGraph._grow_bounded_tree)</span>
-<span class="sd">                profile.runcall(FlowPointGraph._grow_bounded_tree, *const_args_tree,</span>
-<span class="sd">                                toIndices[index], False, min_sink_dists[index],</span>
-<span class="sd">                                max_sink_dists[index])</span>
-<span class="sd">                profile.print_stats()</span>
-<span class="sd">                print(&quot;%&quot; * 80)</span>
-<span class="sd">                print()</span>
-<span class="sd">                print(&quot;%&quot; * 80)</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            
-            <span class="nb">print</span><span class="p">(</span><span class="n">viaCandidates</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">taskLength</span> <span class="o">//</span> <span class="mi">3</span><span class="p">,</span> <span class="n">taskLength</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">taskLength</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">//</span> <span class="mi">5</span><span class="p">,</span> <span class="n">taskLength</span> <span class="o">*</span> <span class="mi">95</span> <span class="o">//</span> <span class="mi">100</span><span class="p">,</span> <span class="n">taskLength</span> <span class="o">*</span> <span class="mi">99</span> <span class="o">//</span> <span class="mi">100</span><span class="p">,</span> <span class="n">taskLength</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;profiling find_admissible_via_vertices with index&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">viaData</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">]),</span> <span class="n">viaData</span><span class="p">)</span>
-                <span class="c1">#profile = line_profiler.LineProfiler(find_admissible_via_vertices)</span>
-                <span class="n">profile</span> <span class="o">=</span> <span class="n">line_profiler</span><span class="o">.</span><span class="n">LineProfiler</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">find_admissible_via_vertices</span><span class="p">)</span>
-                <span class="c1">#profile.runcall(find_admissible_via_vertices, self.vertices.array, self.edges.array, dists, </span>
-                <span class="n">profile</span><span class="o">.</span><span class="n">runcall</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">find_admissible_via_vertices</span><span class="p">,</span> <span class="o">*</span><span class="n">const_args</span><span class="p">,</span> 
-                                <span class="n">viaData</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">],</span>
-                                <span class="n">viaCandidates</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">])</span>
-                <span class="n">profile</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
-                <span class="c1">#profile.dump_stats(&quot;index&quot;+str(index)+&quot;.lprof&quot;)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;%&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">()</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;%&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
-            
-            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-            <span class="k">return</span> 
-        
-        <span class="c1">########################################################################</span>
         <span class="k">with</span> <span class="n">ProcessPoolExecutor_ext</span><span class="p">(</span><span class="n">cpu_count</span><span class="p">,</span> <span class="n">const_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
             <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">find_admissible_via_vertices</span><span class="p">,</span>
                               <span class="n">viaCandidates</span><span class="p">[</span><span class="n">disorder</span><span class="p">],</span>
@@ -2304,19 +2056,6 @@
                     <span class="n">stations</span> <span class="o">=</span> <span class="n">sourceInspections</span><span class="p">[</span><span class="n">sourceIndex</span><span class="p">]</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
                                                     <span class="n">sinkInspections</span><span class="p">[</span><span class="n">sinkIndex</span><span class="p">])</span>
                     <span class="k">for</span> <span class="n">inspectionIndex</span> <span class="ow">in</span> <span class="n">stations</span><span class="p">:</span>
-                        <span class="c1">#debug</span>
-                        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                        </span>
-<span class="sd">                        print(sourceIndex, sinkIndex, pathIndex, inspectionIndex, viaIndex)</span>
-<span class="sd">                        if pathIndex in inspectedRoutes[inspectionIndex][</span>
-<span class="sd">                                (sourceIndex, sinkIndex)]:</span>
-<span class="sd">                            print(list(sourceInspections[sourceIndex]))</span>
-<span class="sd">                            print(list(sinkInspections[sinkIndex]))</span>
-<span class="sd">                            #print(&quot;sourceInspections&quot;, sourceInspections)</span>
-<span class="sd">                            #print(&quot;sinkInspections&quot;, sinkInspections)</span>
-<span class="sd">                            #print(&quot;viaIndex&quot;, self.vertices.array[&quot;ID&quot;][viaIndex])</span>
-<span class="sd">                            #print(&quot;!!!!!!!!!!!!!!!!!!!&quot;)</span>
-<span class="sd">                        &quot;&quot;&quot;</span>
                         <span class="n">inspectedRoutes</span><span class="p">[</span><span class="n">inspectionIndex</span><span class="p">][</span>
                                 <span class="p">(</span><span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pathIndex</span><span class="p">)</span>
                     <span class="n">stationCombinations</span><span class="p">[</span><span class="nb">frozenset</span><span class="p">(</span><span class="n">stations</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
@@ -2361,56 +2100,6 @@
             <span class="k">return</span> <span class="n">testResults</span>
         
         
-        <span class="c1"># DEBUG</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        debugPairs = [</span>
-<span class="sd">            (15, 21),</span>
-<span class="sd">            (15, 22),</span>
-<span class="sd">            (37, 21),</span>
-<span class="sd">            (37, 22),</span>
-<span class="sd">            (49, 1554),</span>
-<span class="sd">            (6, 394),### 7,23</span>
-<span class="sd">            (3, 826),</span>
-<span class="sd">            (4, 826)</span>
-<span class="sd">            ]</span>
-<span class="sd">        </span>
-<span class="sd">        #debugPairs = [(0,0), (1,2)]</span>
-<span class="sd">        </span>
-<span class="sd">        for source, sink in debugPairs:</span>
-<span class="sd">            order2 = np.argsort(pathLengths[source, sink])</span>
-<span class="sd">            print(self.sourceIndexToSourceID[source],</span>
-<span class="sd">                  self.sinkIndexToSinkID[sink],</span>
-<span class="sd">                  np.array(pathLengths[source, sink])[order2].tolist(),</span>
-<span class="sd">                  np.array(viaVertices[source, sink])[order2].tolist(),</span>
-<span class="sd">                  )</span>
-<span class="sd">            for i in np.array(self.vertices.array[viaVertices[source, sink]])[order2]:</span>
-<span class="sd">                print(&quot; - - &quot;, i)</span>
-<span class="sd">            </span>
-<span class="sd">            #print(sourceIn)</span>
-<span class="sd">        </span>
-<span class="sd">        #&quot;&quot;&quot;</span>
-        
-        <span class="n">pathCounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">pathLengths</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pathLengths</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">item</span><span class="p">:</span>
-                    <span class="n">pathCounts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;double path&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        print(&quot;-----&quot;)</span>
-<span class="sd">        for i in pathCounts.sum(0):</span>
-<span class="sd">            print(i)</span>
-<span class="sd">        print(&quot;-----&quot;)</span>
-<span class="sd">        for j in pathCounts.sum(1):</span>
-<span class="sd">            print(i)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----&quot;</span><span class="p">)</span>
-        <span class="n">pl</span> <span class="o">=</span> <span class="n">pathCounts</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pl</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="c1"># ----- /DEBUG</span>
-        
         <span class="c1"># because we excluded some via edges, it can theoretically happen that</span>
         <span class="c1"># some pairs have no via vertex at all. This should not be the case - </span>
         <span class="c1"># at least the shortest path should always be included. Therefore, we</span>
@@ -2441,8 +2130,6 @@
         
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="n">countVia</span><span class="o">/</span><span class="p">(</span><span class="n">sourceNumber</span><span class="o">*</span><span class="n">sinkNumber</span><span class="p">),</span> <span class="s2">&quot;via vertices per pair&quot;</span><span class="p">)</span>     
-        <span class="c1">#print(countPrunedDouble/(sourceNumber*sinkNumber), &quot;via vertices per pair were pruned because they were there twice&quot;)     </span>
-        <span class="c1">#print(countPrunedFar/(sourceNumber*sinkNumber), &quot;via vertices per pair were pruned because they were too far off&quot;)     </span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="n">countNotLO</span><span class="o">/</span><span class="p">(</span><span class="n">sourceNumber</span><span class="o">*</span><span class="n">sinkNumber</span><span class="p">),</span> <span class="s2">&quot;via vertices per pair were pruned because they were not locally optimal&quot;</span><span class="p">)</span>     
         <span class="n">minCount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">viaVertexCount</span><span class="p">)</span>
         <span class="n">maxCount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">viaVertexCount</span><span class="p">)</span>
@@ -2450,43 +2137,12 @@
         <span class="k">if</span> <span class="n">bins</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">viaVertexCount</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">))</span>     
         
-        <span class="k">def</span> <span class="nf">getVertexByID</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">subset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">ID</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">][</span><span class="n">subset</span><span class="p">]</span><span class="o">==</span><span class="n">ID</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="c1">#              Calgary     Edmonton,  ON        GA        AL            ID      Spokane    CA</span>
-        <span class="c1">#for sourceID in b&#39;1&#39;, b&#39;18&#39;:</span>
-        <span class="k">for</span> <span class="n">sourceID</span> <span class="ow">in</span> <span class="sa">b</span><span class="s1">&#39;J54130&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54129&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54126&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54144&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54136&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54145&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54181&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54139&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;J54182&#39;</span><span class="p">:</span>
-            <span class="c1">#              Christina      Shuswap     Kalamalka Lake   Revelstoke L   Trout L         Bowron L      Okanagan        Lillooet</span>
-            <span class="c1">#for sinkID in b&#39;L1&#39;, b&#39;L4&#39;:</span>
-            <span class="k">for</span> <span class="n">sinkID</span> <span class="ow">in</span> <span class="sa">b</span><span class="s1">&#39;L329216611&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329518145&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329459117&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329484653&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329120715&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329058703&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329459116B&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329303443&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;L329291807&#39;</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">sourceIndex</span> <span class="o">=</span> <span class="n">getVertexByID</span><span class="p">(</span><span class="n">sourceID</span><span class="p">,</span> <span class="n">fromIndices</span><span class="p">)</span>
-                    <span class="n">sinkIndex</span> <span class="o">=</span> <span class="n">getVertexByID</span><span class="p">(</span><span class="n">sinkID</span><span class="p">,</span> <span class="n">toIndices</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;from&quot;</span><span class="p">,</span> <span class="n">sourceID</span><span class="p">,</span> <span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="n">sinkID</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> 
-                          <span class="o">*</span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">][</span>
-                                        <span class="n">viaVertices</span><span class="p">[</span><span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span><span class="p">]]])</span>
-                    <span class="n">l</span> <span class="o">=</span> <span class="n">pathLengths</span><span class="p">[(</span><span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span><span class="p">)]</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; - - - - - -&quot;</span><span class="p">,</span> <span class="n">dists</span><span class="p">[</span><span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span><span class="p">],</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
-                          <span class="o">*</span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">l</span><span class="p">[</span><span class="n">l</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]])</span>
-                    
-                    
-                    <span class="k">for</span> <span class="n">viaIndex</span> <span class="ow">in</span> <span class="n">viaVertices</span><span class="p">[</span><span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span><span class="p">]:</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; - - - - - -&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">][</span><span class="n">viaIndex</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
-                        <span class="n">sourceInspections</span> <span class="o">=</span> <span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_find_inspection_spots</span><span class="p">(</span>
-                                             <span class="n">viaIndex</span><span class="p">,</span> <span class="c1">#labelData[sourceIndex][viaIndex][&quot;parent&quot;], </span>
-                                             <span class="n">labelData</span><span class="p">[</span><span class="n">sourceIndex</span><span class="p">],</span> 
-                                             <span class="n">inspectionArr</span><span class="p">)</span>
-                        <span class="n">sinkInspections</span> <span class="o">=</span> <span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_find_inspection_spots</span><span class="p">(</span>
-                                                 <span class="n">viaIndex</span><span class="p">,</span> <span class="n">labelData</span><span class="p">[</span><span class="n">sinkIndex</span><span class="o">+</span><span class="n">sourceNumber</span><span class="p">],</span> 
-                                                 <span class="n">inspectionArr</span><span class="p">)</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; - - - - - - . . . sourceInspections:&quot;</span><span class="p">,</span> 
-                              <span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">stationIndexToStationID</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sourceInspections</span><span class="p">])</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; - - - - - - . . . sinkInspections:&quot;</span><span class="p">,</span> 
-                              <span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">stationIndexToStationID</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sinkInspections</span><span class="p">])</span>
-                    
-                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        def getVertexByID(ID, subset=None):</span>
+<span class="sd">            if subset is None:</span>
+<span class="sd">                return np.nonzero(self.vertices.array[&quot;ID&quot;]==ID)[0][0]</span>
+<span class="sd">            return np.nonzero(self.vertices.array[&quot;ID&quot;][subset]==ID)[0][0]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span> 
         
@@ -2536,9 +2192,6 @@
                            <span class="n">startIndex</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">shortestShortestDist</span><span class="p">,</span>
                            <span class="n">longestShortestDist</span><span class="p">,</span> 
                            <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DEBUG = vertexArr[startIndex][&quot;ID&quot;] == b&#39;L329303670&#39;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="n">edgesVisited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="c1">#tolerance = 1e-11</span>
@@ -2581,12 +2234,6 @@
         
         <span class="k">while</span> <span class="n">queue</span><span class="p">:</span> 
             <span class="n">thisVertex</span><span class="p">,</span> <span class="n">thisCost</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            DEBUG2 = DEBUG and (vertexArr[thisVertex][&quot;ID&quot;] == b&#39;64161&#39; </span>
-<span class="sd">                                or vertexArr[thisVertex][&quot;ID&quot;] == b&#39;154099&#39;)</span>
-<span class="sd">            if DEBUG2:</span>
-<span class="sd">                print(&quot;DEBUG2&quot;, vertexArr[thisVertex][&quot;ID&quot;], &quot;--------&quot;)</span>
-<span class="sd">            &quot;&quot;&quot;</span>
             
             <span class="n">pruned</span> <span class="o">=</span> <span class="p">(</span><span class="n">reachArr</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">]</span><span class="o">*</span><span class="n">rTol</span> <span class="o">&lt;</span> 
                       <span class="nb">min</span><span class="p">(</span><span class="n">thisCost</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="o">/</span><span class="mi">2</span> 
@@ -2612,10 +2259,6 @@
 <span class="sd">            #vertexDists[thisVertex, treeIndex] = thisCost</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            if DEBUG2 and pruned:</span>
-<span class="sd">                print(&quot;Pruned.&quot;)</span>
-<span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">forward</span> <span class="ow">and</span> <span class="n">pruned</span><span class="p">:</span>
                 <span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">]</span>
                 <span class="k">continue</span>
@@ -2929,18 +2572,9 @@
         <span class="n">rTol</span> <span class="o">=</span> <span class="mf">1e-6</span>
         <span class="n">rTolFact</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">rTol</span>
         
-        <span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#vertexIndex==518959</span>
-        
         <span class="c1">#========= Performing T-Tests ==========================================</span>
         
         <span class="c1"># save the pair data in a convenient way</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        pairList = np.array(pairData, </span>
-<span class="sd">                            dtype=[(&quot;source&quot;, np.long), </span>
-<span class="sd">                                   (&quot;sink&quot;, np.long),</span>
-<span class="sd">                                   (&quot;distance&quot;, float)</span>
-<span class="sd">                                   ])</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pairList</span> <span class="o">=</span> <span class="n">viaData</span><span class="p">[</span><span class="n">viaIndex</span><span class="p">]</span>
             
         <span class="n">sourceNumber</span><span class="p">,</span> <span class="n">sinkNumber</span> <span class="o">=</span> <span class="n">shortestDistances</span><span class="o">.</span><span class="n">shape</span>
@@ -2961,8 +2595,6 @@
         <span class="n">sinkIndexToSink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sinkNumber</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
         <span class="n">sinkIndexToSink</span><span class="p">[</span><span class="n">consideredSinkIndices_plain</span><span class="p">]</span> <span class="o">=</span> <span class="n">consideredSinks</span>
         
-        <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">DEBUGPAIR</span> <span class="o">=</span> <span class="p">(</span><span class="n">sourceIndexToSource</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">sinkIndexToSink</span><span class="p">[</span><span class="mi">2541</span><span class="p">])</span>
-        
         <span class="n">shortestDistances</span> <span class="o">=</span> <span class="n">shortestDistances</span><span class="p">[</span><span class="n">consideredSourceIndices</span><span class="p">][:,</span><span class="n">consideredSinkIndices_plain</span><span class="p">]</span>
         
         <span class="c1"># replace source and sink indices in pairList with internal indices</span>
@@ -2979,8 +2611,6 @@
         
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pairList</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ISNAN0&quot;</span><span class="p">,</span> <span class="n">pairList</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">],</span> <span class="n">pairList</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;distances[DEBUGPAIR]&quot;</span><span class="p">,</span> <span class="n">distances</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">])</span>
         
         <span class="n">admissiblePairs</span> <span class="o">=</span> <span class="o">~</span><span class="n">distances</span><span class="o">.</span><span class="n">mask</span>
         
@@ -3058,29 +2688,16 @@
         <span class="n">sourceSinkIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">sourceList</span> <span class="o">=</span> <span class="n">pairList</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span>
         <span class="n">sinkList</span> <span class="o">=</span> <span class="n">pairList</span><span class="p">[</span><span class="s2">&quot;sink&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In list:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">sourceList</span><span class="o">==</span><span class="n">DEBUGPAIR</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                             <span class="n">sinkList</span><span class="o">==</span><span class="n">DEBUGPAIR</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="c1"># if we have already found out that we do not have to consider the</span>
             <span class="c1"># pair (anymore), continue</span>
             <span class="n">sourceSinkIndex</span> <span class="o">=</span> <span class="n">find_next_nonzero2d</span><span class="p">(</span><span class="n">admissiblePairs</span><span class="p">,</span> <span class="n">sourceList</span><span class="p">,</span>
                                                   <span class="n">sinkList</span><span class="p">,</span> <span class="n">sourceSinkIndex</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
             
-            <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">sourceSinkIndex</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">break</span>
             
             <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">pairList</span><span class="p">[</span><span class="n">sourceSinkIndex</span><span class="p">]</span>
-            <span class="n">DEBUG2</span> <span class="o">=</span> <span class="n">DEBUG</span> <span class="ow">and</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span><span class="o">==</span><span class="n">DEBUGPAIR</span>
-            
-            <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> 
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DEBUG2&quot;</span><span class="p">,</span> <span class="n">distances</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">],</span> <span class="n">dist</span><span class="p">,</span> <span class="n">DEBUGPAIR</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vertexVisitedFromSink&quot;</span><span class="p">,</span> <span class="n">vertexVisitedFromSink</span><span class="p">)</span>
-            
-            <span class="c1">#if not admissiblePairs[source, sink]:</span>
-            <span class="c1">#    continue</span>
-            
             
             <span class="n">sourceLabelData</span> <span class="o">=</span> <span class="n">labelData</span><span class="p">[</span><span class="n">consideredSourceIndices</span><span class="p">[</span><span class="n">source</span><span class="p">]]</span>
             <span class="n">sinkLabelData</span> <span class="o">=</span> <span class="n">labelData</span><span class="p">[</span><span class="n">consideredSinkIndices</span><span class="p">[</span><span class="n">sink</span><span class="p">]]</span>
@@ -3111,8 +2728,6 @@
                 <span class="n">resultSourceIndices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
                 <span class="n">resultSinkIndices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
                 <span class="n">resultLengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
-                
-                <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
                 
                 <span class="k">continue</span>
             
@@ -3236,16 +2851,12 @@
                         <span class="c1">#if localDist + aTol &gt;= compCost:</span>
                         <span class="n">successfullyTested</span><span class="p">[</span><span class="n">sourceParent</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sinkParent</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
-                        
-                        
                         <span class="c1"># note all vertices with via paths over </span>
                         <span class="c1"># this subsection as not considered</span>
                         <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span>
                                 <span class="n">vertexVisitedFromSource</span><span class="p">[</span><span class="n">sourceParent</span><span class="p">],</span>
                                 <span class="n">vertexVisitedFromSink</span><span class="p">[</span><span class="n">sinkParent</span><span class="p">],</span>
                                 <span class="p">)]</span> <span class="o">=</span> <span class="kc">False</span>
-                        <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">])</span>
-                        <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
                         <span class="k">break</span>
                 
                 
@@ -3274,19 +2885,10 @@
                 <span class="c1"># account the acception factor)</span>
                 <span class="n">considered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">vertexVisitedFromSource</span><span class="p">[</span><span class="n">sourceSubpathBound</span><span class="p">],</span>
                                     <span class="n">vertexVisitedFromSink</span><span class="p">[</span><span class="n">sinkSubpathBound</span><span class="p">])</span>
-                <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">considered</span><span class="p">)</span>
-                <span class="c1">#                 vertexVisitedFromSource[sourceSubpathBound],</span>
-                <span class="c1">#                 vertexVisitedFromSink[sinkSubpathBound])</span>
-                
                 <span class="n">considered2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">admissiblePairs</span><span class="p">[</span><span class="n">considered</span><span class="p">],</span>
                                              <span class="n">distances</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span> 
                                              <span class="o">&lt;=</span> <span class="n">T</span><span class="o">/</span><span class="p">(</span><span class="n">acceptionFactor</span><span class="o">*</span>
                                                    <span class="n">localOptimalityConstant</span><span class="p">)</span><span class="o">*</span><span class="n">rTolFact</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C02&quot;</span><span class="p">,</span> <span class="n">considered2</span><span class="o">.</span><span class="n">any</span><span class="p">(),</span> 
-                                 <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">],</span>
-                                 <span class="n">distances</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">],</span>
-                                 <span class="n">T</span><span class="o">/</span><span class="p">(</span><span class="n">acceptionFactor</span><span class="o">*</span><span class="n">localOptimalityConstant</span><span class="p">),</span>
-                                 <span class="n">distances</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="o">/</span><span class="p">(</span><span class="n">acceptionFactor</span><span class="o">*</span><span class="n">localOptimalityConstant</span><span class="p">))</span>
                 
                 <span class="n">sourceProcessIndices</span> <span class="o">=</span> <span class="n">sourcePairIndices</span><span class="p">[</span><span class="n">considered</span><span class="p">][</span><span class="n">considered2</span><span class="p">]</span>
                 <span class="n">sinkProcessIndices</span> <span class="o">=</span> <span class="n">sinkPairIndices</span><span class="p">[</span><span class="n">considered</span><span class="p">][</span><span class="n">considered2</span><span class="p">]</span>
@@ -3294,9 +2896,6 @@
                 <span class="c1"># mark the respective pairs as processed</span>
                 <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">sourceProcessIndices</span><span class="p">,</span> 
                                 <span class="n">sinkProcessIndices</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-                <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">DEBUGPAIR</span><span class="p">])</span>
-                <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">consideredSourceIndices</span><span class="p">[</span><span class="n">sourceProcessIndices</span><span class="p">])</span>
-                <span class="k">if</span> <span class="n">DEBUG2</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">consideredSinkIndices_plain</span><span class="p">[</span><span class="n">sinkProcessIndices</span><span class="p">])</span>
                 <span class="c1"># note the results</span>
                 <span class="n">resultSourceIndices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sourceProcessIndices</span><span class="p">)</span>
                 <span class="n">resultSinkIndices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sinkProcessIndices</span><span class="p">)</span>
@@ -3307,9 +2906,6 @@
         <span class="c1"># return result</span>
         <span class="n">admissiblePairNumber</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resultSourceIndices</span><span class="p">)</span>
         <span class="n">notLO</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pairList</span><span class="p">)</span> <span class="o">-</span> <span class="n">admissiblePairNumber</span>
-        
-        <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End debug&quot;</span><span class="p">,</span> <span class="n">consideredSourceIndices</span><span class="p">[</span><span class="n">resultSourceIndices</span><span class="p">],</span>
-                        <span class="n">consideredSinkIndices_plain</span><span class="p">[</span><span class="n">resultSinkIndices</span><span class="p">])</span>
         
         <span class="k">return</span> <span class="p">(</span><span class="n">vertexIndex</span><span class="p">,</span> <span class="n">consideredSourceIndices</span><span class="p">[</span><span class="n">resultSourceIndices</span><span class="p">],</span> 
                 <span class="n">consideredSinkIndices_plain</span><span class="p">[</span><span class="n">resultSinkIndices</span><span class="p">],</span> <span class="n">resultLengths</span><span class="p">,</span> 
@@ -3332,16 +2928,8 @@
             <span class="n">spots</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">inspectionArr</span><span class="p">[</span><span class="n">labelData</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">][</span><span class="s2">&quot;edge&quot;</span><span class="p">]])</span>
             <span class="n">thisVertex</span> <span class="o">=</span> <span class="n">labelData</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">][</span><span class="s2">&quot;parent_inspection&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">spots</span></div>
-    
-<span class="c1"># ToDo: </span>
-<span class="c1">#  - Debug        </span>
-<span class="c1">#  - Clean up memory (delete added fields)</span>
 
-<div class="viewcode-block" id="test"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.test">[docs]</a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000000</span><span class="p">):</span>
-        <span class="n">j</span><span class="o">+=</span> <span class="mi">1</span></div>
-    
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">traceback</span>
     <span class="kn">import</span> <span class="nn">timeit</span>
