@@ -950,8 +950,8 @@
 <span class="sd">        </span>
 <span class="sd">        ~+~</span>
 <span class="sd">        </span>
-<span class="sd">        This method MUST be overwritten. Otherwise the model will through an </span>
-<span class="sd">        error.</span>
+<span class="sd">        .. note:: This method MUST be overwritten. Otherwise the model will </span>
+<span class="sd">            raise an error.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -983,7 +983,7 @@
 <span class="sd">        To write this function, copy the content of :py:meth:`get_mean_factor` </span>
 <span class="sd">        and exchange ``np.[...]`` with ``ag.[...]``</span>
 <span class="sd">        </span>
-<span class="sd">        .. note:: autograd functions so not support in-place operations. </span>
+<span class="sd">        .. note:: Autograd functions do not support in-place operations. </span>
 <span class="sd">            Therefore, an autograd-compatible implementation may be less efficient.</span>
 <span class="sd">            If efficiency is not of greater concern, just use the autograd functions</span>
 <span class="sd">            in `get_mean_factor` already and leave this method untouched.</span>

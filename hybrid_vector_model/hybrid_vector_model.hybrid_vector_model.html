@@ -260,8 +260,11 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 <dd><p>Returns a factor proportional to the mean traveller flow between the
 source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p>
 <p>~+~</p>
-<p>This method MUST be overwritten. Otherwise the model will through an
-error.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method MUST be overwritten. Otherwise the model will
+raise an error.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -290,7 +293,7 @@ differentiation.</p>
 and exchange <code class="docutils literal notranslate"><span class="pre">np.[...]</span></code> with <code class="docutils literal notranslate"><span class="pre">ag.[...]</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>autograd functions so not support in-place operations.
+<p>Autograd functions do not support in-place operations.
 Therefore, an autograd-compatible implementation may be less efficient.
 If efficiency is not of greater concern, just use the autograd functions
 in <cite>get_mean_factor</cite> already and leave this method untouched.</p>
