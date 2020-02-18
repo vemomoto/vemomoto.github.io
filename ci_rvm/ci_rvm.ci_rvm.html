@@ -95,21 +95,6 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.round_str" title="ci_rvm.ci_rvm.round_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">round_str</span></code></a>(n[, full, after])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.test" title="ci_rvm.ci_rvm.test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.test2" title="ci_rvm.ci_rvm.test2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test2</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.test3" title="ci_rvm.ci_rvm.test3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test3</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.test4" title="ci_rvm.ci_rvm.test4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test4</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.venzon_moolgavkar" title="ci_rvm.ci_rvm.venzon_moolgavkar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">venzon_moolgavkar</span></code></a>(index, target, x0, fun, …)</p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 <dl class="class">
@@ -192,7 +177,7 @@ chi-sqared distribution).</p></li>
 
 <dl class="function">
 <dt id="ci_rvm.ci_rvm.find_profile_CI_bound">
-<code class="sig-name descname">find_profile_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">direction</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">*args</em>, <em class="sig-param">vm=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">find_profile_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">direction</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the profile likelihood confidence interval for a parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -212,7 +197,7 @@ if <code class="docutils literal notranslate"><span class="pre">1</span></code>,
 
 <dl class="function">
 <dt id="ci_rvm.ci_rvm.find_profile_CI_bound_steps">
-<code class="sig-name descname">find_profile_CI_bound_steps</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">direction=1</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">stepn=1</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">hess0=None</em>, <em class="sig-param">nmax=200</em>, <em class="sig-param">epsilon=0.0001</em>, <em class="sig-param">disp=True</em>, <em class="sig-param">vm=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound_steps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound_steps" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">find_profile_CI_bound_steps</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">direction=1</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">stepn=1</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">hess0=None</em>, <em class="sig-param">nmax=200</em>, <em class="sig-param">epsilon=0.0001</em>, <em class="sig-param">disp=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound_steps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound_steps" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -239,31 +224,6 @@ jac[i] &gt;= jac[j]. Otherwise, arr[i] will be False and arr[j] will be True.</p
 <dl class="function">
 <dt id="ci_rvm.ci_rvm.round_str">
 <code class="sig-name descname">round_str</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">full=6</em>, <em class="sig-param">after=3</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#round_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.round_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.test">
-<code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.test" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.test2">
-<code class="sig-name descname">test2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#test2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.test2" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.test3">
-<code class="sig-name descname">test3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#test3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.test3" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.test4">
-<code class="sig-name descname">test4</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#test4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.test4" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.venzon_moolgavkar">
-<code class="sig-name descname">venzon_moolgavkar</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">target</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">step_scale=1</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">hess0=None</em>, <em class="sig-param">nmax=200</em>, <em class="sig-param">epsilon=1e-06</em>, <em class="sig-param">disp=True</em>, <em class="sig-param">track_x=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#venzon_moolgavkar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.venzon_moolgavkar" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

@@ -236,7 +236,7 @@
 
 <div class="viewcode-block" id="find_profile_CI_bound_steps"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound_steps">[docs]</a><span class="k">def</span> <span class="nf">find_profile_CI_bound_steps</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
                                 <span class="n">stepn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
-                                <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                                <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
     
@@ -260,15 +260,10 @@
     <span class="n">result</span><span class="p">[</span><span class="s2">&quot;f_track&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun0</span><span class="p">]</span>
     
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">steps</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-        <span class="k">if</span> <span class="n">vm</span><span class="p">:</span>
-            <span class="n">op_result</span> <span class="o">=</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
-                                          <span class="n">direction</span><span class="p">,</span> <span class="n">fun0</span><span class="p">,</span> <span class="n">hess0</span><span class="p">,</span> <span class="n">nmax</span><span class="p">,</span> 
-                                          <span class="n">epsilon</span><span class="p">,</span> <span class="n">disp</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">op_result</span> <span class="o">=</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
-                                      <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="p">,</span> <span class="n">nmax</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span> 
-                                      <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">x0</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">op_result</span> <span class="o">=</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
+                                  <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="p">,</span> <span class="n">nmax</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span> 
+                                  <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">x</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">op_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">op_result</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Iteration limit exceeded for variable &quot;</span>
@@ -302,156 +297,6 @@
     <span class="k">return</span> <span class="n">result</span></div>
     
 
-
-<div class="viewcode-block" id="venzon_moolgavkar"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.venzon_moolgavkar">[docs]</a><span class="k">def</span> <span class="nf">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">step_scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-                      <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                      <span class="n">track_x</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    
-    <span class="n">x_track</span> <span class="o">=</span> <span class="p">[]</span>
-    
-    <span class="c1"># TODO: handle singular matrices (check determinant, return NaN), extend algorithm to be more robust</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">try</span><span class="p">:</span>    
-        <span class="c1"># preparation</span>
-        
-        <span class="k">if</span> <span class="n">fun0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-        <span class="n">target_diff</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">target</span>
-        <span class="k">if</span> <span class="n">hess0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">dl2_dx2_0</span> <span class="o">=</span> <span class="n">hess</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dl2_dx2_0</span> <span class="o">=</span> <span class="n">hess0</span>
-        
-        <span class="n">considered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-        <span class="n">considered</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">hessConsidered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">considered</span><span class="p">,</span> <span class="n">considered</span><span class="p">)</span>
-        
-        <span class="c1"># test</span>
-        <span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">target</span><span class="p">)</span> 
-                           <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">jac</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="n">considered</span><span class="p">])))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">))</span>
-                           
-        <span class="c1"># x is the parameter vector</span>
-        <span class="c1"># w is the vector of nuisance parameters (x without row &quot;index&quot;)</span>
-        <span class="c1"># b is the parameter of interest, which is x[index]</span>
-        <span class="c1"># l is fun</span>
-        <span class="c1"># dl_d* is the derivative of l w.r.t. *</span>
-        <span class="c1"># dl2_d*2 is the second derivative of l w.r.t. *</span>
-        
-        <span class="c1"># choosing the first step x1</span>
-        
-        <span class="n">dl2_dw2</span> <span class="o">=</span> <span class="n">dl2_dx2_0</span><span class="p">[</span><span class="n">hessConsidered</span><span class="p">]</span>
-        
-        <span class="n">dl2_dbdw</span> <span class="o">=</span> <span class="n">dl2_dx2_0</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="n">considered</span><span class="p">]</span>
-        <span class="n">dl2_dw2_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">dl2_dw2</span><span class="p">)</span>
-        <span class="n">dw_db</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dl2_dw2_inv</span><span class="p">,</span> <span class="n">dl2_dbdw</span><span class="p">)</span>
-        
-        <span class="n">factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">target_diff</span> <span class="o">/</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">dl2_dx2_0</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">]</span>
-                            <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dl2_dbdw</span><span class="p">,</span> <span class="n">dl2_dw2_inv</span><span class="p">),</span> <span class="n">dl2_dbdw</span><span class="p">))))</span>
-                                               <span class="o">*</span> <span class="n">step_scale</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
-            <span class="n">factor</span> <span class="o">=</span> <span class="mf">0.5</span>
-            <span class="c1">#raise np.linalg.LinAlgError()</span>
-        
-        <span class="n">init_direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-        <span class="n">init_direction</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span> <span class="o">=</span> <span class="n">dw_db</span>
-        <span class="n">init_direction</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">factor</span><span class="o">*</span><span class="n">init_direction</span>
-        
-        
-        <span class="c1"># iteration</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">track_x</span><span class="p">:</span>
-                <span class="n">x_track</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">dl_dx_</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">violation</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dl_dx_</span><span class="p">[</span><span class="n">considered</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">l</span><span class="o">-</span><span class="n">target</span><span class="p">))</span>
-            
-            <span class="k">if</span> <span class="n">disp</span><span class="p">:</span>
-                <span class="c1">#print(x)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iteration </span><span class="si">{}</span><span class="s2">: fun_diff=</span><span class="si">{}</span><span class="s2">; jac_violation=</span><span class="si">{}</span><span class="s2">; direction=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                        <span class="n">i</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">target</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dl_dx_</span><span class="p">[</span><span class="n">considered</span><span class="p">])),</span> <span class="n">step_scale</span><span class="p">))</span>
-            
-            <span class="k">if</span> <span class="n">violation</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
-                <span class="k">break</span>
-            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">violation</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">()</span>
-            
-            <span class="n">D</span> <span class="o">=</span> <span class="n">dl2_dx2</span> <span class="o">=</span> <span class="n">hess</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">dl2_dx2_</span> <span class="o">=</span> <span class="n">dl2_dx2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">dl2_dx2_</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">dl_dx_</span>
-            <span class="n">dl_dx_</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span><span class="o">-</span><span class="n">target</span> 
-            
-            <span class="n">dl2_dx2__inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">dl2_dx2_</span><span class="p">)</span>
-            <span class="n">g</span> <span class="o">=</span> <span class="n">dl2_dx2__inv</span><span class="p">[:,</span><span class="n">index</span><span class="p">]</span>
-            <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dl2_dx2__inv</span><span class="p">,</span> <span class="n">dl_dx_</span><span class="p">)</span>
-            
-            <span class="n">Dg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
-            <span class="n">vDg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Dg</span><span class="p">)</span>
-            <span class="n">gDg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">Dg</span><span class="p">)</span>
-            <span class="n">vDv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">D</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
-            
-            <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">vDg</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">gDg</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="n">vDv</span> <span class="o">/</span> <span class="n">gDg</span>
-            
-            <span class="n">_s</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span> <span class="n">q</span>
-            
-            <span class="k">if</span> <span class="n">_s</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">_s</span><span class="p">)</span>
-                <span class="n">s_</span> <span class="o">=</span> <span class="o">-</span> <span class="n">p</span><span class="o">/</span><span class="mi">2</span>
-                <span class="n">s_1</span> <span class="o">=</span> <span class="n">s_</span> <span class="o">+</span> <span class="n">_s</span>
-                <span class="n">s_2</span> <span class="o">=</span> <span class="n">s_</span> <span class="o">-</span> <span class="n">_s</span>
-                
-                <span class="n">v_sg_1</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="n">s_1</span><span class="o">*</span><span class="n">g</span>
-                <span class="n">v_sg_2</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="n">s_2</span><span class="o">*</span><span class="n">g</span>
-                <span class="n">measure1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_sg_1</span><span class="p">,</span> <span class="n">dl2_dx2_0</span><span class="p">),</span> <span class="n">v_sg_1</span><span class="p">))</span>
-                <span class="n">measure2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_sg_2</span><span class="p">,</span> <span class="n">dl2_dx2_0</span><span class="p">),</span> <span class="n">v_sg_2</span><span class="p">))</span>
-                
-                <span class="k">if</span> <span class="n">measure1</span> <span class="o">&lt;</span> <span class="n">measure2</span><span class="p">:</span>
-                    <span class="n">x</span> <span class="o">-=</span> <span class="n">v_sg_1</span>
-                <span class="k">else</span><span class="p">:</span> 
-                    <span class="n">x</span> <span class="o">-=</span> <span class="n">v_sg_2</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># TODO: do line search here! </span>
-                <span class="n">x</span> <span class="o">-=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">v</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">dl_dx_</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">violation</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dl_dx_</span><span class="p">[</span><span class="n">considered</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">l</span><span class="o">-</span><span class="n">target</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">OptimizeResult</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> 
-                                     <span class="n">fun</span><span class="o">=</span><span class="n">l</span><span class="p">,</span>
-                                     <span class="n">jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span>
-                                     <span class="n">violation</span><span class="o">=</span><span class="n">violation</span><span class="p">,</span>
-                                     <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                     <span class="n">nfev</span><span class="o">=</span><span class="n">nmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">njev</span><span class="o">=</span><span class="n">nmax</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nhev</span><span class="o">=</span><span class="n">nmax</span><span class="p">,</span> 
-                                     <span class="n">nit</span><span class="o">=</span><span class="n">nmax</span><span class="p">,</span>
-                                     <span class="n">x_track</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_track</span><span class="p">),</span>
-                                     <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Iteration limit exceeded&quot;</span>
-                                     <span class="p">)</span>
-        
-        <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">OptimizeResult</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> 
-                                 <span class="n">fun</span><span class="o">=</span><span class="n">l</span><span class="p">,</span>
-                                 <span class="n">jac</span><span class="o">=</span><span class="n">jac</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
-                                 <span class="n">violation</span><span class="o">=</span><span class="n">violation</span><span class="p">,</span>
-                                 <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                 <span class="n">nfev</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">njev</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">nhev</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> 
-                                 <span class="n">nit</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
-                                 <span class="n">x_track</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_track</span><span class="p">),</span>
-                                 <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Success&quot;</span>
-                                 <span class="p">)</span>
-    <span class="k">except</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">OptimizeResult</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> 
-                                 <span class="n">fun</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-                                 <span class="n">jac</span><span class="o">=</span><span class="n">x0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-                                 <span class="n">violation</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-                                 <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                 <span class="n">nfev</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">njev</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">nhev</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> 
-                                 <span class="n">nit</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
-                                 <span class="n">x_track</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_track</span><span class="p">),</span>
-                                 <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Ill-conditioned matrix&quot;</span>
-                                 <span class="p">)</span></div>
 
 <span class="n">STATUS_MESSAGES</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;Success&quot;</span><span class="p">,</span>
                    <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;Result on discontinuity&quot;</span><span class="p">,</span>
@@ -1046,10 +891,19 @@
                                                             <span class="n">searchmode</span><span class="o">==</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
                                                             <span class="n">jac0tol</span><span class="o">=</span><span class="n">singtol</span><span class="p">)</span>
                             <span class="k">if</span> <span class="n">xi</span> <span class="o">&gt;</span> <span class="n">xiTmp</span> <span class="ow">and</span> <span class="n">f</span><span class="o">&gt;</span><span class="n">target</span><span class="p">:</span>
-                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a, p&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q, fPL0&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">fPL0</span><span class="p">)</span>
-                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;targetTmp&quot;</span><span class="p">,</span> <span class="n">targetTmp</span><span class="p">)</span>
-                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xiTmp, xi&quot;</span><span class="p">,</span> <span class="n">xiTmp</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
+                                <span class="c1"># Somethong went wrong. Print debug information.</span>
+                                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Something went wrong. Please report this error &quot;</span>
+                                              <span class="s2">&quot;and the information below to the bugtracker.&quot;</span><span class="p">)</span>
+                                <span class="k">try</span><span class="p">:</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;searchmode, maximizing&quot;</span><span class="p">,</span> <span class="n">searchmode</span><span class="p">,</span> <span class="n">maximizing</span><span class="p">)</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a, p&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;q, fPL0&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">fPL0</span><span class="p">)</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f, target, targetTmp&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">targetTmp</span><span class="p">)</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xiTmp, xi&quot;</span><span class="p">,</span> <span class="n">xiTmp</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xi1, xi2&quot;</span><span class="p">,</span> <span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------&quot;</span><span class="p">)</span>
+                                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                                    <span class="k">pass</span>
                             <span class="n">xTmp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                             <span class="n">xTmp</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">xiTmp</span>
                             <span class="n">xTmp</span><span class="p">[</span><span class="o">~</span><span class="n">free_considered</span><span class="p">]</span> <span class="o">+=</span> <span class="n">xTmp_diff</span>
@@ -1543,7 +1397,7 @@
 
 <div class="viewcode-block" id="find_profile_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI_bound</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
-                          <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                          <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Finds the profile likelihood confidence interval for a parameter.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1560,18 +1414,14 @@
     
     <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span>
     
-    <span class="k">if</span> <span class="n">vm</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
-                                 <span class="n">direction</span><span class="p">,</span> <span class="n">fun0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
-                             <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
+                         <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 
     
-<div class="viewcode-block" id="test2"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.test2">[docs]</a><span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_test2</span><span class="p">():</span>
     <span class="n">H</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mf">2.23327686e+03</span><span class="p">,</span><span class="mf">3.99193784e+02</span><span class="p">,</span><span class="mf">4.74986638e-01</span><span class="p">,</span><span class="o">-</span><span class="mf">8.55852404e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">7.08365052e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">3.87178313e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">4.71627573e+00</span><span class="p">,</span><span class="mf">5.01847818e+02</span><span class="p">,</span><span class="mf">1.44515881e-01</span><span class="p">,</span><span class="mf">2.09204344e+02</span><span class="p">,</span><span class="o">-</span><span class="mf">2.02882521e+03</span><span class="p">,</span><span class="mf">6.66055028e+03</span><span class="p">],</span>
 <span class="p">[</span><span class="mf">3.99193784e+02</span><span class="p">,</span><span class="o">-</span><span class="mf">2.86681223e+02</span><span class="p">,</span><span class="o">-</span><span class="mf">8.65003524e-02</span><span class="p">,</span><span class="mf">1.57660291e+01</span><span class="p">,</span><span class="mf">1.37304541e+01</span><span class="p">,</span><span class="mf">6.87668109e+00</span><span class="p">,</span><span class="mf">7.85222384e-01</span><span class="p">,</span><span class="o">-</span><span class="mf">8.58418932e+01</span><span class="p">,</span><span class="o">-</span><span class="mf">2.47201778e-02</span><span class="p">,</span><span class="o">-</span><span class="mf">3.48771207e+01</span><span class="p">,</span><span class="mf">3.70636919e+02</span><span class="p">,</span><span class="o">-</span><span class="mf">1.19345238e+03</span><span class="p">],</span>
 <span class="p">[</span><span class="mf">4.74986638e-01</span><span class="p">,</span><span class="o">-</span><span class="mf">8.65003524e-02</span><span class="p">,</span><span class="o">-</span><span class="mf">1.64835411e-04</span><span class="p">,</span><span class="mf">1.92763890e-02</span><span class="p">,</span><span class="mf">1.72011648e-02</span><span class="p">,</span><span class="mf">6.75886299e-03</span><span class="p">,</span><span class="mf">8.91626484e-04</span><span class="p">,</span><span class="o">-</span><span class="mf">9.91940354e-02</span><span class="p">,</span><span class="o">-</span><span class="mf">2.85644463e-05</span><span class="p">,</span><span class="o">-</span><span class="mf">4.52167010e-02</span><span class="p">,</span><span class="mf">4.33103480e-01</span><span class="p">,</span><span class="o">-</span><span class="mf">1.41922723e+00</span><span class="p">],</span>
@@ -1598,9 +1448,9 @@
         <span class="k">return</span> <span class="n">H</span>
     
     <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">J</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-    <span class="n">find_CI_bound</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+    <span class="n">find_CI_bound</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-<div class="viewcode-block" id="test"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.test">[docs]</a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     
     <span class="n">Hm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">5</span> <span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">],</span>
@@ -1646,6 +1496,12 @@
         <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">a</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">a</span>
         <span class="k">return</span> <span class="n">f1</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+    
+    <span class="k">def</span> <span class="nf">f10</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">params</span><span class="o">*</span><span class="mf">1e-8</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">a</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">a</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span>
         
     
     <span class="k">def</span> <span class="nf">F1</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
@@ -1706,7 +1562,7 @@
     <span class="n">a</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="n">ec</span><span class="o">*</span><span class="n">eo</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ec</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">negative_binomial</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">))</span>
     
-    <span class="kn">from</span> <span class="nn">algopy_ext</span> <span class="kn">import</span> <span class="n">nbinom_logpmf</span>
+    <span class="c1">#from algopy_ext import nbinom_logpmf</span>
     
     
     <span class="k">def</span> <span class="nf">f7</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">ec</span><span class="p">,</span> <span class="n">eo</span><span class="p">):</span>
@@ -1726,7 +1582,7 @@
     
     <span class="c1">#f = F1</span>
     <span class="c1">#&quot;&quot;&quot;</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">f3a</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f10</span>
     <span class="n">x0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">index</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1742,8 +1598,8 @@
     <span class="n">hh</span> <span class="o">=</span> <span class="n">nd_algopy</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span>
     
     
-    <span class="n">r</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">hess</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="c1">#r = op.minimize(f, x0, jac=j, hess=h)</span>
+    <span class="c1">#print(r)</span>
     
     <span class="k">def</span> <span class="nf">tt</span><span class="p">():</span>
         <span class="n">k</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">ec</span><span class="p">,</span> <span class="n">eo</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">x</span>
@@ -1754,13 +1610,10 @@
         <span class="n">a</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span><span class="p">(</span> <span class="n">ec</span><span class="o">*</span><span class="n">eo</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ec</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">)</span>
         <span class="c1">#return np.sum(n-</span>
     
-    <span class="n">x0</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">x</span> <span class="c1">#+ (np.random.rand(x0.size)-0.5)*0.0001</span>
-    <span class="c1">#x0 = np.array([0.,0.])</span>
+    <span class="c1">#x0 = r.x #+ (np.random.rand(x0.size)-0.5)*0.0001</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
     
     <span class="c1">#jjj = lambda x: np.ones(3) + np.nan</span>
-    
-    <span class="c1">#profile_CI_investigation(x0, ff, jj, hh, [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;a&quot;], disp=True, vm=False)</span>
-    <span class="c1">#print(find_profile_CI(0, x0, ff, jj, hh, -1, vm=False))</span>
     
     <span class="n">target</span> <span class="o">=</span> <span class="mf">0.5</span>
     <span class="n">target</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
@@ -1779,9 +1632,11 @@
 <span class="sd">    r1 = find_bound(index, target, x0, ff, jj, hh, False, nmax=300, track_x=True)</span>
 <span class="sd">    print(r1)</span>
 <span class="sd">    #&quot;&quot;&quot;</span>
-    <span class="n">rr1</span> <span class="o">=</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">jj</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">_ci_rvm_test</span> <span class="kn">import</span> <span class="n">venzon_moolgavkar</span>
+    
+    <span class="n">rr1</span> <span class="o">=</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">jj</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">rr1</span><span class="p">)</span>
-    <span class="n">rr2</span> <span class="o">=</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">jj</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rr2</span> <span class="o">=</span> <span class="n">venzon_moolgavkar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">x0</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">jj</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">rr2</span><span class="p">)</span>
     
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">]: </span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">r2</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">r1</span><span class="o">.</span><span class="n">nit</span><span class="p">,</span> <span class="n">r2</span><span class="o">.</span><span class="n">nit</span><span class="p">))</span>
@@ -1895,7 +1750,7 @@
     <span class="c1">#ax.plot_surface(X, Y, Z, rstride=1, cstride=1,</span>
     <span class="c1">#                   linewidth=0, antialiased=True)</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
 
 <div class="viewcode-block" id="plot3d"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.plot3d">[docs]</a><span class="k">def</span> <span class="nf">plot3d</span><span class="p">():</span>
@@ -2027,7 +1882,7 @@
 <span class="sd">    #&quot;&quot;&quot;</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    </div>
 
-<div class="viewcode-block" id="test3"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.test3">[docs]</a><span class="k">def</span> <span class="nf">test3</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_test3</span><span class="p">():</span>
     <span class="n">h</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="n">j</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span><span class="mi">0</span><span class="p">))</span>
     <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -2038,9 +1893,9 @@
     
     
     <span class="n">r</span> <span class="o">=</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 
-<div class="viewcode-block" id="test4"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.test4">[docs]</a><span class="k">def</span> <span class="nf">test4</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_test4</span><span class="p">():</span>
     <span class="n">h</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">]</span>
 <span class="p">,[</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">]</span>
 <span class="p">,[</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="o">-</span><span class="mf">0.00000000e+00</span><span class="p">,</span><span class="mf">6.59765873e-07</span><span class="p">,</span><span class="o">-</span><span class="mf">7.95084287e-08</span><span class="p">,</span><span class="mf">7.97178695e-08</span><span class="p">]</span>
@@ -2055,19 +1910,20 @@
     
     <span class="n">s</span> <span class="o">=</span> <span class="n">FlexibleSubproblem</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span>
     
     
     
     
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">plot3d</span><span class="p">()</span>
-    <span class="kn">import</span> <span class="nn">sys</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-    <span class="kn">import</span> <span class="nn">algopy</span>
     <span class="c1">#plot3d()</span>
-    <span class="n">test</span><span class="p">()</span>
+    <span class="c1">#import sys</span>
+    <span class="c1">#sys.exit()</span>
+    <span class="kn">import</span> <span class="nn">algopy</span>
+    <span class="kn">from</span> <span class="nn">numdifftools</span> <span class="kn">import</span> <span class="n">nd_algopy</span>
+    <span class="c1">#plot3d()</span>
+    <span class="n">_test</span><span class="p">()</span>
 </pre></div>
 
           </div>

@@ -59,6 +59,90 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The hybrid vector model is implemented in the <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel">HybridVectorModel</a> class.
+To create a hybrid model for a system of interest, it is convenient to use the <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.new">HybridVectorModel.new(…)</a> method,
+which takes several data files as input and creates and fits a hybrid vector model. The model is then returned.</p>
+<p>Since the covariates used to model traffic incentive (repulsiveness of donors and attractiveness of recipients) may vary from system to system,
+it is necessary to provide a class representing the travel incentive model (here called ‘traffic factor model’) to the <code class="docutils literal notranslate"><span class="pre">new</span></code> method.
+The class for the traffic factor model must inherit from <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel">BaseTrafficFactorModel</a>, and provides
+a method returning a factor proportional to the traffic between each donor and recipient and a list of all the required covariates.</p>
+<p>In this package, an example for such a traffic factor model is implemented with respect to boater traffic from jurisdictions to lakes. The
+implemented traffic factor model
+can be found in the module <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel">boater_movement_model</a>, and may be helpful as a reference
+when building a custom model.</p>
+<p>In conclusion, a model could be created and fitted as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Import the class implementing the hybrid vector</span>
+<span class="c1"># model</span>
+<span class="kn">from</span> <span class="nn">hybrid_vector_model</span> <span class="kn">import</span> <span class="n">HybridVectorModel</span>
+
+<span class="c1"># Import the class implementing the traffic factor model</span>
+<span class="c1"># Instead of this import, it may be better to implement</span>
+<span class="c1"># your own class tailored to your system.</span>
+<span class="kn">from</span> <span class="nn">boater_movement_model</span> <span class="kn">import</span> <span class="n">TrafficFactorModel</span>
+
+<span class="c1"># Reuse earlier results if possible</span>
+<span class="n">restart</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Declare the file names. Because we assume here that the</span>
+<span class="c1"># files are in a subdirectory &#39;Example&#39;, we need to merge</span>
+<span class="c1"># the file names accordingly.</span>
+<span class="c1"># See the documentation for HybridVectorModel.new for a</span>
+<span class="c1"># detailed description of the files and their contents.</span>
+<span class="n">folder</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span>
+<span class="n">fileNameEdges</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;Edges.csv&quot;</span><span class="p">)</span>
+<span class="n">fileNameVertices</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;Vertices.csv&quot;</span><span class="p">)</span>
+<span class="n">fileNameOrigins</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;PopulationData.csv&quot;</span><span class="p">)</span>
+<span class="n">fileNameDestinations</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;LakeData.csv&quot;</span><span class="p">)</span>
+<span class="n">fileNamePostalCodeAreas</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;PostalCodeAreas.csv&quot;</span><span class="p">)</span>
+<span class="n">fileNameObservations</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;SurveyData.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set the compliance rate of travellers. This is the fraction of</span>
+<span class="c1"># travellers who would stop at a survey location and comply with a survey.</span>
+<span class="c1"># Typically, this rate cannot be computed directly from</span>
+<span class="c1"># survey data and must therefore be specified independently.</span>
+<span class="n">complianceRate</span> <span class="o">=</span> <span class="mf">0.8</span>
+
+<span class="c1"># File name of the model</span>
+<span class="n">fileNameSave</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span>
+
+<span class="c1"># These parameters define which routes are deemed likely.</span>
+<span class="c1"># The first parameter is the factor by how much an admissible</span>
+<span class="c1"># route may be longer than the shortest route.</span>
+<span class="c1"># The second parameter specifies the length of subpaths of the</span>
+<span class="c1"># route that are required to be optimal (length given as fraction</span>
+<span class="c1"># of the total length). 0: no restrictions, 1: only optimal paths</span>
+<span class="c1"># are considered.</span>
+<span class="c1"># The last two parameters control internal approximations. Choosing</span>
+<span class="c1"># 1 in both cases yields exact results.</span>
+<span class="n">routeParameters</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># create and fit a hybrid traffic model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+                        <span class="n">fileNameBackup</span><span class="o">=</span><span class="n">fileNameSave</span><span class="p">,</span>
+                        <span class="n">trafficFactorModel_class</span><span class="o">=</span><span class="n">TrafficFactorModel</span><span class="p">,</span>
+                        <span class="n">fileNameEdges</span><span class="o">=</span><span class="n">fileNameEdges</span><span class="p">,</span>
+                        <span class="n">fileNameVertices</span><span class="o">=</span><span class="n">fileNameVertices</span><span class="p">,</span>
+                        <span class="n">fileNameOrigins</span><span class="o">=</span><span class="n">fileNameOrigins</span><span class="p">,</span>
+                        <span class="n">fileNameDestinations</span><span class="o">=</span><span class="n">fileNameDestinations</span><span class="p">,</span>
+                        <span class="n">fileNamePostalCodeAreas</span><span class="o">=</span><span class="n">fileNamePostalCodeAreas</span><span class="p">,</span>
+                        <span class="n">fileNameObservations</span><span class="o">=</span><span class="n">fileNameObservations</span><span class="p">,</span>
+                        <span class="n">complianceRate</span><span class="o">=</span><span class="n">complianceRate</span><span class="p">,</span>
+                        <span class="n">routeParameters</span><span class="o">=</span><span class="n">routeParameters</span><span class="p">,</span>
+                        <span class="n">restart</span><span class="o">=</span><span class="n">restart</span>
+                        <span class="p">)</span>
+</pre></div>
+</div>
+<p>Refer to <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.new">HybridVectorModel.new(…)</a>
+for a description of the data files required. The example is also implemented in the method
+<a class="reference external" href="hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.example">boater_movement_model.example()</a>.</p>
+<p>Example data files are provided with the package in the subfolder <code class="docutils literal notranslate"><span class="pre">hybrid_vector_model/Example</span></code>. Alternatively, these files
+can be downloaded from the <a class="reference external" href="https://github.com/vemomoto/vemomoto/tree/master/hybrid_vector_model/hybrid_vector_model/Example">github repository</a>.
+There you can also find a graphical image of the example road network.</p>
+</div>
 <div class="section" id="scientific-publication">
 <h2>Scientific Publication<a class="headerlink" href="#scientific-publication" title="Permalink to this headline">¶</a></h2>
 <p>The theory behind the model implemented in this package is explained in the paper “<a class="reference external" href="https://arxiv.org/abs/1909.08811">A hybrid gravity and route choice model to assess vector traffic in large-scale road networks</a>” (preprint). Please cite this publication if you have used the package in your own research.</p>
@@ -90,6 +174,7 @@
   <ul>
 <li><a class="reference internal" href="#">Package: hybrid_vector_model</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
 <li><a class="reference internal" href="#scientific-publication">Scientific Publication</a></li>
 </ul>
 </li>

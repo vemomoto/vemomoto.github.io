@@ -1381,7 +1381,8 @@ will be constructed from scratch.</p></li>
 construction process shall be repeated even if earler results are
 available. If the arguments are set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the respective
 model constrution process will take place (provided the necessary
-arguments, such as file names, are provided.</p></li>
+arguments, such as file names, are provided.
+_____________________________</p></li>
 <li><p><strong>readOriginData</strong> (<em>bools</em>) – Read csv with data on boater origins</p></li>
 <li><p><strong>readDestinationData</strong> (<em>bool</em>) – Read csv with data on boater destinations</p></li>
 <li><p><strong>readPostalCodeAreaData</strong> (<em>bool</em>) – Read csv with population data for postal code regions</p></li>
@@ -1432,6 +1433,23 @@ day is an integer. However, other shift lengths are possible as well.</p>
 <p>The day will need to be discretized. The method will take efforts to
 make the input match a discretization scheme so that not more time
 intervals than necessary need to be considered.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method assumes that <a class="reference external" href="https://www.mosek.com/documentation/">MOSEK</a>
+is installed to solve linear programming problems. (See also the
+<a class="reference external" href="https://www.cvxpy.org/install/">cvxpy documentation</a>.)
+A different solver could be used as well, but this has to be changed
+in the source code.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By the time when this document was created, the MOSEK interface
+of cvxpy did not implement the option to pass an initial condition
+to the solver. If this feature shall be used (which is recommended),
+the cvxpy installation needs to be pached. Please copy the files
+in the subdirectory cvxpy_changes to the locations designated in
+their headers and replace the original files.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

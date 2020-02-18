@@ -53,6 +53,11 @@
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">hybrid_vector_model</span> <span class="kn">import</span> <span class="o">*</span>
 
+<span class="c1"># The first command line argument specifies the output file to which all output</span>
+<span class="c1"># will be written.     </span>
+<span class="kn">from</span> <span class="nn">vemomoto_core.tools.tee</span> <span class="kn">import</span> <span class="n">Tee</span>                
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
 <div class="viewcode-block" id="TrafficFactorModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel">[docs]</a><span class="k">class</span> <span class="nc">TrafficFactorModel</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="p">):</span>
@@ -538,7 +543,11 @@
     <span class="c1"># Reuse earlier results if possible</span>
     <span class="n">restart</span> <span class="o">=</span> <span class="kc">False</span>
     
-    <span class="c1"># declare the file names    </span>
+    <span class="c1"># Declare the file names. Because we assume here that the </span>
+    <span class="c1"># files are in a subdirectory &#39;Example&#39;, we need to merge </span>
+    <span class="c1"># the file names accordingly.</span>
+    <span class="c1"># See the documentation for HybridVectorModel.new for a </span>
+    <span class="c1"># detailed description of the files and their contents.</span>
     <span class="n">folder</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span>
     <span class="n">fileNameEdges</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;Edges.csv&quot;</span><span class="p">)</span>
     <span class="n">fileNameVertices</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;Vertices.csv&quot;</span><span class="p">)</span>
@@ -546,13 +555,28 @@
     <span class="n">fileNameDestinations</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;LakeData.csv&quot;</span><span class="p">)</span>
     <span class="n">fileNamePostalCodeAreas</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;PostalCodeAreas.csv&quot;</span><span class="p">)</span>
     <span class="n">fileNameObservations</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s2">&quot;SurveyData.csv&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Set the compliance rate of travellers. This is the fraction of</span>
+    <span class="c1"># travellers who would stop at a survey location and comply with a survey.</span>
+    <span class="c1"># Typically, this rate cannot be computed directly from </span>
+    <span class="c1"># survey data and must therefore be specified independently.</span>
     <span class="n">complianceRate</span> <span class="o">=</span> <span class="mf">0.8</span>
     
     <span class="c1"># File name of the model</span>
     <span class="n">fileNameSave</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span>
     
+    <span class="c1"># These parameters define which routes are deemed likely.</span>
+    <span class="c1"># The first parameter is the factor by how much an admissible</span>
+    <span class="c1"># route may be longer than the shortest route. </span>
+    <span class="c1"># The second parameter specifies the length of subpaths of the </span>
+    <span class="c1"># route that are required to be optimal (length given as fraction </span>
+    <span class="c1"># of the total length). 0: no restrictions, 1: only optimal paths</span>
+    <span class="c1"># are considered. </span>
+    <span class="c1"># The last two parameters control internal approximations. Choosing </span>
+    <span class="c1"># 1 in both cases yields exact results.</span>
     <span class="n">routeParameters</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     
+    <span class="c1"># create and fit a hybrid traffic model</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
                 <span class="n">fileNameBackup</span><span class="o">=</span><span class="n">fileNameSave</span><span class="p">,</span> 
                 <span class="n">trafficFactorModel_class</span><span class="o">=</span><span class="n">TrafficFactorModel</span><span class="p">,</span>
@@ -563,8 +587,6 @@
                 <span class="n">fileNamePostalCodeAreas</span><span class="o">=</span><span class="n">fileNamePostalCodeAreas</span><span class="p">,</span>
                 <span class="n">fileNameObservations</span><span class="o">=</span><span class="n">fileNameObservations</span><span class="p">,</span>
                 <span class="n">complianceRate</span><span class="o">=</span><span class="n">complianceRate</span><span class="p">,</span>
-                <span class="n">preprocessingArgs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="n">edgeLengthRandomization</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
                 <span class="n">routeParameters</span><span class="o">=</span><span class="n">routeParameters</span><span class="p">,</span> 
                 <span class="n">restart</span><span class="o">=</span><span class="n">restart</span>
                 <span class="p">)</span></div>

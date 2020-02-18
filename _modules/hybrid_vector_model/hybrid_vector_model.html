@@ -37,7 +37,6 @@
   <h1>Source code for hybrid_vector_model.hybrid_vector_model</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
 
-
 <span class="sd">.. note:: This program was created with the motivation to model the traffic</span>
 <span class="sd">    of boaters potentially carrying aquatic invasive species. Nonetheless,</span>
 <span class="sd">    the tools are applicable to assess and control any vector road traffic. </span>
@@ -66,8 +65,7 @@
 <span class="kn">import</span> <span class="nn">numpy.lib.recfunctions</span> <span class="k">as</span> <span class="nn">rf</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
 <span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">op</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">nbinom</span><span class="p">,</span> <span class="n">norm</span> <span class="k">as</span> <span class="n">normaldist</span><span class="p">,</span> <span class="n">f</span> <span class="k">as</span> <span class="n">fdist</span><span class="p">,</span> <span class="n">linregress</span><span class="p">,</span> \
-                        <span class="n">vonmises</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">nbinom</span><span class="p">,</span> <span class="n">f</span> <span class="k">as</span> <span class="n">fdist</span><span class="p">,</span> <span class="n">linregress</span><span class="p">,</span> <span class="n">chi2</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">ag</span>
@@ -82,7 +80,6 @@
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools</span> <span class="kn">import</span> <span class="n">saveobject</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.npcollections.npextc</span> <span class="kn">import</span> <span class="n">FlexibleArray</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools.hrprint</span> <span class="kn">import</span> <span class="n">HierarchichalPrinter</span>
-<span class="kn">from</span> <span class="nn">vemomoto_core.tools.tee</span> <span class="kn">import</span> <span class="n">Tee</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools.doc_utils</span> <span class="kn">import</span> <span class="n">DocMetaSuperclass</span><span class="p">,</span> <span class="n">inherit_doc</span><span class="p">,</span> <span class="n">staticmethod_inherit_doc</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.concurrent.concurrent_futures_ext</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.concurrent.nicepar</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -102,11 +99,6 @@
 
 
 <span class="c1"># general settings --------------------------------------------------------</span>
-<span class="c1"># The first command line argument specifies the output file to which all output</span>
-<span class="c1"># will be written.                     </span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span> 
 <span class="c1"># -------------------------------------------------------------------------</span>
@@ -3351,7 +3343,19 @@
 <span class="sd">        </span>
 <span class="sd">        The day will need to be discretized. The method will take efforts to </span>
 <span class="sd">        make the input match a discretization scheme so that not more time</span>
-<span class="sd">        intervals than necessary need to be considered.        </span>
+<span class="sd">        intervals than necessary need to be considered.   </span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: This method assumes that `MOSEK &lt;https://www.mosek.com/documentation/&gt;`_</span>
+<span class="sd">            is installed to solve linear programming problems. (See also the </span>
+<span class="sd">            `cvxpy documentation &lt;https://www.cvxpy.org/install/&gt;`_.)</span>
+<span class="sd">            A different solver could be used as well, but this has to be changed</span>
+<span class="sd">            in the source code.</span>
+<span class="sd">        .. note:: By the time when this document was created, the MOSEK interface</span>
+<span class="sd">            of cvxpy did not implement the option to pass an initial condition</span>
+<span class="sd">            to the solver. If this feature shall be used (which is recommended),</span>
+<span class="sd">            the cvxpy installation needs to be pached. Please copy the files</span>
+<span class="sd">            in the subdirectory cvxpy_changes to the locations designated in </span>
+<span class="sd">            their headers and replace the original files.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5558,6 +5562,7 @@
 <span class="sd">            available. If the arguments are set to ``True``, the respective</span>
 <span class="sd">            model constrution process will take place (provided the necessary</span>
 <span class="sd">            arguments, such as file names, are provided. </span>
+<span class="sd">            _____________________________</span>
 <span class="sd">        readOriginData : bools</span>
 <span class="sd">            Read csv with data on boater origins</span>
 <span class="sd">        readDestinationData : bool</span>
