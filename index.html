@@ -48,15 +48,29 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This documentation and also parts of the software packages are still under construction. The API is not yet complete, and working examples are still to be addedd. Furthermore, some variables and methods may be renamed without notice, so be cautious with using this early version of the software.</p>
+<p>This documentation and also parts of the software packages are still under construction. The API is not yet complete, and working examples are still to be addedd. Furthermore, some variables and methods may be renamed in future versions without notice, so be cautious with using this early version of the software.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The packages will soon be available on the <a class="reference external" href="https://pypi.org/">Python package index</a> and can then be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. To install all packages, you may then use</p>
+<p>The packages are available on the <a class="reference external" href="https://pypi.org/">Python package index</a> and can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. The project includes some C extensions, which need to be compiled before they can be used. For 64-bit Windows, precompiled packages are available. If working on a different platform, make sure that a compiler is installed. If working with <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>, you may run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">gxx_linux</span><span class="o">-</span><span class="mi">64</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+<p>If working on a 32-bit machine, replace the <code class="docutils literal notranslate"><span class="pre">64</span></code> with a <code class="docutils literal notranslate"><span class="pre">32</span></code>. The packages have not been tested on a Mac yet, but replacing <code class="docutils literal notranslate"><span class="pre">gxx_linux-64</span></code> with <code class="docutils literal notranslate"><span class="pre">clangxx_osx-64</span></code> should work. See the <a class="reference external" href="https://docs.conda.io/projects/conda-build/en/latest/resources/compiler-tools.html">Anaconda documentation</a> for details.</p>
+<p>To install all packages, you may use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">vemomoto</span>
 </pre></div>
 </div>
-<p>Installation instructions for the respective subpackages only can be found on the corresponding subpages.</p>
+<p>Installation instructions for individual packages can be found on the corresponding subpages.</p>
+<p>The optimizier for vector control included in this package depends on the commercial software <a class="reference external" href="https://www.mosek.com/">MOSEK</a>. If this software is not installed, a respective warning may be displayed upon import of the packages. For instructions on how to install MOSEK, and for the respective terms and conditions, refer to the <a class="reference external" href="https://docs.mosek.com/9.1/pythonfusion/install-interface.html">MOSEK documentation</a>. If working with Anaconda, you may use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">mosek</span> <span class="n">mosek</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some algorithms implemented in this package rely on share memory libraries that work on Unix systems only. If the vemomoto packages are to be applied to large sytems, it is strongly encouraged to execute the code on Linux, as some tasks are not implemented to run in parallel on Windows.</p>
+</div>
 </div>
 <div class="section" id="license-and-referencing-in-scientific-publications">
 <h2>License and Referencing in Scientific Publications<a class="headerlink" href="#license-and-referencing-in-scientific-publications" title="Permalink to this headline">¶</a></h2>

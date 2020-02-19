@@ -71,7 +71,14 @@
 <span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">ag</span>
 <span class="kn">from</span> <span class="nn">autograd</span> <span class="kn">import</span> <span class="n">grad</span><span class="p">,</span> <span class="n">hessian</span>
 <span class="kn">from</span> <span class="nn">statsmodels.distributions.empirical_distribution</span> <span class="kn">import</span> <span class="n">ECDF</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Failed to import CVXPY. This may due to the issue of &quot;</span>
+                  <span class="s2">&quot;MOSEK not being available. See &quot;</span>
+                  <span class="s2">&quot;https://docs.mosek.com/9.1/install/installation.html for &quot;</span>
+                  <span class="s2">&quot;installation instructions.&quot;</span><span class="p">)</span>
 
 
 <span class="kn">from</span> <span class="nn">vemomoto_core.npcollections.npext</span> <span class="kn">import</span> <span class="n">add_fields</span><span class="p">,</span> <span class="n">list_to_csr_matrix</span><span class="p">,</span> <span class="n">sparsepowersum</span><span class="p">,</span> \
@@ -2873,7 +2880,7 @@
                       <span class="s2">&quot;refit=True&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="s2">&quot;processedSurveyData&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;The model has no extrapolated boater data. I stop.&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;The model has no prepared traveller data. I stop.&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;Call preprocess_survey_data if you want to&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;use the model.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -2983,7 +2990,7 @@
                                             <span class="bp">self</span><span class="o">.</span><span class="n">complianceRate</span><span class="p">,</span>
                                             <span class="bp">self</span><span class="o">.</span><span class="n">properDataRate</span><span class="p">,</span>
                                             <span class="n">covariates</span><span class="p">,</span> 
-                                            <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vm</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                                            <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                  
             
         <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;flowModelData&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">or</span>

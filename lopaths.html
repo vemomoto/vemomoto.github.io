@@ -52,9 +52,14 @@
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The package can soon be installed via pip. To install the package, you can then use</p>
+<p>The package can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. To install the package, you can use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">lopaths</span>
 </pre></div>
+</div>
+<p>Please note that a compiler may be needed to install the package. Please refer to the section <a class="reference external" href="index.html#installation">Installation</a> on the main page.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some algorithms implemented in this package rely on share memory libraries that work on Unix systems only. If locally optimal paths shall be computed in large road networks, it is strongly encouraged to execute the code on Linux, as some tasks are not implemented to run in parallel on Windows.</p>
 </div>
 </div>
 <div class="section" id="scientific-publication">
