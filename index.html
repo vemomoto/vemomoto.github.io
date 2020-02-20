@@ -42,9 +42,9 @@
 <p>“Vector movement modelling tools” is a collection of python packages aiming to model the movement of invasive species or disease vectors through road networks.</p>
 <ul class="simple">
 <li><p>The package <a class="reference internal" href="hybrid_vector_model.html"><span class="doc">hybrid_vector_model</span></a> provides the core functionality for the model.</p></li>
-<li><p>The package <a class="reference internal" href="lopaths.html"><span class="doc">lopaths</span></a> contains an algorithm to identify locally optimal routes in road networks. These routes are in particular a necessary requirement for the hybrid vector model.</p></li>
-<li><p>The package <a class="reference internal" href="ci_rvm.html"><span class="doc">ci_rvm</span></a> contains an algorithm to identify profile likelihood confidence intervals. This algorithm is in particular used to assess the hybrid vector model</p></li>
-<li><p>The package <a class="reference internal" href="vemomoto_core.html"><span class="doc">vemomoto_core</span></a> provides helpful tools required by the other packages</p></li>
+<li><p>The package <a class="reference internal" href="lopaths.html"><span class="doc">lopaths</span></a> contains an algorithm to identify locally optimal routes in road networks. These routes are used in the hybrid vector model.</p></li>
+<li><p>The package <a class="reference internal" href="ci_rvm.html"><span class="doc">ci_rvm</span></a> contains an algorithm to identify profile likelihood confidence intervals. The algorithm is in particular used to assess the hybrid vector model.</p></li>
+<li><p>The package <a class="reference internal" href="vemomoto_core.html"><span class="doc">vemomoto_core</span></a> provides helpful tools required by the other packages.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -52,13 +52,13 @@
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The packages are available on the <a class="reference external" href="https://pypi.org/">Python package index</a> and can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. The project includes some C extensions, which need to be compiled before they can be used. For 64-bit Windows, precompiled packages are available. If working on a different platform, make sure that a compiler is installed. If working with <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>, you may run</p>
+<p>The packages are available on the <a class="reference external" href="https://pypi.org/">Python package index</a> and can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. The project includes some C extensions, which need to be compiled before they can be used. For 64-bit Windows, precompiled packages are available. If working on a different platform, a compiler will be required. If you are working with <a class="reference external" href="https://www.anaconda.com/">Anaconda</a> on 64-bit Linux, you may satisfy this requirement via running</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">gxx_linux</span><span class="o">-</span><span class="mi">64</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="n">cmake</span>
 </pre></div>
 </div>
-<p>If working on a 32-bit machine, replace the <code class="docutils literal notranslate"><span class="pre">64</span></code> with a <code class="docutils literal notranslate"><span class="pre">32</span></code>. The packages have not been tested on a Mac yet, but replacing <code class="docutils literal notranslate"><span class="pre">gxx_linux-64</span></code> with <code class="docutils literal notranslate"><span class="pre">clangxx_osx-64</span></code> should work. See the <a class="reference external" href="https://docs.conda.io/projects/conda-build/en/latest/resources/compiler-tools.html">Anaconda documentation</a> for details.</p>
-<p>To install all packages, you may use</p>
+<p>If working on a 32-bit machine, replace the <code class="docutils literal notranslate"><span class="pre">64</span></code> with a <code class="docutils literal notranslate"><span class="pre">32</span></code>. The VeMoMoTo packages have not been tested on Mac OS yet, but replacing <code class="docutils literal notranslate"><span class="pre">gxx_linux-64</span></code> with <code class="docutils literal notranslate"><span class="pre">clangxx_osx-64</span></code> should work. See the <a class="reference external" href="https://docs.conda.io/projects/conda-build/en/latest/resources/compiler-tools.html">Anaconda documentation</a> for details.</p>
+<p>To install all VeMoMoTo packages via pip, run</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">vemomoto</span>
 </pre></div>
 </div>
