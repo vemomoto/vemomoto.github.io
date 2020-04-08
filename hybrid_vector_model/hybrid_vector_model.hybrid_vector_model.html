@@ -107,10 +107,13 @@ or <cite>lake</cite>.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files" title="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_observed_predicted_mean_error_plot_from_files</span></code></a>(…)</p></td>
 <td><p>Creates an observed vs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="hybrid_vector_model.hybrid_vector_model.nbinom_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbinom_fit</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error" title="hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_relative_absolute_error</span></code></a>(prediction, …)</p></td>
+<td><p>Compute the mean relative absolute error between predictions and observations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="hybrid_vector_model.hybrid_vector_model.nbinom_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbinom_fit</span></code></a>(data)</p></td>
 <td><p>Fits a negative binomial distribution to given data</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw_predicted_observed</span></code></a>(fileName1, fileName2)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw_predicted_observed</span></code></a>(fileName1, fileName2)</p></td>
 <td><p>Redraws predicted versus oberved plots generated earlier.</p></td>
 </tr>
 </tbody>
@@ -769,7 +772,7 @@ Do not include the file name extension.</p></li>
 <code class="sig-name descname">find_potential_routes</code><span class="sig-paren">(</span><em class="sig-param">stretchConstant=1.5</em>, <em class="sig-param">localOptimalityConstant=0.2</em>, <em class="sig-param">acceptionFactor=0.667</em>, <em class="sig-param">rejectionFactor=1.333</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.find_potential_routes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_potential_routes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Searches potential routes of boaters.</p>
 <p>For detailed documentation on the arguments, refer to
-<a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_alternative_paths" title="lopaths.graph.FlowPointGraph.find_alternative_paths"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph.find_alternative_paths</span></code></a></p>
+<a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="lopaths.graph.FlowPointGraph.find_locally_optimal_paths"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph.find_locally_optimal_paths</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2047,7 +2050,7 @@ likely that distinct paths have distinct length.</p></li>
 <code class="sig-name descname">find_potential_routes</code><span class="sig-paren">(</span><em class="sig-param">stretchConstant=1.5</em>, <em class="sig-param">localOptimalityConstant=0.2</em>, <em class="sig-param">acceptionFactor=0.667</em>, <em class="sig-param">rejectionFactor=1.333</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.find_potential_routes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_potential_routes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Searches potential routes of boaters.</p>
 <p>For detailed documentation on the arguments, refer to
-<a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_alternative_paths" title="lopaths.graph.FlowPointGraph.find_alternative_paths"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph.find_alternative_paths</span></code></a></p>
+<a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="lopaths.graph.FlowPointGraph.find_locally_optimal_paths"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph.find_locally_optimal_paths</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2151,6 +2154,12 @@ mass function).</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predicted</strong> (<em>float</em><em>[</em><em>]</em>) – Array of predicted values.</p></li>
 <li><p><strong>observed</strong> (<em>float</em><em>[</em><em>]</em>) – Array of observed values.</p></li>
+<li><p><strong>error</strong> (<em>float</em><em>[</em><em>]</em>) – Array with a measure for the expected error of the predictions. This
+can be used to show how large the expected deviations between predicted
+and observed values are.</p></li>
+<li><p><strong>constError</strong> (<em>float</em>) – If given, the area <cite>constError</cite> units above and below the
+<cite>predicted=observed</cite> line will be shaded. This is useful if the figure
+shall show the confidence interval of predictions.</p></li>
 <li><p><strong>errorFunctions</strong> (<em>callable</em><em>[</em><em>]</em>) – Two methods for the lower and the upper predicted error (e.g. 95%
 confidence interval). Both of these methods must take the predicted
 value and return the repsective expected bound for the observations.
@@ -2187,6 +2196,25 @@ be loaded and plotted for comparison.</p></li>
 <li><p><strong>fileName2</strong> (<em>str</em>) – Name of the file from which comparison data shall be loaded.</p></li>
 <li><p><strong>extension</strong> (<em>str</em>) – Extension to add to both file names.</p></li>
 <li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_observed_predicted_mean_error_plot()</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error">
+<code class="sig-name descname">mean_relative_absolute_error</code><span class="sig-paren">(</span><em class="sig-param">prediction</em>, <em class="sig-param">observation</em>, <em class="sig-param">normalization=None</em>, <em class="sig-param">cutoff=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#mean_relative_absolute_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the mean relative absolute error between predictions and
+observations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prediction</strong> (<em>float</em><em>[</em><em>]</em>) – Predicted values.</p></li>
+<li><p><strong>observation</strong> (<em>float</em><em>[</em><em>]</em>) – Observed values.</p></li>
+<li><p><strong>normalization</strong> (<em>float</em><em>[</em><em>]</em>) – Normalization for the error. If not given, the predicted values will
+be used.</p></li>
+<li><p><strong>cutoff</strong> (<em>float | float</em><em>[</em><em>]</em>) – Threshold value. Observed-predicted pairs will be ignored if the
+predicted value is below <cite>cutoff</cite>.</p></li>
 </ul>
 </dd>
 </dl>

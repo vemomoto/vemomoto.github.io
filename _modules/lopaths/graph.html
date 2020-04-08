@@ -36,6 +36,9 @@
             
   <h1>Source code for lopaths.graph</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Module implementing objects representing graphs and different algorithms to</span>
+<span class="sd">find shortest and potential alternative paths.</span>
+
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span> <span class="k">as</span> <span class="n">iterproduct</span><span class="p">,</span> <span class="n">repeat</span><span class="p">,</span> <span class="n">starmap</span><span class="p">,</span> <span class="n">count</span> <span class="k">as</span> <span class="n">itercount</span>
@@ -79,11 +82,11 @@
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.sig_fig_rounding</span> <span class="kn">import</span> <span class="n">RoundToSigFigs_fp</span> <span class="k">as</span> <span class="n">round_rel</span>
-<span class="k">except</span> <span class="n">ModuleNotFoundError</span><span class="p">:</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">sig_fig_rounding</span> <span class="kn">import</span> <span class="n">RoundToSigFigs_fp</span> <span class="k">as</span> <span class="n">round_rel</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.graph_utils</span> <span class="kn">import</span> <span class="n">find_shortest_distance</span><span class="p">,</span> <span class="n">in_sets</span>
-<span class="k">except</span> <span class="n">ModuleNotFoundError</span><span class="p">:</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">graph_utils</span> <span class="kn">import</span> <span class="n">find_shortest_distance</span><span class="p">,</span> <span class="n">in_sets</span>
 
 <span class="c1">#profiling</span>
@@ -97,12 +100,16 @@
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-<span class="n">CPU_COUNT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> 
 
+
+<span class="n">CPU_COUNT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> 
+<span class="s2">&quot;Number of CPU cores to be used at most. Defaults to the number of installed cores.&quot;</span>
 
 
 <div class="viewcode-block" id="FlexibleGraph"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlexibleGraph">[docs]</a><span class="k">class</span> <span class="nc">FlexibleGraph</span><span class="p">(</span><span class="n">HierarchichalPrinter</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Graph with a flexible structure that supports efficient addition and removal</span>
+<span class="sd">    of vertices and edges.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">edgeData</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">vertexData</span><span class="p">,</span> 
@@ -1738,15 +1745,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">dists</span></div>
         
-<div class="viewcode-block" id="FlowPointGraph.find_alternative_paths"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_alternative_paths">[docs]</a>    <span class="k">def</span> <span class="nf">find_alternative_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromIndices</span><span class="p">,</span> <span class="n">toIndices</span><span class="p">,</span> 
+<div class="viewcode-block" id="FlowPointGraph.find_alternative_paths"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_alternative_paths">[docs]</a>    <span class="k">def</span> <span class="nf">find_alternative_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The function `find_alternative_paths` has been renamed&quot;</span>
+                      <span class="s2">&quot;to `find_locally_optimal_paths.`&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_locally_optimal_paths</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="FlowPointGraph.find_locally_optimal_paths"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_locally_optimal_paths">[docs]</a>    <span class="k">def</span> <span class="nf">find_locally_optimal_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromIndices</span><span class="p">,</span> <span class="n">toIndices</span><span class="p">,</span> 
                                <span class="n">shortestDistances</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                               <span class="n">stretchConstant</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>         <span class="c1"># (1 + epsilon)</span>
+                               <span class="n">stretchConstant</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>         <span class="c1"># beta</span>
                                <span class="n">localOptimalityConstant</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># alpha</span>
-                               <span class="n">acceptionFactor</span><span class="o">=</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
-                               <span class="n">rejectionFactor</span><span class="o">=</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">acceptionFactor</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+                               <span class="n">rejectionFactor</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
                                <span class="n">testing</span><span class="o">=</span><span class="kc">False</span>
-                               <span class="p">):</span>            <span class="c1"># 0: fast</span>
-                                                            <span class="c1"># 1: complete</span>
+                               <span class="p">):</span>           
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Finding alternative paths (parallelly)&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
@@ -1755,6 +1766,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;acception factor:&quot;</span><span class="p">,</span> <span class="n">acceptionFactor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;rejection factor:&quot;</span><span class="p">,</span> <span class="n">rejectionFactor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;|O|, |D| = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fromIndices</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">toIndices</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">testing</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Testing:&quot;</span><span class="p">,</span> <span class="n">testing</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">testing</span><span class="p">,</span> <span class="s2">&quot;__contains__&quot;</span><span class="p">):</span>
+            <span class="n">testing_args</span> <span class="o">=</span> <span class="n">testing</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">testing_args</span> <span class="o">=</span> <span class="p">{}</span>
         
         <span class="n">testResults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:{},</span> <span class="s2">&quot;result&quot;</span><span class="p">:{}}</span>
         
@@ -1799,8 +1817,8 @@
         <span class="n">cpu_count</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">CPU_COUNT</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">sinkNumber</span><span class="o">//</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">const_args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">],</span> 
                       <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;inspection&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">),</span>
-                      <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">stretchConstant</span><span class="p">,</span>
-                      <span class="n">localOptimalityConstant</span><span class="p">,</span> <span class="n">closestSourceQueue</span><span class="p">]</span>
+                      <span class="n">stretchConstant</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="p">,</span> 
+                      <span class="n">closestSourceQueue</span><span class="p">]</span>
         
         <span class="n">taskLength</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">startIndices</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Labelling vertices.&quot;</span><span class="p">)</span>
@@ -1818,7 +1836,10 @@
         <span class="k">with</span> <span class="n">ProcessPoolExecutor_ext</span><span class="p">(</span><span class="n">cpu_count</span><span class="p">,</span> <span class="n">const_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
             <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_grow_bounded_tree</span><span class="p">,</span>
                               <span class="n">fromIndices</span><span class="p">,</span> <span class="n">Repeater</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span> <span class="n">min_source_dists</span><span class="p">,</span>
-                              <span class="n">max_source_dists</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                              <span class="n">max_source_dists</span><span class="p">,</span> 
+                              <span class="n">Repeater</span><span class="p">(</span><span class="s2">&quot;tree_bound&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">),</span>
+                              <span class="n">Repeater</span><span class="p">(</span><span class="s2">&quot;pruning_bound&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">),</span>
+                              <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">decreaseThread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span>
                         <span class="n">target</span><span class="o">=</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_decrease_closest_source_distance</span><span class="p">,</span> 
                         <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">closestSourceQueue</span><span class="p">,</span> <span class="n">closestSourceDists</span><span class="p">)</span>
@@ -1843,6 +1864,9 @@
             <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_grow_bounded_tree</span><span class="p">,</span>
                               <span class="n">toIndices</span><span class="p">,</span> 
                               <span class="n">Repeater</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="n">min_sink_dists</span><span class="p">,</span> <span class="n">max_sink_dists</span><span class="p">,</span> 
+                              <span class="n">Repeater</span><span class="p">(</span><span class="s2">&quot;tree_bound&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">),</span>
+                              <span class="n">Repeater</span><span class="p">(</span><span class="s2">&quot;pruning_bound&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">),</span>
+                              <span class="n">Repeater</span><span class="p">(</span><span class="s2">&quot;pruning_bound_extended&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">),</span>
                               <span class="n">chunksize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mapObj</span><span class="p">):</span>
                 <span class="n">percentageDone</span> <span class="o">=</span> <span class="n">printCounter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
@@ -1864,9 +1888,15 @@
         
         
         <span class="n">consideredEdges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">edgesVisitedSinks</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-        <span class="n">plateauPeakEdges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_plateau_peaks</span><span class="p">(</span><span class="n">consideredEdges</span><span class="p">,</span> 
-                                                    <span class="n">edgesVisitedSources</span><span class="p">,</span>
-                                                    <span class="n">edgesVisitedSinks</span><span class="p">)</span>
+        
+        
+        <span class="k">if</span> <span class="s2">&quot;reject_identical&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span> <span class="ow">or</span> <span class="s2">&quot;find_plateaus&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">:</span>
+            <span class="n">plateauPeakEdges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">consideredEdges</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span>
+                    <span class="n">edgesVisitedSources</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plateauPeakEdges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_plateau_peaks</span><span class="p">(</span><span class="n">consideredEdges</span><span class="p">,</span> 
+                                                        <span class="n">edgesVisitedSources</span><span class="p">,</span>
+                                                        <span class="n">edgesVisitedSinks</span><span class="p">)</span>
         
         <span class="n">endTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s2">&quot;number plateau peaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">plateauPeakEdges</span><span class="p">)</span>
@@ -1899,7 +1929,7 @@
         <span class="n">sinkDistances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">taskLength</span><span class="p">,</span> <span class="n">sinkNumber</span><span class="p">))</span>
         <span class="n">printCounter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">taskLength</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">)</span>
         
-        <span class="c1"># we must only consider the toIndex of the edges,</span>
+        <span class="c1"># we only need to consider the toIndex of the edges,</span>
         <span class="c1"># because the outer vertex might have been pruned in the </span>
         <span class="c1"># backwards labelling process and there the outer vertex is the</span>
         <span class="c1"># fromVertex</span>
@@ -1941,7 +1971,7 @@
         <span class="k">with</span> <span class="n">ProcessPoolExecutor_ext</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">const_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
             <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_find_vertexCandidates</span><span class="p">,</span>
                 <span class="n">iterproduct</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sourceNumber</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">sinkNumber</span><span class="p">)),</span>
-                <span class="n">tasklength</span><span class="o">=</span><span class="n">taskLength</span><span class="p">)</span>
+                <span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;reject_identical&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">testing_args</span><span class="p">),</span> <span class="n">tasklength</span><span class="o">=</span><span class="n">taskLength</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">iterproduct</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sourceNumber</span><span class="p">),</span> 
                                              <span class="nb">range</span><span class="p">(</span><span class="n">sinkNumber</span><span class="p">)),</span> <span class="n">mapObj</span><span class="p">):</span>
                 <span class="n">pairViaVertices</span><span class="p">,</span> <span class="n">lengths</span> <span class="o">=</span> <span class="n">res</span>
@@ -1958,7 +1988,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span>
         
         <span class="n">endTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">][</span><span class="s2">&quot;plateau peaks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span>
+        <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">][</span><span class="s2">&quot;length and uniqueness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span>
         <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s2">&quot;number unique candidates&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pairData</span><span class="p">)</span>
         <span class="n">testResults</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s2">&quot;number unique candidates pair&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pairVertexCount</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Determining unique candidates per plateau took </span><span class="si">{}</span><span class="s2"> seconds.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
@@ -2009,10 +2039,15 @@
                       <span class="n">labelData</span><span class="p">,</span> <span class="n">viaData</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="p">,</span>
                       <span class="n">acceptionFactor</span><span class="p">,</span> <span class="n">rejectionFactor</span><span class="p">]</span>
         
+        <span class="n">testing_no_joint_reject</span> <span class="o">=</span> <span class="s2">&quot;joint_reject&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span>
+        <span class="n">testing_no_length_lookups</span> <span class="o">=</span> <span class="s2">&quot;reuse_queries&quot;</span> <span class="ow">in</span> <span class="n">testing_args</span>
+        
         <span class="k">with</span> <span class="n">ProcessPoolExecutor_ext</span><span class="p">(</span><span class="n">cpu_count</span><span class="p">,</span> <span class="n">const_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
-            <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">find_admissible_via_vertices</span><span class="p">,</span>
+            <span class="n">mapObj</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">_find_admissible_via_vertices</span><span class="p">,</span>
                               <span class="n">viaCandidates</span><span class="p">[</span><span class="n">disorder</span><span class="p">],</span>
                               <span class="n">disorder</span><span class="p">,</span>
+                              <span class="n">repeat</span><span class="p">(</span><span class="n">testing_no_joint_reject</span><span class="p">),</span>
+                              <span class="n">repeat</span><span class="p">(</span><span class="n">testing_no_length_lookups</span><span class="p">),</span>
                               <span class="n">tasklength</span><span class="o">=</span><span class="n">taskLength</span><span class="p">,</span>
                               <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mapObj</span><span class="p">:</span>
@@ -2133,9 +2168,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="n">countNotLO</span><span class="o">/</span><span class="p">(</span><span class="n">sourceNumber</span><span class="o">*</span><span class="n">sinkNumber</span><span class="p">),</span> <span class="s2">&quot;via vertices per pair were pruned because they were not locally optimal&quot;</span><span class="p">)</span>     
         <span class="n">minCount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">viaVertexCount</span><span class="p">)</span>
         <span class="n">maxCount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">viaVertexCount</span><span class="p">)</span>
-        <span class="n">bins</span><span class="o">=</span><span class="n">maxCount</span><span class="o">-</span><span class="n">minCount</span>
-        <span class="k">if</span> <span class="n">bins</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">viaVertexCount</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">))</span>     
+        <span class="c1">#bins=maxCount-minCount</span>
+        <span class="c1">#if bins:</span>
+        <span class="c1">#    print(np.histogram(viaVertexCount, bins=bins))     </span>
         
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        def getVertexByID(ID, subset=None):</span>
@@ -2175,7 +2210,6 @@
                 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_decrease_closest_source_distance</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">closestSourceDists</span><span class="p">):</span>
-        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -2186,11 +2220,12 @@
                 <span class="k">return</span> <span class="n">closestSourceDists</span>
     
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_grow_bounded_tree</span><span class="p">(</span><span class="n">vertexArr</span><span class="p">,</span> <span class="n">lengthArr</span><span class="p">,</span> <span class="n">inspectionArr</span><span class="p">,</span> <span class="n">edgesSize</span><span class="p">,</span> <span class="c1">#can be removed</span>
+    <span class="k">def</span> <span class="nf">_grow_bounded_tree</span><span class="p">(</span><span class="n">vertexArr</span><span class="p">,</span> <span class="n">lengthArr</span><span class="p">,</span> <span class="n">inspectionArr</span><span class="p">,</span>
                            <span class="n">stretchConstant</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="p">,</span> 
                            <span class="n">closestSourceDistCommunicator</span><span class="p">,</span> <span class="c1">#treeIndex, </span>
                            <span class="n">startIndex</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">shortestShortestDist</span><span class="p">,</span>
-                           <span class="n">longestShortestDist</span><span class="p">,</span> 
+                           <span class="n">longestShortestDist</span><span class="p">,</span> <span class="n">naiveBound</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                           <span class="n">naivePruning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">noBackwardPruning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                            <span class="p">):</span>
         
         <span class="n">edgesVisited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -2218,26 +2253,24 @@
         
         <span class="n">data</span> <span class="o">=</span> <span class="n">FlexibleArrayDict</span><span class="p">(</span><span class="n">initSize</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dataDtype</span><span class="p">)</span> 
         <span class="n">data</span><span class="p">[</span><span class="n">startIndex</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="c1">#data = FlexibleArrayDictO(initSize, dtype=dataDtype) </span>
-        <span class="c1">#data.setitem_by_keywords(startIndex, (-1, -1, 0))</span>
         
-        <span class="c1"># if the triangle inequality holded for shortest paths, then we could </span>
-        <span class="c1"># compute the bound as follows. However, </span>
-        <span class="c1"># (1) the triangle inequality does not hold even for shortest paths,</span>
-        <span class="c1">#     since we have to work with a directed graph because lakes are</span>
-        <span class="c1">#     expanded objects</span>
-        <span class="c1"># (2) There is a better bound that cannot be combined with this bound.</span>
-        <span class="c1">#bound = longestShortestDist * (stretchConstant+1) / 2</span>
-        
-        <span class="n">bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">longestShortestDist</span> <span class="o">*</span> <span class="n">stretchConstant</span> 
-                 <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">localOptimalityConstant</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-        
+        <span class="k">if</span> <span class="n">naiveBound</span><span class="p">:</span>
+            <span class="n">bound</span> <span class="o">=</span> <span class="n">longestShortestDist</span> <span class="o">*</span> <span class="n">stretchConstant</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">longestShortestDist</span> <span class="o">*</span> <span class="n">stretchConstant</span> 
+                     <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">localOptimalityConstant</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+            
         <span class="k">while</span> <span class="n">queue</span><span class="p">:</span> 
             <span class="n">thisVertex</span><span class="p">,</span> <span class="n">thisCost</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
             
-            <span class="n">pruned</span> <span class="o">=</span> <span class="p">(</span><span class="n">reachArr</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">]</span><span class="o">*</span><span class="n">rTol</span> <span class="o">&lt;</span> 
-                      <span class="nb">min</span><span class="p">(</span><span class="n">thisCost</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="o">/</span><span class="mi">2</span> 
-                          <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">thisCost</span><span class="p">,</span> <span class="n">shortestShortestDist</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="n">naivePruning</span><span class="p">:</span>
+                <span class="c1"># for testing only</span>
+                <span class="n">pruned</span> <span class="o">=</span> <span class="p">(</span><span class="n">reachArr</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">]</span><span class="o">*</span><span class="n">rTol</span> <span class="o">&lt;</span> 
+                          <span class="n">localOptimalityConstant</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">thisCost</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pruned</span> <span class="o">=</span> <span class="p">(</span><span class="n">reachArr</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">]</span><span class="o">*</span><span class="n">rTol</span> <span class="o">&lt;</span> 
+                          <span class="nb">min</span><span class="p">(</span><span class="n">thisCost</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="o">/</span><span class="mi">2</span> 
+                              <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">thisCost</span><span class="p">,</span> <span class="n">shortestShortestDist</span><span class="p">)))</span>
             
             <span class="c1"># set the vertex information</span>
             <span class="c1"># However, we need only one overlapping vertex from the vertex </span>
@@ -2247,7 +2280,7 @@
             <span class="c1"># end point.</span>
             <span class="n">edge</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">thisVertex</span><span class="p">][</span><span class="s2">&quot;edge&quot;</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">edge</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">edgesVisited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
-            <span class="sd">&quot;&quot;&quot; # uncomment this, if some vertices are not to be allowed to be </span>
+            <span class="sd">&quot;&quot;&quot; # uncomment this, if some vertices are not allowed to be </span>
 <span class="sd">                # via vertices</span>
 <span class="sd">            parent, edge, _, _ = data[thisVertex]</span>
 <span class="sd">            if forward: </span>
@@ -2301,10 +2334,13 @@
                 <span class="c1"># Furthermore, there are no </span>
                 <span class="c1"># lower distance bounds in forward direction</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">forward</span><span class="p">:</span>
-                    <span class="n">pruned</span> <span class="o">=</span> <span class="p">(</span><span class="n">reachArr</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span><span class="o">*</span><span class="n">rTol</span> <span class="o">&lt;</span>
-                              <span class="nb">min</span><span class="p">(</span><span class="n">newCost</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="o">/</span><span class="mi">2</span> 
-                                  <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">newCost</span><span class="p">,</span> <span class="n">shortestShortestDist</span><span class="p">),</span>
-                                  <span class="n">closestSourceDists</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]))</span>
+                    <span class="k">if</span> <span class="n">naivePruning</span> <span class="ow">or</span> <span class="n">noBackwardPruning</span><span class="p">:</span>
+                        <span class="n">pruned</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">pruned</span> <span class="o">=</span> <span class="p">(</span><span class="n">reachArr</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span><span class="o">*</span><span class="n">rTol</span> <span class="o">&lt;</span>
+                                  <span class="nb">min</span><span class="p">(</span><span class="n">newCost</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="o">/</span><span class="mi">2</span> 
+                                      <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">newCost</span><span class="p">,</span> <span class="n">shortestShortestDist</span><span class="p">),</span>
+                                      <span class="n">closestSourceDists</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]))</span>
                     
                     <span class="k">if</span> <span class="n">pruned</span><span class="p">:</span>
                         <span class="c1">#if reach &lt; thisCost: </span>
@@ -2507,7 +2543,7 @@
     
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_find_vertexCandidates</span><span class="p">(</span><span class="n">shortestDistances</span><span class="p">,</span> <span class="n">sourceDistances</span><span class="p">,</span> <span class="n">sinkDistances</span><span class="p">,</span> 
-                               <span class="n">stretchConstant</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
+                               <span class="n">stretchConstant</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">pair</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">roundNo</span> <span class="o">=</span> <span class="mi">8</span>
         <span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span> <span class="o">=</span> <span class="n">pair</span>
         <span class="n">viaDistances</span> <span class="o">=</span> <span class="n">sourceDistances</span><span class="p">[:,</span><span class="n">sourceIndex</span><span class="p">]</span><span class="o">+</span><span class="n">sinkDistances</span><span class="p">[:,</span><span class="n">sinkIndex</span><span class="p">]</span>
@@ -2515,6 +2551,12 @@
             <span class="n">viaDistanceIndices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">viaDistances</span> <span class="o">&lt;=</span> 
                 <span class="n">shortestDistances</span><span class="p">[</span><span class="n">sourceIndex</span><span class="p">,</span> <span class="n">sinkIndex</span><span class="p">]</span><span class="o">*</span><span class="n">stretchConstant</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">lengths</span> <span class="o">=</span> <span class="n">viaDistances</span><span class="p">[</span><span class="n">viaDistanceIndices</span><span class="p">]</span>
+        
+        <span class="c1"># only for testing purposes we may want to return the same path multiple </span>
+        <span class="c1"># times</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">unique</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">candidates</span><span class="p">[</span><span class="n">viaDistanceIndices</span><span class="p">],</span> <span class="n">lengths</span>
+            
         <span class="n">lengths</span><span class="p">,</span> <span class="n">candidateIndices</span> <span class="o">=</span> <span class="n">unique_tol</span><span class="p">(</span>
             <span class="n">round_rel</span><span class="p">(</span><span class="n">lengths</span><span class="p">,</span> <span class="n">roundNo</span><span class="p">),</span> 
             <span class="n">round_rel</span><span class="p">(</span><span class="n">lengths</span><span class="p">,</span> <span class="n">roundNo</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
@@ -2526,11 +2568,12 @@
     
     
     
-<div class="viewcode-block" id="FlowPointGraph.find_admissible_via_vertices"><a class="viewcode-back" href="../../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_admissible_via_vertices">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">find_admissible_via_vertices</span><span class="p">(</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_find_admissible_via_vertices</span><span class="p">(</span>
             <span class="n">vertexArr</span><span class="p">,</span> <span class="n">edgeArr</span><span class="p">,</span> <span class="n">shortestDistances</span><span class="p">,</span> <span class="n">labelData</span><span class="p">,</span> <span class="n">viaData</span><span class="p">,</span>
             <span class="n">localOptimalityConstant</span><span class="p">,</span> <span class="n">acceptionFactor</span><span class="p">,</span> <span class="n">rejectionFactor</span><span class="p">,</span>
-            <span class="n">vertexIndex</span><span class="p">,</span> <span class="n">viaIndex</span><span class="p">):</span>
+            <span class="n">vertexIndex</span><span class="p">,</span> <span class="n">viaIndex</span><span class="p">,</span> <span class="n">testing_no_joint_reject</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">testing_no_length_lookups</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        vertexArr</span>
 <span class="sd">                    Structured Array with the vertex information. Indexed by </span>
@@ -2684,7 +2727,6 @@
                            
         
         <span class="c1"># now check all pairs for their admissibility</span>
-        <span class="c1">#for source, sink, dist in pairList:</span>
         <span class="n">sourceSinkIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">sourceList</span> <span class="o">=</span> <span class="n">pairList</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span>
         <span class="n">sinkList</span> <span class="o">=</span> <span class="n">pairList</span><span class="p">[</span><span class="s2">&quot;sink&quot;</span><span class="p">]</span>
@@ -2826,20 +2868,6 @@
                                           <span class="ow">or</span> <span class="n">started</span><span class="p">):</span>
                     <span class="n">started</span> <span class="o">=</span> <span class="kc">False</span>
                     
-                    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                    # use the triangle inequality to get a lower bound for the </span>
-<span class="sd">                    # distance to avoid unnecessary shortest distance queries</span>
-<span class="sd">                    sourceParentSinkCost = sinkLabelData.get(sourceParent, None)</span>
-<span class="sd">                    sinkParentSourceCost = sourceLabelData.get(sinkParent, None)</span>
-<span class="sd">                    if sourceParentSinkCost is not None:</span>
-<span class="sd">                        localDistBound = sourceParentSinkCost[2]-sinkCost</span>
-<span class="sd">                    else: </span>
-<span class="sd">                        localDistBound = -1</span>
-<span class="sd">                    if sinkParentSourceCost is not None:</span>
-<span class="sd">                        sourceParentSourceCost = sourceLabelData[sourceParent][2]</span>
-<span class="sd">                        localDistBound = max(localDistBound, </span>
-<span class="sd">                                             sinkParentSourceCost[2]-sourceParentSourceCost)</span>
-<span class="sd">                    #&quot;&quot;&quot;</span>
                     <span class="n">compCost</span> <span class="o">=</span> <span class="p">(</span><span class="n">baseCostSink</span> <span class="o">+</span> <span class="n">baseCostSource</span> 
                                 <span class="o">-</span> <span class="n">sinkCostParent</span> <span class="o">-</span> <span class="n">sourceCostParent</span><span class="p">)</span>
                         
@@ -2849,8 +2877,12 @@
                                                <span class="n">sourceParent</span><span class="p">,</span> <span class="n">sinkParent</span><span class="p">)</span>
                          <span class="o">*</span> <span class="n">rTolFact</span> <span class="o">&gt;=</span> <span class="n">compCost</span><span class="p">):</span>
                         <span class="c1">#if localDist + aTol &gt;= compCost:</span>
-                        <span class="n">successfullyTested</span><span class="p">[</span><span class="n">sourceParent</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sinkParent</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">testing_no_length_lookups</span><span class="p">:</span>
+                            <span class="n">successfullyTested</span><span class="p">[</span><span class="n">sourceParent</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sinkParent</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">testing_no_joint_reject</span><span class="p">:</span>
+                            <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+                            <span class="k">break</span>
                         <span class="c1"># note all vertices with via paths over </span>
                         <span class="c1"># this subsection as not considered</span>
                         <span class="n">admissiblePairs</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span>
@@ -2875,6 +2907,14 @@
                         <span class="k">break</span>
             <span class="c1"># if all tests were sucessful</span>
             <span class="k">else</span><span class="p">:</span>    
+                <span class="c1"># only for testing purposes: continue without accepting</span>
+                <span class="c1"># further origin-destination pairs</span>
+                <span class="k">if</span> <span class="n">testing_no_joint_reject</span><span class="p">:</span>
+                    <span class="n">resultSourceIndices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+                    <span class="n">resultSinkIndices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span>
+                    <span class="n">resultLengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                
                 <span class="c1"># if we have not stopped the search artificially because of a </span>
                 <span class="c1"># too long edge</span>
                 <span class="k">if</span> <span class="n">sinkSubpathBound</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -2909,7 +2949,7 @@
         
         <span class="k">return</span> <span class="p">(</span><span class="n">vertexIndex</span><span class="p">,</span> <span class="n">consideredSourceIndices</span><span class="p">[</span><span class="n">resultSourceIndices</span><span class="p">],</span> 
                 <span class="n">consideredSinkIndices_plain</span><span class="p">[</span><span class="n">resultSinkIndices</span><span class="p">],</span> <span class="n">resultLengths</span><span class="p">,</span> 
-                <span class="n">admissiblePairNumber</span><span class="p">,</span> <span class="n">notLO</span><span class="p">)</span> </div>
+                <span class="n">admissiblePairNumber</span><span class="p">,</span> <span class="n">notLO</span><span class="p">)</span> 
 
     
     <span class="nd">@staticmethod</span>

@@ -105,9 +105,6 @@
     <span class="kn">from</span> <span class="nn">route_choice_model</span> <span class="kn">import</span> <span class="n">RouteChoiceModel</span>
 
 
-<span class="c1"># general settings --------------------------------------------------------</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span> 
 <span class="c1"># -------------------------------------------------------------------------</span>
 
 <span class="n">CPU_COUNT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> 
@@ -139,6 +136,36 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 
+<div class="viewcode-block" id="mean_relative_absolute_error"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error">[docs]</a><span class="k">def</span> <span class="nf">mean_relative_absolute_error</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">observation</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                 <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the mean relative absolute error between predictions and </span>
+<span class="sd">    observations.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    prediction : float[]</span>
+<span class="sd">        Predicted values.</span>
+<span class="sd">    observation : float[]</span>
+<span class="sd">        Observed values.</span>
+<span class="sd">    normalization : float[]</span>
+<span class="sd">        Normalization for the error. If not given, the predicted values will</span>
+<span class="sd">        be used.</span>
+<span class="sd">    cutoff : float | float[]</span>
+<span class="sd">        Threshold value. Observed-predicted pairs will be ignored if the </span>
+<span class="sd">        predicted value is below `cutoff`.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">normalization</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">normalization</span> <span class="o">=</span> <span class="n">prediction</span>
+    <span class="k">if</span> <span class="n">cutoff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">considered</span> <span class="o">=</span> <span class="n">prediction</span> <span class="o">&gt;=</span> <span class="n">cutoff</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span>
+        <span class="n">observation</span> <span class="o">=</span> <span class="n">observation</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span>
+        <span class="n">normalization</span> <span class="o">=</span> <span class="n">normalization</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span>
+        
+        
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">prediction</span><span class="o">-</span><span class="n">observation</span><span class="p">)</span><span class="o">/</span><span class="n">normalization</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="create_observed_predicted_mean_error_plot"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot">[docs]</a><span class="k">def</span> <span class="nf">create_observed_predicted_mean_error_plot</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                               <span class="n">constError</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                               <span class="n">errorFunctions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -155,6 +182,14 @@
 <span class="sd">        Array of predicted values.</span>
 <span class="sd">    observed : float[]</span>
 <span class="sd">        Array of observed values.</span>
+<span class="sd">    error : float[]</span>
+<span class="sd">        Array with a measure for the expected error of the predictions. This </span>
+<span class="sd">        can be used to show how large the expected deviations between predicted</span>
+<span class="sd">        and observed values are.</span>
+<span class="sd">    constError : float</span>
+<span class="sd">        If given, the area `constError` units above and below the </span>
+<span class="sd">        `predicted=observed` line will be shaded. This is useful if the figure </span>
+<span class="sd">        shall show the confidence interval of predictions.</span>
 <span class="sd">    errorFunctions : callable[]</span>
 <span class="sd">        Two methods for the lower and the upper predicted error (e.g. 95% </span>
 <span class="sd">        confidence interval). Both of these methods must take the predicted</span>
@@ -789,7 +824,7 @@
         <span class="sd">&quot;&quot;&quot;Searches potential routes of boaters. </span>
 <span class="sd">        </span>
 <span class="sd">        For detailed documentation on the arguments, refer to </span>
-<span class="sd">        :py:class:`lopaths.graph.FlowPointGraph.find_alternative_paths`</span>
+<span class="sd">        :py:class:`lopaths.graph.FlowPointGraph.find_locally_optimal_paths`</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -819,14 +854,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">find_shortest_distances</span><span class="p">()</span>
         
         <span class="n">routeLengths</span><span class="p">,</span> <span class="n">inspectedRoutes</span><span class="p">,</span> <span class="n">stationCombinations</span> <span class="o">=</span> \
-            <span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">find_alternative_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-                                                <span class="bp">self</span><span class="o">.</span><span class="n">sourceIndexToVertexIndex</span><span class="p">,</span> 
-                                                <span class="bp">self</span><span class="o">.</span><span class="n">sinkIndexToVertexIndex</span><span class="p">,</span>
-                                                <span class="bp">self</span><span class="o">.</span><span class="n">shortestDistances</span><span class="p">,</span> 
-                                                <span class="n">stretchConstant</span><span class="p">,</span> 
-                                                <span class="n">localOptimalityConstant</span><span class="p">,</span> 
-                                                <span class="n">acceptionFactor</span><span class="p">,</span>
-                                                <span class="n">rejectionFactor</span><span class="p">)</span>
+            <span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">find_locally_optimal_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">sourceIndexToVertexIndex</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">sinkIndexToVertexIndex</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shortestDistances</span><span class="p">,</span> 
+                <span class="n">stretchConstant</span><span class="p">,</span> 
+                <span class="n">localOptimalityConstant</span><span class="p">,</span> 
+                <span class="n">acceptionFactor</span><span class="p">,</span>
+                <span class="n">rejectionFactor</span><span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">admissibilityParameters</span> <span class="o">=</span> <span class="p">(</span><span class="n">stretchConstant</span><span class="p">,</span> <span class="n">localOptimalityConstant</span><span class="p">,</span> 
                                         <span class="n">acceptionFactor</span><span class="p">,</span> <span class="n">rejectionFactor</span><span class="p">)</span>
@@ -5094,66 +5129,103 @@
             <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">comparisonFileName</span><span class="p">,</span> <span class="s2">&quot;Pairs_scaled&quot;</span><span class="p">)</span>
             <span class="p">)</span>
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Creating plot of the quality by origin.&quot;</span><span class="p">)</span>
-        <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Creating plot of the quality by destination.&quot;</span><span class="p">)</span>
+        <span class="n">meanDestination</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">countDestination</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">worstLabelNo</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">destinationData</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
             <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">destinationData</span><span class="p">[</span><span class="s2">&quot;destinationID&quot;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mean</span><span class="o">-</span><span class="n">count</span><span class="p">)</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">meanDestination</span><span class="o">-</span><span class="n">countDestination</span><span class="p">)</span>
             <span class="n">max10DiffInd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="o">-</span><span class="n">worstLabelNo</span><span class="p">)[</span><span class="o">-</span><span class="n">worstLabelNo</span><span class="p">:]</span>
-            <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">meanDestination</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
             <span class="n">labels</span><span class="p">[</span><span class="n">max10DiffInd</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">destinationData</span><span class="p">[</span><span class="s2">&quot;destinationID&quot;</span><span class="p">][</span><span class="n">max10DiffInd</span><span class="p">]</span>
         <span class="n">destination_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;variance&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span>
-            <span class="n">mean</span><span class="p">,</span>
-            <span class="n">count</span><span class="p">,</span>
+            <span class="n">meanDestination</span><span class="p">,</span>
+            <span class="n">countDestination</span><span class="p">,</span>
             <span class="n">destination_std</span><span class="p">,</span>
             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted and observed boater flows by destination&quot;</span><span class="p">,</span>
             <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
             <span class="n">saveFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">saveFileName</span><span class="p">,</span> <span class="s2">&quot;Destinations&quot;</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span>
-            <span class="n">mean</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span>
+            <span class="n">meanDestination</span><span class="p">,</span> <span class="n">countDestination</span><span class="p">,</span>
             <span class="n">saveFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">saveFileName</span><span class="p">,</span> <span class="s2">&quot;Destinations_raw&quot;</span><span class="p">),</span>
             <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">comparisonFileName</span><span class="p">,</span> <span class="s2">&quot;Destinations_raw&quot;</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span>
-            <span class="n">mean</span><span class="o">/</span><span class="n">destination_std</span><span class="p">,</span> <span class="n">count</span><span class="o">/</span><span class="n">destination_std</span><span class="p">,</span>
+            <span class="n">meanDestination</span><span class="o">/</span><span class="n">destination_std</span><span class="p">,</span> <span class="n">countDestination</span><span class="o">/</span><span class="n">destination_std</span><span class="p">,</span>
             <span class="n">saveFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">saveFileName</span><span class="p">,</span> <span class="s2">&quot;Destinations_scaled&quot;</span><span class="p">),</span>
             <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">comparisonFileName</span><span class="p">,</span> <span class="s2">&quot;Destinations_scaled&quot;</span><span class="p">)</span>
             <span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Creating plot of the quality by origin.&quot;</span><span class="p">)</span>
-        <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">meanOrigin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">countOrigin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">worstLabelNo</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
             <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="p">[</span><span class="s2">&quot;originID&quot;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mean</span><span class="o">-</span><span class="n">count</span><span class="p">)</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">meanOrigin</span><span class="o">-</span><span class="n">countOrigin</span><span class="p">)</span>
             <span class="n">max10DiffInd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="o">-</span><span class="n">worstLabelNo</span><span class="p">)[</span><span class="o">-</span><span class="n">worstLabelNo</span><span class="p">:]</span>
-            <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">meanOrigin</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
             <span class="n">labels</span><span class="p">[</span><span class="n">max10DiffInd</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="p">[</span><span class="s2">&quot;originID&quot;</span><span class="p">][</span>
                                                                 <span class="n">max10DiffInd</span><span class="p">]</span>
-        <span class="n">jur_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;variance&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">origin_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;variance&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span>
-            <span class="n">mean</span><span class="p">,</span>
-            <span class="n">count</span><span class="p">,</span>
-            <span class="n">jur_std</span><span class="p">,</span>
+            <span class="n">meanOrigin</span><span class="p">,</span>
+            <span class="n">countOrigin</span><span class="p">,</span>
+            <span class="n">origin_std</span><span class="p">,</span>
             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted and observed boater flows by origin&quot;</span><span class="p">,</span>
             <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
             <span class="n">saveFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">saveFileName</span><span class="p">,</span> <span class="s2">&quot;Origins&quot;</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span>
-            <span class="n">mean</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span>
+            <span class="n">meanOrigin</span><span class="p">,</span> <span class="n">countOrigin</span><span class="p">,</span>
             <span class="n">saveFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">saveFileName</span><span class="p">,</span> <span class="s2">&quot;Origins_raw&quot;</span><span class="p">),</span>
             <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">comparisonFileName</span><span class="p">,</span> <span class="s2">&quot;Origins_raw&quot;</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span>
-            <span class="n">mean</span><span class="o">/</span><span class="n">jur_std</span><span class="p">,</span> <span class="n">count</span><span class="o">/</span><span class="n">jur_std</span><span class="p">,</span>
+            <span class="n">meanOrigin</span><span class="o">/</span><span class="n">origin_std</span><span class="p">,</span> <span class="n">countOrigin</span><span class="o">/</span><span class="n">origin_std</span><span class="p">,</span>
             <span class="n">saveFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">saveFileName</span><span class="p">,</span> <span class="s2">&quot;Origins_scaled&quot;</span><span class="p">),</span>
             <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">_non_join</span><span class="p">(</span><span class="n">comparisonFileName</span><span class="p">,</span> <span class="s2">&quot;Origins_scaled&quot;</span><span class="p">)</span>
             <span class="p">)</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Relative errors:&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Station:&quot;</span><span class="p">,</span> <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">stationData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">stationData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">station_std</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+            <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">stationData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">stationData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">station_std</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Pair:&quot;</span><span class="p">,</span> <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">pair_std</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">pairData</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+            <span class="n">pair_std</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Origin:&quot;</span><span class="p">,</span> <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">meanOrigin</span><span class="p">,</span>
+            <span class="n">countOrigin</span><span class="p">,</span>
+            <span class="n">origin_std</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">meanOrigin</span><span class="p">,</span>
+            <span class="n">countOrigin</span><span class="p">,</span>
+            <span class="n">origin_std</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Destination:&quot;</span><span class="p">,</span> <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">meanDestination</span><span class="p">,</span>
+            <span class="n">countDestination</span><span class="p">,</span>
+            <span class="n">destination_std</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">mean_relative_absolute_error</span><span class="p">(</span>
+            <span class="n">meanDestination</span><span class="p">,</span>
+            <span class="n">countDestination</span><span class="p">,</span>
+            <span class="n">destination_std</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        self.prst(&quot;Creating plot of the quality by pair (log scale).&quot;)</span>
