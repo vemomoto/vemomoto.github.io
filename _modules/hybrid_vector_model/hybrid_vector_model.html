@@ -85,6 +85,7 @@
     <span class="n">sparsepower</span><span class="p">,</span> <span class="n">sparsesum</span><span class="p">,</span> <span class="n">convert_R_0_1</span><span class="p">,</span> \
     <span class="n">convert_R_pos</span><span class="p">,</span> <span class="n">FlexibleArrayDict</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools</span> <span class="kn">import</span> <span class="n">saveobject</span>
+<span class="kn">from</span> <span class="nn">vemomoto_core.tools.saveobject</span> <span class="kn">import</span> <span class="n">SeparatelySaveable</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.npcollections.npextc</span> <span class="kn">import</span> <span class="n">FlexibleArray</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools.hrprint</span> <span class="kn">import</span> <span class="n">HierarchichalPrinter</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools.doc_utils</span> <span class="kn">import</span> <span class="n">DocMetaSuperclass</span><span class="p">,</span> <span class="n">inherit_doc</span><span class="p">,</span> <span class="n">staticmethod_inherit_doc</span>
@@ -135,6 +136,15 @@
         <span class="k">return</span> <span class="n">string1</span> <span class="o">+</span> <span class="n">string2</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="safe_delattr"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.safe_delattr">[docs]</a><span class="k">def</span> <span class="nf">safe_delattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attrname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Deletes and attribute if it exists&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SeparatelySaveable</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="n">attrname</span><span class="p">):</span>
+            <span class="nb">delattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attrname</span><span class="p">):</span>
+            <span class="nb">delattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="mean_relative_absolute_error"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error">[docs]</a><span class="k">def</span> <span class="nf">mean_relative_absolute_error</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">observation</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                  <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -432,44 +442,44 @@
 <span class="sd">        Name of a csv file containing the road network. The file must be a </span>
 <span class="sd">        csv with header and the following columns, separated by ``,``:</span>
 <span class="sd">        </span>
-<span class="sd">        ================================================== ============================== =========</span>
+<span class="sd">        ================================================== ============================== ========================================================================</span>
 <span class="sd">        Field                                              Type                           Description</span>
-<span class="sd">        ================================================== ============================== =========</span>
-<span class="sd">        RoadID                                             :py:data:`IDTYPE`              ID of the road section</span>
-<span class="sd">        VertexFromID                                       :py:data:`IDTYPE`              Starting vertex of the road section</span>
-<span class="sd">        VertexToID                                         :py:data:`IDTYPE`              End vertex of the road section</span>
+<span class="sd">        ================================================== ============================== ========================================================================</span>
+<span class="sd">        Road ID                                            :py:data:`IDTYPE`              ID of the road section</span>
+<span class="sd">        Vertex from-ID                                     :py:data:`IDTYPE`              Starting vertex of the road section</span>
+<span class="sd">        Vertex to-ID                                       :py:data:`IDTYPE`              End vertex of the road section</span>
 <span class="sd">        Lenght                                             float                          Length (or travel time) of the road section</span>
 <span class="sd">        Survey location for forward traffic                :py:data:`IDTYPE`, `optional`  ID of the location</span>
-<span class="sd">                                                                                          where forward traffic can be inspected</span>
+<span class="sd">                                                                                          where forward traffic can be surveyed</span>
 <span class="sd">        Survey location for forward traffic                :py:data:`IDTYPE`, `optional`  ID of the station </span>
-<span class="sd">                                                                                          where backward traffic can be inspected</span>
-<span class="sd">        Survey location for forward and backward traffic   :py:data:`IDTYPE`, `optional`  ID of the station where forward and backward traffic can be inspected</span>
-<span class="sd">        DestinationID                                      :py:data:`IDTYPE`, `optional`  ID of the destination that can be accessed via this</span>
+<span class="sd">                                                                                          where backward traffic can be surveyed</span>
+<span class="sd">        Survey location for forward and backward traffic   :py:data:`IDTYPE`, `optional`  ID of the station where forward and backward traffic can be surveyed</span>
+<span class="sd">        Destination ID                                     :py:data:`IDTYPE`, `optional`  ID of the destination that can be accessed via this</span>
 <span class="sd">                                                                                          road section</span>
-<span class="sd">        ================================================== ============================== =========</span>
+<span class="sd">        ================================================== ============================== ========================================================================</span>
 <span class="sd">              </span>
 <span class="sd">    fileNameVertices : str</span>
 <span class="sd">        Name of a csv file stating which vertices are origins and destinations.</span>
 <span class="sd">        The file must be a csv with header and the following columns, </span>
 <span class="sd">        separated by ``,``:</span>
 <span class="sd">        </span>
-<span class="sd">        ==================== ================= =========</span>
+<span class="sd">        ==================== ================= ======================================================</span>
 <span class="sd">        Field                Type              Description</span>
-<span class="sd">        ==================== ================= =========</span>
-<span class="sd">        VertexID             :py:data:`IDTYPE` ID of the vertex</span>
-<span class="sd">        potentialViaVertex   bool              whether the vertex could be a potential </span>
+<span class="sd">        ==================== ================= ======================================================</span>
+<span class="sd">        Vertex ID            :py:data:`IDTYPE` ID of the vertex</span>
+<span class="sd">        Potential via vertex bool              whether the vertex could be a potential </span>
 <span class="sd">                                               intermediate destination for boaters </span>
 <span class="sd">                                               (should be ``True`` by default,</span>
 <span class="sd">                                               but can be set to ``False`` for many </span>
 <span class="sd">                                               vertices to reduce computational complexity)</span>
-<span class="sd">        vertexType           int               type identifier for the vertex; see below</span>
+<span class="sd">        Vertex type          int               type identifier for the vertex; see below</span>
 <span class="sd">                                                  - ``1``: origin</span>
 <span class="sd">                                                  - ``2``: destination</span>
 <span class="sd">                                                  - ``3``: postal code area center </span>
 <span class="sd">                                                    (used to determine whether destinations are </span>
 <span class="sd">                                                    located in populated areas)</span>
 <span class="sd">                                                  - `other`: no specific role for the vertex</span>
-<span class="sd">        ==================== ================= =========</span>
+<span class="sd">        ==================== ================= ======================================================</span>
 <span class="sd">                             </span>
 <span class="sd">    destinationToDestination : bool</span>
 <span class="sd">        ``True`` iff destination to destination traffic is modelled, i.e. if</span>
@@ -596,9 +606,9 @@
         <span class="n">graph</span><span class="o">.</span><span class="n">set_default_vertex_data</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
         
         <span class="c1"># adding virtual edges to represent destinations</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__add_virtual_destination_vertices</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_virtual_destination_vertices</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">destinationToDestination</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__add_virtual_destination_vertices</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_virtual_destination_vertices</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         
         <span class="n">graph</span><span class="o">.</span><span class="n">remove_insignificant_dead_ends</span><span class="p">(</span><span class="s2">&quot;significant&quot;</span><span class="p">)</span>
         
@@ -634,6 +644,10 @@
         
         
         <span class="bp">self</span><span class="o">.</span><span class="n">postalCodeIndexToVertexIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">get_array_indices</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_save_separately</span><span class="p">(</span><span class="s2">&quot;lengthsOfPotentialRoutes&quot;</span><span class="p">,</span>
+                                 <span class="s2">&quot;inspectedPotentialRoutes&quot;</span><span class="p">,</span>
+                                 <span class="s2">&quot;stationCombinations&quot;</span><span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Transport network creation finished.&quot;</span><span class="p">)</span>
         
@@ -673,7 +687,7 @@
                 <span class="n">FlowPointGraph</span><span class="o">.</span><span class="n">preprocessing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">preprocessingArgs</span><span class="p">)</span></div>
                 
  
-    <span class="k">def</span> <span class="nf">__add_virtual_destination_vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">vertexType</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_add_virtual_destination_vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">vertexType</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Creates vertices that represent the destinations</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -763,7 +777,7 @@
             
         <span class="bp">self</span><span class="o">.</span><span class="n">shortestDistances</span> <span class="o">=</span> <span class="n">dists</span>
         
-        <span class="k">if</span> <span class="s2">&quot;sinksConsidered&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sinksConsidered&quot;</span><span class="p">):</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sinksConsidered</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">~</span><span class="n">sinksConsidered</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sinksConsidered</span><span class="p">[</span><span class="n">tmp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
@@ -794,7 +808,7 @@
 <span class="sd">                </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="k">if</span> <span class="s2">&quot;sourcesConsidered&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sourcesConsidered&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sourcesConsidered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sourceIndexToSourceID</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> 
                                              <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         
@@ -813,8 +827,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sourceIDToSourceIndex</span> <span class="o">=</span> <span class="p">{</span><span class="n">iD</span><span class="p">:</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">iD</span> 
                                       <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
                                                 <span class="bp">self</span><span class="o">.</span><span class="n">sourceIndexToSourceID</span><span class="p">)}</span>
-        <span class="k">if</span> <span class="s2">&quot;shortestDistances&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
-            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;shortestDistances&quot;</span><span class="p">]</span></div>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;shortestDistances&quot;</span><span class="p">):</span>
+            <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;shortestDistances&quot;</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="TransportNetwork.find_potential_routes"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_potential_routes">[docs]</a>    <span class="k">def</span> <span class="nf">find_potential_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
             <span class="n">stretchConstant</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> 
@@ -850,7 +864,7 @@
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;shortestDistances&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;shortestDistances&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">find_shortest_distances</span><span class="p">()</span>
         
         <span class="n">routeLengths</span><span class="p">,</span> <span class="n">inspectedRoutes</span><span class="p">,</span> <span class="n">stationCombinations</span> <span class="o">=</span> \
@@ -1059,7 +1073,7 @@
 
    
 
-<div class="viewcode-block" id="HybridVectorModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel">[docs]</a><span class="k">class</span> <span class="nc">HybridVectorModel</span><span class="p">(</span><span class="n">HierarchichalPrinter</span><span class="p">):</span>
+<div class="viewcode-block" id="HybridVectorModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel">[docs]</a><span class="k">class</span> <span class="nc">HybridVectorModel</span><span class="p">(</span><span class="n">HierarchichalPrinter</span><span class="p">,</span> <span class="n">SeparatelySaveable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for the hybrid vector model.</span>
 <span class="sd">    </span>
@@ -1088,6 +1102,7 @@
                  <span class="o">**</span><span class="n">printerArgs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
         <span class="n">HierarchichalPrinter</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">printerArgs</span><span class="p">)</span>
+        <span class="n">SeparatelySaveable</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.vmm&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_traffic_factor_model_class</span><span class="p">(</span><span class="n">trafficFactorModel_class</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">fileName</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">destinationToDestination</span> <span class="o">=</span> <span class="n">destinationToDestination</span>
@@ -1108,7 +1123,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Saving the model as file&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="o">+</span><span class="s2">&quot;.vmm&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;roadNetwork&quot;</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">saveobject</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">+</span><span class="s2">&quot;.vmm&quot;</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.create_road_network"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_road_network">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">TransportNetwork</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">create_road_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
@@ -1125,13 +1140,13 @@
                                                      <span class="n">edgeLengthRandomization</span><span class="p">,</span>
                                                      <span class="n">parentPrinter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>  
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_origin_road_match</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_destination_road_match</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_postal_code_road_match</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_origin_road_match</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_destination_road_match</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_postal_code_road_match</span><span class="p">()</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">preprocessing</span><span class="p">(</span><span class="n">preprocessingArgs</span><span class="p">)</span>
         
-        <span class="k">if</span> <span class="s2">&quot;shortestDistances&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="p">,</span> <span class="s2">&quot;shortestDistances&quot;</span><span class="p">):</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The road network changes. The previous model&quot;</span> <span class="o">+</span>
                           <span class="s2">&quot;and processing result are therefore inconsistent &quot;</span> <span class="o">+</span>
                           <span class="s2">&quot;and will be removed.&quot;</span><span class="p">)</span></div>
@@ -1150,7 +1165,7 @@
 <span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">complianceRate</span> <span class="o">=</span> <span class="n">complianceRate</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_flow_model_fit</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.read_postal_code_area_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_postal_code_area_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_postal_code_area_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNamePostalCodeAreas</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads and saves data on postal code regions.</span>
@@ -1164,16 +1179,16 @@
 <span class="sd">            Name of a csv file with (ignored) header and columns separated by </span>
 <span class="sd">            ``,``. The following columns must be present in the specified order:</span>
 <span class="sd">            </span>
-<span class="sd">            ============ ================== =========</span>
+<span class="sd">            ============ ================== ========================================================================</span>
 <span class="sd">            Field        Type               Description</span>
-<span class="sd">            ============ ================== =========</span>
+<span class="sd">            ============ ================== ========================================================================</span>
 <span class="sd">            Postal code  :py:data:`IDTYPE`  ID of the postal code area</span>
 <span class="sd">            Vertex ID    :py:data:`IDTYPE`  ID of a vertex representing the postal code area (e.g.</span>
 <span class="sd">                                            a vertex at the centre or population centre)</span>
-<span class="sd">            population   int                population living in the postal code area. Can be the</span>
+<span class="sd">            Population   int                Population living in the postal code area. Can be the</span>
 <span class="sd">                                            actual population count or the number in hundrets, thousands, etc.</span>
 <span class="sd">                                            the results just have to be interpreted accordingly</span>
-<span class="sd">            ============ ================== =========</span>
+<span class="sd">            ============ ================== ========================================================================</span>
 <span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Reading postal code area data file&quot;</span><span class="p">,</span> <span class="n">fileNamePostalCodeAreas</span><span class="p">)</span>
@@ -1184,9 +1199,9 @@
                                          <span class="s1">&#39;formats&#39;</span><span class="p">:[</span><span class="n">IDTYPE</span><span class="p">,</span> <span class="n">IDTYPE</span><span class="p">,</span> <span class="nb">int</span><span class="p">]})</span>
         <span class="n">popData</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;vertexID&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">postalCodeAreaData</span> <span class="o">=</span> <span class="n">popData</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_postal_code_road_match</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_traffic_factor_model</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_flow_model_fit</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_postal_code_road_match</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span></div>
             
 <div class="viewcode-block" id="HybridVectorModel.read_origin_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_origin_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_origin_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNameOrigins</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads and saves data that can be used to determine the repulsiveness of origins in the vector traffic model.</span>
@@ -1211,7 +1226,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Reading origin data file&quot;</span><span class="p">,</span> <span class="n">fileNameOrigins</span><span class="p">)</span>
         <span class="n">dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;originID&quot;</span><span class="p">,</span> <span class="n">IDTYPE</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;infested&quot;</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)]</span>
-        <span class="k">for</span> <span class="n">nameType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span><span class="o">.</span><span class="n">ORIGIN_COVARIATES</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">nameType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span><span class="o">.</span><span class="n">ORIGIN_COVARIATES</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">nameType</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">nameType</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">):</span> 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nameType</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="n">dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nameType</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
@@ -1223,15 +1238,15 @@
         
         <span class="n">popData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">fileNameOrigins</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                                 <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span> 
-        <span class="n">popData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span><span class="o">.</span><span class="n">process_source_covariates</span><span class="p">(</span><span class="n">popData</span><span class="p">)</span>
+        <span class="n">popData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span><span class="o">.</span><span class="n">process_source_covariates</span><span class="p">(</span><span class="n">popData</span><span class="p">)</span>
         <span class="n">popData</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;originID&quot;</span><span class="p">)</span>
         <span class="c1">#self.jurisdictionPopulationFactor = np.max(popData[&quot;population&quot;])</span>
         <span class="c1">#popData[&quot;population&quot;] /= self.jurisdictionPopulationFactor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rawOriginData</span> <span class="o">=</span> <span class="n">popData</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_origin_road_match</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_flow_model_fit</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_traffic_factor_model</span><span class="p">()</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_origin_road_match</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;roadNetwork&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">originData</span> <span class="o">=</span> <span class="n">popData</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">sourcesConsidered</span><span class="p">]</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.read_destination_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_destination_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_destination_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNameDestinations</span><span class="p">):</span>
@@ -1258,7 +1273,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Reading destination data file&quot;</span><span class="p">,</span> <span class="n">fileNameDestinations</span><span class="p">)</span>
         
         <span class="n">dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;destinationID&quot;</span><span class="p">,</span> <span class="n">IDTYPE</span><span class="p">)]</span>
-        <span class="k">for</span> <span class="n">nameType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span><span class="o">.</span><span class="n">DESTINATION_COVARIATES</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">nameType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span><span class="o">.</span><span class="n">DESTINATION_COVARIATES</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">nameType</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">nameType</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">):</span> 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nameType</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="n">dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nameType</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
@@ -1270,17 +1285,17 @@
         
         <span class="n">destinationData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">fileNameDestinations</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skip_header</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
                                  <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="p">)</span>
-        <span class="n">destinationData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span><span class="o">.</span><span class="n">process_sink_covariates</span><span class="p">(</span><span class="n">destinationData</span><span class="p">)</span>
+        <span class="n">destinationData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span><span class="o">.</span><span class="n">process_sink_covariates</span><span class="p">(</span><span class="n">destinationData</span><span class="p">)</span>
         <span class="n">destinationData</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;destinationID&quot;</span><span class="p">)</span>
 
         
         <span class="bp">self</span><span class="o">.</span><span class="n">rawDestinationData</span> <span class="o">=</span> <span class="n">destinationData</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__check_destination_road_match</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_flow_model_fit</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_traffic_factor_model</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_destination_road_match</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> 
-                <span class="ow">and</span> <span class="s2">&quot;sinksConsidered&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="p">,</span> <span class="s2">&quot;sinksConsidered&quot;</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">destinationData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawDestinationData</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">sinksConsidered</span><span class="p">]</span></div>
     
     
@@ -1300,13 +1315,13 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A jursidiction with ID </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">originID</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="p">[</span><span class="s2">&quot;infested&quot;</span><span class="p">][</span><span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="n">infested</span></div>
         
-    <span class="k">def</span> <span class="nf">__check_postal_code_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_check_postal_code_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Checks whether the given vertex IDs in the postal code area data are </span>
 <span class="sd">        present in the road network</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> 
-                <span class="s2">&quot;postalCodeAreaData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span> <span class="ow">and</span> 
+                <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;postalCodeAreaData&quot;</span><span class="p">)):</span>
             <span class="n">popData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">postalCodeAreaData</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">popData</span><span class="p">[</span><span class="s2">&quot;vertexID&quot;</span><span class="p">]</span> 
                     <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">get_array</span><span class="p">()[</span><span class="s2">&quot;ID&quot;</span><span class="p">][</span>
@@ -1316,15 +1331,14 @@
                                  <span class="o">+</span> <span class="s2">&quot;Maybe some postal code area data are &quot;</span>
                                  <span class="o">+</span> <span class="s2">&quot;missing?&quot;</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">__check_origin_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_check_origin_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Checks whether the vertices given in the origin data are present </span>
 <span class="sd">        in the road network and vice versa</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">destinationToDestination</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> 
-            <span class="s2">&quot;rawOriginData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;rawOriginData&quot;</span><span class="p">):</span>
             <span class="n">popData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawOriginData</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">popData</span><span class="p">[</span><span class="s2">&quot;originID&quot;</span><span class="p">]</span> 
                     <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">get_array</span><span class="p">()[</span><span class="s2">&quot;ID&quot;</span><span class="p">][</span>
@@ -1333,12 +1347,12 @@
                                  <span class="o">+</span> <span class="s2">&quot;the road network do not match.</span><span class="se">\n</span><span class="s2">&quot;</span> 
                                  <span class="o">+</span> <span class="s2">&quot;Maybe some population data are missing?&quot;</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">__check_destination_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_check_destination_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Checks whether all destinations for which we have covariates are present in the</span>
 <span class="sd">        road network and vice versa</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="s2">&quot;rawDestinationData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;rawDestinationData&quot;</span><span class="p">):</span>
             <span class="n">destinationData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawDestinationData</span>
             <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">destinationData</span><span class="o">.</span><span class="n">size</span> 
                     <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">rawSinkIndexToVertexIndex</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
@@ -1367,7 +1381,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">roadNetwork</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span>
         
-        <span class="n">reset</span> <span class="o">=</span> <span class="s2">&quot;shortestDistances&quot;</span> <span class="ow">in</span> <span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="n">reset</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;shortestDistances&quot;</span> <span class="p">)</span>
         <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
             <span class="n">oldSinksConsidered</span> <span class="o">=</span> <span class="n">roadNetwork</span><span class="o">.</span><span class="n">sinksConsidered</span>
             <span class="n">oldSourcesConsidered</span> <span class="o">=</span> <span class="n">roadNetwork</span><span class="o">.</span><span class="n">sourcesConsidered</span>
@@ -1382,17 +1396,17 @@
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The road network must have changed. &quot;</span> <span class="o">+</span>
                               <span class="s2">&quot;Previous results are therefore inconsistent &quot;</span> <span class="o">+</span>
                               <span class="s2">&quot;and will be removed.&quot;</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__erase_processed_survey_data</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_erase_processed_survey_data</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">reset</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">reset</span> <span class="o">=</span> <span class="kc">True</span>
         
         <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;rawOriginData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;rawOriginData&quot;</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">originData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawOriginData</span><span class="p">[</span>
                                                         <span class="n">sourcesConsidered</span><span class="p">]</span>
-            <span class="k">if</span> <span class="s2">&quot;rawDestinationData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;rawDestinationData&quot;</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">destinationData</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawDestinationData</span><span class="p">[</span><span class="n">sinksConsidered</span><span class="p">]</span></div>
                 
     
@@ -1427,7 +1441,7 @@
     
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">considered</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">sourcesConsidered</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">update_sources_considered</span><span class="p">(</span><span class="n">considered</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__erase_survey_data</span><span class="p">()</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_erase_survey_data</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.find_potential_routes"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_potential_routes">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">TransportNetwork</span><span class="o">.</span><span class="n">find_potential_routes</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">find_potential_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
@@ -1443,7 +1457,7 @@
                                                      <span class="n">rejectionFactor</span><span class="p">)</span></div>
         
             
-    <span class="k">def</span> <span class="nf">__create_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">longDist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">_create_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">longDist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                                           <span class="n">trafficData</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create and fit the travel time model.</span>
 <span class="sd">        </span>
@@ -1485,7 +1499,7 @@
         
         <span class="k">return</span> <span class="n">travelTimeModel</span>
                         
-<div class="viewcode-block" id="HybridVectorModel.create_travel_time_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_travel_time_model">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">__create_travel_time_model</span><span class="p">)</span>
+<div class="viewcode-block" id="HybridVectorModel.create_travel_time_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_travel_time_model">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_create_travel_time_model</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">create_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create and fit the travel time model.</span>
 <span class="sd">        </span>
@@ -1498,9 +1512,9 @@
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Fitting the travel time model&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">travelTimeModel</span> <span class="o">=</span> <span class="n">travelTimeModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">travelTimeModel</span> <span class="o">=</span> <span class="n">travelTimeModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_processed_survey_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_processed_survey_data</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">travelTimeModel</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Temporal traffic distribution found.&quot;</span><span class="p">)</span></div>
@@ -1517,18 +1531,18 @@
 <span class="sd">            have a header (will be ignored) and the following columns, </span>
 <span class="sd">            separated by ``,``:</span>
 <span class="sd">            </span>
-<span class="sd">            ============ ============================== =========</span>
+<span class="sd">            ============ ============================== ======================================================</span>
 <span class="sd">            Field        Type                           Description</span>
-<span class="sd">            ============ ============================== =========</span>
-<span class="sd">            stationID    :py:data:`IDTYPE`              ID of the survey location</span>
-<span class="sd">            dayID        :py:data:`IDTYPE`              ID for the day of the survey (e.g. the date)</span>
-<span class="sd">            shiftStart   [0, 24), `optional`            Start time of the survey shift</span>
-<span class="sd">            shiftEnd     [0, 24), `optional`            End time of the survey shift</span>
-<span class="sd">            time         [0, 24), `optional`            Time when the agent was observed</span>
-<span class="sd">            fromID       :py:data:`IDTYPE`, `optional`  ID of the origin of the agent </span>
-<span class="sd">            toID         :py:data:`IDTYPE`, `optional`  ID of the destination of the agent</span>
-<span class="sd">            relevant     bool                           Whether or not this agent is a potential vector</span>
-<span class="sd">            ============ ============================== =========</span>
+<span class="sd">            ============ ============================== ======================================================</span>
+<span class="sd">            Station ID   :py:data:`IDTYPE`              ID of the survey location</span>
+<span class="sd">            Day ID       :py:data:`IDTYPE`              ID for the day of the survey (e.g. the date)</span>
+<span class="sd">            Shift start  [0, 24), `optional`            Start time of the survey shift</span>
+<span class="sd">            Shift end    [0, 24), `optional`            End time of the survey shift</span>
+<span class="sd">            Time         [0, 24), `optional`            Time when the agent was observed</span>
+<span class="sd">            From ID      :py:data:`IDTYPE`, `optional`  ID of the origin of the agent </span>
+<span class="sd">            To ID        :py:data:`IDTYPE`, `optional`  ID of the destination of the agent</span>
+<span class="sd">            Relevant     bool                           Whether or not this agent is a potential vector</span>
+<span class="sd">            ============ ============================== ======================================================</span>
 <span class="sd">            </span>
 <span class="sd">            The times must be given in the 24h format. For example, 2:30PM </span>
 <span class="sd">            translates to ``14.5``.</span>
@@ -1556,10 +1570,10 @@
         
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Reading boater data&quot;</span><span class="p">,</span> <span class="n">fileNameObservations</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_processed_survey_data</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_flow_model_fit</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_travel_time_model</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_route_choice_model</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_processed_survey_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_travel_time_model</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_route_choice_model</span><span class="p">()</span>
         
         <span class="n">dtype</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:[</span><span class="s2">&quot;stationID&quot;</span><span class="p">,</span> <span class="s2">&quot;dayID&quot;</span><span class="p">,</span> <span class="s2">&quot;shiftStart&quot;</span><span class="p">,</span> <span class="s2">&quot;shiftEnd&quot;</span><span class="p">,</span> 
                           <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;fromID&quot;</span><span class="p">,</span> <span class="s2">&quot;toID&quot;</span><span class="p">,</span> <span class="s2">&quot;relevant&quot;</span><span class="p">],</span> 
@@ -1794,35 +1808,35 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Daily boater counts and time data determined.&quot;</span><span class="p">)</span></div>
     
     
-    <span class="k">def</span> <span class="nf">__erase_flow_model_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_erase_flow_model_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Resets the gravity model to an unfitted state.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;flowModelData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;flowModelData&quot;</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">__erase_traffic_factor_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_erase_traffic_factor_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Erases the gravity model.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;trafficFactorModel&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_flow_model_fit</span><span class="p">()</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;trafficFactorModel&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span>
     
-    <span class="k">def</span> <span class="nf">__erase_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_erase_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Erases the travel time model.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_route_choice_model</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;travelTimeModel&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_route_choice_model</span><span class="p">()</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;travelTimeModel&quot;</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">__erase_route_choice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_erase_route_choice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Erases the route choice model.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;routeChoiceModel&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_traffic_factor_model</span><span class="p">()</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;routeChoiceModel&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span>
             
-    <span class="k">def</span> <span class="nf">__erase_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
+    <span class="k">def</span> <span class="nf">_erase_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
         <span class="sd">&quot;&quot;&quot;Erases the survey data.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;surveyData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_processed_survey_data</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_travel_time_model</span><span class="p">()</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;surveyData&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_processed_survey_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_travel_time_model</span><span class="p">()</span>
     
-    <span class="k">def</span> <span class="nf">__erase_processed_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
+    <span class="k">def</span> <span class="nf">_erase_processed_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
         <span class="sd">&quot;&quot;&quot;Erases the observation data prepared for the model fit.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;processedSurveyData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_route_choice_model</span><span class="p">()</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;processedSurveyData&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_route_choice_model</span><span class="p">()</span>
         
     
 <div class="viewcode-block" id="HybridVectorModel.create_route_choice_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_route_choice_model">[docs]</a>    <span class="k">def</span> <span class="nf">create_route_choice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redo</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1838,10 +1852,10 @@
     
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Creating route choice model&quot;</span><span class="p">)</span>
         
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">redo</span> <span class="ow">and</span> <span class="s2">&quot;routeChoiceModel&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">redo</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;routeChoiceModel&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Route model has already been created.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="s2">&quot;inspectedPotentialRoutes&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="p">,</span> <span class="s2">&quot;inspectedPotentialRoutes&quot;</span><span class="p">):</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Route candidates must be computed before a route &quot;</span>
                           <span class="o">+</span> <span class="s2">&quot;model can be created. Nothing has been done. Call&quot;</span>
                           <span class="o">+</span> <span class="s2">&quot;model.find_potential_routes(...)&quot;</span><span class="p">)</span>
@@ -1876,10 +1890,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Extrapolating the boater count data&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">redo</span> <span class="ow">and</span> <span class="s2">&quot;processedSurveyData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">redo</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;processedSurveyData&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Count data have already been prepared.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="s2">&quot;inspectedPotentialRoutes&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="p">,</span> <span class="s2">&quot;inspectedPotentialRoutes&quot;</span><span class="p">):</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Route candidates must be computed before a route &quot;</span>
                           <span class="o">+</span> <span class="s2">&quot;model can be created. Nothing has been done. Call&quot;</span>
                           <span class="o">+</span> <span class="s2">&quot;model.find_potential_routes(...)&quot;</span><span class="p">)</span>
@@ -2795,7 +2809,7 @@
         
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="s2">&quot;routeChoiceModel&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;routeChoiceModel&quot;</span><span class="p">):</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;A route choice model must be created before it can &quot;</span>
                           <span class="s2">&quot;be fitted. Call create_route_choice_model!&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -2842,15 +2856,18 @@
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">trafficFactorModel_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;__trafficFactorModel_class&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">trafficFactorModel_class</span><span class="p">:</span>
-                <span class="k">return</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span> <span class="o">==</span> <span class="n">trafficFactorModel_class</span><span class="p">:</span>
+                    <span class="k">return</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>        
+                <span class="k">pass</span>
             <span class="n">trafficFactorModel_class</span><span class="o">.</span><span class="n">_check_integrity</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span> <span class="o">=</span> <span class="n">trafficFactorModel_class</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;destinationData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;rawDestinationData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;originData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;rawOriginData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__erase_traffic_factor_model</span><span class="p">()</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span> <span class="o">=</span> <span class="n">trafficFactorModel_class</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;destinationData&quot;</span><span class="p">)</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;rawDestinationData&quot;</span><span class="p">)</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;originData&quot;</span><span class="p">)</span>
+        <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;rawOriginData&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.prepare_traffic_factor_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_traffic_factor_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Prepares the traffic factor model.</span>
@@ -2858,11 +2875,11 @@
 <span class="sd">        This may be necessary if derived covariates shall be used and these</span>
 <span class="sd">        derived covariates do not depend on paramters that shall be fitted.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;__trafficFactorModel_class is not specified. Call &quot;</span> 
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;_trafficFactorModel_class is not specified. Call &quot;</span> 
                              <span class="o">+</span> <span class="s2">&quot;`model.set_traffic_factor_model_class(...)`&quot;</span><span class="p">)</span>
             
-        <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trafficFactorModel_class</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trafficFactorModel_class</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">destinationData</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postalCodeAreaData</span><span class="p">,</span> 
             <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">shortestDistances</span><span class="p">,</span> 
             <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">postalCodeDistances</span><span class="p">)</span></div>
@@ -2909,17 +2926,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">increase_print_level</span><span class="p">()</span>
         
         <span class="n">fittedModel</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">refit</span> <span class="ow">and</span> <span class="s2">&quot;flowModelData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">refit</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;flowModelData&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;A model does already exist. I skip&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;this step. Enforce fitting with the argument&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;refit=True&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="s2">&quot;processedSurveyData&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;processedSurveyData&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;The model has no prepared traveller data. I stop.&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;Call preprocess_survey_data if you want to&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;use the model.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="s2">&quot;trafficFactorModel&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;trafficFactorModel&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;No traffic factor model has been specified. Call &quot;</span>
                       <span class="s2">&quot;model.set_traffic_factor_model(...)!&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -2948,7 +2965,7 @@
         
         <span class="k">if</span> <span class="n">flowParameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;flowModelData&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>  
+            <span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;flowModelData&quot;</span><span class="p">)</span> 
                     <span class="ow">and</span> <span class="s2">&quot;parameters&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span> 
                     <span class="ow">and</span> <span class="s2">&quot;covariates&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span>
                     <span class="ow">and</span> <span class="s2">&quot;AIC&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">):</span>
@@ -3028,7 +3045,7 @@
                                             <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                  
             
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;flowModelData&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">or</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;flowModelData&quot;</span><span class="p">)</span> <span class="ow">or</span>
             <span class="s2">&quot;AIC&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span><span class="p">[</span><span class="s2">&quot;AIC&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">AIC</span>
             <span class="ow">or</span> <span class="p">(</span><span class="n">flowParameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">continueFlowOptimization</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flowModelData</span> <span class="o">=</span> <span class="p">{</span>
@@ -4662,9 +4679,9 @@
         
         <span class="c1"># compare long distance versus short distance</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-        <span class="n">longDistDistribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="n">restDistribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="n">H0Distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">longDistDistribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">restDistribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">H0Distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
                             <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> 
                              <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iterchain</span><span class="p">((</span>
                                  <span class="bp">self</span><span class="o">.</span><span class="n">surveyData</span><span class="p">[</span><span class="s2">&quot;longDistTimeData&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> 
@@ -4712,7 +4729,7 @@
             <span class="n">keyList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keyList</span><span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">long</span><span class="p">)</span>
+                    <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">long</span><span class="p">)</span>
                     <span class="n">nLL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">negLL</span>
                     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">negLL</span><span class="p">):</span>
                         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> 
@@ -4723,7 +4740,7 @@
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">keyList</span><span class="p">)):</span>
                     <span class="n">label2</span> <span class="o">=</span> <span class="n">keyList</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> 
+                        <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> 
                                                                    <span class="n">label2</span><span class="p">],</span> 
                                                                   <span class="n">long</span><span class="p">)</span>
                         <span class="n">LR</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">LR</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">negLL</span>
@@ -4763,7 +4780,7 @@
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Some likelihood values are NaNs or Infs. &quot;</span><span class="o">+</span>
                               <span class="s2">&quot;The following reuslt may be biased.&quot;</span><span class="p">)</span>
                 
-            <span class="n">H0Distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> 
+            <span class="n">H0Distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_travel_time_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> 
                                                                 <span class="n">data</span><span class="p">)</span>
             <span class="n">LR</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">H0Distribution</span><span class="o">.</span><span class="n">negLL</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">nLL</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">nLL</span><span class="p">)]))</span>
             <span class="n">p</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">LR</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">nLL</span><span class="p">))</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
@@ -5025,7 +5042,7 @@
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mf">1.96</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
                                                   <span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">),</span>
                       <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Observed vs. Predicted Regression Analysis&quot;</span><span class="p">,</span>
-                      <span class="n">fileName</span><span class="o">=</span><span class="n">saveFileName</span><span class="p">,</span>
+                      <span class="n">saveFileName</span><span class="o">=</span><span class="n">saveFileName</span><span class="p">,</span>
                       <span class="n">comparisonFileName</span><span class="o">=</span><span class="n">comparisonFileName</span> 
                       <span class="p">)</span>
         <span class="n">create_observed_predicted_mean_error_plot</span><span class="p">(</span><span class="n">regressionData</span><span class="p">[</span><span class="s2">&quot;predictedMeanScaled&quot;</span><span class="p">],</span> <span class="n">regressionData</span><span class="p">[</span><span class="s2">&quot;observedMeanScaled&quot;</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="mf">1.96</span><span class="p">,</span>
@@ -5705,32 +5722,31 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading model from file&quot;</span><span class="p">,</span> <span class="n">fileNameBackup</span> <span class="o">+</span> <span class="s2">&quot;.vmm&quot;</span><span class="p">)</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">saveobject</span><span class="o">.</span><span class="n">load_object</span><span class="p">(</span><span class="n">fileNameBackup</span> <span class="o">+</span> <span class="s2">&quot;.vmm&quot;</span><span class="p">)</span>
             <span class="n">model</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">fileNameBackup</span>
-            <span class="k">if</span> <span class="s2">&quot;destinationToDestination&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;destinationToDestination&quot;</span><span class="p">):</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">destinationToDestination</span> <span class="o">=</span> <span class="kc">False</span>
         
-        <span class="n">attrDict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="vm">__dict__</span>
         <span class="n">restartArgs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="n">restartArgs</span><span class="p">)</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="n">destinationToDestination</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="s2">&quot;rawOriginData&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+            <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;rawOriginData&quot;</span><span class="p">)</span>
                  <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;readOriginData&quot;</span><span class="p">])</span>
                     <span class="ow">and</span> <span class="n">fileNameOrigins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">read_origin_data</span><span class="p">(</span><span class="n">fileNameOrigins</span><span class="p">)</span>
-                <span class="c1">#model.save()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="s2">&quot;rawDestinationData&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;rawDestinationData&quot;</span><span class="p">)</span>
              <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;readDestinationData&quot;</span><span class="p">])</span>
                 <span class="ow">and</span> <span class="n">fileNameDestinations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             <span class="n">model</span><span class="o">.</span><span class="n">read_destination_data</span><span class="p">(</span><span class="n">fileNameDestinations</span><span class="p">)</span>
-            <span class="c1">#model.save()</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="s2">&quot;postalCodeAreaData&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;postalCodeAreaData&quot;</span><span class="p">)</span>
              <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;readPostalCodeAreaData&quot;</span><span class="p">])</span>
                 <span class="ow">and</span> <span class="n">fileNamePostalCodeAreas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             <span class="n">model</span><span class="o">.</span><span class="n">read_postal_code_area_data</span><span class="p">(</span><span class="n">fileNamePostalCodeAreas</span><span class="p">)</span>
-            <span class="c1">#model.save()</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+        <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span>
              <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;readRoadNetwork&quot;</span><span class="p">])</span>
                 <span class="ow">and</span> <span class="n">fileNameEdges</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
                 <span class="ow">and</span> <span class="n">fileNameVertices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
@@ -5739,7 +5755,7 @@
                                       <span class="n">edgeLengthRandomization</span><span class="p">)</span>
             <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="s2">&quot;complianceRate&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;complianceRate&quot;</span><span class="p">)</span>
             <span class="ow">or</span> <span class="p">(</span><span class="n">complianceRate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> 
                 <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">complianceRate</span> <span class="o">!=</span> <span class="n">complianceRate</span><span class="p">)):</span>
             <span class="n">model</span><span class="o">.</span><span class="n">set_compliance_rate</span><span class="p">(</span><span class="n">complianceRate</span><span class="p">)</span>
@@ -5748,36 +5764,37 @@
         <span class="k">if</span> <span class="n">considerInfested</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">set_origins_considered</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">considerInfested</span><span class="p">)</span>
             
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> <span class="ow">and</span>
-            <span class="p">(</span><span class="ow">not</span> <span class="s2">&quot;shortestDistances&quot;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="p">(</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;shortestDistances&quot;</span><span class="p">)</span>
              <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;findShortestDistances&quot;</span><span class="p">])):</span>
             <span class="n">model</span><span class="o">.</span><span class="n">find_shortest_distances</span><span class="p">()</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="n">destinationToDestination</span><span class="p">:</span> <span class="c1">#!!!!!!!!!!!!!</span>
-            <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="s2">&quot;surveyData&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+            <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;surveyData&quot;</span><span class="p">)</span>
                  <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;readSurveyData&quot;</span><span class="p">])</span>
-                    <span class="ow">and</span> <span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span>
+                    <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span>
                     <span class="ow">and</span> <span class="n">fileNameObservations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
                 <span class="n">properDataRate</span> <span class="o">=</span> <span class="n">restartArgs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;properDataRate&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">read_survey_data</span><span class="p">(</span><span class="n">fileNameObservations</span><span class="p">,</span> 
                                             <span class="n">properDataRate</span><span class="o">=</span><span class="n">properDataRate</span><span class="p">)</span>
-                <span class="c1">#model.save()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
                 
-            <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="s2">&quot;travelTimeModel&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> 
+            <span class="k">if</span> <span class="p">((</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;travelTimeModel&quot;</span><span class="p">)</span>
                  <span class="ow">or</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;fitTravelTimeModel&quot;</span><span class="p">])</span>
-                    <span class="ow">and</span> <span class="s2">&quot;surveyData&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span><span class="p">):</span>
+                    <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;surveyData&quot;</span><span class="p">)):</span>
                 <span class="n">travelTimeParameters</span> <span class="o">=</span> <span class="n">restartArgs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;travelTimeParameters&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">create_travel_time_model</span><span class="p">(</span><span class="n">travelTimeParameters</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">fileName</span><span class="p">)</span>
-                <span class="c1">#model.save()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">restart</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span> <span class="ow">and</span> <span class="n">routeParameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;roadNetwork&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">routeParameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             
             <span class="k">if</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;preprocessSurveyData&quot;</span><span class="p">]:</span>
-                <span class="n">model</span><span class="o">.</span><span class="n">__erase_processed_survey_data</span><span class="p">()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">_erase_processed_survey_data</span><span class="p">()</span>
             
-            <span class="k">if</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;inspectedPotentialRoutes&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> 
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">roadNetwork</span><span class="p">,</span> <span class="s2">&quot;inspectedPotentialRoutes&quot;</span><span class="p">)</span> 
+                <span class="ow">or</span> <span class="n">model</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">inspectedPotentialRoutes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> 
                     <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;findPotentialRoutes&quot;</span><span class="p">]):</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">find_potential_routes</span><span class="p">(</span><span class="o">*</span><span class="n">routeParameters</span><span class="p">)</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -5787,7 +5804,7 @@
                                           <span class="o">+</span> <span class="s2">&quot; has not yet been&quot;</span>
                                           <span class="o">+</span> <span class="s2">&quot; implemented completely.&quot;</span><span class="p">)</span>
             
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;travelTimeModel&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;travelTimeModel&quot;</span><span class="p">):</span>
                 <span class="n">save</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">create_route_choice_model</span><span class="p">(</span><span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;createRouteChoiceModel&quot;</span><span class="p">])</span>
                 <span class="n">save</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">preprocess_survey_data</span><span class="p">()</span> <span class="ow">or</span> <span class="n">save</span>
                 <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
@@ -5795,7 +5812,7 @@
                     <span class="k">pass</span>
             
                 
-            <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;travelTimeModel&quot;</span> <span class="ow">in</span> <span class="n">attrDict</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;travelTimeModel&quot;</span><span class="p">):</span>
                 
                 <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="n">routeChoiceParameters</span> <span class="o">=</span> <span class="n">restartArgs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;routeChoiceParameters&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -5815,7 +5832,7 @@
                 <span class="n">continueTrafficFactorOptimization</span> <span class="o">=</span> <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;continueTrafficFactorOptimization&quot;</span><span class="p">]</span>
                 
                 <span class="c1">#if model.fit_flow_model(parameters, refit=refit, flowParameters=flowParameters):</span>
-                <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;trafficFactorModel&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">or</span> 
+                <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s2">&quot;trafficFactorModel&quot;</span><span class="p">)</span> <span class="ow">or</span> 
                         <span class="n">restartArgs</span><span class="p">[</span><span class="s2">&quot;preapareTrafficFactorModel&quot;</span><span class="p">]):</span>
                     <span class="n">model</span><span class="o">.</span><span class="n">prepare_traffic_factor_model</span><span class="p">()</span>
                     

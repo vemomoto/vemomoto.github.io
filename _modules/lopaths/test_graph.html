@@ -52,17 +52,18 @@
 
 <span class="kn">from</span> <span class="nn">vemomoto_core.npcollections.npext</span> <span class="kn">import</span> <span class="n">add_fields</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">graph</span> <span class="kn">import</span> <span class="n">FlowPointGraph</span><span class="p">,</span> <span class="n">FlexibleGraph</span>
-<span class="k">except</span> <span class="n">ModuleNotFoundError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.graph</span> <span class="kn">import</span> <span class="n">FlowPointGraph</span><span class="p">,</span> <span class="n">FlexibleGraph</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">graph</span> <span class="kn">import</span> <span class="n">FlowPointGraph</span><span class="p">,</span> <span class="n">FlexibleGraph</span>
     
 <span class="n">IDTYPE</span> <span class="o">=</span> <span class="s2">&quot;|S11&quot;</span> 
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools</span> <span class="kn">import</span> <span class="n">saveobject</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools.hrprint</span> <span class="kn">import</span> <span class="n">HierarchichalPrinter</span>
 
-<span class="kn">from</span> <span class="nn">vemomoto_core.tools.tee</span> <span class="kn">import</span> <span class="n">Tee</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">vemomoto_core.tools.tee</span> <span class="kn">import</span> <span class="n">Tee</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
 <span class="n">FILE_EXT</span> <span class="o">=</span> <span class="s2">&quot;.rn&quot;</span>
@@ -344,15 +345,14 @@
             
         
 <div class="viewcode-block" id="GraphTester.save"><a class="viewcode-back" href="../../lopaths/lopaths.test_graph.html#lopaths.test_graph.GraphTester.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;vertices&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;vertices&quot;</span><span class="p">):</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fileName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">fileName</span> <span class="o">+=</span> <span class="n">FILE_EXT</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Saving the model as file&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
-            <span class="n">saveobject</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Saving the model as file&quot;</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">+</span> <span class="n">FILE_EXT</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="GraphTester.preprocessing"><a class="viewcode-back" href="../../lopaths/lopaths.test_graph.html#lopaths.test_graph.GraphTester.preprocessing">[docs]</a>    <span class="nd">@timing</span> 
     <span class="k">def</span> <span class="nf">preprocessing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessingArgs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -473,7 +473,7 @@
     
     
 <div class="viewcode-block" id="GraphTester.get_origin_destination_indices"><a class="viewcode-back" href="../../lopaths/lopaths.test_graph.html#lopaths.test_graph.GraphTester.get_origin_destination_indices">[docs]</a>    <span class="k">def</span> <span class="nf">get_origin_destination_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourceNo</span><span class="p">,</span> <span class="n">sinkNo</span><span class="p">,</span> <span class="n">trialIndex</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;trial_dict&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;trial_dict&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">trial_dict</span> <span class="o">=</span> <span class="p">{}</span>
             
         <span class="k">if</span> <span class="n">trialIndex</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">trialIndex</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_dict</span><span class="p">:</span>
@@ -814,7 +814,7 @@
             <span class="k">return</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">dtm</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">m</span><span class="o">/</span><span class="n">dtm</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dtv</span><span class="o">/</span><span class="n">dtm</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span>
         
         <span class="k">for</span> <span class="n">opt</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">optimizations</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:24s}</span><span class="s2"> time total </span><span class="si">{:7.1f}</span><span class="s2"> (</span><span class="si">{:5.1f}</span><span class="s2">); time slowdown &quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:24s}</span><span class="s2"> time total </span><span class="si">{:7.1f}</span><span class="s2"> (</span><span class="si">{:5.1f}</span><span class="s2">); time slowdown &quot;</span>
                   <span class="s2">&quot;</span><span class="si">{:5.2f}</span><span class="s2"> (</span><span class="si">{:4.2f}</span><span class="s2">); </span><span class="si">% c</span><span class="s2">hange </span><span class="si">{:4.1f}</span><span class="s2">  (</span><span class="si">{:4.1f}</span><span class="s2">); &quot;</span>
                   <span class="s2">&quot;number plateau peaks </span><span class="si">{:5.2f}</span><span class="s2">; number labelled edges </span><span class="si">{:5.2f}</span><span class="s2">; &quot;</span>
                   <span class="s2">&quot;number unique candidates </span><span class="si">{:5.2f}</span><span class="s2">; paths error </span><span class="si">{:4.2f}</span><span class="s2">; &quot;</span>
@@ -833,6 +833,25 @@
 <span class="sd">                  &quot;| time slowdown&quot;, row[&quot;time slowdown&quot;],</span>
 <span class="sd">                  &quot;| time comparison factor&quot;, row[&quot;time total&quot;][0]/default_time)</span>
 <span class="sd">        &#39;&#39;&#39;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        allOpt = result[0]</span>
+<span class="sd">        rejectIdentical = result[5]</span>
+<span class="sd">        self.prst(&quot;{:6.2f}; {:6.2f}; {:6.2f}; {:6.2f}; {:6.2f}&quot;.format(</span>
+<span class="sd">            rejectIdentical[&quot;time total&quot;][0]/allOpt[&quot;time total&quot;][0],</span>
+<span class="sd">            rejectIdentical[&quot;time length and uniqueness&quot;][0]/allOpt[&quot;time length and uniqueness&quot;][0],</span>
+<span class="sd">            rejectIdentical[&quot;time admissibility&quot;][0]/allOpt[&quot;time admissibility&quot;][0],</span>
+<span class="sd">            allOpt[&quot;time length and uniqueness&quot;][0]/allOpt[&quot;time length and uniqueness&quot;][0],</span>
+<span class="sd">            rejectIdentical[&quot;time length and uniqueness&quot;][0]/rejectIdentical[&quot;time length and uniqueness&quot;][0]</span>
+<span class="sd">            ))</span>
+<span class="sd">        self.prst(&quot;allOpt={:4.2f}; rejectIdentical={:6.2f}&quot;.format(</span>
+<span class="sd">            allOpt[&quot;time admissibility&quot;][0]/allOpt[&quot;time total&quot;][0],</span>
+<span class="sd">            rejectIdentical[&quot;time admissibility&quot;][0]/rejectIdentical[&quot;time total&quot;][0]</span>
+<span class="sd">            ))</span>
+<span class="sd">        self.prst(&quot;unique ratio={:4.2f}; uniquePair ratio={:6.2f}&quot;.format(</span>
+<span class="sd">            allOpt[&quot;number unique candidates&quot;][0]/rejectIdentical[&quot;number unique candidates&quot;][0],</span>
+<span class="sd">            allOpt[&quot;number unique candidates pair&quot;][0]/rejectIdentical[&quot;number unique candidates pair&quot;][0]</span>
+<span class="sd">            ))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decrease_print_level</span><span class="p">()</span></div></div>
         
 </pre></div>

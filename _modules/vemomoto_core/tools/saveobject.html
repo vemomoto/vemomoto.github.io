@@ -36,36 +36,273 @@
             
   <h1>Source code for vemomoto_core.tools.saveobject</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Created on 04.01.2017</span>
+<span class="sd">This module contains methods and classes to save and load objects.</span>
 
-<span class="sd">@author: Samuel</span>
+<span class="sd">The module contains a method :py:meth:`save_object` that saves any object without </span>
+<span class="sd">overwriting existing identical sections. Furthermore, there is a class </span>
+<span class="sd">:py:class:`SeparatelySaveable` that can be used as the base class for all objects for </span>
+<span class="sd">which some attributes shall be saved in separate files. </span>
+<span class="sd">Attributes that are instances of :py:class:`SeparatelySaveable` also will be </span>
+<span class="sd">saved separately automatically. Further attributes that shall be saved </span>
+<span class="sd">separately can be specified via :py:meth:`SeparatelySaveable.set_save_separately`. </span>
+
+<span class="sd">Attributes that are saved separately are placed in a folder next to the </span>
+<span class="sd">file to which the original object is saved. These attributes will be </span>
+<span class="sd">saved again only if they have been accessed after they have been saved </span>
+<span class="sd">initially. When the object is loaded, the separate attributes will not be </span>
+<span class="sd">loaded until they are accessed.</span>
+
+<span class="sd">Usage</span>
+<span class="sd">-----</span>
+
+<span class="sd">Saving an object without overwriting similar parts works for all objects:</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    save_object(myObject)</span>
+
+<span class="sd">Saving attributes separately:</span>
+
+<span class="sd">.. code-block:: python</span>
+
+<span class="sd">    # defining classes</span>
+<span class="sd">    class MyClass1(SeparatelySaveable):</span>
+<span class="sd">        def __init__(self, value):</span>
+<span class="sd">            super().__init__()</span>
+<span class="sd">            self.attribute1 = value</span>
+<span class="sd">            </span>
+<span class="sd">            # specify that self.attribute shall be </span>
+<span class="sd">            # saved separately</span>
+<span class="sd">            self.set_save_separately(&#39;attribute&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    class MyClass2(SeparatelySaveable):</span>
+<span class="sd">        def __init__(self, value):</span>
+<span class="sd">            super().__init__()</span>
+<span class="sd">            </span>
+<span class="sd">            # attributes that are instances of </span>
+<span class="sd">            # SeparatelySaveable will always be saved separately</span>
+<span class="sd">            self.attribute2 = MyClass1(value)</span>
+<span class="sd">    </span>
+<span class="sd">    </span>
+<span class="sd">    # creating objects</span>
+<span class="sd">    myObject1 = MyClass1()</span>
+<span class="sd">    myObject2 = MyClass2()</span>
+<span class="sd">    </span>
+<span class="sd">    # Saves myObject1 to fileName1.ext and </span>
+<span class="sd">    # myObject1.attribute1 to fileName1.arx/attribute1.ext</span>
+<span class="sd">    myObject1.save_object(&quot;fileName1&quot;, &quot;.ext&quot;, &quot;.arx&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    # Saves myObject2 to fileName2.ext and </span>
+<span class="sd">    # myObject2.attribute2 to fileName2.arx/attribute2.ext and</span>
+<span class="sd">    # myObject2.attribute2.attribute1 to fileName2.arx/attribute2.arx/attribute1.ext</span>
+<span class="sd">    myObject1.save_object(&quot;fileName2&quot;, &quot;.ext&quot;, &quot;.arx&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    # load myObject2; myObject2.attribute2 will remain unloaded</span>
+<span class="sd">    loadedObject = load_object(&quot;fileName2.ext&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    # myObject2.attribute1 will be loaded; myObject2.attribute2.attribute1 </span>
+<span class="sd">    # will remain unloaded</span>
+<span class="sd">    loadedObject.attribute2</span>
+<span class="sd">    </span>
+<span class="sd">    # Saves loadedObject to fileName2.ext and </span>
+<span class="sd">    # loadedObject.attribute2 to fileName2.arx/attribute2.ext </span>
+<span class="sd">    # loadedObject.attribute2.attribute1 will remain untouched</span>
+<span class="sd">    loadedObject.save_object(&quot;fileName2&quot;, &quot;.ext&quot;, &quot;.arx&quot;)</span>
+
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="kn">import</span> <span class="nn">dill</span>
 
-<div class="viewcode-block" id="save_object"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.save_object">[docs]</a><span class="k">def</span> <span class="nf">save_object</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">dill</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">byref</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+<span class="kn">import</span> <span class="nn">dill</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+<span class="kn">from</span> <span class="nn">astropy.wcs.docstrings</span> <span class="kn">import</span> <span class="n">name</span>
+
+<span class="n">DEFAULT_EXTENSION</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="sd">&quot;&quot;&quot;File name extension used if no extension is specified&quot;&quot;&quot;</span>
+
+<span class="n">DEFAULT_FOLDER_EXTENSION</span> <span class="o">=</span> <span class="s1">&#39;.arx&#39;</span>
+<span class="sd">&quot;&quot;&quot;Folder name extension used if no extension is specified&quot;&quot;&quot;</span>
+
+<span class="n">BLOCKSIZE</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">20</span>
+<span class="sd">&quot;&quot;&quot;Size of read/write blocks when files are saved&quot;&quot;&quot;</span>
+
 
 <div class="viewcode-block" id="load_object"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.load_object">[docs]</a><span class="k">def</span> <span class="nf">load_object</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load an object.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Path to the file</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">dill</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></div>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">class T(object):</span>
-<span class="sd">    def __init__(self, x):</span>
-<span class="sd">        self.x = x</span>
-<span class="sd">    def t(self, y):</span>
-<span class="sd">        return self.x + y</span>
+<div class="viewcode-block" id="save_object"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.save_object">[docs]</a><span class="k">def</span> <span class="nf">save_object</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">compare</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save an object.</span>
+<span class="sd">    </span>
+<span class="sd">    If the object has been saved at the same file earlier, only the parts </span>
+<span class="sd">    are overwritten that have changed. Note that an additional attribute </span>
+<span class="sd">    at the beginning of the file will &#39;shift&#39; all data, making it </span>
+<span class="sd">    necessary to rewrite the entire file.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    obj : object</span>
+<span class="sd">        Object to be saved</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Path of the file to which the object shall be saved</span>
+<span class="sd">    compare : bool</span>
+<span class="sd">        Whether only changed parts shall be overwitten. A value of `True` will</span>
+<span class="sd">        be beneficial for large files if no/few changes have been made. A </span>
+<span class="sd">        value of `False` will be faster for small and strongly changed files.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">compare</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">dill</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">byref</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span>
+            
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">dill</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">byref</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">stream</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">buf_obj</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCKSIZE</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">buf_file</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCKSIZE</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCKSIZE</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">buf_obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">buf_obj</span> <span class="o">==</span> <span class="n">buf_file</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf_obj</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">buf_file</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                    <span class="k">break</span>
+            <span class="n">buf_file</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCKSIZE</span><span class="p">)</span>
+            <span class="n">buf_obj</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCKSIZE</span><span class="p">)</span></div>
+                
 
-<span class="sd">fn = &quot;test.txt&quot;</span>
-
-<span class="sd">test = T(5)</span>
-<span class="sd">save_object(test, fn)</span>
-<span class="sd">print(test.t(3))</span>
-
-<span class="sd">test2 = load_object(fn)</span>
-<span class="sd">print(test2.t(3))</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SeparatelySaveable"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable">[docs]</a><span class="k">class</span> <span class="nc">SeparatelySaveable</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">DEFAULT_EXTENSION</span><span class="p">,</span> 
+                 <span class="n">folderExtension</span><span class="o">=</span><span class="n">DEFAULT_FOLDER_EXTENSION</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extension</span> <span class="o">=</span> <span class="n">extension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folderExtension</span> <span class="o">=</span> <span class="n">folderExtension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__saveables</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    
+<div class="viewcode-block" id="SeparatelySaveable.set_save_separately"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately">[docs]</a>    <span class="k">def</span> <span class="nf">set_save_separately</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__saveables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="SeparatelySaveable.del_save_separately"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.del_save_separately">[docs]</a>    <span class="k">def</span> <span class="nf">del_save_separately</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__saveables</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+    
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="c1"># prevent infinite recursion if object has not been correctly initialized</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;_SeparatelySaveable__archived_attributes&#39;</span> <span class="ow">or</span> 
+            <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;_SeparatelySaveable__dumped_attributes&#39;</span><span class="p">):</span> 
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;SeparatelySaveable object has not been &#39;</span>
+                                 <span class="s1">&#39;initialized properly.&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;&#39; object &quot;</span>
+                                 <span class="s2">&quot;has no attribute &#39;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+    
+    <span class="k">def</span> <span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="SeparatelySaveable.hasattr"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.hasattr">[docs]</a>    <span class="k">def</span> <span class="nf">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="SeparatelySaveable.load_all"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.load_all">[docs]</a>    <span class="k">def</span> <span class="nf">load_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span><span class="p">):</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span><span class="p">):</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="SeparatelySaveable.save_object"><a class="viewcode-back" href="../../../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.save_object">[docs]</a>    <span class="k">def</span> <span class="nf">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">folderExtension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">overwriteChildExtension</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">extension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">extension</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extension</span>
+        <span class="k">if</span> <span class="n">folderExtension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">folderExtension</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folderExtension</span>
+        
+        <span class="c1"># account for a possible name change - load all components</span>
+        <span class="c1"># if necessary; this could be done smarter</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;_SeparatelySaveable__fileName&#39;</span><span class="p">,</span> 
+                                  <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">fileName</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;_SeparatelySaveable__extension&#39;</span><span class="p">,</span> 
+                                      <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">extension</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;_SeparatelySaveable__folderExtension&#39;</span><span class="p">,</span> 
+                                      <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">folderExtension</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;_SeparatelySaveable__overwriteChildExtension&#39;</span><span class="p">,</span> 
+                                      <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">overwriteChildExtension</span>
+                <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__fileName</span> <span class="o">=</span> <span class="n">fileName</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__extension</span> <span class="o">=</span> <span class="n">extension</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__folderExtension</span> <span class="o">=</span> <span class="n">folderExtension</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__overwriteChildExtension</span> <span class="o">=</span> <span class="n">overwriteChildExtension</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_all</span><span class="p">()</span>
+            
+            
+        <span class="c1"># do not save the attributes that had been saved earlier and have not</span>
+        <span class="c1"># been accessed since</span>
+        <span class="n">archived_attributes_tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="c1"># save the object</span>
+        <span class="n">dumped_attributes_tmp</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">saveInFolder</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SeparatelySaveable</span><span class="p">)</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__saveables</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">saveInFolder</span><span class="p">:</span>
+                    <span class="n">folderName</span> <span class="o">=</span> <span class="n">fileName</span><span class="o">+</span><span class="n">folderExtension</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">folderName</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">F_OK</span><span class="p">):</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folderName</span><span class="p">)</span>
+                    <span class="n">saveInFolder</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">partFileName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folderName</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SeparatelySaveable</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">overwriteChildExtension</span><span class="p">:</span>
+                        <span class="n">savedFileName</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="n">partFileName</span><span class="p">,</span> <span class="n">extension</span><span class="p">,</span> 
+                                                        <span class="n">folderExtension</span><span class="p">,</span>
+                                                        <span class="n">overwriteChildExtension</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">savedFileName</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="n">partFileName</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">savedFileName</span> <span class="o">=</span> <span class="n">partFileName</span><span class="o">+</span><span class="n">extension</span>
+                    <span class="n">save_object</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">savedFileName</span><span class="p">)</span>
+                <span class="n">dumped_attributes_tmp</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__dumped_attributes</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">savedFileName</span>
+        
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dumped_attributes_tmp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            
+        <span class="n">save_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">+</span><span class="n">extension</span><span class="p">)</span>
+        
+        <span class="n">archived_attributes_tmp</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dumped_attributes_tmp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__archived_attributes</span> <span class="o">=</span> <span class="n">archived_attributes_tmp</span>
+            
+        <span class="k">return</span> <span class="n">fileName</span><span class="o">+</span><span class="n">extension</span></div></div>
+        
 </pre></div>
 
           </div>

@@ -43,10 +43,38 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-vemomoto_core.tools.saveobject">
-<span id="module-vemomoto-core-tools-saveobject"></span><h1>Module: vemomoto_core.tools.saveobject<a class="headerlink" href="#module-vemomoto_core.tools.saveobject" title="Permalink to this headline">¶</a></h1>
-<p>Created on 04.01.2017</p>
-<p>&#64;author: Samuel</p>
+  <div class="section" id="module-vemomoto-core-tools-saveobject">
+<h1>Module: vemomoto_core.tools.saveobject<a class="headerlink" href="#module-vemomoto-core-tools-saveobject" title="Permalink to this headline">¶</a></h1>
+<p><strong>Data</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.BLOCKSIZE" title="vemomoto_core.tools.saveobject.BLOCKSIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BLOCKSIZE</span></code></a></p></td>
+<td><p>Size of read/write blocks when files are saved</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.DEFAULT_EXTENSION" title="vemomoto_core.tools.saveobject.DEFAULT_EXTENSION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_EXTENSION</span></code></a></p></td>
+<td><p>File name extension used if no extension is specified</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.DEFAULT_FOLDER_EXTENSION" title="vemomoto_core.tools.saveobject.DEFAULT_FOLDER_EXTENSION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_FOLDER_EXTENSION</span></code></a></p></td>
+<td><p>Folder name extension used if no extension is specified</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable" title="vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SeparatelySaveable</span></code></a>([extension, folderExtension])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Functions</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -55,23 +83,184 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.load_object" title="vemomoto_core.tools.saveobject.load_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_object</span></code></a>(filename)</p></td>
+<td><p>Load an object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.save_object" title="vemomoto_core.tools.saveobject.save_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_object</span></code></a>(obj, filename[, compare])</p></td>
+<td><p>Save an object.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-vemomoto_core.tools.saveobject"></span><p>This module contains methods and classes to save and load objects.</p>
+<p>The module contains a method <a class="reference internal" href="#vemomoto_core.tools.saveobject.save_object" title="vemomoto_core.tools.saveobject.save_object"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_object()</span></code></a> that saves any object without
+overwriting existing identical sections. Furthermore, there is a class
+<a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable" title="vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SeparatelySaveable</span></code></a> that can be used as the base class for all objects for
+which some attributes shall be saved in separate files.
+Attributes that are instances of <a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable" title="vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SeparatelySaveable</span></code></a> also will be
+saved separately automatically. Further attributes that shall be saved
+separately can be specified via <a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately" title="vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SeparatelySaveable.set_save_separately()</span></code></a>.</p>
+<p>Attributes that are saved separately are placed in a folder next to the
+file to which the original object is saved. These attributes will be
+saved again only if they have been accessed after they have been saved
+initially. When the object is loaded, the separate attributes will not be
+loaded until they are accessed.</p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Saving an object without overwriting similar parts works for all objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">save_object</span><span class="p">(</span><span class="n">myObject</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Saving attributes separately:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># defining classes</span>
+<span class="k">class</span> <span class="nc">MyClass1</span><span class="p">(</span><span class="n">SeparatelySaveable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attribute1</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># specify that self.attribute shall be</span>
+        <span class="c1"># saved separately</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_save_separately</span><span class="p">(</span><span class="s1">&#39;attribute&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyClass2</span><span class="p">(</span><span class="n">SeparatelySaveable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># attributes that are instances of</span>
+        <span class="c1"># SeparatelySaveable will always be saved separately</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attribute2</span> <span class="o">=</span> <span class="n">MyClass1</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="c1"># creating objects</span>
+<span class="n">myObject1</span> <span class="o">=</span> <span class="n">MyClass1</span><span class="p">()</span>
+<span class="n">myObject2</span> <span class="o">=</span> <span class="n">MyClass2</span><span class="p">()</span>
+
+<span class="c1"># Saves myObject1 to fileName1.ext and</span>
+<span class="c1"># myObject1.attribute1 to fileName1.arx/attribute1.ext</span>
+<span class="n">myObject1</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="s2">&quot;fileName1&quot;</span><span class="p">,</span> <span class="s2">&quot;.ext&quot;</span><span class="p">,</span> <span class="s2">&quot;.arx&quot;</span><span class="p">)</span>
+
+<span class="c1"># Saves myObject2 to fileName2.ext and</span>
+<span class="c1"># myObject2.attribute2 to fileName2.arx/attribute2.ext and</span>
+<span class="c1"># myObject2.attribute2.attribute1 to fileName2.arx/attribute2.arx/attribute1.ext</span>
+<span class="n">myObject1</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="s2">&quot;fileName2&quot;</span><span class="p">,</span> <span class="s2">&quot;.ext&quot;</span><span class="p">,</span> <span class="s2">&quot;.arx&quot;</span><span class="p">)</span>
+
+<span class="c1"># load myObject2; myObject2.attribute2 will remain unloaded</span>
+<span class="n">loadedObject</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s2">&quot;fileName2.ext&quot;</span><span class="p">)</span>
+
+<span class="c1"># myObject2.attribute1 will be loaded; myObject2.attribute2.attribute1</span>
+<span class="c1"># will remain unloaded</span>
+<span class="n">loadedObject</span><span class="o">.</span><span class="n">attribute2</span>
+
+<span class="c1"># Saves loadedObject to fileName2.ext and</span>
+<span class="c1"># loadedObject.attribute2 to fileName2.arx/attribute2.ext</span>
+<span class="c1"># loadedObject.attribute2.attribute1 will remain untouched</span>
+<span class="n">loadedObject</span><span class="o">.</span><span class="n">save_object</span><span class="p">(</span><span class="s2">&quot;fileName2&quot;</span><span class="p">,</span> <span class="s2">&quot;.ext&quot;</span><span class="p">,</span> <span class="s2">&quot;.arx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="data">
+<dt id="vemomoto_core.tools.saveobject.BLOCKSIZE">
+<code class="sig-name descname">BLOCKSIZE</code><em class="property"> = 1048576</em><a class="headerlink" href="#vemomoto_core.tools.saveobject.BLOCKSIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size of read/write blocks when files are saved</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vemomoto_core.tools.saveobject.DEFAULT_EXTENSION">
+<code class="sig-name descname">DEFAULT_EXTENSION</code><em class="property"> = ''</em><a class="headerlink" href="#vemomoto_core.tools.saveobject.DEFAULT_EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>File name extension used if no extension is specified</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="vemomoto_core.tools.saveobject.DEFAULT_FOLDER_EXTENSION">
+<code class="sig-name descname">DEFAULT_FOLDER_EXTENSION</code><em class="property"> = '.arx'</em><a class="headerlink" href="#vemomoto_core.tools.saveobject.DEFAULT_FOLDER_EXTENSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Folder name extension used if no extension is specified</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="vemomoto_core.tools.saveobject.SeparatelySaveable">
+<em class="property">class </em><code class="sig-name descname">SeparatelySaveable</code><span class="sig-paren">(</span><em class="sig-param">extension=''</em>, <em class="sig-param">folderExtension='.arx'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#SeparatelySaveable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.SeparatelySaveable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.del_save_separately" title="vemomoto_core.tools.saveobject.SeparatelySaveable.del_save_separately"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_save_separately</span></code></a>(*name)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.save_object" title="vemomoto_core.tools.saveobject.save_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_object</span></code></a>(obj, filename)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.hasattr" title="vemomoto_core.tools.saveobject.SeparatelySaveable.hasattr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasattr</span></code></a>(name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.load_all" title="vemomoto_core.tools.saveobject.SeparatelySaveable.load_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_all</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.save_object" title="vemomoto_core.tools.saveobject.SeparatelySaveable.save_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_object</span></code></a>(fileName[, extension, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately" title="vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_save_separately</span></code></a>(*name)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="vemomoto_core.tools.saveobject.SeparatelySaveable.del_save_separately">
+<code class="sig-name descname">del_save_separately</code><span class="sig-paren">(</span><em class="sig-param">*name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#SeparatelySaveable.del_save_separately"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.del_save_separately" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="vemomoto_core.tools.saveobject.SeparatelySaveable.hasattr">
+<code class="sig-name descname">hasattr</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#SeparatelySaveable.hasattr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.hasattr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="vemomoto_core.tools.saveobject.SeparatelySaveable.load_all">
+<code class="sig-name descname">load_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#SeparatelySaveable.load_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.load_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="vemomoto_core.tools.saveobject.SeparatelySaveable.save_object">
+<code class="sig-name descname">save_object</code><span class="sig-paren">(</span><em class="sig-param">fileName</em>, <em class="sig-param">extension=None</em>, <em class="sig-param">folderExtension=None</em>, <em class="sig-param">overwriteChildExtension=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#SeparatelySaveable.save_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.save_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately">
+<code class="sig-name descname">set_save_separately</code><span class="sig-paren">(</span><em class="sig-param">*name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#SeparatelySaveable.set_save_separately"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="vemomoto_core.tools.saveobject.load_object">
 <code class="sig-name descname">load_object</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#load_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.load_object" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Load an object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path to the file</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="vemomoto_core.tools.saveobject.save_object">
-<code class="sig-name descname">save_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#save_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.save_object" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">save_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">filename</em>, <em class="sig-param">compare=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#save_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.save_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save an object.</p>
+<p>If the object has been saved at the same file earlier, only the parts
+are overwritten that have changed. Note that an additional attribute
+at the beginning of the file will ‘shift’ all data, making it
+necessary to rewrite the entire file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>object</em>) – Object to be saved</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Path of the file to which the object shall be saved</p></li>
+<li><p><strong>compare</strong> (<em>bool</em>) – Whether only changed parts shall be overwitten. A value of <cite>True</cite> will
+be beneficial for large files if no/few changes have been made. A
+value of <cite>False</cite> will be faster for small and strongly changed files.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
+</div>
 </div>
 
 
@@ -97,6 +286,14 @@
 <li class="toctree-l3"><a class="reference internal" href="vemomoto_core.tools.doc_utils.html">doc_utils</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Module: vemomoto_core.tools.saveobject</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>

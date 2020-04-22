@@ -51,16 +51,14 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.hybrid_vector_model</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">hybrid_vector_model.hybrid_vector_model</span> <span class="kn">import</span> <span class="o">*</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">hybrid_vector_model</span> <span class="kn">import</span> <span class="o">*</span>
+    <span class="kn">from</span> <span class="nn">hybrid_vector_model</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c1"># The first command line argument specifies the output file to which all output</span>
-<span class="c1"># will be written.     </span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">vemomoto_core.tools.tee</span> <span class="kn">import</span> <span class="n">Tee</span>                
-    <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># The first command line argument specifies the output file to which all output</span>
+    <span class="c1"># will be written.     </span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">vemomoto_core.tools.tee</span> <span class="kn">import</span> <span class="n">Tee</span>                
+        <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
 <div class="viewcode-block" id="TrafficFactorModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html#hybrid_vector_model.boater_movement_model.TrafficFactorModel">[docs]</a><span class="k">class</span> <span class="nc">TrafficFactorModel</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="p">):</span>
