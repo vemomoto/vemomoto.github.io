@@ -82,10 +82,10 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.load_object" title="vemomoto_core.tools.saveobject.load_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_object</span></code></a>(filename)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.load_object" title="vemomoto_core.tools.saveobject.load_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_object</span></code></a>(fileName)</p></td>
 <td><p>Load an object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.save_object" title="vemomoto_core.tools.saveobject.save_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_object</span></code></a>(obj, filename[, compare])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.saveobject.save_object" title="vemomoto_core.tools.saveobject.save_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_object</span></code></a>(obj, fileName[, compare])</p></td>
 <td><p>Save an object.</p></td>
 </tr>
 </tbody>
@@ -230,18 +230,18 @@ loaded until they are accessed.</p>
 
 <dl class="function">
 <dt id="vemomoto_core.tools.saveobject.load_object">
-<code class="sig-name descname">load_object</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#load_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.load_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load_object</code><span class="sig-paren">(</span><em class="sig-param">fileName</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#load_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.load_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load an object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path to the file</p>
+<dd class="field-odd"><p><strong>fileName</strong> (<em>str</em>) – Path to the file</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="vemomoto_core.tools.saveobject.save_object">
-<code class="sig-name descname">save_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">filename</em>, <em class="sig-param">compare=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#save_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.save_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">fileName</em>, <em class="sig-param">compare=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/saveobject.html#save_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.saveobject.save_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save an object.</p>
 <p>If the object has been saved at the same file earlier, only the parts
 are overwritten that have changed. Note that an additional attribute
@@ -251,7 +251,7 @@ necessary to rewrite the entire file.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>obj</strong> (<em>object</em>) – Object to be saved</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – Path of the file to which the object shall be saved</p></li>
+<li><p><strong>fileName</strong> (<em>str</em>) – Path of the file to which the object shall be saved</p></li>
 <li><p><strong>compare</strong> (<em>bool</em>) – Whether only changed parts shall be overwitten. A value of <cite>True</cite> will
 be beneficial for large files if no/few changes have been made. A
 value of <cite>False</cite> will be faster for small and strongly changed files.</p></li>
