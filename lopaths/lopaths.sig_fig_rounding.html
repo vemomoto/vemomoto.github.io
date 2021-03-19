@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Module: lopaths.sig_fig_rounding &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: lopaths.test_graph" href="lopaths.test_graph.html" />
@@ -33,7 +33,8 @@
           <a href="lopaths.graph_utils.html" title="Module: lopaths.graph_utils"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../lopaths.html" accesskey="U">Package: lopaths</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../lopaths.html" accesskey="U">Package: lopaths</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: lopaths.sig_fig_rounding</a></li> 
       </ul>
     </div>  
 
@@ -47,7 +48,7 @@
 <p>Retrieved on 08.07.2019
 from <a class="reference external" href="https://github.com/odysseus9672/SELPythonLibs/blob/master/SigFigRounding.py">https://github.com/odysseus9672/SELPythonLibs/blob/master/SigFigRounding.py</a></p>
 <p>&#64;author: odysseus9672</p>
-<p><strong>Functions</strong></p>
+<p><strong>Functions:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -74,9 +75,9 @@ from <a class="reference external" href="https://github.com/odysseus9672/SELPyth
 </tr>
 </tbody>
 </table>
-<dl class="function">
+<dl class="py function">
 <dt id="lopaths.sig_fig_rounding.FormatValToSigFigs">
-<code class="sig-name descname">FormatValToSigFigs</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">sigfigs</em>, <em class="sig-param">sciformat=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#FormatValToSigFigs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.FormatValToSigFigs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">FormatValToSigFigs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigfigs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sciformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#FormatValToSigFigs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.FormatValToSigFigs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rounds the value(s) in x to the number of significant figures in sigfigs.
 Return value is a string. The keyword argument
 sciformat will force scientific notation if true.
@@ -85,9 +86,9 @@ sigfigs must be an integer type and store a positive value.
 x must be a real value or an array like object containing only real values.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="lopaths.sig_fig_rounding.FormatValWithUncRounding">
-<code class="sig-name descname">FormatValWithUncRounding</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">unc</em>, <em class="sig-param">uncsigfigs=1</em>, <em class="sig-param">sciformat=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#FormatValWithUncRounding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.FormatValWithUncRounding" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">FormatValWithUncRounding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncsigfigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sciformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#FormatValWithUncRounding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.FormatValWithUncRounding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rounds unc (the uncertainty) to the number of significant figures in
 uncsigfigs. Then rounds the value in x to the same decimal pace as the
 value in unc. Uses the decimal package for maximal accuracy.
@@ -99,9 +100,9 @@ Restrictions:
 - unc must be a real value or floating point</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="lopaths.sig_fig_rounding.RoundToSigFigs_decim">
-<code class="sig-name descname">RoundToSigFigs_decim</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">sigfigs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#RoundToSigFigs_decim"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.RoundToSigFigs_decim" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">RoundToSigFigs_decim</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigfigs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#RoundToSigFigs_decim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.RoundToSigFigs_decim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rounds the value(s) in x to the number of significant figures in sigfigs.
 Uses logarithm function and Python’s Decimal library, so will be slower.
 Restrictions:
@@ -109,9 +110,9 @@ sigfigs must be an integer type and store a positive value.
 x must be a Python Decimal value. No arrays accepted.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="lopaths.sig_fig_rounding.RoundToSigFigs_fp">
-<code class="sig-name descname">RoundToSigFigs_fp</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">sigfigs</em>, <em class="sig-param">upper=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#RoundToSigFigs_fp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.RoundToSigFigs_fp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">RoundToSigFigs_fp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigfigs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#RoundToSigFigs_fp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.RoundToSigFigs_fp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rounds the value(s) in x to the number of significant figures in sigfigs.
 Return value has the same type as x.
 Restrictions:
@@ -119,14 +120,14 @@ sigfigs must be an integer type and store a positive value.
 x must be a real value or an array like object containing only real values.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="lopaths.sig_fig_rounding.SetDecimalPrecision">
-<code class="sig-name descname">SetDecimalPrecision</code><span class="sig-paren">(</span><em class="sig-param">precision</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#SetDecimalPrecision"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.SetDecimalPrecision" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">SetDecimalPrecision</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precision</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#SetDecimalPrecision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.SetDecimalPrecision" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="lopaths.sig_fig_rounding.ValueWithUncsRounding">
-<code class="sig-name descname">ValueWithUncsRounding</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">uncs</em>, <em class="sig-param">uncsigfigs=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#ValueWithUncsRounding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.ValueWithUncsRounding" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">ValueWithUncsRounding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncsigfigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/sig_fig_rounding.html#ValueWithUncsRounding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.sig_fig_rounding.ValueWithUncsRounding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rounds all of the values in uncs (the uncertainties) to the number of
 significant figures in uncsigfigs. Then
 rounds the values in x to the same decimal pace as the values in uncs.
@@ -145,6 +146,7 @@ values.</p></li>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -174,7 +176,7 @@ values.</p></li>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -195,12 +197,13 @@ values.</p></li>
           <a href="lopaths.graph_utils.html" title="Module: lopaths.graph_utils"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../lopaths.html" >Package: lopaths</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../lopaths.html" >Package: lopaths</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: lopaths.sig_fig_rounding</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

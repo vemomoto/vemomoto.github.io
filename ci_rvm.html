@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Package: ci_rvm &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Module: ci_rvm.ci_rvm" href="ci_rvm/ci_rvm.ci_rvm.html" />
@@ -32,7 +32,8 @@
         <li class="right" >
           <a href="hybrid_vector_model/hybrid_vector_model.boater_movement_model.html" title="Module: hybrid_vector_model.boater_movement_model"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">VeMoMoTo</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">VeMoMoTo</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Package: ci_rvm</a></li> 
       </ul>
     </div>  
 
@@ -57,13 +58,97 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The most convenient way to use the algorithm is to use the method
+<a class="reference external" href="ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI">find_CI</a>. An example is below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example for finding profile likelihood confidence intervals for a</span>
+<span class="c1"># negative binomial model</span>
+
+<span class="c1"># We import some packages for convenience</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>               <span class="c1"># for numerical operations</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>          <span class="c1"># for stats functions</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span> <span class="k">as</span> <span class="n">op</span> <span class="c1"># to maximize the likelihood</span>
+
+<span class="kn">import</span> <span class="nn">numdifftools</span> <span class="k">as</span> <span class="nn">nd</span>        <span class="c1"># to compute gradient and Hessian numerically;</span>
+                                 <span class="c1"># the package can be found on pypi.</span>
+                                 <span class="c1"># Another good package for that purpose</span>
+                                 <span class="c1"># (using automatic differentiation) is autograd</span>
+
+<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI</span>       <span class="c1"># to determine confidence intervals</span>
+
+
+<span class="c1"># Define the size of the data set</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Define the true parameters</span>
+<span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span>
+
+<span class="c1"># Generate the data set</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">negative_binomial</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Because the parameters are constrained to the positive range and the</span>
+<span class="c1"># interval (0, 1), respectively, we work on a transformed parameter space</span>
+<span class="c1"># with unbounded domain.</span>
+<span class="k">def</span> <span class="nf">transform_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+   <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">params</span>
+   <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">))</span>
+
+<span class="c1"># Log-Likelihood function for a negative binomial model</span>
+<span class="k">def</span> <span class="nf">logL</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">transform_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">nbinom</span><span class="o">.</span><span class="n">logpmf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># negative log-Likelihood function for optimization (because we use</span>
+<span class="c1"># minimization algorithms instead of maximization algorithms)</span>
+<span class="n">negLogL</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="o">-</span><span class="n">logL</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Initial guess</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Maximize the likelihood</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">negLogL</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Print the result (we need to transform the parameters to the original</span>
+<span class="c1"># parameter space to make them interpretable)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The estimate is: k=</span><span class="si">{:5.3f}</span><span class="s2">, p=</span><span class="si">{:5.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">transform_parameters</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="c1"># Define gradient and Hessian</span>
+<span class="n">jac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
+<span class="n">hess</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
+
+<span class="c1"># Find confidence intervals for all parameters.</span>
+<span class="c1"># Note: For complicated problems, it is worthwile doing this in parallel.</span>
+<span class="c1">#       However, then we would need to encapsulate the procedure in a</span>
+<span class="c1">#       method and define the likelihood function, gradient, and Hessian</span>
+<span class="c1">#       on the top level of the module.</span>
+<span class="n">CIs</span> <span class="o">=</span> <span class="n">find_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span>
+              <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># the disp argument lets the algorithm print</span>
+                         <span class="c1"># status messages.</span>
+
+<span class="c1"># CIs is a 2D numpy array with CIs[i, 0] containing the lower bound of the</span>
+<span class="c1"># confidence interval for the i-th parameter and CIs[i, 1] containing the</span>
+<span class="c1"># respective upper bound.</span>
+
+<span class="c1"># Print the confidence intervals. Note: we need to transform the parameters</span>
+<span class="c1"># back to the original parameter space.</span>
+<span class="n">original_lower</span> <span class="o">=</span> <span class="n">transform_parameters</span><span class="p">(</span><span class="n">CIs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">original_upper</span> <span class="o">=</span> <span class="n">transform_parameters</span><span class="p">(</span><span class="n">CIs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confidence interval for k: [</span><span class="si">{:5.3f}</span><span class="s2">, </span><span class="si">{:5.3f}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+   <span class="n">original_lower</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">original_upper</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confidence interval for n: [</span><span class="si">{:5.3f}</span><span class="s2">, </span><span class="si">{:5.3f}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+   <span class="n">original_lower</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">original_upper</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="scientific-publication">
 <h2>Scientific Publication<a class="headerlink" href="#scientific-publication" title="Permalink to this headline">¶</a></h2>
-<p>The theory behind the algorithm implemented in this package is explained in the paper “<a class="reference external" href="https://arxiv.org/abs/2004.00231">A robust and efficient algorithm to find profile likelihood confidence intervals</a>” (preprint). Please cite this publication if you have used the package in your own research.</p>
+<p>The theory behind the algorithm implemented in this package is explained in the paper “<a class="reference external" href="https://arxiv.org/abs/2004.00231">A robust and efficient algorithm to find profile likelihood confidence intervals</a>” (preprint; accepted in “Statistics and Computing”). Please cite this publication if you have used the package in your own research.</p>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -86,6 +171,7 @@
   <ul>
 <li><a class="reference internal" href="#">Package: ci_rvm</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
 <li><a class="reference internal" href="#scientific-publication">Scientific Publication</a></li>
 </ul>
 </li>
@@ -100,7 +186,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -120,12 +206,13 @@
         <li class="right" >
           <a href="hybrid_vector_model/hybrid_vector_model.boater_movement_model.html" title="Module: hybrid_vector_model.boater_movement_model"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">VeMoMoTo</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">VeMoMoTo</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Package: ci_rvm</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lopaths.graph &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -25,7 +25,8 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">lopaths.graph</a></li> 
       </ul>
     </div>  
 
@@ -95,8 +96,6 @@
     <span class="kn">import</span> <span class="nn">line_profiler</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">pass</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s1">&#39;warn&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">teeObject</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -1609,8 +1608,8 @@
                     
                 <span class="c1"># check whether the vertex has been labeled from the opposite </span>
                 <span class="c1"># side</span>
-                <span class="n">reverseCost</span> <span class="o">=</span> <span class="n">oppositeQueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thisVertex</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">reverseCost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>                             <span class="c1"># if yes</span>
+                <span class="n">reverseCost</span> <span class="o">=</span> <span class="n">oppositeQueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thisVertex</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">reverseCost</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>                             <span class="c1"># if yes</span>
                     <span class="n">totalLength</span> <span class="o">=</span> <span class="n">thisCost</span> <span class="o">+</span> <span class="n">reverseCost</span>
                     <span class="c1"># update best path if necessary</span>
                     <span class="k">if</span> <span class="n">totalLength</span> <span class="o">&lt;</span> <span class="n">bestLength</span><span class="p">:</span>
@@ -1634,9 +1633,9 @@
                             <span class="k">continue</span>
                     
                     <span class="c1"># if not pruned</span>
-                    <span class="n">neighborCost</span> <span class="o">=</span> <span class="n">thisQueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="n">neighborCost</span> <span class="o">=</span> <span class="n">thisQueue</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">)</span>
                     
-                    <span class="k">if</span> <span class="n">neighborCost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>   <span class="c1"># if neighbor is in the queue</span>
+                    <span class="k">if</span> <span class="n">neighborCost</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># if neighbor is in the queue</span>
                         <span class="k">if</span> <span class="n">neighborCost</span> <span class="o">&gt;</span> <span class="n">newCost</span><span class="p">:</span>
                             <span class="n">neighborData</span> <span class="o">=</span> <span class="n">thisData</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
                             <span class="n">neighborData</span><span class="p">[</span><span class="s2">&quot;parent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thisVertex</span>
@@ -1647,8 +1646,7 @@
                     <span class="k">else</span><span class="p">:</span>
                         <span class="c1">#check whether neighbor already scanned</span>
                         <span class="k">if</span> <span class="ow">not</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">thisDataDict</span><span class="p">:</span>
-                            <span class="n">thisData</span><span class="o">.</span><span class="n">setitem_by_tuple</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> 
-                                                      <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">thisVertex</span><span class="p">,</span> <span class="n">edge</span><span class="p">))</span>
+                            <span class="n">thisData</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">thisVertex</span><span class="p">,</span> <span class="n">edge</span><span class="p">)</span>
                             <span class="n">update</span> <span class="o">=</span> <span class="kc">True</span>
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">update</span> <span class="o">=</span> <span class="kc">False</span>
@@ -1659,8 +1657,8 @@
                         <span class="c1"># check whether neighbor has been scanned from the</span>
                         <span class="c1"># opposite direction and update the best path </span>
                         <span class="c1"># if necessary</span>
-                        <span class="n">oppositeIntIndex</span> <span class="o">=</span> <span class="n">oppositeDataDict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="n">oppositeIntIndex</span><span class="p">:</span>
+                        <span class="n">oppositeIntIndex</span> <span class="o">=</span> <span class="n">oppositeDataDict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">oppositeIntIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
                             <span class="n">reverseCost</span> <span class="o">=</span> <span class="n">oppositeData</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="s2">&quot;cost&quot;</span>
                                                              <span class="p">][</span><span class="n">oppositeIntIndex</span><span class="p">]</span>
                             <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">reverseCost</span><span class="p">):</span>
@@ -1683,10 +1681,10 @@
                     <span class="k">break</span>
         
         <span class="k">if</span> <span class="n">getPath</span><span class="p">:</span>
-            <span class="n">fromIndexArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="o">.</span><span class="n">fromIndex</span>
-            <span class="n">toIndexArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="o">.</span><span class="n">toIndex</span>
+            <span class="n">fromIndexArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="p">[</span><span class="s2">&quot;fromIndex&quot;</span><span class="p">]</span>
+            <span class="n">toIndexArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="p">[</span><span class="s2">&quot;toIndex&quot;</span><span class="p">]</span>
             <span class="n">originalEdgeArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="p">[[</span><span class="s2">&quot;originalEdge2&quot;</span><span class="p">,</span> <span class="s2">&quot;originalEdge1&quot;</span><span class="p">]]</span>
-            <span class="n">isShortcutArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="o">.</span><span class="n">originalEdge1</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+            <span class="n">isShortcutArr</span> <span class="o">=</span> <span class="n">edgeArr</span><span class="p">[</span><span class="s2">&quot;originalEdge1&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span>
             
             <span class="k">def</span> <span class="nf">expandEdge</span><span class="p">(</span><span class="n">edgeIndex</span><span class="p">):</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3104,6 +3102,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -3126,7 +3125,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -3141,12 +3140,13 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">lopaths.graph</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

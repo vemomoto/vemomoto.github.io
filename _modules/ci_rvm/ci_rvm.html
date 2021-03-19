@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ci_rvm.ci_rvm &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -25,7 +25,8 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ci_rvm.ci_rvm</a></li> 
       </ul>
     </div>  
 
@@ -41,6 +42,8 @@
 <span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span> <span class="k">as</span> <span class="n">itercount</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -52,13 +55,18 @@
 
 
 
-<div class="viewcode-block" id="round_str"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.round_str">[docs]</a><span class="k">def</span> <span class="nf">round_str</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">__round_str</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">digipre</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span><span class="o">+</span><span class="mi">1</span>
         <span class="n">after</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">full</span><span class="o">-</span><span class="n">digipre</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">after</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;{:&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">full</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">after</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;f}&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;{:&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">full</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">after</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;f}&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <div class="viewcode-block" id="is_negative_definite"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.is_negative_definite">[docs]</a><span class="k">def</span> <span class="nf">is_negative_definite</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns whether the given Matrix is negative definite.</span>
+<span class="sd">    </span>
+<span class="sd">    Uses a Cholesky decomposition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="o">-</span><span class="n">M</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">tol</span><span class="p">):</span>
@@ -116,6 +124,9 @@
         <span class="k">return</span> <span class="n">subproblem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="Flipper"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.Flipper">[docs]</a><span class="k">class</span> <span class="nc">Flipper</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flips an array in a specified component</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> 
             <span class="n">index</span><span class="p">:</span> <span class="s2">&quot;index in which the result should be flipped&quot;</span><span class="p">,</span>
@@ -174,127 +185,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="create_profile_plots"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.create_profile_plots">[docs]</a><span class="k">def</span> <span class="nf">create_profile_plots</span><span class="p">(</span><span class="n">profile_result</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                         <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">considered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">profile_result</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-    <span class="n">considered</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-    
-    <span class="n">parms_t</span> <span class="o">=</span> <span class="n">profile_result</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-    <span class="n">interestParm</span> <span class="o">=</span> <span class="n">parms_t</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="n">relativeChange</span> <span class="o">=</span> <span class="n">parms_t</span><span class="p">[</span><span class="n">considered</span><span class="p">]</span>
-    
-    <span class="n">relativeChange</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">relativeChange</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span> 
-                                 <span class="mf">1e-20</span><span class="p">)[:,</span><span class="kc">None</span><span class="p">]</span> <span class="c1">#relativeChange[:,len(interestParm)//2][:,None]</span>
-    <span class="c1">#relativeChange -= 1</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">xLabel</span> <span class="o">=</span> <span class="s2">&quot;Parameter &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="n">xLabel</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    
-    <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-    <span class="k">del</span> <span class="n">labels</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">interestParm</span><span class="p">,</span> <span class="n">profile_result</span><span class="p">[</span><span class="s2">&quot;logL&quot;</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xLabel</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Log-Likelihood&quot;</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">file_name</span> <span class="o">+=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">xLabel</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;_logL.pdf&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;_logL.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">relChange</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">relativeChange</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">interestParm</span><span class="p">,</span> <span class="n">relChange</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xLabel</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Relative parameter change&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;_params.pdf&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;_params.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xLabel</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Log-Likelihood&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">profile_result</span><span class="p">[</span><span class="s2">&quot;x_track&quot;</span><span class="p">]),</span> 
-             <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">profile_result</span><span class="p">[</span><span class="s2">&quot;f_track&quot;</span><span class="p">]))</span>
-    
-    <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;_search.pdf&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;_search.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="find_profile_CI_bound_steps"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound_steps">[docs]</a><span class="k">def</span> <span class="nf">find_profile_CI_bound_steps</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
-                                <span class="n">stepn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
-                                <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-    
-    <span class="k">if</span> <span class="n">fun0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-    
-    <span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">fun0</span><span class="p">,</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span><span class="p">,</span> <span class="n">stepn</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;diff&quot;</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;steps&quot;</span><span class="p">,</span> <span class="n">steps</span><span class="p">)</span> 
-    
-    <span class="n">dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;params&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;double&#39;</span><span class="p">),</span>
-             <span class="p">(</span><span class="s1">&#39;logL&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">),</span>
-             <span class="p">(</span><span class="s2">&quot;x_track&quot;</span><span class="p">,</span> <span class="nb">object</span><span class="p">),</span>
-             <span class="p">(</span><span class="s2">&quot;f_track&quot;</span><span class="p">,</span> <span class="nb">object</span><span class="p">),</span>
-             <span class="p">]</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">stepn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-    
-    <span class="n">result</span><span class="p">[</span><span class="s1">&#39;logL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;x_track&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">]</span>
-    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;f_track&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun0</span><span class="p">]</span>
-    
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">steps</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-        <span class="n">op_result</span> <span class="o">=</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
-                                  <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">hess0</span><span class="p">,</span> <span class="n">nmax</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="n">disp</span><span class="p">,</span> 
-                                  <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">x0</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">x</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">op_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">op_result</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Iteration limit exceeded for variable &quot;</span>
-                              <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and logL=&quot;</span>
-                              <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; in direction &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">direction</span><span class="p">))</span>
-            <span class="k">elif</span> <span class="n">op_result</span><span class="o">.</span><span class="n">status</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Optimization failed for variable &quot;</span>
-                              <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and logL=&quot;</span>
-                              <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; in direction &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">direction</span><span class="p">))</span>
-                <span class="c1">#if not np.isnan(x0).any():</span>
-                <span class="c1">#    x0 = op_result.x</span>
-                <span class="n">op_result</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-                <span class="n">op_result</span><span class="o">.</span><span class="n">fun</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;x_track&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">op_result</span><span class="o">.</span><span class="n">x_track</span><span class="p">[::</span><span class="n">direction</span><span class="p">])</span>
-        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;f_track&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">f_track</span><span class="p">[::</span><span class="n">direction</span><span class="p">]</span>
-        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;logL&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">fun</span>
-        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">x</span>
-        <span class="n">fun0</span> <span class="o">=</span> <span class="n">op_result</span><span class="o">.</span><span class="n">fun</span>
-        <span class="n">hess0</span> <span class="o">=</span> <span class="kc">None</span>
-        
-        <span class="k">if</span> <span class="n">disp</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** logL=</span><span class="si">{}</span><span class="s2">; index=</span><span class="si">{}</span><span class="s2">, direction=</span><span class="si">{}</span><span class="s2">, fdiff=</span><span class="si">{}</span><span class="s2">; jdiff=</span><span class="si">{}</span><span class="s2">, nit=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                        <span class="n">fun0</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">op_result</span><span class="o">.</span><span class="n">fun</span><span class="o">-</span><span class="n">target</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">op_result</span><span class="o">.</span><span class="n">jac</span><span class="p">)),</span> <span class="n">op_result</span><span class="o">.</span><span class="n">nit</span><span class="p">))</span>
-            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** finished, but can&#39;t print due to exception.&quot;</span><span class="p">,</span> <span class="n">op_result</span><span class="o">.</span><span class="n">jac</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">direction</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            
-    <span class="k">return</span> <span class="n">result</span></div>
-    
-
-
 <span class="n">STATUS_MESSAGES</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;Success&quot;</span><span class="p">,</span>
                    <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;Result on discontinuity&quot;</span><span class="p">,</span>
                    <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;Result is unbounded&quot;</span><span class="p">,</span>
@@ -310,14 +200,14 @@
         <span class="n">hess0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
         <span class="n">nmax</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> 
         <span class="n">nchecks</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
-        <span class="n">apprxtol</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="c1">#0.2 a 0.8 b</span>
-        <span class="n">resulttol</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="c1">#g</span>
-        <span class="n">singtol</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="c1">#1e-5, i</span>
+        <span class="n">apprxtol</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">resulttol</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span>
+        <span class="n">singtol</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span> 
         <span class="n">minstep</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> 
         <span class="n">radiusFactor</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
         <span class="n">infstep</span> <span class="o">=</span> <span class="mf">1e10</span><span class="p">,</span> 
         <span class="n">maxRadius</span> <span class="o">=</span> <span class="mf">1e4</span><span class="p">,</span>
-        <span class="n">disp</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+        <span class="n">disp</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
         <span class="n">track_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
         <span class="n">track_f</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Finds an end point of a profile likelihood confidence interval.</span>
@@ -353,13 +243,13 @@
 <span class="sd">    apprxtol : float</span>
 <span class="sd">        Relative tolerance between :py:obj:`fun` and its approximation.</span>
 <span class="sd">    resulttol : float</span>
-<span class="sd">        Tolerance of the result (``fun`` and ``norm(jac))``.</span>
+<span class="sd">        Tolerance of the result (``fun`` and ``norm(jac)``).</span>
 <span class="sd">    singtol : float</span>
 <span class="sd">        Tolerance for singularity checks.</span>
 <span class="sd">    minstep : int</span>
 <span class="sd">        Controls the minimal radius of the trust region. </span>
 <span class="sd">    radiusFactor : float</span>
-<span class="sd">        Controls how quickly the trust region decreases. Must be in [1, 2].</span>
+<span class="sd">        Controls how quickly the trust region decreases. Must be in ``[1, 2]``.</span>
 <span class="sd">    infstep : float</span>
 <span class="sd">        Stepsize after which a parameter is deemed unestimbale.</span>
 <span class="sd">    maxRadius : float</span>
@@ -1039,8 +929,6 @@
                             <span class="k">break</span>
                         
                         <span class="n">minstepTmp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">minstep</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">J_</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">1e-12</span><span class="p">)</span>
-                        <span class="c1">#if (not searchmode==&quot;normal&quot; or maximizing) and not closeToDisc:</span>
-                        <span class="c1">#    minstepTmp *= 1000</span>
                         
                         <span class="c1"># if the step is too small</span>
                         <span class="n">diffs</span> <span class="o">=</span> <span class="n">xTmp</span> <span class="o">-</span> <span class="n">x</span>
@@ -1283,7 +1171,7 @@
                       <span class="ow">or</span> <span class="n">searchmode</span> <span class="o">==</span> <span class="s2">&quot;max_nuisance_const&quot;</span><span class="p">):</span>
                     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;maximizing nuisance parameters&quot;</span>
                     <span class="n">radius_str</span> <span class="o">=</span> <span class="s2">&quot;; step=</span><span class="si">{}</span><span class="s2">; radius=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                                        <span class="n">round_str</span><span class="p">(</span><span class="n">xiRadius</span><span class="p">),</span> <span class="n">round_str</span><span class="p">(</span><span class="n">nuisanceRadius</span><span class="p">))</span>
+                                        <span class="n">__round_str</span><span class="p">(</span><span class="n">xiRadius</span><span class="p">),</span> <span class="n">__round_str</span><span class="p">(</span><span class="n">nuisanceRadius</span><span class="p">))</span>
                 <span class="k">elif</span> <span class="n">searchmode</span> <span class="o">==</span> <span class="s2">&quot;binary_search&quot;</span><span class="p">:</span>
                     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;binary search&quot;</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -1298,7 +1186,7 @@
                 <span class="k">if</span> <span class="n">free_params_exist</span> <span class="ow">and</span> <span class="n">free_considered_</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
                     <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot; with &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">free_considered_</span><span class="p">)</span>
                                            <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; free params&quot;</span>
-                    <span class="n">jac_cnsStr</span> <span class="o">=</span> <span class="s2">&quot;; jac_cns=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">round_str</span><span class="p">(</span>
+                    <span class="n">jac_cnsStr</span> <span class="o">=</span> <span class="s2">&quot;; jac_cns=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">__round_str</span><span class="p">(</span>
                             <span class="n">norm</span><span class="p">(</span><span class="n">JActual</span><span class="p">[</span><span class="o">~</span><span class="n">free_considered</span><span class="p">])))</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">jac_cnsStr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -1307,13 +1195,13 @@
                        <span class="s2">&quot;nsteps=</span><span class="si">{:2d}</span><span class="s2">; x_d=</span><span class="si">{}</span><span class="s2">; f_impr=</span><span class="si">{}</span><span class="s2">; jac_impr=</span><span class="si">{}</span><span class="s2">; &quot;</span> <span class="o">+</span>
                        <span class="s2">&quot;f_e=</span><span class="si">{}{}{}{}</span><span class="s2"> - </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> 
                                                  <span class="s2">&quot;&gt;&quot;</span> <span class="k">if</span> <span class="n">forward</span> <span class="k">else</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">xi</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">f</span><span class="o">-</span><span class="n">target</span><span class="p">),</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">JActual_</span><span class="p">)),</span> <span class="n">k</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">xChange</span><span class="p">),</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">fImprovement</span><span class="p">),</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">JImprovement</span><span class="p">),</span> 
-                                                 <span class="n">round_str</span><span class="p">(</span><span class="n">fActual</span><span class="o">-</span><span class="n">fPredicted</span><span class="p">),</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">xi</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">index</span><span class="p">]),</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">f</span><span class="o">-</span><span class="n">target</span><span class="p">),</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">JActual_</span><span class="p">)),</span> <span class="n">k</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">xChange</span><span class="p">),</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">fImprovement</span><span class="p">),</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">JImprovement</span><span class="p">),</span> 
+                                                 <span class="n">__round_str</span><span class="p">(</span><span class="n">fActual</span><span class="o">-</span><span class="n">fPredicted</span><span class="p">),</span> 
                                                  <span class="n">jac_cnsStr</span><span class="p">,</span> <span class="n">discontStr</span><span class="p">,</span> 
                                                  <span class="n">radius_str</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
             
@@ -1399,10 +1287,115 @@
                              <span class="n">message</span><span class="o">=</span><span class="n">STATUS_MESSAGES</span><span class="p">[</span><span class="n">status</span><span class="p">]</span>
                              <span class="p">)</span></div>
 
+<span class="k">def</span> <span class="nf">__parallel_helper_fun</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">**</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># todo: parallel, result keywords</span>
+<div class="viewcode-block" id="find_CI"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI_bound</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">find_CI</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
+            <span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_full_results</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the profile likelihood confidence interval(s) for one or </span>
+<span class="sd">    multiple parameters.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    indices : int[]</span>
+<span class="sd">        Indices of the parameters of interest. If not given, all paramters</span>
+<span class="sd">        will be considered.</span>
+<span class="sd">    directions : float[][]</span>
+<span class="sd">        Search directions. If not given, both end points of the confidence</span>
+<span class="sd">        intervals will be determined. If given as a scalar, only lower</span>
+<span class="sd">        end points will be returned if `directions&lt;=0` and upper end points </span>
+<span class="sd">        otherwise. If given as an array, the confidence interval end points </span>
+<span class="sd">        specified in row `i` will be returned for parameter `i`. Entries `&lt;=0` </span>
+<span class="sd">        indicate that lower end points are desired, whereas positive entries </span>
+<span class="sd">        will result in upper end points.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Desired confidence level. Must be in ``(0,1)``</span>
+<span class="sd">    parallel : bool</span>
+<span class="sd">        If `True`, results will be computed in parallel using `multiprocessing.Pool`.</span>
+<span class="sd">        Note that this requires that all arguments are pickable.</span>
+<span class="sd">    return_full_results : bool</span>
+<span class="sd">        If `True`, an `OptimizeResult` object will be returned for each </span>
+<span class="sd">        confidence interval bound. Otherwise, only the confidence interval </span>
+<span class="sd">        bounds for the parameters in question will be returned.</span>
+<span class="sd">    return_success : bool</span>
+<span class="sd">        If `True`, an array of the same shape as the result will be returned</span>
+<span class="sd">        in addition, indicating for each confidence interval bound whether it </span>
+<span class="sd">        was determined successfully. </span>
+<span class="sd">    **kwargs : keyword arguments</span>
+<span class="sd">        Other keyword arguments passed to :py:meth:`find_CI_bound`. Look at </span>
+<span class="sd">        the documentation there.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x0</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">indices</span><span class="p">,)</span>
+    
+    <span class="k">if</span> <span class="n">directions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">directions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">directions</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">directions</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">directions</span><span class="p">):</span>
+        <span class="n">directions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">directions</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">directions</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">directions</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">directions</span> <span class="o">=</span> <span class="n">directions</span><span class="p">[:,</span><span class="kc">None</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">directions</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> 
+                      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">directions</span><span class="p">]</span>
+    
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="k">if</span> <span class="s2">&quot;fun0&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">fun0</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fun0&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    
+    <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span>
+    
+    <span class="n">task_chain</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">directions_</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">itercount</span><span class="p">(),</span> <span class="n">indices</span><span class="p">,</span> <span class="n">directions</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">direction</span> <span class="ow">in</span> <span class="n">directions_</span><span class="p">:</span>
+            <span class="n">task_chain</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> 
+                               <span class="n">fun0</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="n">parallel</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+            <span class="n">result_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">__parallel_helper_fun</span><span class="p">,</span> <span class="n">task_chain</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">__parallel_helper_fun</span><span class="p">,</span> <span class="n">task_chain</span><span class="p">))</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">directions</span><span class="p">)))]</span>
+    <span class="k">if</span> <span class="n">return_success</span><span class="p">:</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">directions</span><span class="p">)))]</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">result_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">return_success</span><span class="p">:</span>
+            <span class="n">success</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">success</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">return_full_results</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    
+    <span class="k">if</span> <span class="n">return_success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">success</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+
+
 <div class="viewcode-block" id="find_profile_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI_bound</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
                           <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Finds the profile likelihood confidence interval for a parameter.</span>
+<span class="sd">    </span>
+<span class="sd">    .. warning:: DEPRECATED! Use :py:meth:`find_CI` instead!</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1423,6 +1416,7 @@
                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -1445,7 +1439,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1460,12 +1454,13 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ci_rvm.ci_rvm</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

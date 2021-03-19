@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Module: vemomoto_core.tools.doc_utils &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="Module: vemomoto_core.tools.tee" href="vemomoto_core.tools.tee.html" /> 
@@ -30,7 +30,8 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../vemomoto_core.tools.html" accesskey="U">Package: vemomoto_core.vemomoto_core.tools</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="../vemomoto_core.tools.html" accesskey="U">Package: vemomoto_core.vemomoto_core.tools</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: vemomoto_core.tools.doc_utils</a></li> 
       </ul>
     </div>  
 
@@ -39,69 +40,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-vemomoto-core-tools-doc-utils">
-<h1>Module: vemomoto_core.tools.doc_utils<a class="headerlink" href="#module-vemomoto-core-tools-doc-utils" title="Permalink to this headline">¶</a></h1>
-<p><strong>Classes</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="vemomoto_core.tools.doc_utils.DocMetaSuperclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DocMetaSuperclass</span></code></a></p></td>
-<td><p>Meta-class providing the opportunity to inherit documentation from super classes.</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Functions</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="vemomoto_core.tools.doc_utils.add_parent_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_parent_doc</span></code></a>(child, parent)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.adjust_indent" title="vemomoto_core.tools.doc_utils.adjust_indent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjust_indent</span></code></a>(string, difference)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.get_indent" title="vemomoto_core.tools.doc_utils.get_indent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_indent</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.get_indent_multi" title="vemomoto_core.tools.doc_utils.get_indent_multi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_indent_multi</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.inherit_doc" title="vemomoto_core.tools.doc_utils.inherit_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inherit_doc</span></code></a>(*fromfuncs)</p></td>
-<td><p>Decorator: Copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever the documentation of the decorated method is not given.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.merge" title="vemomoto_core.tools.doc_utils.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge</span></code></a>(child_str, parent_str[, indent_diff, …])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.should_append" title="vemomoto_core.tools.doc_utils.should_append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_append</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.should_ignore" title="vemomoto_core.tools.doc_utils.should_ignore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_ignore</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.should_insert" title="vemomoto_core.tools.doc_utils.should_insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_insert</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.split_variables_numpy" title="vemomoto_core.tools.doc_utils.split_variables_numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_variables_numpy</span></code></a>(docstr, stripPrivate)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc" title="vemomoto_core.tools.doc_utils.staticmethod_inherit_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticmethod_inherit_doc</span></code></a>(*fromfuncs)</p></td>
-<td><p>Decorator: Declare the decorated method as a static method and copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever the documentation of the decorated method is not given.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.strip_lines" title="vemomoto_core.tools.doc_utils.strip_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_lines</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.strip_private" title="vemomoto_core.tools.doc_utils.strip_private"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_private</span></code></a>(string)</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<span class="target" id="module-vemomoto_core.tools.doc_utils"></span><p>This module provides decorators and a superclass that allow methods to
+  <div class="section" id="module-vemomoto_core.tools.doc_utils">
+<span id="module-vemomoto-core-tools-doc-utils"></span><h1>Module: vemomoto_core.tools.doc_utils<a class="headerlink" href="#module-vemomoto_core.tools.doc_utils" title="Permalink to this headline">¶</a></h1>
+<p>This module provides decorators and a superclass that allow methods to
 “inherit” documentation from other given methods or similar methods from
 super classes when a documentation is generated via Shinx.</p>
 <div class="section" id="usage">
@@ -262,82 +203,142 @@ methods (via decorators). The two can be combined.</p></li>
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="class">
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="vemomoto_core.tools.doc_utils.DocMetaSuperclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DocMetaSuperclass</span></code></a>(classname, bases, cls_dict)</p></td>
+<td><p>Meta-class providing the opportunity to inherit documentation from super classes.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="vemomoto_core.tools.doc_utils.add_parent_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_parent_doc</span></code></a>(child, parent)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.adjust_indent" title="vemomoto_core.tools.doc_utils.adjust_indent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjust_indent</span></code></a>(string, difference)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.get_indent" title="vemomoto_core.tools.doc_utils.get_indent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_indent</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.get_indent_multi" title="vemomoto_core.tools.doc_utils.get_indent_multi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_indent_multi</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.inherit_doc" title="vemomoto_core.tools.doc_utils.inherit_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inherit_doc</span></code></a>(*fromfuncs)</p></td>
+<td><p>Decorator: Copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever the documentation of the decorated method is not given.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.merge" title="vemomoto_core.tools.doc_utils.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge</span></code></a>(child_str, parent_str[, indent_diff, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.should_append" title="vemomoto_core.tools.doc_utils.should_append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_append</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.should_ignore" title="vemomoto_core.tools.doc_utils.should_ignore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_ignore</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.should_insert" title="vemomoto_core.tools.doc_utils.should_insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_insert</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.split_variables_numpy" title="vemomoto_core.tools.doc_utils.split_variables_numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_variables_numpy</span></code></a>(docstr[, stripPrivate])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc" title="vemomoto_core.tools.doc_utils.staticmethod_inherit_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticmethod_inherit_doc</span></code></a>(*fromfuncs)</p></td>
+<td><p>Decorator: Declare the decorated method as a static method and copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever the documentation of the decorated method is not given.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.strip_lines" title="vemomoto_core.tools.doc_utils.strip_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_lines</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.strip_private" title="vemomoto_core.tools.doc_utils.strip_private"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_private</span></code></a>(string)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
 <dt id="vemomoto_core.tools.doc_utils.DocMetaSuperclass">
-<em class="property">class </em><code class="sig-name descname">DocMetaSuperclass</code><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#DocMetaSuperclass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DocMetaSuperclass</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#DocMetaSuperclass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
 <p>Meta-class providing the opportunity to inherit documentation
 from super classes.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.add_parent_doc">
-<code class="sig-name descname">add_parent_doc</code><span class="sig-paren">(</span><em class="sig-param">child</em>, <em class="sig-param">parent</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#add_parent_doc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_parent_doc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#add_parent_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.adjust_indent">
-<code class="sig-name descname">adjust_indent</code><span class="sig-paren">(</span><em class="sig-param">string: str</em>, <em class="sig-param">difference: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#adjust_indent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.adjust_indent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">adjust_indent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#adjust_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.adjust_indent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.get_indent">
-<code class="sig-name descname">get_indent</code><span class="sig-paren">(</span><em class="sig-param">string: str</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_indent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.get_indent_multi">
-<code class="sig-name descname">get_indent_multi</code><span class="sig-paren">(</span><em class="sig-param">string: str</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent_multi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent_multi" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_indent_multi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent_multi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent_multi" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.inherit_doc">
-<code class="sig-name descname">inherit_doc</code><span class="sig-paren">(</span><em class="sig-param">*fromfuncs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#inherit_doc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.inherit_doc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">inherit_doc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">fromfuncs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#inherit_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.inherit_doc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decorator: Copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever
 the documentation of the decorated method is not given.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.merge">
-<code class="sig-name descname">merge</code><span class="sig-paren">(</span><em class="sig-param">child_str</em>, <em class="sig-param">parent_str</em>, <em class="sig-param">indent_diff=0</em>, <em class="sig-param">joinstr='\n'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#merge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.merge" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">merge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent_diff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joinstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.merge" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.should_append">
-<code class="sig-name descname">should_append</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_append" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">should_append</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_append" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.should_ignore">
-<code class="sig-name descname">should_ignore</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_ignore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_ignore" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">should_ignore</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_ignore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_ignore" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.should_insert">
-<code class="sig-name descname">should_insert</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_insert" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">should_insert</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.split_variables_numpy">
-<code class="sig-name descname">split_variables_numpy</code><span class="sig-paren">(</span><em class="sig-param">docstr: str</em>, <em class="sig-param">stripPrivate: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#split_variables_numpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.split_variables_numpy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">split_variables_numpy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docstr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripPrivate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#split_variables_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.split_variables_numpy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.staticmethod_inherit_doc">
-<code class="sig-name descname">staticmethod_inherit_doc</code><span class="sig-paren">(</span><em class="sig-param">*fromfuncs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#staticmethod_inherit_doc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">staticmethod_inherit_doc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">fromfuncs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#staticmethod_inherit_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decorator: Declare the decorated method as a static method and
 copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever
 the documentation of the decorated method is not given.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.strip_lines">
-<code class="sig-name descname">strip_lines</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_lines" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">strip_lines</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_lines" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vemomoto_core.tools.doc_utils.strip_private">
-<code class="sig-name descname">strip_private</code><span class="sig-paren">(</span><em class="sig-param">string: str</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_private"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_private" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">strip_private</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_private"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_private" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -345,6 +346,7 @@ the documentation of the decorated method is not given.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -392,7 +394,7 @@ the documentation of the decorated method is not given.</p>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -411,12 +413,13 @@ the documentation of the decorated method is not given.</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../vemomoto_core.tools.html" >Package: vemomoto_core.vemomoto_core.tools</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="../vemomoto_core.tools.html" >Package: vemomoto_core.vemomoto_core.tools</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: vemomoto_core.tools.doc_utils</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

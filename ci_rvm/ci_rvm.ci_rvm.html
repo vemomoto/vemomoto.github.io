@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Module: ci_rvm.ci_rvm &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: ci_rvm.ci_rvm_mpinv" href="ci_rvm.ci_rvm_mpinv.html" />
@@ -33,7 +33,8 @@
           <a href="../ci_rvm.html" title="Package: ci_rvm"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../ci_rvm.html" accesskey="U">Package: ci_rvm</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../ci_rvm.html" accesskey="U">Package: ci_rvm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: ci_rvm.ci_rvm</a></li> 
       </ul>
     </div>  
 
@@ -44,7 +45,7 @@
             
   <div class="section" id="module-ci_rvm.ci_rvm">
 <span id="module-ci-rvm-ci-rvm"></span><h1>Module: ci_rvm.ci_rvm<a class="headerlink" href="#module-ci_rvm.ci_rvm" title="Permalink to this headline">¶</a></h1>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -58,19 +59,19 @@
 <td><p>Class representing constained quadratic subproblems</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.Flipper" title="ci_rvm.ci_rvm.Flipper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Flipper</span></code></a>(index)</p></td>
-<td><p></p></td>
+<td><p>Flips an array in a specified component</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Functions</strong></p>
+<p><strong>Functions:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.create_profile_plots" title="ci_rvm.ci_rvm.create_profile_plots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_profile_plots</span></code></a>(profile_result, index)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_CI" title="ci_rvm.ci_rvm.find_CI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_CI</span></code></a>(x0, fun, jac, hess[, indices, …])</p></td>
+<td><p>Returns the profile likelihood confidence interval(s) for one or multiple parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_CI_bound</span></code></a>(index, target, x0, fun, jac, hess)</p></td>
 <td><p>Finds an end point of a profile likelihood confidence interval.</p></td>
@@ -78,33 +79,27 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="ci_rvm.ci_rvm.find_profile_CI_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_profile_CI_bound</span></code></a>(index, direction, x0, …)</p></td>
 <td><p>Finds the profile likelihood confidence interval for a parameter.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_profile_CI_bound_steps" title="ci_rvm.ci_rvm.find_profile_CI_bound_steps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_profile_CI_bound_steps</span></code></a>(index, x0, fun, …)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.get_independent_row_indices" title="ci_rvm.ci_rvm.get_independent_row_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_independent_row_indices</span></code></a>(M, jac, tol)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.get_independent_row_indices" title="ci_rvm.ci_rvm.get_independent_row_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_independent_row_indices</span></code></a>(M[, jac, tol])</p></td>
 <td><p>Returns a boolean array arr with arr[i]==True if and only if the i-th row of M is linearly independent of all other rows j with arr[j]==True.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.is_negative_definite" title="ci_rvm.ci_rvm.is_negative_definite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_negative_definite</span></code></a>(M[, tol])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.round_str" title="ci_rvm.ci_rvm.round_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">round_str</span></code></a>(n[, full, after])</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.is_negative_definite" title="ci_rvm.ci_rvm.is_negative_definite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_negative_definite</span></code></a>(M[, tol])</p></td>
+<td><p>Returns whether the given Matrix is negative definite.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="ci_rvm.ci_rvm.CounterFun">
-<em class="property">class </em><code class="sig-name descname">CounterFun</code><span class="sig-paren">(</span><em class="sig-param">fun</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#CounterFun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.CounterFun" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">CounterFun</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#CounterFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.CounterFun" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Counts how often a function has been called</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="ci_rvm.ci_rvm.FlexibleSubproblem">
-<em class="property">class </em><code class="sig-name descname">FlexibleSubproblem</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">hessp=None</em>, <em class="sig-param">k_easy=0.1</em>, <em class="sig-param">k_hard=0.2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#FlexibleSubproblem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.FlexibleSubproblem" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FlexibleSubproblem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hessp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_easy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_hard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#FlexibleSubproblem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.FlexibleSubproblem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class representing constained quadratic subproblems</p>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -116,27 +111,60 @@
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="ci_rvm.ci_rvm.FlexibleSubproblem.solve">
-<code class="sig-name descname">solve</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">positiveDefinite=None</em>, <em class="sig-param">tol=1e-05</em>, <em class="sig-param">jac0tol=0</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#FlexibleSubproblem.solve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.FlexibleSubproblem.solve" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">solve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positiveDefinite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac0tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#FlexibleSubproblem.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.FlexibleSubproblem.solve" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="ci_rvm.ci_rvm.Flipper">
-<em class="property">class </em><code class="sig-name descname">Flipper</code><span class="sig-paren">(</span><em class="sig-param">index: index in which the result should be flipped</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#Flipper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.Flipper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Flipper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index:</span> <span class="pre">index</span> <span class="pre">in</span> <span class="pre">which</span> <span class="pre">the</span> <span class="pre">result</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">flipped</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#Flipper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.Flipper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Flips an array in a specified component</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.create_profile_plots">
-<code class="sig-name descname">create_profile_plots</code><span class="sig-paren">(</span><em class="sig-param">profile_result</em>, <em class="sig-param">index</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">file_name=None</em>, <em class="sig-param">show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#create_profile_plots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.create_profile_plots" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py function">
+<dt id="ci_rvm.ci_rvm.find_CI">
+<code class="sig-name descname"><span class="pre">find_CI</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_full_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_success</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_CI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_CI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the profile likelihood confidence interval(s) for one or
+multiple parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>fun</strong> (<em>callable</em>) – Log-likelihood function.</p></li>
+<li><p><strong>jac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
+<li><p><strong>hess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
+<li><p><strong>indices</strong> (<em>int</em><em>[</em><em>]</em>) – Indices of the parameters of interest. If not given, all paramters
+will be considered.</p></li>
+<li><p><strong>directions</strong> (<em>float</em><em>[</em><em>]</em><em>[</em><em>]</em>) – Search directions. If not given, both end points of the confidence
+intervals will be determined. If given as a scalar, only lower
+end points will be returned if <cite>directions&lt;=0</cite> and upper end points
+otherwise. If given as an array, the confidence interval end points
+specified in row <cite>i</cite> will be returned for parameter <cite>i</cite>. Entries <cite>&lt;=0</cite>
+indicate that lower end points are desired, whereas positive entries
+will result in upper end points.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Desired confidence level. Must be in <code class="docutils literal notranslate"><span class="pre">(0,1)</span></code></p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – If <cite>True</cite>, results will be computed in parallel using <cite>multiprocessing.Pool</cite>.
+Note that this requires that all arguments are pickable.</p></li>
+<li><p><strong>return_full_results</strong> (<em>bool</em>) – If <cite>True</cite>, an <cite>OptimizeResult</cite> object will be returned for each
+confidence interval bound. Otherwise, only the confidence interval
+bounds for the parameters in question will be returned.</p></li>
+<li><p><strong>return_success</strong> (<em>bool</em>) – If <cite>True</cite>, an array of the same shape as the result will be returned
+in addition, indicating for each confidence interval bound whether it
+was determined successfully.</p></li>
+<li><p><strong>**kwargs</strong> (<em>keyword arguments</em>) – Other keyword arguments passed to <a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_CI_bound()</span></code></a>. Look at
+the documentation there.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ci_rvm.ci_rvm.find_CI_bound">
-<code class="sig-name descname">find_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">target</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">forward=True</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">jac0=None</em>, <em class="sig-param">hess0=None</em>, <em class="sig-param">nmax=200</em>, <em class="sig-param">nchecks=65</em>, <em class="sig-param">apprxtol=0.5</em>, <em class="sig-param">resulttol=0.001</em>, <em class="sig-param">singtol=0.0001</em>, <em class="sig-param">minstep=1e-05</em>, <em class="sig-param">radiusFactor=1.5</em>, <em class="sig-param">infstep=10000000000.0</em>, <em class="sig-param">maxRadius=10000.0</em>, <em class="sig-param">disp=True</em>, <em class="sig-param">track_x=False</em>, <em class="sig-param">track_f=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_CI_bound" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">find_CI_bound</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nchecks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">65</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apprxtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radiusFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxRadius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_CI_bound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_CI_bound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds an end point of a profile likelihood confidence interval.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -156,10 +184,10 @@ chi-sqared distribution).</p></li>
 <li><p><strong>nmax</strong> (<em>int</em>) – Maximal number of iterations.</p></li>
 <li><p><strong>nchecks</strong> (<em>int</em>) – Maximal number of trust-region changes per iteration.</p></li>
 <li><p><strong>apprxtol</strong> (<em>float</em>) – Relative tolerance between <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code> and its approximation.</p></li>
-<li><p><strong>resulttol</strong> (<em>float</em>) – Tolerance of the result (<code class="docutils literal notranslate"><span class="pre">fun</span></code> and <code class="docutils literal notranslate"><span class="pre">norm(jac))</span></code>.</p></li>
+<li><p><strong>resulttol</strong> (<em>float</em>) – Tolerance of the result (<code class="docutils literal notranslate"><span class="pre">fun</span></code> and <code class="docutils literal notranslate"><span class="pre">norm(jac)</span></code>).</p></li>
 <li><p><strong>singtol</strong> (<em>float</em>) – Tolerance for singularity checks.</p></li>
 <li><p><strong>minstep</strong> (<em>int</em>) – Controls the minimal radius of the trust region.</p></li>
-<li><p><strong>radiusFactor</strong> (<em>float</em>) – Controls how quickly the trust region decreases. Must be in [1, 2].</p></li>
+<li><p><strong>radiusFactor</strong> (<em>float</em>) – Controls how quickly the trust region decreases. Must be in <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>.</p></li>
 <li><p><strong>infstep</strong> (<em>float</em>) – Stepsize after which a parameter is deemed unestimbale.</p></li>
 <li><p><strong>maxRadius</strong> (<em>float</em>) – Rradius of the trust region in the last iteration.</p></li>
 <li><p><strong>disp</strong> (<em>bool</em>) – Whether to print a status message in each iteration.</p></li>
@@ -170,10 +198,14 @@ chi-sqared distribution).</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ci_rvm.ci_rvm.find_profile_CI_bound">
-<code class="sig-name descname">find_profile_CI_bound</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">direction</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">find_profile_CI_bound</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the profile likelihood confidence interval for a parameter.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DEPRECATED! Use <a class="reference internal" href="#ci_rvm.ci_rvm.find_CI" title="ci_rvm.ci_rvm.find_CI"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_CI()</span></code></a> instead!</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -190,14 +222,9 @@ if <code class="docutils literal notranslate"><span class="pre">1</span></code>,
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.find_profile_CI_bound_steps">
-<code class="sig-name descname">find_profile_CI_bound_steps</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">x0</em>, <em class="sig-param">fun</em>, <em class="sig-param">jac</em>, <em class="sig-param">hess</em>, <em class="sig-param">direction=1</em>, <em class="sig-param">alpha=0.95</em>, <em class="sig-param">stepn=1</em>, <em class="sig-param">fun0=None</em>, <em class="sig-param">hess0=None</em>, <em class="sig-param">nmax=200</em>, <em class="sig-param">epsilon=0.0001</em>, <em class="sig-param">disp=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_profile_CI_bound_steps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_profile_CI_bound_steps" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
+<dl class="py function">
 <dt id="ci_rvm.ci_rvm.get_independent_row_indices">
-<code class="sig-name descname">get_independent_row_indices</code><span class="sig-paren">(</span><em class="sig-param">M: considered matrix</em>, <em class="sig-param">jac: ordering vector = None</em>, <em class="sig-param">tol: numerical tolerance = None</em><span class="sig-paren">)</span> &#x2192; boolean array of linearly independent rows<a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#get_independent_row_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.get_independent_row_indices" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_independent_row_indices</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">M:</span> <span class="pre">considered</span> <span class="pre">matrix</span></em>, <em class="sig-param"><span class="pre">jac:</span> <span class="pre">ordering</span> <span class="pre">vector</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">tol:</span> <span class="pre">numerical</span> <span class="pre">tolerance</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">boolean</span> <span class="pre">array</span> <span class="pre">of</span> <span class="pre">linearly</span> <span class="pre">independent</span> <span class="pre">rows</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#get_independent_row_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.get_independent_row_indices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a boolean array arr with arr[i]==True if and only if
 the i-th row of M is linearly independent of all other rows j with
 arr[j]==True.
@@ -206,19 +233,17 @@ If M[i] and M[j] are linearly dependent, then arr[i] will be True if
 jac[i] &gt;= jac[j]. Otherwise, arr[i] will be False and arr[j] will be True.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ci_rvm.ci_rvm.is_negative_definite">
-<code class="sig-name descname">is_negative_definite</code><span class="sig-paren">(</span><em class="sig-param">M</em>, <em class="sig-param">tol=1e-05</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#is_negative_definite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.is_negative_definite" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ci_rvm.ci_rvm.round_str">
-<code class="sig-name descname">round_str</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">full=6</em>, <em class="sig-param">after=3</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#round_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ci_rvm.ci_rvm.round_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">is_negative_definite</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#is_negative_definite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.is_negative_definite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the given Matrix is negative definite.</p>
+<p>Uses a Cholesky decomposition.</p>
+</dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -246,7 +271,7 @@ jac[i] &gt;= jac[j]. Otherwise, arr[i] will be False and arr[j] will be True.</p
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -267,12 +292,13 @@ jac[i] &gt;= jac[j]. Otherwise, arr[i] will be False and arr[j] will be True.</p
           <a href="../ci_rvm.html" title="Package: ci_rvm"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../ci_rvm.html" >Package: ci_rvm</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../ci_rvm.html" >Package: ci_rvm</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: ci_rvm.ci_rvm</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

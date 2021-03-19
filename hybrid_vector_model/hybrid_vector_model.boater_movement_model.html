@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Module: hybrid_vector_model.boater_movement_model &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Package: ci_rvm" href="../ci_rvm.html" />
@@ -33,7 +33,8 @@
           <a href="hybrid_vector_model.traveltime_model.html" title="Module: hybrid_vector_model.traveltime_model"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" accesskey="U">Package: hybrid_vector_model</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" accesskey="U">Package: hybrid_vector_model</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: hybrid_vector_model.boater_movement_model</a></li> 
       </ul>
     </div>  
 
@@ -44,7 +45,7 @@
             
   <div class="section" id="module-hybrid_vector_model.boater_movement_model">
 <span id="module-hybrid-vector-model-boater-movement-model"></span><h1>Module: hybrid_vector_model.boater_movement_model<a class="headerlink" href="#module-hybrid_vector_model.boater_movement_model" title="Permalink to this headline">¶</a></h1>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -56,7 +57,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Functions</strong></p>
+<p><strong>Functions:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -68,34 +69,40 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel">
-<em class="property">class </em><code class="sig-name descname">TrafficFactorModel</code><span class="sig-paren">(</span><em class="sig-param">originData</em>, <em class="sig-param">destinationData</em>, <em class="sig-param">postalCodeAreaData</em>, <em class="sig-param">distances</em>, <em class="sig-param">postalCodeDistances</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TrafficFactorModel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">originData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destinationData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postalCodeAreaData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postalCodeDistances</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel</span></code></a></p>
 <p>Gravity model for a factor proportional to the mean boater flow between
 jurisdictions and lakes.</p>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DESTINATION_COVARIATES</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.BOUNDS" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.BOUNDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BOUNDS</span></code></a></p></td>
+<td><p>(<cite>(float, float)[]</cite>) – Reasonable bounds for the parameters (before conversion).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DESTINATION_COVARIATES</span></code></a></p></td>
+<td><p>(<cite>(str, type=double)[]</cite>) – The names and types of the covariates for the sinks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.LABELS" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.LABELS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LABELS</span></code></a></p></td>
+<td><p>(<cite>str[]</cite>) – The names of the parameters in the implemented model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.ORIGIN_COVARIATES" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.ORIGIN_COVARIATES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ORIGIN_COVARIATES</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
+<td><p>(<cite>(str, type)[]</cite>) – The names and types of the covariates for the sources.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.PERMUTATIONS" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.PERMUTATIONS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PERMUTATIONS</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
+<td><p>(<cite>bool[][]</cite>) – Parameter combinations to be considered when selecting the optimal model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SIZE</span></code></a></p></td>
-<td><p>int([x]) -&gt; integer</p></td>
+<td><p>(<cite>int</cite>) – Maximal number of parameters in the implemented model.</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -106,49 +113,62 @@ jurisdictions and lakes.</p>
 <td><p>Converts an array of given parameters to an array of standard (maximal) length and in the parameter domain of the model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor</span></code></a>(parameters, parametersConsidered)</p></td>
-<td><p>Returns a factor proportional to the mean traveller flow between the</p></td>
+<td><p>Returns a factor proportional to the mean traveller flow between the source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor_autograd</span></code></a>(parameters, …)</p></td>
-<td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code>, but must use autograd’s functions instead of numpy.</p></td>
+<td><p>Same as <a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code></a>, but must use autograd’s functions instead of numpy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_sink_covariates</span></code></a>(covariates)</p></td>
 <td><p>Process sink covariates before saving them.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.BOUNDS">
-<code class="sig-name descname">BOUNDS</code><em class="property"> = array([[  -2, 2000],        [   0,    3],        [  -2, 2000],        [   0,    3],        [  -5,   20],        [  -7,    7],        [  -5,   20],        [  -7,    7],        [  -5,   20],        [  -7,    7],        [  -5,   20],        [  -7,  500],        [   0,    3],        [  -5,    7],        [ -10,    0],        [   0,    3],        [  -7,  500],        [   0,    5],        [  -7,  500],        [   0,    5],        [  -3,    5],        [  -5,    0]])</em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.BOUNDS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">BOUNDS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">array([[</span>&#160; <span class="pre">-2,</span> <span class="pre">2000],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160;&#160; <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">3],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-2,</span> <span class="pre">2000],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160;&#160; <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">3],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-5,</span>&#160;&#160; <span class="pre">20],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-7,</span>&#160;&#160;&#160; <span class="pre">7],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-5,</span>&#160;&#160; <span class="pre">20],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-7,</span>&#160;&#160;&#160; <span class="pre">7],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-5,</span>&#160;&#160; <span class="pre">20],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-7,</span>&#160;&#160;&#160; <span class="pre">7],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-5,</span>&#160;&#160; <span class="pre">20],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-7,</span>&#160; <span class="pre">500],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160;&#160; <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">3],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-5,</span>&#160;&#160;&#160; <span class="pre">7],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span> <span class="pre">-10,</span>&#160;&#160;&#160; <span class="pre">0],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160;&#160; <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">3],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-7,</span>&#160; <span class="pre">500],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160;&#160; <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">5],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-7,</span>&#160; <span class="pre">500],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160;&#160; <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">5],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-3,</span>&#160;&#160;&#160; <span class="pre">5],</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[</span>&#160; <span class="pre">-5,</span>&#160;&#160;&#160; <span class="pre">0]])</span></em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.BOUNDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<cite>(float, float)[]</cite>) – Reasonable bounds for the parameters (before conversion).</p>
+<p>The length must match the maximal number of parameters of the
+model (see <a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SIZE</span></code></a>).</p>
+</dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES">
-<code class="sig-name descname">DESTINATION_COVARIATES</code><em class="property"> = [('area', 'double'), ('perimeter', 'double'), ('campgrounds', 'int'), ('pointsOfInterest', 'int'), ('marinas', 'int'), ('population', 'double')]</em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">DESTINATION_COVARIATES</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[('area',</span> <span class="pre">'double'),</span> <span class="pre">('perimeter',</span> <span class="pre">'double'),</span> <span class="pre">('campgrounds',</span> <span class="pre">'int'),</span> <span class="pre">('pointsOfInterest',</span> <span class="pre">'int'),</span> <span class="pre">('marinas',</span> <span class="pre">'int'),</span> <span class="pre">('population',</span> <span class="pre">'double')]</span></em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.DESTINATION_COVARIATES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<cite>(str, type=double)[]</cite>) – The names and types of the covariates for the sinks.</p>
+</dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.LABELS">
-<code class="sig-name descname">LABELS</code><em class="property"> = array(['base area', 'area exponent', 'base perimeter',        'perimeter exponent', 'campground factor', 'campground exponent',        'POI factor', 'POI exponent', 'marina factor', 'marina exponent',        'surrounding population factor', 'base surrounding population',        'surrounding population exponent', 'base PCA distance',        'PCA distance exponent', 'PC population exponent',        'base population', 'population exponent', 'base angler number',        'angler number exponent', 'canadian factor', 'distance exponent'],       dtype='&lt;U31')</em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.LABELS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">LABELS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">array(['base</span> <span class="pre">area',</span> <span class="pre">'area</span> <span class="pre">exponent',</span> <span class="pre">'base</span> <span class="pre">perimeter',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'perimeter</span> <span class="pre">exponent',</span> <span class="pre">'campground</span> <span class="pre">factor',</span> <span class="pre">'campground</span> <span class="pre">exponent',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'POI</span> <span class="pre">factor',</span> <span class="pre">'POI</span> <span class="pre">exponent',</span> <span class="pre">'marina</span> <span class="pre">factor',</span> <span class="pre">'marina</span> <span class="pre">exponent',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'surrounding</span> <span class="pre">population</span> <span class="pre">factor',</span> <span class="pre">'base</span> <span class="pre">surrounding</span> <span class="pre">population',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'surrounding</span> <span class="pre">population</span> <span class="pre">exponent',</span> <span class="pre">'base</span> <span class="pre">PCA</span> <span class="pre">distance',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'PCA</span> <span class="pre">distance</span> <span class="pre">exponent',</span> <span class="pre">'PC</span> <span class="pre">population</span> <span class="pre">exponent',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'base</span> <span class="pre">population',</span> <span class="pre">'population</span> <span class="pre">exponent',</span> <span class="pre">'base</span> <span class="pre">angler</span> <span class="pre">number',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'angler</span> <span class="pre">number</span> <span class="pre">exponent',</span> <span class="pre">'canadian</span> <span class="pre">factor',</span> <span class="pre">'distance</span> <span class="pre">exponent'],</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">dtype='&lt;U31')</span></em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.LABELS" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<cite>str[]</cite>) – The names of the parameters in the implemented model.</p>
+<p>The length must match the maximal number of parameters of the
+model (see <a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SIZE</span></code></a>).</p>
+</dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.ORIGIN_COVARIATES">
-<code class="sig-name descname">ORIGIN_COVARIATES</code><em class="property"> = [('population', 'double'), ('anglers', 'double'), ('canadian', &lt;class 'bool'&gt;)]</em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.ORIGIN_COVARIATES" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">ORIGIN_COVARIATES</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[('population',</span> <span class="pre">'double'),</span> <span class="pre">('anglers',</span> <span class="pre">'double'),</span> <span class="pre">('canadian',</span> <span class="pre">&lt;class</span> <span class="pre">'bool'&gt;)]</span></em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.ORIGIN_COVARIATES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<cite>(str, type)[]</cite>) – The names and types of the covariates for the sources.
+If the type is not spcified, it will default to float.</p>
+</dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.PERMUTATIONS">
-<code class="sig-name descname">PERMUTATIONS</code><em class="property"> = [[True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, True, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, True, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, False, False, False, False, True, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, True, False, False, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, False, False, False, False, True, False, False, False, True, True], [False, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, True, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, False, False, False, False, False, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, False, False, False, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, True, True, False, False, False, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, False, True, False, False, False, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, False, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, True, True, True, False, False, False, False, False, False, False, True, True], [True, False, False, False, True, False, True, False, True, False, False, True, True, False, False, False, False, False, False, False, True, True], [True, False, False, False, True, False, False, False, True, False, True, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, False, False, False, False, True, False, True, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, False, False, False, False, False, False, True, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, True, False, False, False, False, False, True, True, True, False, False, False, False, False, True, False, True, True], [True, False, False, False, True, False, True, False, True, False, False, False, False, False, False, False, False, False, True, False, True, True]]</em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.PERMUTATIONS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">PERMUTATIONS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True],</span> <span class="pre">[True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True]]</span></em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.PERMUTATIONS" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<cite>bool[][]</cite>) – Parameter combinations to be considered when selecting the optimal model.</p>
+<p>The number of columns must match the maximal number of parameters of the
+model (see <a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SIZE</span></code></a>).</p>
+</dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE">
-<code class="sig-name descname">SIZE</code><em class="property"> = 22</em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">SIZE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">22</span></em><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.SIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<cite>int</cite>) – Maximal number of parameters in the implemented model.</p>
+</dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters">
-<code class="sig-name descname">convert_parameters</code><span class="sig-paren">(</span><em class="sig-param">dynamicParameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.convert_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">convert_parameters</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamicParameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.convert_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts an array of given parameters to an array of standard (maximal)
 length and in the parameter domain of the model.</p>
 <p>Not all parameters may be parametersConsidered in the model (to avoid overfitting)
@@ -168,9 +188,9 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor">
-<code class="sig-name descname">get_mean_factor</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">pair=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_mean_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pair</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a factor proportional to the mean traveller flow between the
 source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p>
 <dl class="field-list simple">
@@ -189,9 +209,9 @@ combinations are computed).</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd">
-<code class="sig-name descname">get_mean_factor_autograd</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_mean_factor_autograd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor" title="hybrid_vector_model.boater_movement_model.TrafficFactorModel.get_mean_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code></a>, but must use autograd’s functions
 instead of numpy.</p>
 <p>This function is necessary to compute derivatives with automatic
@@ -208,9 +228,9 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates">
-<em class="property">static </em><code class="sig-name descname">process_sink_covariates</code><span class="sig-paren">(</span><em class="sig-param">covariates</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.process_sink_covariates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">process_sink_covariates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covariates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#TrafficFactorModel.process_sink_covariates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.TrafficFactorModel.process_sink_covariates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process sink covariates before saving them.</p>
 <p>This method is applied to the sink covariates before they are saved.
 The method can be used to compute derived covariates</p>
@@ -223,9 +243,9 @@ The method can be used to compute derived covariates</p>
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.boater_movement_model.example">
-<code class="sig-name descname">example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#example"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.example" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">example</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/boater_movement_model.html#example"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.boater_movement_model.example" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shows how an example model can be fitted.</p>
 <p>The files for the example are provided in the subfolder <code class="docutils literal notranslate"><span class="pre">Example</span></code>.</p>
 </dd></dl>
@@ -233,6 +253,7 @@ The method can be used to compute derived covariates</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -262,7 +283,7 @@ The method can be used to compute derived covariates</p>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -283,12 +304,13 @@ The method can be used to compute derived covariates</p>
           <a href="hybrid_vector_model.traveltime_model.html" title="Module: hybrid_vector_model.traveltime_model"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" >Package: hybrid_vector_model</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" >Package: hybrid_vector_model</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: hybrid_vector_model.boater_movement_model</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>

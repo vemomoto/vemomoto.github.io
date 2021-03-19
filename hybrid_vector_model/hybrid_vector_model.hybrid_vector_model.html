@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Module: hybrid_vector_model.hybrid_vector_model &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: hybrid_vector_model.route_choice_model" href="hybrid_vector_model.route_choice_model.html" />
@@ -33,7 +33,8 @@
           <a href="../hybrid_vector_model.html" title="Package: hybrid_vector_model"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" accesskey="U">Package: hybrid_vector_model</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" accesskey="U">Package: hybrid_vector_model</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: hybrid_vector_model.hybrid_vector_model</a></li> 
       </ul>
     </div>  
 
@@ -58,7 +59,7 @@ some places still be specific to the motivating scenario:</p>
 or <cite>lake</cite>.</p></li>
 </ul>
 </div>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -76,7 +77,7 @@ or <cite>lake</cite>.</p></li>
 </tr>
 </tbody>
 </table>
-<p><strong>Data</strong></p>
+<p><strong>Data:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -91,7 +92,7 @@ or <cite>lake</cite>.</p></li>
 </tr>
 </tbody>
 </table>
-<p><strong>Functions</strong></p>
+<p><strong>Functions:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -121,9 +122,9 @@ or <cite>lake</cite>.</p></li>
 </tr>
 </tbody>
 </table>
-<dl class="class">
+<dl class="py class">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel">
-<em class="property">class </em><code class="sig-name descname">BaseTrafficFactorModel</code><span class="sig-paren">(</span><em class="sig-param">sourceData</em>, <em class="sig-param">sinkData</em>, <em class="sig-param">postalCodeAreaData</em>, <em class="sig-param">distances</em>, <em class="sig-param">postalCodeDistances</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BaseTrafficFactorModel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sourceData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sinkData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postalCodeAreaData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postalCodeDistances</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Base class for traffic factor models.</p>
 <p>The traffic factor model is a gravity model yielding factors proportional
@@ -144,7 +145,7 @@ flow between sources and sinks.</p>
 </ul>
 </dd>
 </dl>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -171,7 +172,7 @@ flow between sources and sinks.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -182,10 +183,10 @@ flow between sources and sinks.</p>
 <td><p>Converts an array of given parameters to an array of standard (maximal) length and in the parameter domain of the model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor</span></code></a>(parameters, parametersConsidered)</p></td>
-<td><p>Returns a factor proportional to the mean traveller flow between the</p></td>
+<td><p>Returns a factor proportional to the mean traveller flow between the source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_factor_autograd</span></code></a>(parameters, …)</p></td>
-<td><p>Same as <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code>, but must use autograd’s functions instead of numpy.</p></td>
+<td><p>Same as <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code></a>, but must use autograd’s functions instead of numpy.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_sink_covariates</span></code></a>(covariates)</p></td>
 <td><p>Process sink covariates before saving them.</p></td>
@@ -195,52 +196,52 @@ flow between sources and sinks.</p>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.BOUNDS">
-<code class="sig-name descname">BOUNDS</code><em class="property"> = array([], dtype=float64)</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.BOUNDS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">BOUNDS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">array([],</span> <span class="pre">dtype=float64)</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.BOUNDS" title="Permalink to this definition">¶</a></dt>
 <dd><p>(<cite>(float, float)[]</cite>) – Reasonable bounds for the parameters (before conversion).</p>
 <p>The length must match the maximal number of parameters of the
 model (see <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SIZE</span></code></a>).</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.DESTINATION_COVARIATES">
-<code class="sig-name descname">DESTINATION_COVARIATES</code><em class="property"> = []</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.DESTINATION_COVARIATES" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">DESTINATION_COVARIATES</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.DESTINATION_COVARIATES" title="Permalink to this definition">¶</a></dt>
 <dd><p>(<cite>(str, type=double)[]</cite>) – The names and types of the covariates for the sinks.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.LABELS">
-<code class="sig-name descname">LABELS</code><em class="property"> = array([], dtype=object)</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.LABELS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">LABELS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">array([],</span> <span class="pre">dtype=object)</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.LABELS" title="Permalink to this definition">¶</a></dt>
 <dd><p>(<cite>str[]</cite>) – The names of the parameters in the implemented model.</p>
 <p>The length must match the maximal number of parameters of the
 model (see <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SIZE</span></code></a>).</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.ORIGIN_COVARIATES">
-<code class="sig-name descname">ORIGIN_COVARIATES</code><em class="property"> = []</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.ORIGIN_COVARIATES" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">ORIGIN_COVARIATES</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.ORIGIN_COVARIATES" title="Permalink to this definition">¶</a></dt>
 <dd><p>(<cite>(str, type)[]</cite>) – The names and types of the covariates for the sources.
 If the type is not spcified, it will default to float.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.PERMUTATIONS">
-<code class="sig-name descname">PERMUTATIONS</code><em class="property"> = None</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.PERMUTATIONS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">PERMUTATIONS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.PERMUTATIONS" title="Permalink to this definition">¶</a></dt>
 <dd><p>(<cite>bool[][]</cite>) – Parameter combinations to be considered when selecting the optimal model.</p>
 <p>The number of columns must match the maximal number of parameters of the
 model (see <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SIZE</span></code></a>).</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE">
-<code class="sig-name descname">SIZE</code><em class="property"> = 0</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">SIZE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.SIZE" title="Permalink to this definition">¶</a></dt>
 <dd><p>(<cite>int</cite>) – Maximal number of parameters in the implemented model.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters">
-<code class="sig-name descname">convert_parameters</code><span class="sig-paren">(</span><em class="sig-param">dynamicParameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.convert_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">convert_parameters</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamicParameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.convert_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts an array of given parameters to an array of standard (maximal)
 length and in the parameter domain of the model.</p>
 <p>Not all parameters may be parametersConsidered in the model (to avoid overfitting)
@@ -260,9 +261,9 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor">
-<code class="sig-name descname">get_mean_factor</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">pair=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_mean_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pair</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a factor proportional to the mean traveller flow between the
 source-sink pair <code class="docutils literal notranslate"><span class="pre">pair</span></code> or all sources and sinks (if <code class="docutils literal notranslate"><span class="pre">pair</span> <span class="pre">is</span> <span class="pre">None</span></code>)</p>
 <p>~+~</p>
@@ -287,9 +288,9 @@ combinations are computed).</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd">
-<code class="sig-name descname">get_mean_factor_autograd</code><span class="sig-paren">(</span><em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_mean_factor_autograd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.get_mean_factor_autograd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor" title="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mean_factor()</span></code></a>, but must use autograd’s functions
 instead of numpy.</p>
 <p>This function is necessary to compute derivatives with automatic
@@ -316,9 +317,9 @@ many <code class="docutils literal notranslate"><span class="pre">True</span></c
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates">
-<em class="property">static </em><code class="sig-name descname">process_sink_covariates</code><span class="sig-paren">(</span><em class="sig-param">covariates</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.process_sink_covariates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">process_sink_covariates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covariates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.process_sink_covariates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process sink covariates before saving them.</p>
 <p>This method is applied to the sink covariates before they are saved.
 The method can be used to compute derived covariates</p>
@@ -329,9 +330,9 @@ The method can be used to compute derived covariates</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_source_covariates">
-<em class="property">static </em><code class="sig-name descname">process_source_covariates</code><span class="sig-paren">(</span><em class="sig-param">covariates</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.process_source_covariates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_source_covariates" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">process_source_covariates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covariates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#BaseTrafficFactorModel.process_source_covariates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_source_covariates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process source covariates before saving them.</p>
 <p>This method is applied to the source covariates before they are saved.
 The method can be used to compute derived covariates</p>
@@ -344,15 +345,15 @@ The method can be used to compute derived covariates</p>
 
 </dd></dl>
 
-<dl class="data">
+<dl class="py data">
 <dt id="hybrid_vector_model.hybrid_vector_model.CPU_COUNT">
-<code class="sig-name descname">CPU_COUNT</code><em class="property"> = 8</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.CPU_COUNT" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">CPU_COUNT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.CPU_COUNT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of processes for parallel processing.</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel">
-<em class="property">class </em><code class="sig-name descname">HybridVectorModel</code><span class="sig-paren">(</span><em class="sig-param">fileName</em>, <em class="sig-param">trafficFactorModel_class=None</em>, <em class="sig-param">destinationToDestination=False</em>, <em class="sig-param">**printerArgs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">HybridVectorModel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trafficFactorModel_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destinationToDestination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">printerArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter" title="vemomoto_core.tools.hrprint.HierarchichalPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vemomoto_core.tools.hrprint.HierarchichalPrinter</span></code></a>, <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable" title="vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="xref py py-class docutils literal notranslate"><span class="pre">vemomoto_core.tools.saveobject.SeparatelySaveable</span></code></a></p>
 <p>Class for the hybrid vector model.</p>
 <p>Brings the model compoents together and provides functionality to fit,
@@ -371,7 +372,7 @@ model.</p></li>
 </ul>
 </dd>
 </dl>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -409,7 +410,7 @@ model.</p></li>
 <td><p>Searches potential routes of boaters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_shortest_distances" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_shortest_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shortest_distances</span></code></a>()</p></td>
-<td><p>Determines the shortest distances between all considered origins and</p></td>
+<td><p>Determines the shortest distances between all considered origins and destinations, and destinations and postal code area centres</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_flow_model</span></code></a>([permutations, refit, …])</p></td>
 <td><p>Fits the traffic flow (gravity) model.</p></td>
@@ -478,7 +479,7 @@ model.</p></li>
 <td><p>Simulate observation data that would be obtained if the model were True.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_compliance_rate</span></code></a>(complianceRate)</p></td>
-<td><p>Sets the boaters’ compliance rate (for stopping at inspection/survey</p></td>
+<td><p>Sets the boaters’ compliance rate (for stopping at inspection/survey locations)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_infested" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_infested"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_infested</span></code></a>(originID[, infested])</p></td>
 <td><p>Chenges the infestation state of an origin with the given ID.</p></td>
@@ -497,9 +498,9 @@ model.</p></li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB">
-<code class="sig-name descname">check_count_distributions_NB</code><span class="sig-paren">(</span><em class="sig-param">minDataSetSize=20</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.check_count_distributions_NB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">check_count_distributions_NB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minDataSetSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.check_count_distributions_NB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the observed data may be normally distributed.</p>
 <p>Computes p-values for the test with null hypothesis
 <cite>H0: Data are negative binomially distributed</cite>. If the p-values are
@@ -518,9 +519,9 @@ saved.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions">
-<code class="sig-name descname">compare_distributions</code><span class="sig-paren">(</span><em class="sig-param">stationID</em>, <em class="sig-param">fromID</em>, <em class="sig-param">toID</em>, <em class="sig-param">xMax=None</em>, <em class="sig-param">saveFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.compare_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">compare_distributions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stationID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xMax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.compare_distributions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compares distributions of agent obervations via Anderson-Darling
 tests and comparative plots of the observed and
 predicted cumulitive mass functions.</p>
@@ -540,9 +541,9 @@ computed up to the maximal observed count value.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions">
-<code class="sig-name descname">compare_travel_time_distributions</code><span class="sig-paren">(</span><em class="sig-param">saveFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.compare_travel_time_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">compare_travel_time_distributions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saveFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.compare_travel_time_distributions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compares agents’ travel time distributions at different survey
 locations.</p>
 <p>Conducts likelihood ratio tests evaluating whether multiple
@@ -557,9 +558,9 @@ also travel time distributions of local and long-distance travellers.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots">
-<code class="sig-name descname">create_budget_plots</code><span class="sig-paren">(</span><em class="sig-param">minBudget</em>, <em class="sig-param">maxBudget</em>, <em class="sig-param">nSteps=10</em>, <em class="sig-param">**optim_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_budget_plots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_budget_plots</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minBudget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxBudget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nSteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">optim_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_budget_plots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates plots of the inspection success and price per inspected
 agent dependent on the invested budget.</p>
 <dl class="field-list simple">
@@ -575,9 +576,9 @@ agent dependent on the invested budget.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot">
-<code class="sig-name descname">create_caracteristic_plot</code><span class="sig-paren">(</span><em class="sig-param">characteristic</em>, <em class="sig-param">values</em>, <em class="sig-param">characteristicName=None</em>, <em class="sig-param">valueNames=None</em>, <em class="sig-param">**optim_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_caracteristic_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_caracteristic_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characteristic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">characteristicName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valueNames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">optim_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_caracteristic_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a plot of the characteristics of the optimal inspection
 policy.</p>
 <p>The probability that an agent chooses a time while the inspection
@@ -603,9 +604,9 @@ the plot and to generate file names.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots">
-<code class="sig-name descname">create_quality_plots</code><span class="sig-paren">(</span><em class="sig-param">worstLabelNo=5</em>, <em class="sig-param">saveFileName=None</em>, <em class="sig-param">comparisonFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_quality_plots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_quality_plots</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">worstLabelNo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparisonFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_quality_plots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_quality_plots" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates predicted vs. observed plots.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -617,15 +618,16 @@ deviance between predictions and observations.</p></li>
 be saved.</p></li>
 <li><p><strong>comparisonFileName</strong> (<em>str</em>) – Name of the file where alternative results are saved. These results will
 be loaded and plotted for comparison.</p></li>
-<li><p><strong>. todo:</strong> (<em>~+~</em>) – Compute mean at stations only, incorporate timing later.: This could speed up the procedure significatnly.</p></li>
+<li><p><strong>. todo:</strong> (<em>~+~</em>) – Compute mean at stations only: This could speed up the procedure significatnly.</p></li>
+<li><p><strong>timing later.</strong> (<em>incorporate</em>) – This could speed up the procedure significatnly.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_road_network">
-<code class="sig-name descname">create_road_network</code><span class="sig-paren">(</span><em class="sig-param">fileNameEdges=None</em>, <em class="sig-param">fileNameVertices=None</em>, <em class="sig-param">preprocessingArgs=None</em>, <em class="sig-param">edgeLengthRandomization=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_road_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_road_network" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_road_network</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNameEdges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameVertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessingArgs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeLengthRandomization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_road_network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_road_network" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates and preprocesses a route network</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -739,9 +741,9 @@ likely that distinct paths have distinct length.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_route_choice_model">
-<code class="sig-name descname">create_route_choice_model</code><span class="sig-paren">(</span><em class="sig-param">redo=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_route_choice_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_route_choice_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_route_choice_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">redo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_route_choice_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_route_choice_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates and fits the route choice model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -751,9 +753,9 @@ fitted already. If set to <code class="docutils literal notranslate"><span class
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_travel_time_model">
-<code class="sig-name descname">create_travel_time_model</code><span class="sig-paren">(</span><em class="sig-param">parameters=None</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_travel_time_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_travel_time_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_travel_time_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.create_travel_time_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_travel_time_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create and fit the travel time model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -770,9 +772,9 @@ Do not include the file name extension.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_potential_routes">
-<code class="sig-name descname">find_potential_routes</code><span class="sig-paren">(</span><em class="sig-param">stretchConstant=1.5</em>, <em class="sig-param">localOptimalityConstant=0.2</em>, <em class="sig-param">acceptionFactor=0.667</em>, <em class="sig-param">rejectionFactor=1.333</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.find_potential_routes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_potential_routes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">find_potential_routes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stretchConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localOptimalityConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acceptionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.667</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejectionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.333</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.find_potential_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_potential_routes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Searches potential routes of boaters.</p>
 <p>For detailed documentation on the arguments, refer to
 <a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="lopaths.graph.FlowPointGraph.find_locally_optimal_paths"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph.find_locally_optimal_paths</span></code></a></p>
@@ -799,17 +801,17 @@ Choose the smallest feasible value. <code class="docutils literal notranslate"><
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_shortest_distances">
-<code class="sig-name descname">find_shortest_distances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.find_shortest_distances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_shortest_distances" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">find_shortest_distances</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.find_shortest_distances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_shortest_distances" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines the shortest distances between all considered origins and
 destinations, and destinations and postal code area centres</p>
 <p>See <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances" title="hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TransportNetwork.find_shortest_distances()</span></code></a>.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model">
-<code class="sig-name descname">fit_flow_model</code><span class="sig-paren">(</span><em class="sig-param">permutations=None</em>, <em class="sig-param">refit=False</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">continueFlowOptimization=False</em>, <em class="sig-param">get_CI=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.fit_flow_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">fit_flow_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flowParameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continueFlowOptimization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_CI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.fit_flow_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits the traffic flow (gravity) model.</p>
 <p>Fits one or multiple candidates for the traffic flow model and selects
 the model with minimal AIC value.</p>
@@ -842,9 +844,9 @@ if <code class="docutils literal notranslate"><span class="pre">continueFlowOpti
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model">
-<code class="sig-name descname">fit_route_choice_model</code><span class="sig-paren">(</span><em class="sig-param">refit=False</em>, <em class="sig-param">guess=None</em>, <em class="sig-param">improveGuess=False</em>, <em class="sig-param">disp=True</em>, <em class="sig-param">get_CI=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.fit_route_choice_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">fit_route_choice_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">improveGuess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_CI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.fit_route_choice_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits the route choice model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -863,9 +865,9 @@ after the model has been fitted.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction">
-<code class="sig-name descname">get_PMF_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">stationID</em>, <em class="sig-param">fromID</em>, <em class="sig-param">toID</em>, <em class="sig-param">xMax=None</em>, <em class="sig-param">getBestPMF=True</em>, <em class="sig-param">getPureObservations=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_PMF_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_PMF_observation_prediction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stationID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xMax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getBestPMF</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getPureObservations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_PMF_observation_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines the observed and predicted probability mass function for
 agent counts between specific origin-destination pairs.</p>
 <dl class="field-list simple">
@@ -889,9 +891,9 @@ to the other results.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction">
-<code class="sig-name descname">get_normalized_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">minSampleSize=20</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_normalized_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_normalized_observation_prediction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minSampleSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_normalized_observation_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the mean observed and predicted agent counts at survey
 locations, thereby scaling the values so that they should come from
 a normal distribution.</p>
@@ -908,9 +910,9 @@ results.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property">
-<code class="sig-name descname">get_pair_distribution_property</code><span class="sig-paren">(</span><em class="sig-param">dist_property=&lt;bound method rv_generic.mean of &lt;scipy.stats._discrete_distns.nbinom_gen object&gt;&gt;</em>, <em class="sig-param">arg=None</em>, <em class="sig-param">pair=None</em>, <em class="sig-param">shiftStart=None</em>, <em class="sig-param">shiftEnd=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_distribution_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_pair_distribution_property</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dist_property=&lt;bound</span> <span class="pre">method</span> <span class="pre">rv_generic.mean</span> <span class="pre">of</span> <span class="pre">&lt;scipy.stats._discrete_distns.nbinom_gen</span> <span class="pre">object&gt;&gt;</span></em>, <em class="sig-param"><span class="pre">arg=None</span></em>, <em class="sig-param"><span class="pre">pair=None</span></em>, <em class="sig-param"><span class="pre">shiftStart=None</span></em>, <em class="sig-param"><span class="pre">shiftEnd=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_distribution_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_distribution_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes a property of the distribution of the agent flow
 between origin-destination pairs.</p>
 <dl class="field-list simple">
@@ -941,9 +943,9 @@ be computed.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction">
-<code class="sig-name descname">get_pair_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">predictions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_pair_observation_prediction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_pair_observation_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returnes predicted and observed agent counts by origin-destination
 pair.</p>
 <dl class="field-list simple">
@@ -955,9 +957,9 @@ Must be the results of <a class="reference internal" href="#hybrid_vector_model.
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance">
-<code class="sig-name descname">get_station_mean_variance</code><span class="sig-paren">(</span><em class="sig-param">stationIndices=None</em>, <em class="sig-param">shiftStart=0</em>, <em class="sig-param">shiftEnd=24</em>, <em class="sig-param">getStationResults=True</em>, <em class="sig-param">getPairResults=False</em>, <em class="sig-param">fullCompliance=False</em>, <em class="sig-param">correctData=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_station_mean_variance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_station_mean_variance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stationIndices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getStationResults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getPairResults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fullCompliance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correctData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_station_mean_variance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_mean_variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the mean agent traffic that could be observed at survey
 locations and the respective vairances.</p>
 <p>The values are returned both for all agents and the agents
@@ -983,7 +985,11 @@ as <code class="xref py py-obj docutils literal notranslate"><span class="pre">s
 <li><p><strong>getStationResults</strong> (<em>bool</em>) – Whether the estimates shall be returned by survey location.</p></li>
 <li><p><strong>getPairResults</strong> (<em>bool</em>) – Whether estimates shall be returned by origin-destination pair.</p></li>
 <li><p><strong>~+~</strong> – </p></li>
-<li><p><strong>todo:</strong> (<em>.</em>) – This method can be made much more efficient, if the road: choice probabilities and the k values are computed once for each
+<li><p><strong>todo:</strong> (<em>.</em>) – This method can be made much more efficient: choice probabilities and the k values are computed once for each
+origin-destination pair or inspection location only. That is,
+we would not need to reconsider teh same location multiple times.
+This would speed up this method by orders of magnitude.</p></li>
+<li><p><strong>the road</strong> (<em>if</em>) – choice probabilities and the k values are computed once for each
 origin-destination pair or inspection location only. That is,
 we would not need to reconsider teh same location multiple times.
 This would speed up this method by orders of magnitude.</p></li>
@@ -992,9 +998,9 @@ This would speed up this method by orders of magnitude.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction">
-<code class="sig-name descname">get_station_observation_prediction</code><span class="sig-paren">(</span><em class="sig-param">predictions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_station_observation_prediction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_station_observation_prediction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.get_station_observation_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns observed and predicted agent counts for the inspection
 locations for which data are available.</p>
 <dl class="field-list simple">
@@ -1006,9 +1012,9 @@ Must be the results of <a class="reference internal" href="#hybrid_vector_model.
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood">
-<code class="sig-name descname">investigate_profile_likelihood</code><span class="sig-paren">(</span><em class="sig-param">x0</em>, <em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">**profile_LL_args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.investigate_profile_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">investigate_profile_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processedSurveyData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengthsOfPotentialRoutes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trafficFactorModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routeChoiceParameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complianceRate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properDataRate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">approximationNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">profile_LL_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.investigate_profile_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Searches the profile likelihood confidence interval for a given
 parameter.</p>
 <dl class="field-list simple">
@@ -1040,9 +1046,9 @@ longer will the computation take. Must be <cite>&gt;= 1</cite>.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood">
-<code class="sig-name descname">maximize_log_likelihood</code><span class="sig-paren">(</span><em class="sig-param">parametersConsidered=None</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">maximize_log_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">approximationNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flowParameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximizes the likelihood of the hybrid model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1063,9 +1069,9 @@ as being the best-fitting model.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static">
-<em class="property">static </em><code class="sig-name descname">maximize_log_likelihood_static</code><span class="sig-paren">(</span><em class="sig-param">processedSurveyData</em>, <em class="sig-param">lengthsOfPotentialRoutes</em>, <em class="sig-param">trafficFactorModel</em>, <em class="sig-param">routeChoiceParameters</em>, <em class="sig-param">complianceRate</em>, <em class="sig-param">properDataRate</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">approximationNumber=3</em>, <em class="sig-param">flowParameters=None</em>, <em class="sig-param">x0=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood_static"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">maximize_log_likelihood_static</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processedSurveyData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengthsOfPotentialRoutes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trafficFactorModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routeChoiceParameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complianceRate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properDataRate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">approximationNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flowParameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.maximize_log_likelihood_static"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood_static" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximizes the likelihood of the hybrid model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1099,9 +1105,9 @@ as being the best-fitting model.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.new">
-<em class="property">static </em><code class="sig-name descname">new</code><span class="sig-paren">(</span><em class="sig-param">fileNameBackup</em>, <em class="sig-param">trafficFactorModel_class=None</em>, <em class="sig-param">fileNameEdges=None</em>, <em class="sig-param">fileNameVertices=None</em>, <em class="sig-param">fileNameOrigins=None</em>, <em class="sig-param">fileNameDestinations=None</em>, <em class="sig-param">fileNamePostalCodeAreas=None</em>, <em class="sig-param">fileNameObservations=None</em>, <em class="sig-param">complianceRate=None</em>, <em class="sig-param">preprocessingArgs=None</em>, <em class="sig-param">edgeLengthRandomization=0.001</em>, <em class="sig-param">routeParameters=None</em>, <em class="sig-param">considerInfested=None</em>, <em class="sig-param">destinationToDestination=False</em>, <em class="sig-param">restart=False</em>, <em class="sig-param">**restartArgs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.new" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">new</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNameBackup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trafficFactorModel_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameEdges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameVertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameOrigins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameDestinations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNamePostalCodeAreas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameObservations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complianceRate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessingArgs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeLengthRandomization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routeParameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">considerInfested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destinationToDestination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">restartArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.new" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new <a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel" title="hybrid_vector_model.hybrid_vector_model.HybridVectorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">HybridVectorModel</span></code></a>, thereby reusing saved previous results if possible.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1427,9 +1433,9 @@ flow model</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation">
-<code class="sig-name descname">optimize_inspection_station_operation</code><span class="sig-paren">(</span><em class="sig-param">costShift</em>, <em class="sig-param">costSite</em>, <em class="sig-param">costBound</em>, <em class="sig-param">shiftLength</em>, <em class="sig-param">nightPremium=None</em>, <em class="sig-param">allowedShifts=None</em>, <em class="sig-param">costRoundCoeff=1</em>, <em class="sig-param">baseTimeInv=24</em>, <em class="sig-param">ignoreRandomFlow=False</em>, <em class="sig-param">integer=True</em>, <em class="sig-param">timeout=1000</em>, <em class="sig-param">perturbation=1e-06</em>, <em class="sig-param">fancyRounding=True</em>, <em class="sig-param">full_result=False</em>, <em class="sig-param">extended_info=False</em>, <em class="sig-param">init_greedy=True</em>, <em class="sig-param">saveFile=True</em>, <em class="sig-param">loadFile=True</em>, <em class="sig-param">fileNameAddition=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.optimize_inspection_station_operation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">optimize_inspection_station_operation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">costShift</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">costSite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">costBound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftLength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nightPremium</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowedShifts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">costRoundCoeff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseTimeInv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignoreRandomFlow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturbation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fancyRounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extended_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_greedy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loadFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameAddition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.optimize_inspection_station_operation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.optimize_inspection_station_operation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the optimal locations for agent inspections.</p>
 <p>Maximizes the number of agents who are inspected at least once given a
 certain budget and other constraints for operation.</p>
@@ -1509,17 +1515,17 @@ with <code class="docutils literal notranslate"><span class="pre">integer=True</
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model">
-<code class="sig-name descname">prepare_traffic_factor_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.prepare_traffic_factor_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">prepare_traffic_factor_model</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.prepare_traffic_factor_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepares the traffic factor model.</p>
 <p>This may be necessary if derived covariates shall be used and these
 derived covariates do not depend on paramters that shall be fitted.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data">
-<code class="sig-name descname">preprocess_survey_data</code><span class="sig-paren">(</span><em class="sig-param">redo=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.preprocess_survey_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">preprocess_survey_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">redo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.preprocess_survey_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes the raw survey data and preprocesses them for the model fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1529,9 +1535,9 @@ If set to <code class="docutils literal notranslate"><span class="pre">True</spa
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_destination_data">
-<code class="sig-name descname">read_destination_data</code><span class="sig-paren">(</span><em class="sig-param">fileNameDestinations</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_destination_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_destination_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">read_destination_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNameDestinations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_destination_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_destination_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads and saves data that can be used to determine the attractiveness of destinations in the vector traffic model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1572,9 +1578,9 @@ in the <code class="xref py py-class docutils literal notranslate"><span class="
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_origin_data">
-<code class="sig-name descname">read_origin_data</code><span class="sig-paren">(</span><em class="sig-param">fileNameOrigins</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_origin_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_origin_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">read_origin_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNameOrigins</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_origin_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_origin_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads and saves data that can be used to determine the repulsiveness of origins in the vector traffic model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1615,9 +1621,9 @@ in the <code class="xref py py-class docutils literal notranslate"><span class="
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_postal_code_area_data">
-<code class="sig-name descname">read_postal_code_area_data</code><span class="sig-paren">(</span><em class="sig-param">fileNamePostalCodeAreas</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_postal_code_area_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_postal_code_area_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">read_postal_code_area_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNamePostalCodeAreas</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_postal_code_area_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_postal_code_area_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads and saves data on postal code regions.</p>
 <p>Creates and saves an array with postal code area center vertex ID,
 postal code, and population</p>
@@ -1660,9 +1666,9 @@ the results just have to be interpreted accordingly</p></td>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_survey_data">
-<code class="sig-name descname">read_survey_data</code><span class="sig-paren">(</span><em class="sig-param">fileNameObservations</em>, <em class="sig-param">pruneStartTime=11</em>, <em class="sig-param">pruneEndTime=16</em>, <em class="sig-param">properDataRate=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_survey_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_survey_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">read_survey_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNameObservations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pruneStartTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pruneEndTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properDataRate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.read_survey_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_survey_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the survey observation data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1740,9 +1746,9 @@ data. I not given, the rate will be estimated from the data.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the model to the file <code class="docutils literal notranslate"><span class="pre">fileName</span></code>.vmm</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1752,9 +1758,9 @@ file name will be used.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions">
-<code class="sig-name descname">save_model_predictions</code><span class="sig-paren">(</span><em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_model_predictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">save_model_predictions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_model_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes and saves model predictions by origin, destination,
 origin-destination pair, and inspection location.</p>
 <p>Saves the estimated mean traffic and</p>
@@ -1765,9 +1771,9 @@ origin-destination pair, and inspection location.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations">
-<code class="sig-name descname">save_simulated_observations</code><span class="sig-paren">(</span><em class="sig-param">parameters=None</em>, <em class="sig-param">parametersConsidered=None</em>, <em class="sig-param">shiftNumber=None</em>, <em class="sig-param">dayNumber=None</em>, <em class="sig-param">stationSets=None</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_simulated_observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">save_simulated_observations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dayNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stationSets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.save_simulated_observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_simulated_observations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate observation data that would be obtained if the model were
 True.</p>
 <dl class="field-list simple">
@@ -1787,9 +1793,9 @@ conducted simultaneously.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate">
-<code class="sig-name descname">set_compliance_rate</code><span class="sig-paren">(</span><em class="sig-param">complianceRate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_compliance_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_compliance_rate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">complianceRate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_compliance_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the boaters’ compliance rate (for stopping at inspection/survey
 locations)</p>
 <p>The rate is used for both fitting the model and optimizing inspection
@@ -1801,9 +1807,9 @@ station operation</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_infested">
-<code class="sig-name descname">set_infested</code><span class="sig-paren">(</span><em class="sig-param">originID</em>, <em class="sig-param">infested=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_infested"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_infested" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_infested</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">originID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_infested"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_infested" title="Permalink to this definition">¶</a></dt>
 <dd><p>Chenges the infestation state of an origin with the given ID.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1815,9 +1821,9 @@ station operation</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_origins_considered">
-<code class="sig-name descname">set_origins_considered</code><span class="sig-paren">(</span><em class="sig-param">considered=None</em>, <em class="sig-param">infested=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_origins_considered"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_origins_considered" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_origins_considered</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">considered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_origins_considered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_origins_considered" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines which origins are considered in the model fit.</p>
 <p>It can happen that the model is to be fitted to model vectors coming
 from specific origins, e.g. a model for long-distance traffic and
@@ -1838,9 +1844,9 @@ ignored.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class">
-<code class="sig-name descname">set_traffic_factor_model_class</code><span class="sig-paren">(</span><em class="sig-param">trafficFactorModel_class=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_traffic_factor_model_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_traffic_factor_model_class</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trafficFactorModel_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.set_traffic_factor_model_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the class representing the traffic factor (gravity) model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1850,9 +1856,9 @@ ignored.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data">
-<code class="sig-name descname">simulate_count_data</code><span class="sig-paren">(</span><em class="sig-param">stationTimes</em>, <em class="sig-param">day</em>, <em class="sig-param">parameters</em>, <em class="sig-param">parametersConsidered</em>, <em class="sig-param">limitToOneObservation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.simulate_count_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">simulate_count_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stationTimes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parametersConsidered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limitToOneObservation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.simulate_count_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate observation data that would be obtained one one day if the
 model were True.</p>
 <p>For each boater, start, end, and path are returned.</p>
@@ -1874,9 +1880,9 @@ or at multiple locations.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression">
-<code class="sig-name descname">test_1_1_regression</code><span class="sig-paren">(</span><em class="sig-param">minSampleSize=20</em>, <em class="sig-param">saveFileName=None</em>, <em class="sig-param">comparisonFileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.test_1_1_regression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">test_1_1_regression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minSampleSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparisonFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#HybridVectorModel.test_1_1_regression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests whether the model results are biased.</p>
 <p>Compares predicted and observed values and tests the null hypothesis
 that the model yields unbiased estimates. If we obtain a high p-value
@@ -1895,17 +1901,17 @@ data set for comparison.</p></li>
 
 </dd></dl>
 
-<dl class="data">
+<dl class="py data">
 <dt id="hybrid_vector_model.hybrid_vector_model.IDTYPE">
-<code class="sig-name descname">IDTYPE</code><em class="property"> = '|S11'</em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">IDTYPE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'|S11'</span></em><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.IDTYPE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Type of IDs of origins and destinations. Alpha-numerical code with at most 9
 digets.</p>
 <p>2 digets remain reserved for internal use.</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="hybrid_vector_model.hybrid_vector_model.TransportNetwork">
-<em class="property">class </em><code class="sig-name descname">TransportNetwork</code><span class="sig-paren">(</span><em class="sig-param">fileNameEdges</em>, <em class="sig-param">fileNameVertices</em>, <em class="sig-param">destinationToDestination=False</em>, <em class="sig-param">preprocessingArgs=None</em>, <em class="sig-param">edgeLengthRandomization=0.001</em>, <em class="sig-param">**printerArgs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TransportNetwork</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileNameEdges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileNameVertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destinationToDestination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessingArgs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeLengthRandomization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">printerArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph" title="lopaths.graph.FlowPointGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph</span></code></a></p>
 <p>A graph representation of the road network.</p>
 <p>In contrast to the general graph class <a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph" title="lopaths.graph.FlowPointGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph</span></code></a>,
@@ -2027,7 +2033,7 @@ likely that distinct paths have distinct length.</p></li>
 </ul>
 </dd>
 </dl>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -2038,7 +2044,7 @@ likely that distinct paths have distinct length.</p></li>
 <td><p>Searches potential routes of boaters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances" title="hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shortest_distances</span></code></a>()</p></td>
-<td><p>Determines the shortest distances between all origins and destinations</p></td>
+<td><p>Determines the shortest distances between all origins and destinations and from all postal code centres to the destinations</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.preprocessing" title="hybrid_vector_model.hybrid_vector_model.TransportNetwork.preprocessing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocessing</span></code></a>([preprocessingArgs])</p></td>
 <td><p>Preprocesses the graph to make path search queries more efficient.</p></td>
@@ -2048,9 +2054,9 @@ likely that distinct paths have distinct length.</p></li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_potential_routes">
-<code class="sig-name descname">find_potential_routes</code><span class="sig-paren">(</span><em class="sig-param">stretchConstant=1.5</em>, <em class="sig-param">localOptimalityConstant=0.2</em>, <em class="sig-param">acceptionFactor=0.667</em>, <em class="sig-param">rejectionFactor=1.333</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.find_potential_routes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_potential_routes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">find_potential_routes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stretchConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localOptimalityConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acceptionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.667</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejectionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.333</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.find_potential_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_potential_routes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Searches potential routes of boaters.</p>
 <p>For detailed documentation on the arguments, refer to
 <a class="reference internal" href="../lopaths/lopaths.graph.html#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="lopaths.graph.FlowPointGraph.find_locally_optimal_paths"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FlowPointGraph.find_locally_optimal_paths</span></code></a></p>
@@ -2077,16 +2083,16 @@ Choose the smallest feasible value. <code class="docutils literal notranslate"><
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances">
-<code class="sig-name descname">find_shortest_distances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.find_shortest_distances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">find_shortest_distances</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.find_shortest_distances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines the shortest distances between all origins and destinations
 and from all postal code centres to the destinations</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.TransportNetwork.preprocessing">
-<code class="sig-name descname">preprocessing</code><span class="sig-paren">(</span><em class="sig-param">preprocessingArgs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.preprocessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.preprocessing" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">preprocessing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessingArgs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.preprocessing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Preprocesses the graph to make path search queries more efficient.</p>
 <p>This step is a necessary prerequisite to all path queries as implemented
 here.</p>
@@ -2104,9 +2110,9 @@ for a list of the possible arguments and their meaning</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="hybrid_vector_model.hybrid_vector_model.TransportNetwork.update_sources_considered">
-<code class="sig-name descname">update_sources_considered</code><span class="sig-paren">(</span><em class="sig-param">rawConsidered=None</em>, <em class="sig-param">considered=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.update_sources_considered"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.update_sources_considered" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update_sources_considered</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rawConsidered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">considered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#TransportNetwork.update_sources_considered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.TransportNetwork.update_sources_considered" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes which origins are considered to fit the model.</p>
 <p>If long-distance traffic is assumed to follow different mechanisms than
 intermediate-distance traffic, it can be beneficial to fit two distinct
@@ -2128,9 +2134,9 @@ of currently considered sources</p></li>
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.create_distribution_plot">
-<code class="sig-name descname">create_distribution_plot</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">observed</em>, <em class="sig-param">predicted=None</em>, <em class="sig-param">best=None</em>, <em class="sig-param">yLabel='PMF'</em>, <em class="sig-param">title=''</em>, <em class="sig-param">fileName=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_distribution_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_distribution_plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_distribution_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PMF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_distribution_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_distribution_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a plot of a given discrete distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2148,9 +2154,9 @@ mass function).</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot">
-<code class="sig-name descname">create_observed_predicted_mean_error_plot</code><span class="sig-paren">(</span><em class="sig-param">predicted</em>, <em class="sig-param">observed</em>, <em class="sig-param">error=None</em>, <em class="sig-param">constError=None</em>, <em class="sig-param">errorFunctions=None</em>, <em class="sig-param">regressionResult=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">title=''</em>, <em class="sig-param">saveFileName=None</em>, <em class="sig-param">comparisonFileName=None</em>, <em class="sig-param">logScale=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_observed_predicted_mean_error_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constError</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorFunctions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regressionResult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparisonFileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparison</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparisonPredicted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparisonObserved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logScale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an observed vs. predicted plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2182,15 +2188,17 @@ be saved.</p>
 </p></li>
 <li><p><strong>comparisonFileName</strong> (<em>str</em>) – Name of the file where alternative results are saved. These results will
 be loaded and plotted for comparison.</p></li>
+<li><p><strong>comparisonPredicted</strong> (<em>float</em><em>[</em><em>]</em>) – Predictions plotted for comparison.</p></li>
+<li><p><strong>comparisonObserved</strong> (<em>float</em><em>[</em><em>]</em>) – Observations plotted for comparison.</p></li>
 <li><p><strong>logScale</strong> (<em>bool</em>) – Whether to plot on a log-log scale.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files">
-<code class="sig-name descname">create_observed_predicted_mean_error_plot_from_files</code><span class="sig-paren">(</span><em class="sig-param">fileName1</em>, <em class="sig-param">fileName2</em>, <em class="sig-param">extension=''</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot_from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_observed_predicted_mean_error_plot_from_files</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#create_observed_predicted_mean_error_plot_from_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an observed vs. predicted plot from saved data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2204,9 +2212,9 @@ be loaded and plotted for comparison.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error">
-<code class="sig-name descname">mean_relative_absolute_error</code><span class="sig-paren">(</span><em class="sig-param">prediction</em>, <em class="sig-param">observation</em>, <em class="sig-param">normalization=None</em>, <em class="sig-param">cutoff=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#mean_relative_absolute_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">mean_relative_absolute_error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#mean_relative_absolute_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean relative absolute error between predictions and
 observations.</p>
 <dl class="field-list simple">
@@ -2223,15 +2231,15 @@ predicted value is below <cite>cutoff</cite>.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.nbinom_fit">
-<code class="sig-name descname">nbinom_fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#nbinom_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">nbinom_fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#nbinom_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.nbinom_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits a negative binomial distribution to given data</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed">
-<code class="sig-name descname">redraw_predicted_observed</code><span class="sig-paren">(</span><em class="sig-param">fileName1</em>, <em class="sig-param">fileName2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#redraw_predicted_observed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">redraw_predicted_observed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#redraw_predicted_observed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Redraws predicted versus oberved plots generated earlier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2243,15 +2251,16 @@ predicted value is below <cite>cutoff</cite>.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="hybrid_vector_model.hybrid_vector_model.safe_delattr">
-<code class="sig-name descname">safe_delattr</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">attrname</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#safe_delattr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.safe_delattr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">safe_delattr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/hybrid_vector_model.html#safe_delattr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.hybrid_vector_model.safe_delattr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes and attribute if it exists</p>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -2281,7 +2290,7 @@ predicted value is below <cite>cutoff</cite>.</p></li>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -2302,12 +2311,13 @@ predicted value is below <cite>cutoff</cite>.</p></li>
           <a href="../hybrid_vector_model.html" title="Package: hybrid_vector_model"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" >Package: hybrid_vector_model</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../hybrid_vector_model.html" >Package: hybrid_vector_model</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module: hybrid_vector_model.hybrid_vector_model</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
     </div>
   </body>
 </html>
