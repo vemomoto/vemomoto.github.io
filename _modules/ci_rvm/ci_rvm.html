@@ -1306,22 +1306,22 @@
 <span class="sd">    directions : float[][]</span>
 <span class="sd">        Search directions. If not given, both end points of the confidence</span>
 <span class="sd">        intervals will be determined. If given as a scalar, only lower</span>
-<span class="sd">        end points will be returned if `directions&lt;=0` and upper end points </span>
+<span class="sd">        end points will be returned if ``directions&lt;=0`` and upper end points </span>
 <span class="sd">        otherwise. If given as an array, the confidence interval end points </span>
-<span class="sd">        specified in row `i` will be returned for parameter `i`. Entries `&lt;=0` </span>
+<span class="sd">        specified in row ``i`` will be returned for parameter ``i``. Entries ``&lt;=0``</span>
 <span class="sd">        indicate that lower end points are desired, whereas positive entries </span>
 <span class="sd">        will result in upper end points.</span>
 <span class="sd">    alpha : float</span>
 <span class="sd">        Desired confidence level. Must be in ``(0,1)``</span>
 <span class="sd">    parallel : bool</span>
-<span class="sd">        If `True`, results will be computed in parallel using `multiprocessing.Pool`.</span>
+<span class="sd">        If ``True``, results will be computed in parallel using ``multiprocessing.Pool``.</span>
 <span class="sd">        Note that this requires that all arguments are pickable.</span>
 <span class="sd">    return_full_results : bool</span>
-<span class="sd">        If `True`, an `OptimizeResult` object will be returned for each </span>
+<span class="sd">        If ``True``, an ``OptimizeResult`` object will be returned for each </span>
 <span class="sd">        confidence interval bound. Otherwise, only the confidence interval </span>
 <span class="sd">        bounds for the parameters in question will be returned.</span>
 <span class="sd">    return_success : bool</span>
-<span class="sd">        If `True`, an array of the same shape as the result will be returned</span>
+<span class="sd">        If ``True``, an array of the same shape as the result will be returned</span>
 <span class="sd">        in addition, indicating for each confidence interval bound whether it </span>
 <span class="sd">        was determined successfully. </span>
 <span class="sd">    **kwargs : keyword arguments</span>
