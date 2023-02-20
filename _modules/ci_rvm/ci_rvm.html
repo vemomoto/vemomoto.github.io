@@ -6,12 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ci_rvm.ci_rvm &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -44,9 +43,9 @@
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span> <span class="k">as</span> <span class="n">itercount</span>
+<span class="kn">import</span> <span class="nn">numdifftools</span> <span class="k">as</span> <span class="nn">nd</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">op</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize._trustregion_exact</span> <span class="kn">import</span> <span class="n">IterativeSubproblem</span>
@@ -62,7 +61,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;{:&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">full</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">after</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;f}&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <div class="viewcode-block" id="is_negative_definite"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.is_negative_definite">[docs]</a><span class="k">def</span> <span class="nf">is_negative_definite</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns whether the given Matrix is negative definite.</span>
 <span class="sd">    </span>
 <span class="sd">    Uses a Cholesky decomposition.</span>
@@ -76,12 +75,12 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="FlexibleSubproblem"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.FlexibleSubproblem">[docs]</a><span class="k">class</span> <span class="nc">FlexibleSubproblem</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class representing constained quadratic subproblems</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">hessp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">k_easy</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">k_hard</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        ``k_easy`` and ``k_hard`` are parameters used</span>
 <span class="sd">        to determine the stop criteria to the iterative</span>
 <span class="sd">        subproblem solver. Take a look at the IterativeSubproblem class</span>
@@ -124,7 +123,7 @@
         <span class="k">return</span> <span class="n">subproblem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="Flipper"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.Flipper">[docs]</a><span class="k">class</span> <span class="nc">Flipper</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Flips an array in a specified component</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -146,7 +145,7 @@
                                 <span class="n">jac</span><span class="p">:</span> <span class="s2">&quot;ordering vector&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
                                 <span class="n">tol</span><span class="p">:</span> <span class="s2">&quot;numerical tolerance&quot;</span> <span class="o">=</span> <span class="kc">None</span>
                                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;boolean array of linearly independent rows&quot;</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a boolean array arr with arr[i]==True if and only if</span>
 <span class="sd">    the i-th row of M is linearly independent of all other rows j with </span>
 <span class="sd">    arr[j]==True.</span>
@@ -174,7 +173,7 @@
     <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="CounterFun"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.CounterFun">[docs]</a><span class="k">class</span> <span class="nc">CounterFun</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Counts how often a function has been called</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">):</span>
@@ -193,11 +192,14 @@
                    <span class="mi">5</span><span class="p">:</span><span class="s2">&quot;Unspecified error&quot;</span>
                    <span class="p">}</span>
 
-<div class="viewcode-block" id="find_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI_bound">[docs]</a><span class="k">def</span> <span class="nf">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
-        <span class="n">forward</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+<div class="viewcode-block" id="find_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI_bound">[docs]</a><span class="k">def</span> <span class="nf">find_CI_bound</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> 
+        <span class="n">jac</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">hess</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
         <span class="n">fun0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
         <span class="n">jac0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
         <span class="n">hess0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+        <span class="n">customTarget</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">nmax</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> 
         <span class="n">nchecks</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
         <span class="n">apprxtol</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
@@ -210,32 +212,36 @@
         <span class="n">disp</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
         <span class="n">track_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
         <span class="n">track_f</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Finds an end point of a profile likelihood confidence interval.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds an end point of a profile likelihood confidence interval.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    index : int</span>
-<span class="sd">        Index of the parameter of interest.</span>
-<span class="sd">    target : float</span>
-<span class="sd">        Target log-likelihood l* (typically a quantile of the </span>
-<span class="sd">        chi-sqared distribution).</span>
 <span class="sd">    x0 : float[]</span>
 <span class="sd">        Maximum likelihood estimate (MLE) of the paramters.</span>
 <span class="sd">    fun : callable</span>
 <span class="sd">        Log-likelihood function.</span>
+<span class="sd">    index : int</span>
+<span class="sd">        Index of the parameter of interest.</span>
+<span class="sd">    direction : int or bool</span>
+<span class="sd">        If ``&lt;=0``, the lower end point of the confidence interval is sought, </span>
+<span class="sd">        else the upper end point is sought.</span>
 <span class="sd">    jac : callable</span>
-<span class="sd">        Gradient of :py:obj:`fun`. </span>
+<span class="sd">        Gradient of :py:obj:`fun`. If `None`, it will be computed based on</span>
+<span class="sd">        finite differences using numdifftools.</span>
 <span class="sd">    hess : callable</span>
-<span class="sd">        Hessian of :py:obj:`fun`.</span>
-<span class="sd">    forward : bool</span>
-<span class="sd">        ``True``, if right end point of the confidence interval is sought, else </span>
-<span class="sd">        ``False``.</span>
+<span class="sd">        Hessian of :py:obj:`fun`. If `None`, it will be computed based on</span>
+<span class="sd">        finite differences using numdifftools.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Desired confidence level. Must be in ``(0,1)``</span>
 <span class="sd">    fun0 : float</span>
 <span class="sd">        log-likelihood at the MLE.</span>
 <span class="sd">    jac0 : float[]</span>
 <span class="sd">        Gradient of the log-liekelihood at the MLE.</span>
 <span class="sd">    hess0 : float[][]</span>
 <span class="sd">        Hessian of the log-likelihood at the MLE.</span>
+<span class="sd">    customTarget : float</span>
+<span class="sd">        Custom target log-likelihood l*. If this is given, :py:obj:`alpha` will</span>
+<span class="sd">        be ignored.</span>
 <span class="sd">    nmax : int</span>
 <span class="sd">        Maximal number of iterations.</span>
 <span class="sd">    nchecks : int</span>
@@ -265,29 +271,57 @@
     <span class="n">nuisance_minstep</span> <span class="o">=</span> <span class="mf">1e-3</span>
     
     <span class="c1"># ----- PREPARATION --------------------------------------------------------</span>
+    <span class="k">if</span> <span class="n">jac</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">jac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">hess</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">hess</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+    
+    
+    <span class="c1"># Make sure arguments and returned values are of correct type</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># in case the index is not given as integer</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="c1"># in case x0 is not given as numpy array</span>
+    
+    <span class="n">forward</span> <span class="o">=</span> <span class="n">direction</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    
+    <span class="c1"># wrap the functions so that the correct end point is found</span>
+    <span class="n">jac2</span> <span class="o">=</span> <span class="n">jac</span>
+    <span class="n">hess2</span> <span class="o">=</span> <span class="n">hess</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">forward</span><span class="p">:</span>
+        <span class="n">fun2</span> <span class="o">=</span> <span class="n">fun</span>
+        <span class="n">flip</span> <span class="o">=</span> <span class="n">Flipper</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">fun2</span><span class="p">(</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> 
+        <span class="n">jac</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">jac2</span><span class="p">(</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+        <span class="n">hess</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">hess2</span><span class="p">(</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">x0</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="c1"># this is just to ensure the results are traced and returned correctly</span>
+        <span class="n">flip</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+        <span class="n">jac</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">jac2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">hess</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">hess2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    
+    <span class="c1"># initial values</span>
     <span class="k">if</span> <span class="n">fun0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">jac0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">jac0</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">jac0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">jac0</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">hess0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">hess0</span> <span class="o">=</span> <span class="n">hess</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-        
-    <span class="c1"># wrap the functions so that the correct end point is found</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hess0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">hess0</span><span class="p">)</span>
+    
+    <span class="c1"># flip initial values if necessary</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">forward</span><span class="p">:</span>
-        <span class="n">fun2</span> <span class="o">=</span> <span class="n">fun</span>
-        <span class="n">jac2</span> <span class="o">=</span> <span class="n">jac</span>
-        <span class="n">hess2</span> <span class="o">=</span> <span class="n">hess</span>
-        <span class="n">flip</span> <span class="o">=</span> <span class="n">Flipper</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-        <span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">fun2</span><span class="p">(</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> 
-        <span class="n">jac</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">flip</span><span class="p">(</span><span class="n">jac2</span><span class="p">(</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-        <span class="n">hess</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">flip</span><span class="p">(</span><span class="n">hess2</span><span class="p">(</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-        <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">x0</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">jac0</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">hess0</span> <span class="o">=</span> <span class="n">flip</span><span class="p">(</span><span class="n">hess0</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="c1"># this is just to ensure the results are traced and returned correctly</span>
-        <span class="n">flip</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+        
+    <span class="c1"># compute the target</span>
+    <span class="k">if</span> <span class="n">customTarget</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span> <span class="o">-</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">customTarget</span>
     
     <span class="n">i</span><span class="p">:</span> <span class="s2">&quot;current iteration&quot;</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">x_track</span><span class="p">:</span> <span class="s2">&quot;trace of parameter values&quot;</span> <span class="o">=</span> <span class="p">[]</span>
@@ -305,14 +339,14 @@
     <span class="n">is_negative_definite_</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">is_negative_definite</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">singtol</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">fPredicted_fun</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Taylor approximation of f</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">xTmp</span><span class="o">-</span><span class="n">x</span>
         <span class="k">return</span> <span class="n">f</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span> <span class="o">+</span> <span class="n">multi_dot</span><span class="p">((</span><span class="n">dx</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">dx</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
     
     <span class="k">def</span> <span class="nf">JPredicted_fun</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Taylor approximation of jac</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">J</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">xTmp</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
@@ -320,7 +354,7 @@
     <span class="n">norm</span><span class="p">:</span> <span class="s2">&quot;applied norm&quot;</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr</span><span class="o">*</span><span class="n">arr</span><span class="p">))</span>
     
     <span class="k">def</span> <span class="nf">jac_approx_precise</span><span class="p">(</span><span class="n">JPredicted_</span><span class="p">,</span> <span class="n">JActual_</span><span class="p">,</span> <span class="n">J_</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">apprxtol</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns True, iff the predicted gradient is close to the</span>
 <span class="sd">        actual one or, even better, closer to the target than predicted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -332,7 +366,7 @@
     
     <span class="c1"># TODO Accept improvements only then always, if they are better by a certain constant (compare values - line search)</span>
     <span class="k">def</span> <span class="nf">f_approx_precise</span><span class="p">(</span><span class="n">fPredicted</span><span class="p">,</span> <span class="n">fActual</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">apprxtol</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns True, iff the predicted log-likelihood value is close to the</span>
 <span class="sd">        actual one or, even better, closer to the target than predicted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -377,7 +411,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fPredicted</span><span class="o">-</span><span class="n">fActual</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">target</span><span class="o">-</span><span class="n">f</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">bound</span>
     
     <span class="k">def</span> <span class="nf">test_precision</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="s2">&quot;True, if appxomiations are sufficiently precise&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tests the precision of the Taylor approximation at the suggested </span>
 <span class="sd">        parameter vector.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -415,7 +449,7 @@
         
     
     <span class="k">def</span> <span class="nf">is_concave_down</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Checks whether the profile likelihood function is concave down.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span>
@@ -1288,14 +1322,13 @@
                              <span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">__parallel_helper_fun</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">**</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">**</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
-<span class="c1"># todo: parallel, result keywords</span>
 <div class="viewcode-block" id="find_CI"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI_bound</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">find_CI</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
+<span class="k">def</span> <span class="nf">find_CI</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
             <span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_full_results</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the profile likelihood confidence interval(s) for one or </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the profile likelihood confidence interval(s) for one or </span>
 <span class="sd">    multiple parameters.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1311,8 +1344,6 @@
 <span class="sd">        specified in row ``i`` will be returned for parameter ``i``. Entries ``&lt;=0``</span>
 <span class="sd">        indicate that lower end points are desired, whereas positive entries </span>
 <span class="sd">        will result in upper end points.</span>
-<span class="sd">    alpha : float</span>
-<span class="sd">        Desired confidence level. Must be in ``(0,1)``</span>
 <span class="sd">    parallel : bool</span>
 <span class="sd">        If ``True``, results will be computed in parallel using ``multiprocessing.Pool``.</span>
 <span class="sd">        Note that this requires that all arguments are pickable.</span>
@@ -1349,21 +1380,25 @@
         <span class="n">directions</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">i</span> 
                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">directions</span><span class="p">]</span>
     
-    <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-    
-    <span class="k">if</span> <span class="s2">&quot;fun0&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-        <span class="n">fun0</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fun0&quot;</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-    
-    <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span>
+    <span class="k">if</span> <span class="s2">&quot;fun0&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;fun0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;jac0&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">jac</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;jac0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)(</span><span class="n">x0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;jac0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;hess0&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">hess</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;hess0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">fun</span><span class="p">)(</span><span class="n">x0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;hess0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hess</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
     
     <span class="n">task_chain</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">directions_</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">itercount</span><span class="p">(),</span> <span class="n">indices</span><span class="p">,</span> <span class="n">directions</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">direction</span> <span class="ow">in</span> <span class="n">directions_</span><span class="p">:</span>
-            <span class="n">task_chain</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> 
-                               <span class="n">fun0</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+            <span class="n">task_chain</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> 
+                               <span class="n">alpha</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
     
     <span class="k">if</span> <span class="n">parallel</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
@@ -1383,37 +1418,115 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
     
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+    
     <span class="k">if</span> <span class="n">return_success</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">success</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">success</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">success</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">result</span></div>
 
+<div class="viewcode-block" id="find_function_CI"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_function_CI">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">find_function_CI</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> 
+                     <span class="n">functionJac</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">functionHess</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">logLJac</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">logLHess</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">relativeError</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span> 
+                     <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the profile likelihood confidence interval(s) for a function </span>
+<span class="sd">    of parameters.</span>
 
-
-<div class="viewcode-block" id="find_profile_CI_bound"><a class="viewcode-back" href="../../ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_profile_CI_bound">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">find_CI_bound</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> 
-                          <span class="n">fun0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Finds the profile likelihood confidence interval for a parameter.</span>
-<span class="sd">    </span>
-<span class="sd">    .. warning:: DEPRECATED! Use :py:meth:`find_CI` instead!</span>
-<span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    direction : int</span>
-<span class="sd">        If ``-1``, we search for the left end point of the confidence interval;</span>
-<span class="sd">        if ``1``, we search for the right end point of the confidence interval</span>
+<span class="sd">    function : callable</span>
+<span class="sd">       Function of the parameters for which the confidence interval shall be </span>
+<span class="sd">       computed</span>
+<span class="sd">    logL : callable</span>
+<span class="sd">        Log-likelihood function.</span>
+<span class="sd">    functionJac : callable</span>
+<span class="sd">        Gradient of :py:obj:`function`. If `None`, it will be computed based on</span>
+<span class="sd">        finite differences using numdifftools.</span>
+<span class="sd">    functionHess : callable</span>
+<span class="sd">        Hessian of :py:obj:`function`. If `None`, it will be computed based on</span>
+<span class="sd">        finite differences using numdifftools.</span>
+<span class="sd">    logLJac : callable</span>
+<span class="sd">        Gradient of :py:obj:`logL`. If `None`, it will be computed based on</span>
+<span class="sd">        finite differences using numdifftools.</span>
+<span class="sd">    logLHess : callable</span>
+<span class="sd">        Hessian of :py:obj:`logL`. If `None`, it will be computed based on</span>
+<span class="sd">        finite differences using numdifftools.</span>
+<span class="sd">    relativeError : float</span>
+<span class="sd">        Permitted relative error in the confidence interval bound.</span>
+<span class="sd">    **kwargs : keyword arguments</span>
+<span class="sd">        Other keyword arguments passed to :py:meth:`find_CI` and</span>
+<span class="sd">        :py:meth:`find_CI_bound`. Look at the documentation there.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="n">diff</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">function0</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">function0</span> <span class="o">*</span> <span class="n">relativeError</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">function0</span><span class="p">)</span>
     
-    <span class="k">if</span> <span class="n">fun0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fun0</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">fun_2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">error</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">logL</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="n">fun_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     
-    <span class="n">target</span> <span class="o">=</span> <span class="n">fun0</span><span class="o">-</span><span class="n">diff</span>
+    <span class="k">if</span> <span class="n">functionJac</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">logLJac</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">jac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">functionJac</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">jac_2</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">fun_2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">jac_2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x0</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+                <span class="n">diffTerm</span> <span class="o">=</span> <span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">error</span><span class="o">**</span><span class="mi">2</span>
+                <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">diffTerm</span>
+                <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">functionJac</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="n">diffTerm</span>
+                <span class="k">return</span> <span class="n">result</span>
+        
+        <span class="k">if</span> <span class="n">logLJac</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logLJac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">jac</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="n">jac_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">logLJac</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> 
+            <span class="k">return</span> <span class="n">result</span>
+        
+    <span class="k">if</span> <span class="n">functionHess</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">hess_2</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">fun_2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">functionJac</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">functionJac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">hess_2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">x0</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">x0</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+            <span class="n">functionJacX</span> <span class="o">=</span> <span class="n">functionJac</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> 
+            <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">error</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">functionJacX</span> <span class="o">/</span> <span class="n">error</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">functionHess</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                              <span class="o">+</span> <span class="n">functionJacX</span> <span class="o">*</span> <span class="n">functionJacX</span><span class="p">[:,</span><span class="kc">None</span><span class="p">])</span> <span class="o">/</span> <span class="n">error</span><span class="o">**</span><span class="mi">2</span>
+            <span class="k">return</span> <span class="n">result</span>
+        
+    <span class="k">if</span> <span class="n">logLHess</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logLHess</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">hess</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="n">hess_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">logLHess</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="k">return</span> <span class="n">result</span>
     
-    <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">direction</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> 
-                         <span class="n">fun0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">track_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_f</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="c1"># These arguments could lead to wrong results if passed on.</span>
+    <span class="c1"># Hence, we ignore them.</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;fun0&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;jac0&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;hess0&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">find_CI</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -1422,24 +1535,26 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">Packages</a></h3>
-<ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lopaths.html">lopaths</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1460,7 +1575,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

@@ -4,14 +4,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Package: vemomoto_core.vemomoto_core.tools &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: vemomoto_core.tools.hrprint" href="tools/vemomoto_core.tools.hrprint.html" />
@@ -43,29 +43,89 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="package-vemomoto-core-vemomoto-core-tools">
-<h1>Package: vemomoto_core.vemomoto_core.tools<a class="headerlink" href="#package-vemomoto-core-vemomoto-core-tools" title="Permalink to this headline">¶</a></h1>
+  <section id="package-vemomoto-core-vemomoto-core-tools">
+<h1>Package: vemomoto_core.vemomoto_core.tools<a class="headerlink" href="#package-vemomoto-core-vemomoto-core-tools" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html">hrprint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.iterext.html">iterext</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html">saveobject</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html">hrprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.decrease_print_level"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.decrease_print_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.get_parent_printer"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.get_parent_printer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.get_print_level"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.get_print_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.get_silent_status"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.get_silent_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.increase_print_level"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.increase_print_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.inherit_print_level"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.inherit_print_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.inherit_silent_status"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.inherit_silent_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.print_status"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.print_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.prst"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.prst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.set_parent_printer"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.set_parent_printer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.set_print_level"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.set_print_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter.set_silent_status"><code class="docutils literal notranslate"><span class="pre">HierarchichalPrinter.set_silent_status()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.simprofile.html">simprofile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.tee.html">tee</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.iterext.html">iterext</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.iterext.html#vemomoto_core.tools.iterext.DictIterator"><code class="docutils literal notranslate"><span class="pre">DictIterator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.iterext.html#vemomoto_core.tools.iterext.EmptyList"><code class="docutils literal notranslate"><span class="pre">EmptyList</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.iterext.html#vemomoto_core.tools.iterext.Repeater"><code class="docutils literal notranslate"><span class="pre">Repeater</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html">saveobject</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.BLOCKSIZE"><code class="docutils literal notranslate"><span class="pre">BLOCKSIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.DEFAULT_EXTENSION"><code class="docutils literal notranslate"><span class="pre">DEFAULT_EXTENSION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.DEFAULT_FOLDER_EXTENSION"><code class="docutils literal notranslate"><span class="pre">DEFAULT_FOLDER_EXTENSION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="docutils literal notranslate"><span class="pre">SeparatelySaveable</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.del_save_separately"><code class="docutils literal notranslate"><span class="pre">SeparatelySaveable.del_save_separately()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.hasattr"><code class="docutils literal notranslate"><span class="pre">SeparatelySaveable.hasattr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.load_all"><code class="docutils literal notranslate"><span class="pre">SeparatelySaveable.load_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.save_object"><code class="docutils literal notranslate"><span class="pre">SeparatelySaveable.save_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable.set_save_separately"><code class="docutils literal notranslate"><span class="pre">SeparatelySaveable.set_save_separately()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.load_object"><code class="docutils literal notranslate"><span class="pre">load_object()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.save_object"><code class="docutils literal notranslate"><span class="pre">save_object()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.simprofile.html">simprofile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.simprofile.html#vemomoto_core.tools.simprofile.profile"><code class="docutils literal notranslate"><span class="pre">profile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.tee.html">tee</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.tee.html#vemomoto_core.tools.tee.Tee"><code class="docutils literal notranslate"><span class="pre">Tee</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.tee.html#vemomoto_core.tools.tee.Writer"><code class="docutils literal notranslate"><span class="pre">Writer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.tee.html#vemomoto_core.tools.tee.Writer.flush"><code class="docutils literal notranslate"><span class="pre">Writer.flush()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.tee.html#vemomoto_core.tools.tee.Writer.write"><code class="docutils literal notranslate"><span class="pre">Writer.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html">doc_utils</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#usage">Usage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#example-1-inheriting-documentation-from-the-super-class">Example 1: Inheriting documentation from the super class</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#example-2-inheriting-documentation-from-an-other-method">Example 2: Inheriting documentation from an other method</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.DocMetaSuperclass"><code class="docutils literal notranslate"><span class="pre">DocMetaSuperclass</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.add_parent_doc"><code class="docutils literal notranslate"><span class="pre">add_parent_doc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.adjust_indent"><code class="docutils literal notranslate"><span class="pre">adjust_indent()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.get_indent"><code class="docutils literal notranslate"><span class="pre">get_indent()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.get_indent_multi"><code class="docutils literal notranslate"><span class="pre">get_indent_multi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.inherit_doc"><code class="docutils literal notranslate"><span class="pre">inherit_doc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.should_append"><code class="docutils literal notranslate"><span class="pre">should_append()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.should_ignore"><code class="docutils literal notranslate"><span class="pre">should_ignore()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.should_insert"><code class="docutils literal notranslate"><span class="pre">should_insert()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.split_variables_numpy"><code class="docutils literal notranslate"><span class="pre">split_variables_numpy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc"><code class="docutils literal notranslate"><span class="pre">staticmethod_inherit_doc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.strip_lines"><code class="docutils literal notranslate"><span class="pre">strip_lines()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html#vemomoto_core.tools.doc_utils.strip_private"><code class="docutils literal notranslate"><span class="pre">strip_private()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -74,8 +134,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">Packages</a></h3>
-<ul class="current">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lopaths.html">lopaths</a></li>
@@ -95,16 +156,34 @@
 </li>
 </ul>
 
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="npcollections/vemomoto_core.npcollections.sparse3d.html"
+                          title="previous chapter">Module: vemomoto_core.npcollections.sparse3d</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tools/vemomoto_core.tools.hrprint.html"
+                          title="next chapter">Module: vemomoto_core.tools.hrprint</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/vemomoto_core/vemomoto_core.tools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -131,7 +210,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

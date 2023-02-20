@@ -4,14 +4,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Module: lopaths.graph &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: lopaths.graph_utils" href="lopaths.graph_utils.html" />
@@ -43,16 +43,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-lopaths.graph">
-<span id="module-lopaths-graph"></span><h1>Module: lopaths.graph<a class="headerlink" href="#module-lopaths.graph" title="Permalink to this headline">¶</a></h1>
+  <section id="module-lopaths.graph">
+<span id="module-lopaths-graph"></span><h1>Module: lopaths.graph<a class="headerlink" href="#module-lopaths.graph" title="Permalink to this heading">¶</a></h1>
 <p>Module implementing objects representing graphs and different algorithms to
 find shortest and potential alternative paths.</p>
 <p><strong>Data:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.CPU_COUNT" title="lopaths.graph.CPU_COUNT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CPU_COUNT</span></code></a></p></td>
 <td><p>Number of CPU cores to be used at most.</p></td>
@@ -60,39 +56,31 @@ find shortest and potential alternative paths.</p>
 </tbody>
 </table>
 <p><strong>Classes:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FastGraph" title="lopaths.graph.FastGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FastGraph</span></code></a>(flexibleGraph)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph" title="lopaths.graph.FlexibleGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlexibleGraph</span></code></a>(edges, edgeData, vertices, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph" title="lopaths.graph.FlexibleGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlexibleGraph</span></code></a>(edges, edgeData, vertices, ...)</p></td>
 <td><p>Graph with a flexible structure that supports efficient addition and removal of vertices and edges.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph" title="lopaths.graph.FlowPointGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlowPointGraph</span></code></a>(flexibleGraph, lengthLabel[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph" title="lopaths.graph.FlowPointGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlowPointGraph</span></code></a>(flexibleGraph, lengthLabel[, ...])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py data">
-<dt id="lopaths.graph.CPU_COUNT">
-<code class="sig-name descname"><span class="pre">CPU_COUNT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#lopaths.graph.CPU_COUNT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.CPU_COUNT">
+<span class="sig-name descname"><span class="pre">CPU_COUNT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#lopaths.graph.CPU_COUNT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of CPU cores to be used at most. Defaults to the number of installed cores.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="lopaths.graph.FastGraph">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FastGraph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flexibleGraph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable" title="vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="xref py py-class docutils literal notranslate"><span class="pre">vemomoto_core.tools.saveobject.SeparatelySaveable</span></code></a></p>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FastGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flexibleGraph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.saveobject.html#vemomoto_core.tools.saveobject.SeparatelySaveable" title="vemomoto_core.tools.saveobject.SeparatelySaveable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SeparatelySaveable</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FastGraph.add_edge" title="lopaths.graph.FastGraph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(fromIndex, toIndex, edgeData)</p></td>
 <td><p></p></td>
@@ -118,54 +106,50 @@ find shortest and potential alternative paths.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.add_edge">
-<code class="sig-name descname"><span class="pre">add_edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeData</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeData</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_edge" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.add_edge_attributes">
-<code class="sig-name descname"><span class="pre">add_edge_attributes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_edge_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_edge_attributes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.add_edge_attributes">
+<span class="sig-name descname"><span class="pre">add_edge_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_edge_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_edge_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.add_vertex">
-<code class="sig-name descname"><span class="pre">add_vertex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexData</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_vertex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.add_vertex">
+<span class="sig-name descname"><span class="pre">add_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexData</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_vertex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.add_vertex_attributes">
-<code class="sig-name descname"><span class="pre">add_vertex_attributes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_vertex_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_vertex_attributes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.add_vertex_attributes">
+<span class="sig-name descname"><span class="pre">add_vertex_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.add_vertex_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.add_vertex_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.make_edges_contiguous">
-<code class="sig-name descname"><span class="pre">make_edges_contiguous</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.make_edges_contiguous"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.make_edges_contiguous" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.make_edges_contiguous">
+<span class="sig-name descname"><span class="pre">make_edges_contiguous</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.make_edges_contiguous"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.make_edges_contiguous" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.remove_edge">
-<code class="sig-name descname"><span class="pre">remove_edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.remove_edge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.remove_edge" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FastGraph.remove_vertex">
-<code class="sig-name descname"><span class="pre">remove_vertex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexIndex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.remove_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.remove_vertex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FastGraph.remove_vertex">
+<span class="sig-name descname"><span class="pre">remove_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexIndex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FastGraph.remove_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FastGraph.remove_vertex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="lopaths.graph.FlexibleGraph">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FlexibleGraph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacementMode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'overwrite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengthLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significanceLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultVertexData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultEdgeData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">printerArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter" title="vemomoto_core.tools.hrprint.HierarchichalPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vemomoto_core.tools.hrprint.HierarchichalPrinter</span></code></a></p>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FlexibleGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacementMode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'overwrite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengthLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significanceLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultVertexData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultEdgeData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">printerArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter" title="vemomoto_core.tools.hrprint.HierarchichalPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">HierarchichalPrinter</span></code></a></p>
 <p>Graph with a flexible structure that supports efficient addition and removal
 of vertices and edges.</p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.add_edge" title="lopaths.graph.FlexibleGraph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(fromID, toID[, edgeData])</p></td>
 <td><p></p></td>
@@ -185,7 +169,7 @@ of vertices and edges.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.get_edge_data" title="lopaths.graph.FlexibleGraph.get_edge_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_edge_data</span></code></a>(fromID, toID[, copy])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.get_neighbor_edges" title="lopaths.graph.FlexibleGraph.get_neighbor_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbor_edges</span></code></a>(vertexID[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.get_neighbor_edges" title="lopaths.graph.FlexibleGraph.get_neighbor_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbor_edges</span></code></a>(vertexID[, ...])</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.get_predecessors" title="lopaths.graph.FlexibleGraph.get_predecessors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_predecessors</span></code></a>(vertexID)</p></td>
@@ -203,7 +187,7 @@ of vertices and edges.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.remove_edge" title="lopaths.graph.FlexibleGraph.remove_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code></a>(fromID, toID)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends" title="lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_insignificant_dead_ends</span></code></a>([…])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends" title="lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_insignificant_dead_ends</span></code></a>([...])</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlexibleGraph.remove_vertex" title="lopaths.graph.FlexibleGraph.remove_vertex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_vertex</span></code></a>(vertexID[, counter])</p></td>
@@ -224,153 +208,149 @@ of vertices and edges.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.add_edge">
-<code class="sig-name descname"><span class="pre">add_edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgeData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_edge" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.add_edge_attributes">
-<code class="sig-name descname"><span class="pre">add_edge_attributes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_edge_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_edge_attributes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.add_edge_attributes">
+<span class="sig-name descname"><span class="pre">add_edge_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_edge_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_edge_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.add_vertex">
-<code class="sig-name descname"><span class="pre">add_vertex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_vertex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.add_vertex">
+<span class="sig-name descname"><span class="pre">add_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertexData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_vertex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.add_vertex_attributes">
-<code class="sig-name descname"><span class="pre">add_vertex_attributes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_vertex_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_vertex_attributes" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.add_vertex_attributes">
+<span class="sig-name descname"><span class="pre">add_vertex_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillVal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.add_vertex_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.add_vertex_attributes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_edge_count">
-<code class="sig-name descname"><span class="pre">get_edge_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_edge_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_edge_count" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_edge_count">
+<span class="sig-name descname"><span class="pre">get_edge_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_edge_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_edge_count" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_edge_data">
-<code class="sig-name descname"><span class="pre">get_edge_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_edge_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_edge_data">
+<span class="sig-name descname"><span class="pre">get_edge_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_edge_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_neighbor_edges">
-<code class="sig-name descname"><span class="pre">get_neighbor_edges</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getSuccessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_neighbor_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_neighbor_edges" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_neighbor_edges">
+<span class="sig-name descname"><span class="pre">get_neighbor_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getSuccessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_neighbor_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_neighbor_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_predecessors">
-<code class="sig-name descname"><span class="pre">get_predecessors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_predecessors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_predecessors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_predecessors">
+<span class="sig-name descname"><span class="pre">get_predecessors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_predecessors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_predecessors" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_successors">
-<code class="sig-name descname"><span class="pre">get_successors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_successors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_successors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_successors">
+<span class="sig-name descname"><span class="pre">get_successors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_successors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_successors" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_vertex_count">
-<code class="sig-name descname"><span class="pre">get_vertex_count</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_vertex_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_vertex_count" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_vertex_count">
+<span class="sig-name descname"><span class="pre">get_vertex_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_vertex_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_vertex_count" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.get_vertex_data">
-<code class="sig-name descname"><span class="pre">get_vertex_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_vertex_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_vertex_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.get_vertex_data">
+<span class="sig-name descname"><span class="pre">get_vertex_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.get_vertex_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.get_vertex_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.remove_edge">
-<code class="sig-name descname"><span class="pre">remove_edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.remove_edge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.remove_edge" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends">
-<code class="sig-name descname"><span class="pre">remove_insignificant_dead_ends</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">significanceLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardSignificant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.remove_insignificant_dead_ends"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends">
+<span class="sig-name descname"><span class="pre">remove_insignificant_dead_ends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">significanceLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardSignificant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.remove_insignificant_dead_ends"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.remove_insignificant_dead_ends" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.remove_vertex">
-<code class="sig-name descname"><span class="pre">remove_vertex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.remove_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.remove_vertex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.remove_vertex">
+<span class="sig-name descname"><span class="pre">remove_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.remove_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.remove_vertex" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.set_default_edge_data">
-<code class="sig-name descname"><span class="pre">set_default_edge_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_default_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_default_edge_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.set_default_edge_data">
+<span class="sig-name descname"><span class="pre">set_default_edge_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_default_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_default_edge_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.set_default_vertex_data">
-<code class="sig-name descname"><span class="pre">set_default_vertex_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_default_vertex_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_default_vertex_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.set_default_vertex_data">
+<span class="sig-name descname"><span class="pre">set_default_vertex_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_default_vertex_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_default_vertex_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.set_edge_data">
-<code class="sig-name descname"><span class="pre">set_edge_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_edge_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.set_edge_data">
+<span class="sig-name descname"><span class="pre">set_edge_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_edge_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_edge_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlexibleGraph.set_vertex_data">
-<code class="sig-name descname"><span class="pre">set_vertex_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_vertex_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_vertex_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlexibleGraph.set_vertex_data">
+<span class="sig-name descname"><span class="pre">set_vertex_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertexID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlexibleGraph.set_vertex_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlexibleGraph.set_vertex_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="lopaths.graph.FlowPointGraph">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FlowPointGraph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flexibleGraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengthLabel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significanceLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">printerArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lopaths.graph.FastGraph" title="lopaths.graph.FastGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">lopaths.graph.FastGraph</span></code></a>, <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter" title="vemomoto_core.tools.hrprint.HierarchichalPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vemomoto_core.tools.hrprint.HierarchichalPrinter</span></code></a>, <a class="reference internal" href="../vemomoto_core/concurrent/vemomoto_core.concurrent.nicepar.html#vemomoto_core.concurrent.nicepar.Lockable" title="vemomoto_core.concurrent.nicepar.Lockable"><code class="xref py py-class docutils literal notranslate"><span class="pre">vemomoto_core.concurrent.nicepar.Lockable</span></code></a></p>
+<dt class="sig sig-object py" id="lopaths.graph.FlowPointGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FlowPointGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flexibleGraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengthLabel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significanceLabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">printerArgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lopaths.graph.FastGraph" title="lopaths.graph.FastGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">FastGraph</span></code></a>, <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.hrprint.html#vemomoto_core.tools.hrprint.HierarchichalPrinter" title="vemomoto_core.tools.hrprint.HierarchichalPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">HierarchichalPrinter</span></code></a>, <a class="reference internal" href="../vemomoto_core/concurrent/vemomoto_core.concurrent.nicepar.html#vemomoto_core.concurrent.nicepar.Lockable" title="vemomoto_core.concurrent.nicepar.Lockable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lockable</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_alternative_paths" title="lopaths.graph.FlowPointGraph.find_alternative_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_alternative_paths</span></code></a>(*args, **kwargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="lopaths.graph.FlowPointGraph.find_locally_optimal_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_locally_optimal_paths</span></code></a>(fromIndices, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="lopaths.graph.FlowPointGraph.find_locally_optimal_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_locally_optimal_paths</span></code></a>(fromIndices, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_shortest_distance_array" title="lopaths.graph.FlowPointGraph.find_shortest_distance_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shortest_distance_array</span></code></a>(fromIndices, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_shortest_distance_array" title="lopaths.graph.FlowPointGraph.find_shortest_distance_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shortest_distance_array</span></code></a>(fromIndices, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_shortest_path" title="lopaths.graph.FlowPointGraph.find_shortest_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shortest_path</span></code></a>(fromIndex, toIndex[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.find_shortest_path" title="lopaths.graph.FlowPointGraph.find_shortest_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_shortest_path</span></code></a>(fromIndex, toIndex[, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.preprocessing" title="lopaths.graph.FlowPointGraph.preprocessing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocessing</span></code></a>(initialBound[, boundFactor, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lopaths.graph.FlowPointGraph.preprocessing" title="lopaths.graph.FlowPointGraph.preprocessing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocessing</span></code></a>(initialBound[, boundFactor, ...])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="lopaths.graph.FlowPointGraph.find_alternative_paths">
-<code class="sig-name descname"><span class="pre">find_alternative_paths</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_alternative_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_alternative_paths" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlowPointGraph.find_alternative_paths">
+<span class="sig-name descname"><span class="pre">find_alternative_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_alternative_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_alternative_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlowPointGraph.find_locally_optimal_paths">
-<code class="sig-name descname"><span class="pre">find_locally_optimal_paths</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shortestDistances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stretchConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localOptimalityConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acceptionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejectionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_locally_optimal_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlowPointGraph.find_locally_optimal_paths">
+<span class="sig-name descname"><span class="pre">find_locally_optimal_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shortestDistances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stretchConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localOptimalityConstant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acceptionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejectionFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_locally_optimal_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_locally_optimal_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlowPointGraph.find_shortest_distance_array">
-<code class="sig-name descname"><span class="pre">find_shortest_distance_array</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_shortest_distance_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_shortest_distance_array" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlowPointGraph.find_shortest_distance_array">
+<span class="sig-name descname"><span class="pre">find_shortest_distance_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_shortest_distance_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_shortest_distance_array" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlowPointGraph.find_shortest_path">
-<code class="sig-name descname"><span class="pre">find_shortest_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_shortest_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_shortest_path" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlowPointGraph.find_shortest_path">
+<span class="sig-name descname"><span class="pre">find_shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.find_shortest_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.find_shortest_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="lopaths.graph.FlowPointGraph.preprocessing">
-<code class="sig-name descname"><span class="pre">preprocessing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initialBound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pruneFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additionalBoundFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expansionBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degreeBound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxEdgeLength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.preprocessing" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="lopaths.graph.FlowPointGraph.preprocessing">
+<span class="sig-name descname"><span class="pre">preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initialBound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pruneFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additionalBoundFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expansionBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degreeBound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxEdgeLength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lopaths/graph.html#FlowPointGraph.preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lopaths.graph.FlowPointGraph.preprocessing" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -379,8 +359,9 @@ of vertices and edges.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">Packages</a></h3>
-<ul class="current">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../lopaths.html">lopaths</a><ul class="current">
@@ -394,16 +375,34 @@ of vertices and edges.</p>
 <li class="toctree-l1"><a class="reference internal" href="../vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../lopaths.html"
+                          title="previous chapter">Package: lopaths</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="lopaths.graph_utils.html"
+                          title="next chapter">Module: lopaths.graph_utils</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/lopaths/lopaths.graph.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -430,7 +429,7 @@ of vertices and edges.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

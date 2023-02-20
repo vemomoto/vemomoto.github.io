@@ -6,12 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ci_rvm.test_ci_rvm &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -50,12 +49,14 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span> <span class="k">as</span> <span class="n">op</span><span class="p">,</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">sparse</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2</span><span class="p">,</span> <span class="n">nbinom</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;The package matplotlib must be installed to run the test.&quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">numdifftools</span> <span class="kn">import</span> <span class="n">Gradient</span><span class="p">,</span> <span class="n">Hessian</span>
-    <span class="c1">#from autograd import grad as AgGradient, hessian as AgHessian</span>
     <span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">ag</span>
 <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;This module requires numdifftools and autograd &quot;</span>
@@ -64,11 +65,11 @@
                               <span class="s2">&quot;index.&quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">.ci_rvm</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span><span class="p">,</span> <span class="n">CounterFun</span><span class="p">,</span> <span class="n">find_CI</span> <span class="k">as</span> <span class="n">find_CI_new</span>
-    <span class="kn">from</span> <span class="nn">.ci_rvm_mpinv</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span> <span class="k">as</span> <span class="n">find_profile_CI_bound_mpinv</span>
+    <span class="kn">from</span> <span class="nn">.ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI_bound</span><span class="p">,</span> <span class="n">CounterFun</span><span class="p">,</span> <span class="n">find_CI</span> <span class="k">as</span> <span class="n">find_CI_new</span><span class="p">,</span> <span class="n">find_function_CI</span>
+    <span class="kn">from</span> <span class="nn">.__ci_rvm_mpinv</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span> <span class="k">as</span> <span class="n">find_profile_CI_bound_mpinv</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span><span class="p">,</span> <span class="n">CounterFun</span><span class="p">,</span> <span class="n">find_CI</span> <span class="k">as</span> <span class="n">find_CI_new</span>
-    <span class="kn">from</span> <span class="nn">ci_rvm_mpinv</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span> <span class="k">as</span> <span class="n">find_profile_CI_bound_mpinv</span>
+    <span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI_bound</span><span class="p">,</span> <span class="n">CounterFun</span><span class="p">,</span> <span class="n">find_CI</span> <span class="k">as</span> <span class="n">find_CI_new</span><span class="p">,</span> <span class="n">find_function_CI</span>
+    <span class="kn">from</span> <span class="nn">__ci_rvm_mpinv</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span> <span class="k">as</span> <span class="n">find_profile_CI_bound_mpinv</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
@@ -89,8 +90,8 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">convert</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">x</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    res = x[indices]</span>
 <span class="sd">    cons = res &gt; 50</span>
 <span class="sd">    if not cons.any():</span>
@@ -120,7 +121,7 @@
         <span class="k">return</span> <span class="n">x</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    cons = res &gt; 50</span>
 <span class="sd">    res2 = np.log(np.exp(res)-1)</span>
 <span class="sd">    if cons.any():</span>
@@ -814,7 +815,7 @@
         <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">DynamicalSystemTester</span><span class="o">.</span><span class="n">f_constr</span><span class="p">(</span><span class="n">DynamicalSystemTester</span><span class="o">.</span><span class="n">f_prime</span><span class="p">,</span> 
                                            <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">fact</span><span class="p">,</span> 
-                                           <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="o">.</span><span class="mi">95</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+                                           <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">.95</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
         <span class="n">g</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
         <span class="n">h</span> <span class="o">=</span> <span class="n">Hessian</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;complex&#39;</span><span class="p">)</span>
         <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1088,7 +1089,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">convert</span> <span class="o">=</span> <span class="n">CONVERT</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">7</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">fixed</span><span class="p">)</span>
         
-        <span class="kn">from</span> <span class="nn">rpy2</span> <span class="kn">import</span> <span class="n">robjects</span>
         <span class="n">r_source</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executing R script&quot;</span><span class="p">)</span>
         <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">(</span><span class="s1">&#39;setwd(&quot;test_CI/Histone_H1&quot;)&#39;</span><span class="p">)</span>
@@ -1185,10 +1185,10 @@
         <span class="n">f</span> <span class="o">=</span> <span class="n">f_</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;RVM&quot;</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">tester</span><span class="o">.</span><span class="n">MLE</span><span class="p">,</span>
-                                         <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="n">nmax</span><span class="p">,</span> <span class="n">apprxtol</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                                         <span class="n">alpha</span><span class="o">=</span><span class="n">ALPHA</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                         <span class="n">infstep</span><span class="o">=</span><span class="n">infstep</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">tester</span><span class="o">.</span><span class="n">MLE</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> 
+                                <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="n">nmax</span><span class="p">,</span> <span class="n">apprxtol</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                                <span class="n">alpha</span><span class="o">=</span><span class="n">ALPHA</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">infstep</span><span class="o">=</span><span class="n">infstep</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;RVM_psI&quot;</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">find_profile_CI_bound_mpinv</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">tester</span><span class="o">.</span><span class="n">MLE</span><span class="p">,</span>
                                          <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">nmax</span><span class="o">=</span><span class="n">nmax</span><span class="p">,</span> <span class="n">apprxtol</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
@@ -1411,7 +1411,7 @@
         <span class="k">pass</span>
     
     <span class="c1">#x, y = tester.convertPos(np.concatenate((r1.x_track[::-1], r2.x_track))).T[considered]</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    xmax = np.max(x[0])</span>
 <span class="sd">    xmin = np.min(x[0])</span>
 <span class="sd">    ymax = np.max(y[0])</span>
@@ -1617,47 +1617,83 @@
     <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">negative_binomial</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
     
+    <span class="k">def</span> <span class="nf">LL</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nbinom</span><span class="o">.</span><span class="n">logpmf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     
-    <span class="n">LL</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">_LL_nbinom</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">LLParallel</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">_LL_nbinom</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">nLLParallel</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">LLParallel</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    
+    <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
     
     <span class="k">def</span> <span class="nf">nLL</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
         <span class="k">return</span> <span class="o">-</span><span class="n">LL</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
     
-    <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
-    <span class="n">jac</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">_grad_LL_nbinom</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">hess</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">_hess_LL_nbinom</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
     
+    <span class="n">functionJac</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+    <span class="n">functionHess</span> <span class="o">=</span> <span class="n">Hessian</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
     
-    <span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">nLL</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimate: k=</span><span class="si">{:5.3f}</span><span class="s2">, p=</span><span class="si">{:5.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">_transform_parameters</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">jac</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">LL</span><span class="p">)</span>
+    <span class="n">hess</span> <span class="o">=</span> <span class="n">Hessian</span><span class="p">(</span><span class="n">LL</span><span class="p">)</span>
     
-    <span class="n">CI1</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">differential_evolution</span><span class="p">(</span><span class="n">nLL</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+    <span class="n">resultParallel</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">nLLParallel</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimate: k=</span><span class="si">{:5.3f}</span><span class="s2">, p=</span><span class="si">{:5.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+    
+    <span class="n">CI1</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All CIs:&quot;</span><span class="p">,</span> <span class="n">CI1</span><span class="p">)</span>
-    <span class="n">CI2</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">CI2</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">resultParallel</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LLParallel</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All CIs parallel:&quot;</span><span class="p">,</span> <span class="n">CI2</span><span class="p">)</span>
-    <span class="n">CI3</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">return_full_results</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">CIF0</span> <span class="o">=</span> <span class="n">find_function_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LL</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CI for the first parameter (via function interface):&quot;</span><span class="p">,</span> <span class="n">CIF0</span><span class="p">)</span>
+    
+    <span class="n">CIF</span> <span class="o">=</span> <span class="n">find_function_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">LL</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CI for the product of all parameters:&quot;</span><span class="p">,</span> <span class="n">CIF</span><span class="p">)</span>
+    <span class="n">CIF</span> <span class="o">=</span> <span class="n">find_function_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">logLJac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">logLHess</span><span class="o">=</span><span class="n">hess</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CI for the product of all parameters:&quot;</span><span class="p">,</span> <span class="n">CIF</span><span class="p">)</span>
+    <span class="n">CIF</span> <span class="o">=</span> <span class="n">find_function_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">functionJac</span><span class="o">=</span><span class="n">functionJac</span><span class="p">,</span> <span class="n">functionHess</span><span class="o">=</span><span class="n">functionHess</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CI for the product of all parameters:&quot;</span><span class="p">,</span> <span class="n">CIF</span><span class="p">)</span>
+    <span class="n">CIF</span> <span class="o">=</span> <span class="n">find_function_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">logLJac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">logLHess</span><span class="o">=</span><span class="n">hess</span><span class="p">,</span> <span class="n">functionJac</span><span class="o">=</span><span class="n">functionJac</span><span class="p">,</span> <span class="n">functionHess</span><span class="o">=</span><span class="n">functionHess</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CI for the product of all parameters:&quot;</span><span class="p">,</span> <span class="n">CIF</span><span class="p">)</span>
+    
+    <span class="n">CI3</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">return_full_results</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All CIs, full results:&quot;</span><span class="p">,</span> <span class="n">CI3</span><span class="p">)</span>
-    <span class="n">CI4</span><span class="p">,</span> <span class="n">success</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">return_success</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">CI4</span><span class="p">,</span> <span class="n">success</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">return_success</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All CIs and success:&quot;</span><span class="p">,</span> <span class="n">CI4</span><span class="p">,</span> <span class="n">success</span><span class="p">)</span>
-    <span class="n">CI5</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">CI5</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Second parameter:&quot;</span><span class="p">,</span> <span class="n">CI5</span><span class="p">)</span>
-    <span class="n">CI6</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">CI6</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upper bounds:&quot;</span><span class="p">,</span> <span class="n">CI6</span><span class="p">)</span>
-    <span class="n">CI7</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="kc">None</span> <span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]])</span>
+    <span class="n">CI7</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span> <span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upper bound for the first, both bounds for the second:&quot;</span><span class="p">,</span> <span class="n">CI7</span><span class="p">)</span>
-    <span class="n">CI8</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">CI8</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upper bound for the first, lower for the second:&quot;</span><span class="p">,</span> <span class="n">CI8</span><span class="p">)</span>
-    <span class="n">CI9</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">CI9</span> <span class="o">=</span> <span class="n">find_CI_new</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lower bound for the first:&quot;</span><span class="p">,</span> <span class="n">CI9</span><span class="p">)</span></div>
     
     
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Wald&quot;</span><span class="p">,</span> <span class="s2">&quot;RVM&quot;</span><span class="p">,</span> <span class="s2">&quot;RVM_psI&quot;</span><span class="p">,</span> <span class="s2">&quot;bisection&quot;</span><span class="p">,</span> <span class="s2">&quot;mixed_min&quot;</span><span class="p">,</span> <span class="s2">&quot;constrained_max&quot;</span><span class="p">,</span> <span class="s2">&quot;binsearch&quot;</span><span class="p">,</span> <span class="s2">&quot;VM&quot;</span><span class="p">,</span>  <span class="s2">&quot;gridsearch&quot;</span><span class="p">]</span>
-    <span class="n">test_H14</span><span class="p">()</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # Uncomment this to test the H14 model, which requires additional R files.</span>
+<span class="sd">    </span>
+<span class="sd">    try:</span>
+<span class="sd">        from rpy2 import robjects</span>
+<span class="sd">        test_H14()</span>
+<span class="sd">    except ImportError:</span>
+<span class="sd">        raise ImportError(&quot;The package rpy2 must be installed in order to test &quot;</span>
+<span class="sd">                          &quot;the H14 model.&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">test_find_CI</span><span class="p">()</span>
     <span class="n">benchmark</span><span class="p">(</span><span class="n">methods</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">dataN</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;11cx&quot;</span><span class="p">)</span> 
     <span class="n">benchmark</span><span class="p">(</span><span class="n">methods</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">dataN</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;11&quot;</span><span class="p">)</span> 
     <span class="n">benchmark</span><span class="p">(</span><span class="n">methods</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">dataN</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span> 
-    <span class="n">test_find_CI</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 
@@ -1667,24 +1703,26 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">Packages</a></h3>
-<ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lopaths.html">lopaths</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1705,7 +1743,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

@@ -6,12 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>hybrid_vector_model.route_choice_model &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -54,12 +53,12 @@
     <span class="n">sparseprod</span><span class="p">,</span> <span class="n">sparsepower</span><span class="p">,</span> <span class="n">sparsesum</span><span class="p">,</span> <span class="n">sparsesum_chosen_rows</span><span class="p">,</span> \
     <span class="n">sparsesum_chosen_rows_fact</span><span class="p">,</span> <span class="n">sparsesum_row_prod</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.npcollections.npextc</span> <span class="kn">import</span> <span class="n">FlexibleArray</span>
-<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span>
+<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI_bound</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.concurrent.concurrent_futures_ext</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.tools.hrprint</span> <span class="kn">import</span> <span class="n">HierarchichalPrinter</span>
 
 <div class="viewcode-block" id="RouteChoiceModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html#hybrid_vector_model.route_choice_model.RouteChoiceModel">[docs]</a><span class="k">class</span> <span class="nc">RouteChoiceModel</span><span class="p">(</span><span class="n">HierarchichalPrinter</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    classdocs</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     
@@ -67,7 +66,7 @@
     
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">printerArgs</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Constructor</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fit_prepared</span> <span class="o">=</span> <span class="kc">False</span>
@@ -272,7 +271,7 @@
         
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_convert_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        return (convert_R_0_1(parameters[0]),</span>
 <span class="sd">        &quot;&quot;&quot;</span> 
         <span class="k">return</span> <span class="p">(</span><span class="n">convert_R_0_1</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">RouteChoiceModel</span><span class="o">.</span><span class="n">NOISEBOUND</span><span class="p">,</span> <span class="c1">#,</span>
@@ -281,7 +280,7 @@
     
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_convert_parameters_reverse</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        return (convert_R_0_1_reverse(parameters[0]),</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">convert_R_0_1_reverse</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">RouteChoiceModel</span><span class="o">.</span><span class="n">NOISEBOUND</span><span class="p">),</span> <span class="c1">#</span>
@@ -426,7 +425,7 @@
     
     
 <div class="viewcode-block" id="RouteChoiceModel.fit"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html#hybrid_vector_model.route_choice_model.RouteChoiceModel.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">improveGuess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fits the route choice model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the route choice model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -497,8 +496,8 @@
         <span class="n">jac_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">jac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   
         <span class="n">hess_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">hess</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   
         
-        <span class="k">return</span> <span class="n">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">nLL_</span><span class="p">,</span> <span class="n">jac_</span><span class="p">,</span> <span class="n">hess_</span><span class="p">,</span> 
-                                     <span class="o">**</span><span class="n">profile_LL_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">nLL_</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">jac_</span><span class="p">,</span> <span class="n">hess_</span><span class="p">,</span> 
+                             <span class="o">**</span><span class="n">profile_LL_args</span><span class="p">)</span>
     
 <div class="viewcode-block" id="RouteChoiceModel.get_confidence_intervals"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html#hybrid_vector_model.route_choice_model.RouteChoiceModel.get_confidence_intervals">[docs]</a>    <span class="k">def</span> <span class="nf">get_confidence_intervals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">optim_args</span><span class="p">):</span>
         
@@ -567,24 +566,26 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">Packages</a></h3>
-<ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lopaths.html">lopaths</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -605,7 +606,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

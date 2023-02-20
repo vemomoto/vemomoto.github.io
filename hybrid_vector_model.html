@@ -4,14 +4,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Package: hybrid_vector_model &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Module: hybrid_vector_model.hybrid_vector_model" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html" />
@@ -42,8 +42,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="package-hybrid-vector-model">
-<h1>Package: hybrid_vector_model<a class="headerlink" href="#package-hybrid-vector-model" title="Permalink to this headline">¶</a></h1>
+  <section id="package-hybrid-vector-model">
+<h1>Package: hybrid_vector_model<a class="headerlink" href="#package-hybrid-vector-model" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html">hybrid_vector_model</a></li>
@@ -53,8 +53,8 @@
 <li class="toctree-l1"><a class="reference internal" href="hybrid_vector_model/hybrid_vector_model.boater_movement_model.html">boater_movement_model</a></li>
 </ul>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
 <p>The package can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. To install the package, you can use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">hybrid_vector_model</span>
 </pre></div>
@@ -65,9 +65,9 @@
 <p class="admonition-title">Note</p>
 <p>Some algorithms implemented in this package rely on share memory libraries that work on Unix systems only. If the hybrid vector model shall be applied to large sytems, it is strongly encouraged to execute the code on Linux, as some tasks are not implemented to run in parallel on Windows.</p>
 </div>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>The hybrid vector model is implemented in the <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel">HybridVectorModel</a> class.
 To create a hybrid model for a system of interest, it is convenient to use the <a class="reference external" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.new">HybridVectorModel.new(…)</a> method,
 which takes several data files as input and creates and fits a hybrid vector model. The model is then returned.</p>
@@ -125,7 +125,7 @@ when building a custom model.</p>
 <span class="c1"># are considered.</span>
 <span class="c1"># The last two parameters control internal approximations. Choosing</span>
 <span class="c1"># 1 in both cases yields exact results.</span>
-<span class="n">routeParameters</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">routeParameters</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># create and fit a hybrid traffic model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
@@ -149,14 +149,14 @@ for a description of the data files required. The example is also implemented in
 <p>Example data files are provided with the package in the subfolder <code class="docutils literal notranslate"><span class="pre">hybrid_vector_model/Example</span></code>. Alternatively, these files
 can be downloaded from the <a class="reference external" href="https://github.com/vemomoto/vemomoto/tree/master/hybrid_vector_model/hybrid_vector_model/Example">github repository</a>.
 There you can also find a graphical image of the example road network.</p>
-</div>
-<div class="section" id="scientific-publications">
-<h2>Scientific Publications<a class="headerlink" href="#scientific-publications" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="scientific-publications">
+<h2>Scientific Publications<a class="headerlink" href="#scientific-publications" title="Permalink to this heading">¶</a></h2>
 <p>The theory behind the model implemented in this package is explained in the paper “<a class="reference external" href="https://doi.org/10.1098/rsos.191858">A hybrid gravity and route choice model to assess vector traffic in large-scale road networks</a>”.
 The algorithm for optimizing inspection stations is described in “<a class="reference external" href="https://doi.org/10.1016/j.jenvman.2020.111923">Managing aquatic invasions: Optimal locations and operating times for watercraft inspection stations</a>”.
 Please cite the corresponding publication(s) if you have used the package in your own research.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -165,8 +165,9 @@ Please cite the corresponding publication(s) if you have used the package in you
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Packages</a></h3>
-<ul class="current">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">hybrid_vector_model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model/hybrid_vector_model.route_choice_model.html">route_choice_model</a></li>
@@ -180,26 +181,34 @@ Please cite the corresponding publication(s) if you have used the package in you
 <li class="toctree-l1"><a class="reference internal" href="vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Package: hybrid_vector_model</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#scientific-publications">Scientific Publications</a></li>
-</ul>
-</li>
-</ul>
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">VeMoMoTo - Vector Movement Modelling Tools</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html"
+                          title="next chapter">Module: hybrid_vector_model.hybrid_vector_model</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/hybrid_vector_model.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -225,7 +234,7 @@ Please cite the corresponding publication(s) if you have used the package in you
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

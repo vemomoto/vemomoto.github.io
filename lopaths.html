@@ -4,14 +4,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Package: lopaths &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Module: lopaths.graph" href="lopaths/lopaths.graph.html" />
@@ -42,8 +42,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="package-lopaths">
-<h1>Package: lopaths<a class="headerlink" href="#package-lopaths" title="Permalink to this headline">¶</a></h1>
+  <section id="package-lopaths">
+<h1>Package: lopaths<a class="headerlink" href="#package-lopaths" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="lopaths/lopaths.graph.html">graph</a></li>
@@ -53,8 +53,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lopaths/lopaths.test_routes.html">test_routes</a></li>
 </ul>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
 <p>The package can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. To install the package, you can use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">lopaths</span>
 </pre></div>
@@ -64,12 +64,12 @@
 <p class="admonition-title">Note</p>
 <p>Some algorithms implemented in this package rely on share memory libraries that work on Unix systems only. If locally optimal paths shall be computed in large road networks, it is strongly encouraged to execute the code on Linux, as some tasks are not implemented to run in parallel on Windows.</p>
 </div>
-</div>
-<div class="section" id="scientific-publication">
-<h2>Scientific Publication<a class="headerlink" href="#scientific-publication" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="scientific-publication">
+<h2>Scientific Publication<a class="headerlink" href="#scientific-publication" title="Permalink to this heading">¶</a></h2>
 <p>The algorithms implemented in this package are explained in the paper “<a class="reference external" href="https://doi.org/10.1016/j.trb.2020.09.007">Locally optimal routes for route choice sets</a>”. Please cite this publication if you have used the package in your own research.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -78,8 +78,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Packages</a></h3>
-<ul class="current">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">lopaths</a><ul>
@@ -93,25 +94,34 @@
 <li class="toctree-l1"><a class="reference internal" href="vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Package: lopaths</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#scientific-publication">Scientific Publication</a></li>
-</ul>
-</li>
-</ul>
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="ci_rvm/ci_rvm.test_ci_rvm.html"
+                          title="previous chapter">Module: ci_rvm.test_ci_rvm</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="lopaths/lopaths.graph.html"
+                          title="next chapter">Module: lopaths.graph</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/lopaths.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -137,7 +147,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

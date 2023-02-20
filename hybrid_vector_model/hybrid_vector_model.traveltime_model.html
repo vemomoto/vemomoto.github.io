@@ -4,14 +4,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Module: hybrid_vector_model.traveltime_model &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: hybrid_vector_model.boater_movement_model" href="hybrid_vector_model.boater_movement_model.html" />
@@ -43,22 +43,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-hybrid_vector_model.traveltime_model">
-<span id="module-hybrid-vector-model-traveltime-model"></span><h1>Module: hybrid_vector_model.traveltime_model<a class="headerlink" href="#module-hybrid_vector_model.traveltime_model" title="Permalink to this headline">¶</a></h1>
+  <section id="module-hybrid_vector_model.traveltime_model">
+<span id="module-hybrid-vector-model-traveltime-model"></span><h1>Module: hybrid_vector_model.traveltime_model<a class="headerlink" href="#module-hybrid_vector_model.traveltime_model" title="Permalink to this heading">¶</a></h1>
 <p><strong>Classes:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTrafficDensityDayTime</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrafficDensityDayTime_PLinear</span></code></a>(tMin, tMax, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrafficDensityDayTime_PLinear</span></code></a>(tMin, tMax, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrafficDensityDayTime_StepFun</span></code></a>(tMin, tMax, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrafficDensityDayTime_StepFun</span></code></a>(tMin, tMax, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrafficDensityVonMises</span></code></a>([location, kappa])</p></td>
@@ -67,11 +63,7 @@
 </tbody>
 </table>
 <p><strong>Functions:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.cropData" title="hybrid_vector_model.traveltime_model.cropData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cropData</span></code></a>(data, left, right)</p></td>
 <td><p></p></td>
@@ -79,29 +71,25 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.fitEstimator" title="hybrid_vector_model.traveltime_model.fitEstimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fitEstimator</span></code></a>(fileName, intervalNumber)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.readTimeData" title="hybrid_vector_model.traveltime_model.readTimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readTimeData</span></code></a>(fileName[, delimiter, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.readTimeData" title="hybrid_vector_model.traveltime_model.readTimeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readTimeData</span></code></a>(fileName[, delimiter, ...])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BaseTrafficDensityDayTime</span></code><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseTrafficDensityDayTime</span></span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.interval_probability" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>([tStart, tEnd])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neg_log_likelihood</span></code></a>(coefficients, obsTime, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neg_log_likelihood</span></code></a>(coefficients, obsTime, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.pdf" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a>(t)</p></td>
@@ -113,47 +101,43 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.interval_probability">
-<code class="sig-name descname"><span class="pre">interval_probability</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.interval_probability" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.interval_probability">
+<span class="sig-name descname"><span class="pre">interval_probability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.interval_probability" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood">
-<code class="sig-name descname"><span class="pre">maximize_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ineqConstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood">
+<span class="sig-name descname"><span class="pre">maximize_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ineqConstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood">
-<code class="sig-name descname"><span class="pre">neg_log_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.neg_log_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood">
+<span class="sig-name descname"><span class="pre">neg_log_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.neg_log_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.neg_log_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.pdf">
-<code class="sig-name descname"><span class="pre">pdf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.pdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.pdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.plot">
-<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalingFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalingFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#BaseTrafficDensityDayTime.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime.plot" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TrafficDensityDayTime_PLinear</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tMin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tMax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervalNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime</span></code></a></p>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TrafficDensityDayTime_PLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tMin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tMax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervalNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrafficDensityDayTime</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>([tStart, tEnd, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>([tStart, tEnd, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.pdf" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a>(t[, coefficients])</p></td>
@@ -165,42 +149,38 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability">
-<code class="sig-name descname"><span class="pre">interval_probability</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability">
+<span class="sig-name descname"><span class="pre">interval_probability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.interval_probability" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood">
-<code class="sig-name descname"><span class="pre">maximize_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood">
+<span class="sig-name descname"><span class="pre">maximize_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.pdf">
-<code class="sig-name descname"><span class="pre">pdf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.pdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.pdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.plot">
-<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalingFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalingFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_PLinear.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_PLinear.plot" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TrafficDensityDayTime_StepFun</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tMin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tMax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervalNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime</span></code></a></p>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TrafficDensityDayTime_StepFun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tMin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tMax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervalNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrafficDensityDayTime</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>([tStart, tEnd, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>([tStart, tEnd, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.pdf" title="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a>(t[, coefficients])</p></td>
@@ -212,45 +192,41 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability">
-<code class="sig-name descname"><span class="pre">interval_probability</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability">
+<span class="sig-name descname"><span class="pre">interval_probability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.interval_probability" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood">
-<code class="sig-name descname"><span class="pre">maximize_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood">
+<span class="sig-name descname"><span class="pre">maximize_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.pdf">
-<code class="sig-name descname"><span class="pre">pdf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.pdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.pdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.plot">
-<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalingFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalingFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityDayTime_StepFun.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityDayTime_StepFun.plot" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises">
-<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TrafficDensityVonMises</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime</span></code></a></p>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TrafficDensityVonMises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime" title="hybrid_vector_model.traveltime_model.BaseTrafficDensityDayTime"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrafficDensityDayTime</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>(tStart, tEnd[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_probability</span></code></a>(tStart, tEnd[, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximize_likelihood</span></code></a>(obsTime, shiftStart, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neg_log_likelihood</span></code></a>(coeff, obsTime, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neg_log_likelihood</span></code></a>(coeff, obsTime, ...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.pdf" title="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a>(t)</p></td>
@@ -265,53 +241,53 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability">
-<code class="sig-name descname"><span class="pre">interval_probability</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability">
+<span class="sig-name descname"><span class="pre">interval_probability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.interval_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.interval_probability" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood">
-<code class="sig-name descname"><span class="pre">maximize_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getCI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood">
+<span class="sig-name descname"><span class="pre">maximize_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getCI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.maximize_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.maximize_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood">
-<code class="sig-name descname"><span class="pre">neg_log_likelihood</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.neg_log_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood">
+<span class="sig-name descname"><span class="pre">neg_log_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftStart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shiftEnd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.neg_log_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.neg_log_likelihood" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.pdf">
-<code class="sig-name descname"><span class="pre">pdf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.pdf" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.pdf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.plot">
-<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normInterval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normInterval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.plot" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.sample">
-<code class="sig-name descname"><span class="pre">sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.sample" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.TrafficDensityVonMises.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#TrafficDensityVonMises.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.TrafficDensityVonMises.sample" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
-<dt id="hybrid_vector_model.traveltime_model.cropData">
-<code class="sig-name descname"><span class="pre">cropData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#cropData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.cropData" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.cropData">
+<span class="sig-name descname"><span class="pre">cropData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#cropData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.cropData" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="hybrid_vector_model.traveltime_model.fitEstimator">
-<code class="sig-name descname"><span class="pre">fitEstimator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervalNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#fitEstimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.fitEstimator" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.fitEstimator">
+<span class="sig-name descname"><span class="pre">fitEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervalNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#fitEstimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.fitEstimator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="hybrid_vector_model.traveltime_model.readTimeData">
-<code class="sig-name descname"><span class="pre">readTimeData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#readTimeData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.readTimeData" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="hybrid_vector_model.traveltime_model.readTimeData">
+<span class="sig-name descname"><span class="pre">readTimeData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/hybrid_vector_model/traveltime_model.html#readTimeData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_vector_model.traveltime_model.readTimeData" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -320,8 +296,9 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">Packages</a></h3>
-<ul class="current">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../hybrid_vector_model.html">hybrid_vector_model</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model.hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_vector_model.route_choice_model.html">route_choice_model</a></li>
@@ -335,16 +312,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="hybrid_vector_model.statsutils.html"
+                          title="previous chapter">Module: hybrid_vector_model.statsutils</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="hybrid_vector_model.boater_movement_model.html"
+                          title="next chapter">Module: hybrid_vector_model.boater_movement_model</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/hybrid_vector_model/hybrid_vector_model.traveltime_model.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -371,7 +366,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

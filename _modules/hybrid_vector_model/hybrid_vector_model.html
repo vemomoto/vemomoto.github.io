@@ -6,12 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>hybrid_vector_model.hybrid_vector_model &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -94,7 +93,7 @@
 <span class="kn">from</span> <span class="nn">vemomoto_core.concurrent.concurrent_futures_ext</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
 <span class="kn">from</span> <span class="nn">vemomoto_core.concurrent.nicepar</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">from</span> <span class="nn">lopaths</span> <span class="kn">import</span> <span class="n">FlowPointGraph</span><span class="p">,</span> <span class="n">FlexibleGraph</span>
-<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_profile_CI_bound</span>
+<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI_bound</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.traveltime_model</span> <span class="kn">import</span> <span class="n">TrafficDensityVonMises</span>
@@ -122,7 +121,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="k">def</span> <span class="nf">_non_join</span><span class="p">(</span><span class="n">string1</span><span class="p">,</span> <span class="n">string2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Joins two strings if they are not ``None``.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Joins two strings if they are not ``None``.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns ``None`` if either of the input strings is ``None``.</span>
 <span class="sd">    </span>
@@ -140,7 +139,7 @@
         <span class="k">return</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="safe_delattr"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.safe_delattr">[docs]</a><span class="k">def</span> <span class="nf">safe_delattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attrname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Deletes and attribute if it exists&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deletes and attribute if it exists&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SeparatelySaveable</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="n">attrname</span><span class="p">):</span>
             <span class="nb">delattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)</span>
@@ -150,7 +149,7 @@
 
 <div class="viewcode-block" id="mean_relative_absolute_error"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.mean_relative_absolute_error">[docs]</a><span class="k">def</span> <span class="nf">mean_relative_absolute_error</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">observation</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                  <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the mean relative absolute error between predictions and </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the mean relative absolute error between predictions and </span>
 <span class="sd">    observations.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -189,7 +188,7 @@
                                               <span class="n">comparisonPredicted</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                               <span class="n">comparisonObserved</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                               <span class="n">logScale</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create an observed vs. predicted plot.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an observed vs. predicted plot.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -336,7 +335,7 @@
     
 <div class="viewcode-block" id="create_distribution_plot"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.create_distribution_plot">[docs]</a><span class="k">def</span> <span class="nf">create_distribution_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">predicted</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">best</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                              <span class="n">yLabel</span><span class="o">=</span><span class="s2">&quot;PMF&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates a plot of a given discrete distribution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a plot of a given discrete distribution.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -376,7 +375,7 @@
     
     <span class="k">for</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">plotArr</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
         <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
     
     <span class="k">for</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">plotArr</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
         <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -392,7 +391,7 @@
     
 <div class="viewcode-block" id="create_observed_predicted_mean_error_plot_from_files"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.create_observed_predicted_mean_error_plot_from_files">[docs]</a><span class="k">def</span> <span class="nf">create_observed_predicted_mean_error_plot_from_files</span><span class="p">(</span><span class="n">fileName1</span><span class="p">,</span> <span class="n">fileName2</span><span class="p">,</span> 
                                                          <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates an observed vs. predicted plot from saved data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an observed vs. predicted plot from saved data.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -416,7 +415,7 @@
                                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="nbinom_fit"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.nbinom_fit">[docs]</a><span class="k">def</span> <span class="nf">nbinom_fit</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fits a negative binomial distribution to given data&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fits a negative binomial distribution to given data&quot;&quot;&quot;</span>
     <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">nbinom</span><span class="o">.</span><span class="n">logpmf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> 
     
     <span class="n">x0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -427,7 +426,7 @@
 
 <div class="viewcode-block" id="redraw_predicted_observed"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.redraw_predicted_observed">[docs]</a><span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">create_observed_predicted_mean_error_plot_from_files</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">redraw_predicted_observed</span><span class="p">(</span><span class="n">fileName1</span><span class="p">,</span> <span class="n">fileName2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Redraws predicted versus oberved plots generated earlier.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Redraws predicted versus oberved plots generated earlier.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="s2">&quot;Regression&quot;</span><span class="p">,</span> <span class="s2">&quot;Regression_scaled&quot;</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plotting&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
         <span class="n">create_observed_predicted_mean_error_plot_from_files</span><span class="p">(</span><span class="n">fileName1</span><span class="p">,</span> 
@@ -447,7 +446,7 @@
 
 
 <div class="viewcode-block" id="TransportNetwork"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.TransportNetwork">[docs]</a><span class="k">class</span> <span class="nc">TransportNetwork</span><span class="p">(</span><span class="n">FlowPointGraph</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A graph representation of the road network.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A graph representation of the road network.</span>
 <span class="sd">    </span>
 <span class="sd">    In contrast to the general graph class :py:class:`lopaths.graph.FlowPointGraph`,</span>
 <span class="sd">    :py:class:`TransportNetwork` implements invasion-specific functionalities</span>
@@ -526,9 +525,9 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNameEdges</span><span class="p">,</span> <span class="n">fileNameVertices</span><span class="p">,</span> 
                  <span class="n">destinationToDestination</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                  <span class="n">preprocessingArgs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">edgeLengthRandomization</span><span class="o">=.</span><span class="mi">001</span><span class="p">,</span> 
+                 <span class="n">edgeLengthRandomization</span><span class="o">=</span><span class="mf">.001</span><span class="p">,</span> 
                  <span class="o">**</span><span class="n">printerArgs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructor</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor</span>
 <span class="sd">        </span>
 <span class="sd">        See class docs for documentation.</span>
 <span class="sd">        </span>
@@ -669,7 +668,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prst</span><span class="p">(</span><span class="s2">&quot;Transport network creation finished.&quot;</span><span class="p">)</span>
         
 <div class="viewcode-block" id="TransportNetwork.preprocessing"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.TransportNetwork.preprocessing">[docs]</a>    <span class="k">def</span> <span class="nf">preprocessing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessingArgs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Preprocesses the graph to make path search queries more efficient.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Preprocesses the graph to make path search queries more efficient.</span>
 <span class="sd">        </span>
 <span class="sd">        This step is a necessary prerequisite to all path queries as implemented</span>
 <span class="sd">        here.</span>
@@ -705,7 +704,7 @@
                 
  
     <span class="k">def</span> <span class="nf">_add_virtual_destination_vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">vertexType</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates vertices that represent the destinations</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates vertices that represent the destinations</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
@@ -757,7 +756,7 @@
                     <span class="n">edgeData</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span>
                     
 <div class="viewcode-block" id="TransportNetwork.find_shortest_distances"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_shortest_distances">[docs]</a>    <span class="k">def</span> <span class="nf">find_shortest_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Determines the shortest distances between all origins and destinations</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines the shortest distances between all origins and destinations</span>
 <span class="sd">        and from all postal code centres to the destinations</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -804,7 +803,7 @@
 <div class="viewcode-block" id="TransportNetwork.update_sources_considered"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.TransportNetwork.update_sources_considered">[docs]</a>    <span class="k">def</span> <span class="nf">update_sources_considered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
             <span class="n">rawConsidered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">considered</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Changes which origins are considered to fit the model. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Changes which origins are considered to fit the model. </span>
 <span class="sd">        </span>
 <span class="sd">        </span>
 <span class="sd">        If long-distance traffic is assumed to follow different mechanisms than </span>
@@ -849,10 +848,10 @@
         
 <div class="viewcode-block" id="TransportNetwork.find_potential_routes"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.TransportNetwork.find_potential_routes">[docs]</a>    <span class="k">def</span> <span class="nf">find_potential_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
             <span class="n">stretchConstant</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> 
-            <span class="n">localOptimalityConstant</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> 
+            <span class="n">localOptimalityConstant</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> 
             <span class="n">acceptionFactor</span><span class="o">=</span><span class="mf">0.667</span><span class="p">,</span>
             <span class="n">rejectionFactor</span><span class="o">=</span><span class="mf">1.333</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Searches potential routes of boaters. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Searches potential routes of boaters. </span>
 <span class="sd">        </span>
 <span class="sd">        For detailed documentation on the arguments, refer to </span>
 <span class="sd">        :py:class:`lopaths.graph.FlowPointGraph.find_locally_optimal_paths`</span>
@@ -902,7 +901,7 @@
         
     
     <span class="k">def</span> <span class="nf">_pair_to_pair_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts a tuple (OriginIndex, DesitnationIndex) to an integer index</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts a tuple (OriginIndex, DesitnationIndex) to an integer index</span>
 <span class="sd">        of the pair.</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -910,7 +909,7 @@
 
 
 <div class="viewcode-block" id="BaseTrafficFactorModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel">[docs]</a><span class="k">class</span> <span class="nc">BaseTrafficFactorModel</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">DocMetaSuperclass</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for traffic factor models.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for traffic factor models.</span>
 <span class="sd">    </span>
 <span class="sd">    The traffic factor model is a gravity model yielding factors proportional</span>
 <span class="sd">    to the vector flow between different origins and destinations. Admissible</span>
@@ -942,7 +941,7 @@
     <span class="c1"># If only the name of the covariate is given, the data type will be assumed</span>
     <span class="c1"># to be double</span>
     <span class="n">ORIGIN_COVARIATES</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="sd">&quot;&quot;&quot;(`(str, type)[]`) -- The names and types of the covariates for the sources.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(`(str, type)[]`) -- The names and types of the covariates for the sources.</span>
 <span class="sd">    If the type is not spcified, it will default to float.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
@@ -950,31 +949,31 @@
     <span class="s2">&quot;(`(str, type=double)[]`) -- The names and types of the covariates for the sinks.&quot;</span>
     
     <span class="n">PERMUTATIONS</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="sd">&quot;&quot;&quot;(`bool[][]`) -- Parameter combinations to be considered when selecting the optimal model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(`bool[][]`) -- Parameter combinations to be considered when selecting the optimal model.</span>
 <span class="sd">    </span>
 <span class="sd">    The number of columns must match the maximal number of parameters of the </span>
 <span class="sd">    model (see :py:attr:`SIZE`).&quot;&quot;&quot;</span>
             
     <span class="n">LABELS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
-    <span class="sd">&quot;&quot;&quot;(`str[]`) -- The names of the parameters in the implemented model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(`str[]`) -- The names of the parameters in the implemented model.</span>
 <span class="sd">    </span>
 <span class="sd">    The length must match the maximal number of parameters of the </span>
 <span class="sd">    model (see :py:attr:`SIZE`).&quot;&quot;&quot;</span>
     
     <span class="n">BOUNDS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
-    <span class="sd">&quot;&quot;&quot;(`(float, float)[]`) -- Reasonable bounds for the parameters (before conversion).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(`(float, float)[]`) -- Reasonable bounds for the parameters (before conversion).</span>
 <span class="sd">    </span>
 <span class="sd">    The length must match the maximal number of parameters of the </span>
 <span class="sd">    model (see :py:attr:`SIZE`).&quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourceData</span><span class="p">,</span> <span class="n">sinkData</span><span class="p">,</span> <span class="n">postalCodeAreaData</span><span class="p">,</span> <span class="n">distances</span><span class="p">,</span> 
                  <span class="n">postalCodeDistances</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
         <span class="k">pass</span>
     
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_check_integrity</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks whether derived classes are implementing the class correctly.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether derived classes are implementing the class correctly.&quot;&quot;&quot;</span>
         
         <span class="k">assert</span> <span class="bp">cls</span><span class="o">.</span><span class="n">SIZE</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">LABELS</span><span class="p">)</span>
         <span class="k">assert</span> <span class="bp">cls</span><span class="o">.</span><span class="n">SIZE</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">BOUNDS</span><span class="p">)</span>
@@ -986,7 +985,7 @@
             <span class="k">pass</span>
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.convert_parameters"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.convert_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">convert_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dynamicParameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts an array of given parameters to an array of standard (maximal)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts an array of given parameters to an array of standard (maximal)</span>
 <span class="sd">        length and in the parameter domain of the model.</span>
 <span class="sd">        </span>
 <span class="sd">        Not all parameters may be parametersConsidered in the model (to avoid overfitting)</span>
@@ -1010,7 +1009,7 @@
         <span class="k">return</span> <span class="n">result</span></div>
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.get_mean_factor"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor">[docs]</a>    <span class="k">def</span> <span class="nf">get_mean_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a factor proportional to the mean traveller flow between the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a factor proportional to the mean traveller flow between the</span>
 <span class="sd">        source-sink pair ``pair`` or all sources and sinks (if ``pair is None``)</span>
 <span class="sd">        </span>
 <span class="sd">        ~+~</span>
@@ -1037,7 +1036,7 @@
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.get_mean_factor_autograd"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.get_mean_factor_autograd">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">get_mean_factor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">get_mean_factor_autograd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Same as :py:meth:`get_mean_factor`, but must use autograd&#39;s functions </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Same as :py:meth:`get_mean_factor`, but must use autograd&#39;s functions </span>
 <span class="sd">        instead of numpy. </span>
 <span class="sd">        </span>
 <span class="sd">        This function is necessary to compute derivatives with automatic </span>
@@ -1058,7 +1057,7 @@
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.process_source_covariates"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_source_covariates">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">process_source_covariates</span><span class="p">(</span><span class="n">covariates</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Process source covariates before saving them.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process source covariates before saving them.</span>
 <span class="sd">        </span>
 <span class="sd">        This method is applied to the source covariates before they are saved.</span>
 <span class="sd">        The method can be used to compute derived covariates</span>
@@ -1073,7 +1072,7 @@
     
 <div class="viewcode-block" id="BaseTrafficFactorModel.process_sink_covariates"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.BaseTrafficFactorModel.process_sink_covariates">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">process_sink_covariates</span><span class="p">(</span><span class="n">covariates</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Process sink covariates before saving them.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process sink covariates before saving them.</span>
 <span class="sd">        </span>
 <span class="sd">        This method is applied to the sink covariates before they are saved.</span>
 <span class="sd">        The method can be used to compute derived covariates</span>
@@ -1091,7 +1090,7 @@
    
 
 <div class="viewcode-block" id="HybridVectorModel"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel">[docs]</a><span class="k">class</span> <span class="nc">HybridVectorModel</span><span class="p">(</span><span class="n">HierarchichalPrinter</span><span class="p">,</span> <span class="n">SeparatelySaveable</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for the hybrid vector model.</span>
 <span class="sd">    </span>
 <span class="sd">    Brings the model compoents together and provides functionality to fit,</span>
@@ -1117,7 +1116,7 @@
                  <span class="n">trafficFactorModel_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">destinationToDestination</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                  <span class="o">**</span><span class="n">printerArgs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
         <span class="n">HierarchichalPrinter</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">printerArgs</span><span class="p">)</span>
         <span class="n">SeparatelySaveable</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;.vmm&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_traffic_factor_model_class</span><span class="p">(</span><span class="n">trafficFactorModel_class</span><span class="p">)</span>
@@ -1125,7 +1124,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">destinationToDestination</span> <span class="o">=</span> <span class="n">destinationToDestination</span>
     
 <div class="viewcode-block" id="HybridVectorModel.save"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Saves the model to the file ``fileName``.vmm</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves the model to the file ``fileName``.vmm</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1149,7 +1148,7 @@
             <span class="n">preprocessingArgs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">edgeLengthRandomization</span><span class="o">=</span><span class="mf">0.001</span>
             <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates and preprocesses a route network&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and preprocesses a route network&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span> <span class="o">=</span> <span class="n">TransportNetwork</span><span class="p">(</span><span class="n">fileNameEdges</span><span class="p">,</span> 
                                                      <span class="n">fileNameVertices</span><span class="p">,</span> 
                                                      <span class="bp">self</span><span class="o">.</span><span class="n">destinationToDestination</span><span class="p">,</span>
@@ -1169,7 +1168,7 @@
                           <span class="s2">&quot;and will be removed.&quot;</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.set_compliance_rate"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_compliance_rate">[docs]</a>    <span class="k">def</span> <span class="nf">set_compliance_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">complianceRate</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the boaters&#39; compliance rate (for stopping at inspection/survey </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the boaters&#39; compliance rate (for stopping at inspection/survey </span>
 <span class="sd">        locations) </span>
 <span class="sd">        </span>
 <span class="sd">        The rate is used for both fitting the model and optimizing inspection </span>
@@ -1185,7 +1184,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.read_postal_code_area_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_postal_code_area_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_postal_code_area_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNamePostalCodeAreas</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads and saves data on postal code regions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads and saves data on postal code regions.</span>
 <span class="sd">        </span>
 <span class="sd">        Creates and saves an array with postal code area center vertex ID,  </span>
 <span class="sd">        postal code, and population</span>
@@ -1221,7 +1220,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span></div>
             
 <div class="viewcode-block" id="HybridVectorModel.read_origin_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_origin_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_origin_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNameOrigins</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads and saves data that can be used to determine the repulsiveness of origins in the vector traffic model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads and saves data that can be used to determine the repulsiveness of origins in the vector traffic model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1267,7 +1266,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">originData</span> <span class="o">=</span> <span class="n">popData</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">sourcesConsidered</span><span class="p">]</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.read_destination_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_destination_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_destination_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNameDestinations</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads and saves data that can be used to determine the attractiveness of destinations in the vector traffic model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads and saves data that can be used to determine the attractiveness of destinations in the vector traffic model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1317,7 +1316,7 @@
     
     
 <div class="viewcode-block" id="HybridVectorModel.set_infested"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_infested">[docs]</a>    <span class="k">def</span> <span class="nf">set_infested</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">originID</span><span class="p">,</span> <span class="n">infested</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Chenges the infestation state of an origin with the given ID.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Chenges the infestation state of an origin with the given ID.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1333,7 +1332,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">originData</span><span class="p">[</span><span class="s2">&quot;infested&quot;</span><span class="p">][</span><span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="n">infested</span></div>
         
     <span class="k">def</span> <span class="nf">_check_postal_code_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks whether the given vertex IDs in the postal code area data are </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether the given vertex IDs in the postal code area data are </span>
 <span class="sd">        present in the road network</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1349,7 +1348,7 @@
                                  <span class="o">+</span> <span class="s2">&quot;missing?&quot;</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">_check_origin_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks whether the vertices given in the origin data are present </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether the vertices given in the origin data are present </span>
 <span class="sd">        in the road network and vice versa</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1365,7 +1364,7 @@
                                  <span class="o">+</span> <span class="s2">&quot;Maybe some population data are missing?&quot;</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">_check_destination_road_match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks whether all destinations for which we have covariates are present in the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether all destinations for which we have covariates are present in the</span>
 <span class="sd">        road network and vice versa</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1390,7 +1389,7 @@
                                      <span class="o">+</span> <span class="s2">&quot;Maybe some destination data are missing?&quot;</span><span class="p">)</span>
     
 <div class="viewcode-block" id="HybridVectorModel.find_shortest_distances"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_shortest_distances">[docs]</a>    <span class="k">def</span> <span class="nf">find_shortest_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Determines the shortest distances between all considered origins and </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines the shortest distances between all considered origins and </span>
 <span class="sd">        destinations, and destinations and postal code area centres</span>
 <span class="sd">        </span>
 <span class="sd">        See :py:meth:`TransportNetwork.find_shortest_distances`.</span>
@@ -1428,7 +1427,7 @@
                 
     
 <div class="viewcode-block" id="HybridVectorModel.set_origins_considered"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_origins_considered">[docs]</a>    <span class="k">def</span> <span class="nf">set_origins_considered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">considered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">infested</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Determines which origins are considered in the model fit.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines which origins are considered in the model fit.</span>
 <span class="sd">        </span>
 <span class="sd">        It can happen that the model is to be fitted to model vectors coming </span>
 <span class="sd">        from specific origins, e.g. a model for long-distance traffic and</span>
@@ -1463,10 +1462,10 @@
 <div class="viewcode-block" id="HybridVectorModel.find_potential_routes"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.find_potential_routes">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">TransportNetwork</span><span class="o">.</span><span class="n">find_potential_routes</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">find_potential_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
             <span class="n">stretchConstant</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> 
-            <span class="n">localOptimalityConstant</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> 
+            <span class="n">localOptimalityConstant</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> 
             <span class="n">acceptionFactor</span><span class="o">=</span><span class="mf">0.667</span><span class="p">,</span>
             <span class="n">rejectionFactor</span><span class="o">=</span><span class="mf">1.333</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;# Find potential vector routes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;# Find potential vector routes.&quot;&quot;&quot;</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">roadNetwork</span><span class="o">.</span><span class="n">find_potential_routes</span><span class="p">(</span><span class="n">stretchConstant</span><span class="p">,</span> 
                                                      <span class="n">localOptimalityConstant</span><span class="p">,</span> 
@@ -1476,7 +1475,7 @@
             
     <span class="k">def</span> <span class="nf">_create_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">longDist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                                           <span class="n">trafficData</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create and fit the travel time model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create and fit the travel time model.</span>
 <span class="sd">        </span>
 <span class="sd">        .. todo:: Complete parameter documentation.</span>
 <span class="sd">        </span>
@@ -1518,7 +1517,7 @@
                         
 <div class="viewcode-block" id="HybridVectorModel.create_travel_time_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_travel_time_model">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_create_travel_time_model</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">create_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create and fit the travel time model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create and fit the travel time model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1539,7 +1538,7 @@
         
 <div class="viewcode-block" id="HybridVectorModel.read_survey_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.read_survey_data">[docs]</a>    <span class="k">def</span> <span class="nf">read_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileNameObservations</span><span class="p">,</span> <span class="n">pruneStartTime</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> 
                               <span class="n">pruneEndTime</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">properDataRate</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads the survey observation data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads the survey observation data.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1826,38 +1825,38 @@
     
     
     <span class="k">def</span> <span class="nf">_erase_flow_model_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resets the gravity model to an unfitted state.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the gravity model to an unfitted state.&quot;&quot;&quot;</span>
         <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;flowModelData&quot;</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">_erase_traffic_factor_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Erases the gravity model.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Erases the gravity model.&quot;&quot;&quot;</span>
         <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;trafficFactorModel&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_flow_model_fit</span><span class="p">()</span>
     
     <span class="k">def</span> <span class="nf">_erase_travel_time_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Erases the travel time model.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Erases the travel time model.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_route_choice_model</span><span class="p">()</span>
         <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;travelTimeModel&quot;</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">_erase_route_choice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Erases the route choice model.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Erases the route choice model.&quot;&quot;&quot;</span>
         <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;routeChoiceModel&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span>
             
     <span class="k">def</span> <span class="nf">_erase_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
-        <span class="sd">&quot;&quot;&quot;Erases the survey data.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Erases the survey data.&quot;&quot;&quot;</span>
         <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;surveyData&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_processed_survey_data</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_travel_time_model</span><span class="p">()</span>
     
     <span class="k">def</span> <span class="nf">_erase_processed_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
-        <span class="sd">&quot;&quot;&quot;Erases the observation data prepared for the model fit.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Erases the observation data prepared for the model fit.&quot;&quot;&quot;</span>
         <span class="n">safe_delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;processedSurveyData&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_route_choice_model</span><span class="p">()</span>
         
     
 <div class="viewcode-block" id="HybridVectorModel.create_route_choice_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_route_choice_model">[docs]</a>    <span class="k">def</span> <span class="nf">create_route_choice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redo</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates and fits the route choice model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and fits the route choice model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1896,7 +1895,7 @@
             
         
 <div class="viewcode-block" id="HybridVectorModel.preprocess_survey_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.preprocess_survey_data">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess_survey_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redo</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Takes the raw survey data and preprocesses them for the model fit.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Takes the raw survey data and preprocesses them for the model fit.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2052,7 +2051,7 @@
     <span class="c1">#@inherit_doc(BaseTrafficFactorModel.get_mean_factor)</span>
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="o">.</span><span class="n">get_mean_factor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_get_k_value_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the ``k`` parameter of the negative binomial distribution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ``k`` parameter of the negative binomial distribution.</span>
 <span class="sd">        </span>
 <span class="sd">        The value is computed accoring to the gravity model implemented in the</span>
 <span class="sd">        ``trafficFactorModel``.</span>
@@ -2080,13 +2079,13 @@
     
     <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_get_k_value_static</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_get_k_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;#Returns the ``k`` parameter of the negative binomial distribution.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;#Returns the ``k`` parameter of the negative binomial distribution.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">_get_k_value_static</span><span class="p">(</span>
             <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">pair</span><span class="p">)</span>
     
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_get_k_value_static</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_get_k_value_autograd_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Same as :py:meth:`_get_k_value_static`, but must use autograd&#39;s </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Same as :py:meth:`_get_k_value_static`, but must use autograd&#39;s </span>
 <span class="sd">        functions instead of numpy. &quot;&quot;&quot;</span>
         
         <span class="n">q</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   
@@ -2096,7 +2095,7 @@
     
     <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">BaseTrafficFactorModel</span><span class="o">.</span><span class="n">convert_parameters</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_convert_parameters_static</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        parameters : float[] </span>
@@ -2128,7 +2127,7 @@
                           <span class="n">kSumNotObserved</span><span class="p">,</span>
                           <span class="n">approximationNumber</span><span class="p">,</span>
                           <span class="n">counts</span><span class="p">,</span> <span class="n">observedNoiseCounts</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">):</span> 
-        <span class="sd">&quot;&quot;&quot;Returns the negative log-likelihood of the model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the negative log-likelihood of the model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2318,7 +2317,7 @@
                                    <span class="n">counts</span><span class="p">,</span> <span class="n">observedNoiseCounts</span><span class="p">,</span> 
                                    <span class="n">trafficFactorModel</span><span class="p">,</span> 
                                    <span class="n">convertParameters</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> 
-        <span class="sd">&quot;&quot;&quot;Returns the negative log-likelihood of the model, thereby using the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the negative log-likelihood of the model, thereby using the</span>
 <span class="sd">        functions provided by :py:mod:`autograd`.</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2415,7 +2414,7 @@
             
         <span class="n">likelihoodRestWays</span> <span class="o">=</span> <span class="p">(</span><span class="n">ag</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">qq2ml</span><span class="p">)</span> <span class="o">*</span> <span class="n">ag</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kMatrix</span><span class="p">)</span> <span class="c1"># * shiftNumber </span>
                               <span class="o">-</span> <span class="n">prd</span><span class="p">)</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        likelihoodRestWays = (ag.sum(qq2ml) * ag.sum(kMatrix, 0) # * shiftNumber </span>
 <span class="sd">                              - ag.sum(qq2ml*kSumNotObserved[stationIndices],</span>
 <span class="sd">                                       0))</span>
@@ -2444,7 +2443,7 @@
     <span class="k">def</span> <span class="nf">_get_nLL_funs</span><span class="p">(</span><span class="n">processedSurveyData</span><span class="p">,</span> <span class="n">lengthsOfPotentialRoutes</span><span class="p">,</span> <span class="n">trafficFactorModel</span><span class="p">,</span>
                       <span class="n">routeChoiceParameters</span><span class="p">,</span> <span class="n">complianceRate</span><span class="p">,</span> <span class="n">properDataRate</span><span class="p">,</span>
                       <span class="n">parametersConsidered</span><span class="p">,</span> <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the model&#39;s negative log-likelihood function and its </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the model&#39;s negative log-likelihood function and its </span>
 <span class="sd">        derivatives.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -2544,7 +2543,7 @@
                                        <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                        <span class="n">flowParameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                        <span class="n">x0</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximizes the likelihood of the hybrid model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximizes the likelihood of the hybrid model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2682,7 +2681,7 @@
 <div class="viewcode-block" id="HybridVectorModel.maximize_log_likelihood"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.maximize_log_likelihood">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">maximize_log_likelihood_static</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">maximize_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                 <span class="n">flowParameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;# Maximizes the likelihood of the hybrid model&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;# Maximizes the likelihood of the hybrid model&quot;&quot;&quot;</span>
         <span class="n">routeChoiceParameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">routeChoiceModel</span><span class="o">.</span><span class="n">parameters</span>
         
         <span class="k">return</span> <span class="n">HybridVectorModel</span><span class="o">.</span><span class="n">maximize_log_likelihood_static</span><span class="p">(</span>
@@ -2693,7 +2692,7 @@
                 <span class="n">approximationNumber</span><span class="p">,</span> <span class="n">flowParameters</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span></div>
     
     
-    <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_get_nLL_funs</span><span class="p">,</span> <span class="n">find_profile_CI_bound</span><span class="p">)</span>
+    <span class="nd">@staticmethod_inherit_doc</span><span class="p">(</span><span class="n">_get_nLL_funs</span><span class="p">,</span> <span class="n">find_CI_bound</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_find_profile_CI_static</span><span class="p">(</span><span class="n">processedSurveyData</span><span class="p">,</span> <span class="n">lengthsOfPotentialRoutes</span><span class="p">,</span> 
                                 <span class="n">trafficFactorModel</span><span class="p">,</span> <span class="n">routeChoiceParameters</span><span class="p">,</span>
                                 <span class="n">complianceRate</span><span class="p">,</span>
@@ -2702,13 +2701,13 @@
                                 <span class="n">index</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span>
                                 <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
                                 <span class="n">profile_LL_args</span><span class="o">=</span><span class="p">{}):</span>
-        <span class="sd">&quot;&quot;&quot;Searches the profile likelihood confidence interval for a given</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Searches the profile likelihood confidence interval for a given</span>
 <span class="sd">        parameter.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        profile_LL_args : dict</span>
-<span class="sd">            Keyword arguments to be passed to :py:meth:`find_profile_CI_bound`.</span>
+<span class="sd">            Keyword arguments to be passed to :py:meth:`find_CI_bound`.</span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
@@ -2726,8 +2725,8 @@
         <span class="n">jac_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">jac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   
         <span class="n">hess_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">hess</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   
         
-        <span class="k">return</span> <span class="n">find_profile_CI_bound</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">negLogLikelihood_autograd_</span><span class="p">,</span> <span class="n">jac_</span><span class="p">,</span> <span class="n">hess_</span><span class="p">,</span> 
-                                     <span class="o">**</span><span class="n">profile_LL_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">find_CI_bound</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">negLogLikelihood_autograd_</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> 
+                             <span class="n">jac_</span><span class="p">,</span> <span class="n">hess_</span><span class="p">,</span> <span class="o">**</span><span class="n">profile_LL_args</span><span class="p">)</span>
     
     
 <div class="viewcode-block" id="HybridVectorModel.investigate_profile_likelihood"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.investigate_profile_likelihood">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_find_profile_CI_static</span><span class="p">)</span>
@@ -2739,7 +2738,7 @@
                                        <span class="n">parametersConsidered</span><span class="p">,</span> 
                                        <span class="n">approximationNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                        <span class="o">**</span><span class="n">profile_LL_args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;# Searches the profile likelihood confidence interval for a given</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;# Searches the profile likelihood confidence interval for a given</span>
 <span class="sd">        parameter.&quot;&quot;&quot;</span>
         
         <span class="n">negLogLikelihood</span><span class="p">,</span> <span class="n">negLogLikelihood_autograd</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span> <span class="n">hessp</span> <span class="o">=</span> \
@@ -2811,7 +2810,7 @@
 <div class="viewcode-block" id="HybridVectorModel.fit_route_choice_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_route_choice_model">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">RouteChoiceModel</span><span class="o">.</span><span class="n">fit</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">fit_route_choice_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                                <span class="n">improveGuess</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">get_CI</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fits the route choice model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the route choice model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2863,7 +2862,7 @@
     
     
 <div class="viewcode-block" id="HybridVectorModel.set_traffic_factor_model_class"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.set_traffic_factor_model_class">[docs]</a>    <span class="k">def</span> <span class="nf">set_traffic_factor_model_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trafficFactorModel_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the class representing the traffic factor (gravity) model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the class representing the traffic factor (gravity) model.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2887,7 +2886,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_erase_traffic_factor_model</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.prepare_traffic_factor_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.prepare_traffic_factor_model">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_traffic_factor_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Prepares the traffic factor model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepares the traffic factor model.</span>
 <span class="sd">        </span>
 <span class="sd">        This may be necessary if derived covariates shall be used and these</span>
 <span class="sd">        derived covariates do not depend on paramters that shall be fitted.</span>
@@ -2904,7 +2903,7 @@
 <div class="viewcode-block" id="HybridVectorModel.fit_flow_model"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.fit_flow_model">[docs]</a>    <span class="k">def</span> <span class="nf">fit_flow_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                        <span class="n">flowParameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">continueFlowOptimization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                        <span class="n">get_CI</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fits the traffic flow (gravity) model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the traffic flow (gravity) model.</span>
 <span class="sd">        </span>
 <span class="sd">        Fits one or multiple candidates for the traffic flow model and selects</span>
 <span class="sd">        the model with minimal AIC value. </span>
@@ -3080,7 +3079,7 @@
                                   <span class="n">getPairResults</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                   <span class="n">fullCompliance</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                   <span class="n">correctData</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the mean agent traffic that could be observed at survey </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the mean agent traffic that could be observed at survey </span>
 <span class="sd">        locations and the respective vairances. </span>
 <span class="sd">        </span>
 <span class="sd">        The values are returned both for all agents and the agents</span>
@@ -3248,7 +3247,7 @@
                                             <span class="n">inspectedRoutesDict</span><span class="p">,</span> <span class="n">qq</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span>
                                             <span class="n">addition</span><span class="p">,</span>
                                             <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;A subroutine of the algorithm for :py:meth:`get_station_mean_variance`</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A subroutine of the algorithm for :py:meth:`get_station_mean_variance`</span>
 <span class="sd">        for parallelization.</span>
 <span class="sd">        </span>
 <span class="sd">        .. todo:: Argument documentation</span>
@@ -3325,7 +3324,7 @@
     <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_get_k_value</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_get_k_q</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shiftStart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shiftEnd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                  <span class="n">stationIndex</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the parameters `k` and `q` for the (negative binomial)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the parameters `k` and `q` for the (negative binomial)</span>
 <span class="sd">        traffic distribution between origin-destination pairs.</span>
 <span class="sd">        </span>
 <span class="sd">        The arguments can also be provided as arrays of matching dimensions.</span>
@@ -3408,7 +3407,7 @@
                 <span class="n">loadFile</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">fileNameAddition</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
                 <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the optimal locations for agent inspections.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the optimal locations for agent inspections.</span>
 <span class="sd">        </span>
 <span class="sd">        Maximizes the number of agents who are inspected at least once given a </span>
 <span class="sd">        certain budget and other constraints for operation.</span>
@@ -3792,8 +3791,8 @@
         <span class="n">remainingBudget</span> <span class="o">=</span> <span class="p">(</span><span class="n">costBound</span> <span class="o">-</span> <span class="n">cp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">operations</span> <span class="o">*</span> <span class="n">costShift__</span><span class="p">)</span>
                                      <span class="o">-</span> <span class="n">cp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spotusage</span><span class="p">)</span> <span class="o">*</span> <span class="n">costSite</span><span class="p">)</span>
         <span class="n">costConstraint</span> <span class="o">=</span> <span class="p">[</span><span class="n">remainingBudget</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
-        
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        update locOperated to exclude locations that have been chosen to be used. </span>
 <span class="sd">        Determine the best location first, then set it to be chosen, </span>
 <span class="sd">        reduce the remaining budget but remove the location cost for this location</span>
@@ -3898,7 +3897,7 @@
                 <span class="c1">#nonIntegralSpotCosts = (spotusageOriginal[nonIntegralSpot].sum()*costSite</span>
                 <span class="c1">#                        +(operationResultReshaped[nonIntegralSpot]*costShift_).sum())</span>
                 <span class="n">nonIntegralShift</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1e-4</span> <span class="o">&lt;</span> <span class="n">operatingTimeSumsOriginal</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">operatingTimeSumsOriginal</span> <span class="o">&lt;</span> <span class="mf">0.999</span><span class="p">)</span>
-                <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">                addCostSpot = (spotusageOriginal-spotusage.value).round(4).any() * costSite</span>
 <span class="sd">                print(remainingBudgetValue, addCostSpot,</span>
 <span class="sd">                      2*costShift+addCostSpot-0.0001,</span>
@@ -4051,7 +4050,7 @@
                 <span class="c1">#                       zip(itercount(), operations.value, </span>
                 <span class="c1">#                           operatingTimeSums.value, affordable)</span>
                 <span class="c1">#                       if c or not a]</span>
-                <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">                if constrainNonIntegralShifts:</span>
 <span class="sd">                    self.prst(&quot;Rounding shift choice&quot;)</span>
 <span class="sd">                    #TODO make this wrap around the day</span>
@@ -4174,7 +4173,7 @@
 <div class="viewcode-block" id="HybridVectorModel.create_caracteristic_plot"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_caracteristic_plot">[docs]</a>    <span class="k">def</span> <span class="nf">create_caracteristic_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">characteristic</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> 
                                   <span class="n">characteristicName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">valueNames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                   <span class="o">**</span><span class="n">optim_kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a plot of the characteristics of the optimal inspection</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a plot of the characteristics of the optimal inspection</span>
 <span class="sd">        policy.</span>
 <span class="sd">        </span>
 <span class="sd">        The probability that an agent chooses a time while the inspection </span>
@@ -4284,7 +4283,7 @@
             
 <div class="viewcode-block" id="HybridVectorModel.create_budget_plots"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.create_budget_plots">[docs]</a>    <span class="k">def</span> <span class="nf">create_budget_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minBudget</span><span class="p">,</span> <span class="n">maxBudget</span><span class="p">,</span> <span class="n">nSteps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
                             <span class="o">**</span><span class="n">optim_kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates plots of the inspection success and price per inspected </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates plots of the inspection success and price per inspected </span>
 <span class="sd">        agent dependent on the invested budget.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -4349,8 +4348,8 @@
         <span class="n">fileName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span> <span class="o">+</span> <span class="s2">&quot;Price&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">minBudget</span><span class="p">,</span> <span class="n">maxBudget</span><span class="p">])</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fileName</span> <span class="o">+</span> <span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fileName</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-        
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        fig, ax1 = plt.subplots()</span>
 
 <span class="sd">        ax1.set_xlabel(&#39;Budget&#39;)</span>
@@ -4374,7 +4373,7 @@
     <span class="k">def</span> <span class="nf">get_pair_distribution_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dist_property</span><span class="o">=</span><span class="n">nbinom</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">arg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                                       <span class="n">pair</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shiftStart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                       <span class="n">shiftEnd</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes a property of the distribution of the agent flow </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes a property of the distribution of the agent flow </span>
 <span class="sd">        between origin-destination pairs. </span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -4412,7 +4411,7 @@
                 <span class="k">return</span> <span class="n">dist_property</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">qm</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.get_station_observation_prediction"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_station_observation_prediction">[docs]</a>    <span class="k">def</span> <span class="nf">get_station_observation_prediction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predictions</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns observed and predicted agent counts for the inspection</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns observed and predicted agent counts for the inspection</span>
 <span class="sd">        locations for which data are available.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -4451,7 +4450,7 @@
                         <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.get_normalized_observation_prediction"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_normalized_observation_prediction">[docs]</a>    <span class="k">def</span> <span class="nf">get_normalized_observation_prediction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minSampleSize</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the mean observed and predicted agent counts at survey </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the mean observed and predicted agent counts at survey </span>
 <span class="sd">        locations, thereby scaling the values so that they should come from</span>
 <span class="sd">        a normal distribution.</span>
 <span class="sd">        </span>
@@ -4521,7 +4520,7 @@
     
 <div class="viewcode-block" id="HybridVectorModel.get_pair_observation_prediction"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_pair_observation_prediction">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">get_station_observation_prediction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">get_pair_observation_prediction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predictions</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returnes predicted and observed agent counts by origin-destination </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returnes predicted and observed agent counts by origin-destination </span>
 <span class="sd">        pair. </span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -4542,7 +4541,7 @@
     
     
 <div class="viewcode-block" id="HybridVectorModel.check_count_distributions_NB"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.check_count_distributions_NB">[docs]</a>    <span class="k">def</span> <span class="nf">check_count_distributions_NB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minDataSetSize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks whether the observed data may be normally distributed.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether the observed data may be normally distributed.</span>
 <span class="sd">        </span>
 <span class="sd">        Computes p-values for the test with null hypothesis </span>
 <span class="sd">        `H0: Data are negative binomially distributed`. If the p-values are</span>
@@ -4686,7 +4685,7 @@
         
     
 <div class="viewcode-block" id="HybridVectorModel.compare_travel_time_distributions"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_travel_time_distributions">[docs]</a>    <span class="k">def</span> <span class="nf">compare_travel_time_distributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">saveFileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compares agents&#39; travel time distributions at different survey</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compares agents&#39; travel time distributions at different survey</span>
 <span class="sd">        locations.</span>
 <span class="sd">        </span>
 <span class="sd">        Conducts likelihood ratio tests evaluating whether multiple </span>
@@ -4840,7 +4839,7 @@
 <div class="viewcode-block" id="HybridVectorModel.get_PMF_observation_prediction"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.get_PMF_observation_prediction">[docs]</a>    <span class="k">def</span> <span class="nf">get_PMF_observation_prediction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stationID</span><span class="p">,</span> <span class="n">fromID</span><span class="p">,</span> <span class="n">toID</span><span class="p">,</span> <span class="n">xMax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                                        <span class="n">getBestPMF</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                                        <span class="n">getPureObservations</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Determines the observed and predicted probability mass function for </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines the observed and predicted probability mass function for </span>
 <span class="sd">        agent counts between specific origin-destination pairs.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -4942,7 +4941,7 @@
 <div class="viewcode-block" id="HybridVectorModel.compare_distributions"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.compare_distributions">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">get_PMF_observation_prediction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">compare_distributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stationID</span><span class="p">,</span> <span class="n">fromID</span><span class="p">,</span> <span class="n">toID</span><span class="p">,</span> <span class="n">xMax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                               <span class="n">saveFileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compares distributions of agent obervations via Anderson-Darling</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compares distributions of agent obervations via Anderson-Darling</span>
 <span class="sd">        tests and comparative plots of the observed and</span>
 <span class="sd">        predicted cumulitive mass functions.</span>
 <span class="sd">        </span>
@@ -4996,7 +4995,7 @@
 <div class="viewcode-block" id="HybridVectorModel.test_1_1_regression"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.test_1_1_regression">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">get_normalized_observation_prediction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">test_1_1_regression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minSampleSize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">saveFileName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">comparisonFileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Tests whether the model results are biased.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests whether the model results are biased.</span>
 <span class="sd">        </span>
 <span class="sd">        Compares predicted and observed values and tests the null hypothesis</span>
 <span class="sd">        that the model yields unbiased estimates. If we obtain a high p-value</span>
@@ -5092,7 +5091,7 @@
     <span class="k">def</span> <span class="nf">create_quality_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worstLabelNo</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                              <span class="n">saveFileName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                              <span class="n">comparisonFileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates predicted vs. observed plots.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates predicted vs. observed plots.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5282,7 +5281,7 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="HybridVectorModel.save_model_predictions"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.save_model_predictions">[docs]</a>    <span class="k">def</span> <span class="nf">save_model_predictions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes and saves model predictions by origin, destination, </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes and saves model predictions by origin, destination, </span>
 <span class="sd">        origin-destination pair, and inspection location.</span>
 <span class="sd">        </span>
 <span class="sd">        Saves the estimated mean traffic and </span>
@@ -5380,7 +5379,7 @@
 <div class="viewcode-block" id="HybridVectorModel.simulate_count_data"><a class="viewcode-back" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html#hybrid_vector_model.hybrid_vector_model.HybridVectorModel.simulate_count_data">[docs]</a>    <span class="nd">@inherit_doc</span><span class="p">(</span><span class="n">_convert_parameters_static</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">simulate_count_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stationTimes</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parametersConsidered</span><span class="p">,</span>
                             <span class="n">limitToOneObservation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Simulate observation data that would be obtained one one day if the </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate observation data that would be obtained one one day if the </span>
 <span class="sd">        model were True.</span>
 <span class="sd">        </span>
 <span class="sd">        For each boater, start, end, and path are returned.</span>
@@ -5510,7 +5509,7 @@
                                     <span class="n">dayNumber</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                     <span class="n">stationSets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                     <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Simulate observation data that would be obtained if the model were </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate observation data that would be obtained if the model were </span>
 <span class="sd">        True.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -5650,7 +5649,7 @@
             <span class="n">destinationToDestination</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
             <span class="o">**</span><span class="n">restartArgs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructs a new :py:class:`HybridVectorModel`, thereby reusing saved previous results if possible.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructs a new :py:class:`HybridVectorModel`, thereby reusing saved previous results if possible.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -5876,24 +5875,26 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">Packages</a></h3>
-<ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ci_rvm.html">ci_rvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lopaths.html">lopaths</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -5914,7 +5915,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

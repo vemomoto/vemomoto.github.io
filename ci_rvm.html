@@ -4,14 +4,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Package: ci_rvm &#8212; Vector Movement Modelling Tools</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Module: ci_rvm.ci_rvm" href="ci_rvm/ci_rvm.ci_rvm.html" />
@@ -42,40 +42,36 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="package-ci-rvm">
-<h1>Package: ci_rvm<a class="headerlink" href="#package-ci-rvm" title="Permalink to this headline">¶</a></h1>
+  <section id="package-ci-rvm">
+<h1>Package: ci_rvm<a class="headerlink" href="#package-ci-rvm" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ci_rvm/ci_rvm.ci_rvm.html">ci_rvm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ci_rvm/ci_rvm.ci_rvm_mpinv.html">ci_rvm_mpinv</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ci_rvm/ci_rvm.test_ci_rvm.html">test_ci_rvm</a></li>
 </ul>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
 <p>The package can be installed via <a class="reference external" href="https://pypi.org/project/pip/">pip</a>. To install the package, you can use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ci_rvm</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>The most convenient way to use the algorithm is to use the method
 <a class="reference external" href="ci_rvm/ci_rvm.ci_rvm.html#ci_rvm.ci_rvm.find_CI">find_CI</a>. An example is below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example for finding profile likelihood confidence intervals for a</span>
 <span class="c1"># negative binomial model</span>
 
 <span class="c1"># We import some packages for convenience</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>               <span class="c1"># for numerical operations</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>          <span class="c1"># for stats functions</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span> <span class="k">as</span> <span class="n">op</span> <span class="c1"># to maximize the likelihood</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                  <span class="c1"># for numerical operations</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>             <span class="c1"># for stats functions</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span> <span class="k">as</span> <span class="n">op</span>    <span class="c1"># to maximize the likelihood</span>
 
-<span class="kn">import</span> <span class="nn">numdifftools</span> <span class="k">as</span> <span class="nn">nd</span>        <span class="c1"># to compute gradient and Hessian numerically;</span>
-                                 <span class="c1"># the package can be found on pypi.</span>
-                                 <span class="c1"># Another good package for that purpose</span>
-                                 <span class="c1"># (using automatic differentiation) is autograd</span>
-
-<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI</span>       <span class="c1"># to determine confidence intervals</span>
+<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_CI</span>          <span class="c1"># to determine confidence intervals</span>
+<span class="kn">from</span> <span class="nn">ci_rvm</span> <span class="kn">import</span> <span class="n">find_function_CI</span> <span class="c1"># to determine confidence intervals</span>
+                                    <span class="c1"># for functions of parameters</span>
 
 
 <span class="c1"># Define the size of the data set</span>
@@ -113,16 +109,11 @@
 <span class="c1"># parameter space to make them interpretable)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The estimate is: k=</span><span class="si">{:5.3f}</span><span class="s2">, p=</span><span class="si">{:5.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">transform_parameters</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span>
 
-<span class="c1"># Define gradient and Hessian</span>
-<span class="n">jac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
-<span class="n">hess</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
-
-<span class="c1"># Find confidence intervals for all parameters.</span>
-<span class="c1"># Note: For complicated problems, it is worthwile doing this in parallel.</span>
+<span class="c1"># Find 95% confidence intervals for all parameters.</span>
+<span class="c1"># Note: For complicated problems, it is worthwhile to do this in parallel.</span>
 <span class="c1">#       However, then we would need to encapsulate the procedure in a</span>
-<span class="c1">#       method and define the likelihood function, gradient, and Hessian</span>
-<span class="c1">#       on the top level of the module.</span>
-<span class="n">CIs</span> <span class="o">=</span> <span class="n">find_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="p">,</span>
+<span class="c1">#       method and define the likelihood function on the top level of the module.</span>
+<span class="n">CIs</span> <span class="o">=</span> <span class="n">find_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
               <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># the disp argument lets the algorithm print</span>
                          <span class="c1"># status messages.</span>
 
@@ -138,14 +129,38 @@
    <span class="n">original_lower</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">original_upper</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confidence interval for n: [</span><span class="si">{:5.3f}</span><span class="s2">, </span><span class="si">{:5.3f}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
    <span class="n">original_lower</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">original_upper</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># Now we find the confidence interval for a function of the parameters,</span>
+<span class="c1"># such as the sum of them</span>
+<span class="k">def</span> <span class="nf">myFunction</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">transform_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+
+<span class="n">CI</span> <span class="o">=</span> <span class="n">find_function_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">myFunction</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+                       <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">CI</span><span class="p">)</span>
+
+<span class="c1"># Computing the gradient and Hessian is necessary for the algorithm</span>
+<span class="c1"># but can be computationally expensive. If you want to have full</span>
+<span class="c1"># control over this, define them manually:</span>
+
+<span class="c1"># import a package to compute gradient and Hessian numerically</span>
+<span class="kn">import</span> <span class="nn">numdifftools</span> <span class="k">as</span> <span class="nn">nd</span>
+
+<span class="c1"># Define gradient and Hessian</span>
+<span class="n">jac</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Gradient</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
+<span class="n">hess</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">Hessian</span><span class="p">(</span><span class="n">logL</span><span class="p">)</span>
+
+<span class="n">CIs</span> <span class="o">=</span> <span class="n">find_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="o">=</span><span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+              <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># the disp argument lets the algorithm print</span>
+                         <span class="c1"># status messages.</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="scientific-publication">
-<h2>Scientific Publication<a class="headerlink" href="#scientific-publication" title="Permalink to this headline">¶</a></h2>
-<p>The theory behind the algorithm implemented in this package is explained in the paper “<a class="reference external" href="https://arxiv.org/abs/2004.00231">A robust and efficient algorithm to find profile likelihood confidence intervals</a>” (preprint; accepted in “Statistics and Computing”). Please cite this publication if you have used the package in your own research.</p>
-</div>
-</div>
+</section>
+<section id="scientific-publication">
+<h2>Scientific Publication<a class="headerlink" href="#scientific-publication" title="Permalink to this heading">¶</a></h2>
+<p>The theory behind the algorithm implemented in this package is explained in the paper “<a class="reference external" href="https://link.springer.com/article/10.1007/s11222-021-10012-y">A robust and efficient algorithm to find profile likelihood confidence intervals</a>”. Please cite this publication if you have used the package in your own research.</p>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -154,12 +169,12 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Packages</a></h3>
-<ul class="current">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hybrid_vector_model.html">hybrid_vector_model</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ci_rvm</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ci_rvm/ci_rvm.ci_rvm.html">ci_rvm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ci_rvm/ci_rvm.ci_rvm_mpinv.html">ci_rvm_mpinv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ci_rvm/ci_rvm.test_ci_rvm.html">test_ci_rvm</a></li>
 </ul>
 </li>
@@ -167,26 +182,34 @@
 <li class="toctree-l1"><a class="reference internal" href="vemomoto_core.html">vemomoto_core</a></li>
 </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Package: ci_rvm</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#scientific-publication">Scientific Publication</a></li>
-</ul>
-</li>
-</ul>
-
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="hybrid_vector_model/hybrid_vector_model.boater_movement_model.html"
+                          title="previous chapter">Module: hybrid_vector_model.boater_movement_model</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="ci_rvm/ci_rvm.ci_rvm.html"
+                          title="next chapter">Module: ci_rvm.ci_rvm</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ci_rvm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -212,7 +235,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>
