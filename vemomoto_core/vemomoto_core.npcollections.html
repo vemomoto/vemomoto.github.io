@@ -4,311 +4,490 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Package: npcollections &#8212; Vector Movement Modelling Tools</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module: vemomoto_core.npcollections.FixedOrderedIntDict" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html" />
-    <link rel="prev" title="Module: vemomoto_core.concurrent.sharedmem_ext" href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html" title="Module: vemomoto_core.npcollections.FixedOrderedIntDict"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html" title="Module: vemomoto_core.concurrent.sharedmem_ext"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../vemomoto_core.html" accesskey="U">Namespace package: vemomoto_core</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Package: npcollections</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Module: vemomoto_core.concurrent.sharedmem_ext" href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Vector Movement Modelling Tools</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../hybrid_vector_model.html">
+   hybrid_vector_model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html">
+     hybrid_vector_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.route_choice_model.html">
+     route_choice_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.statsutils.html">
+     statsutils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.traveltime_model.html">
+     traveltime_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html">
+     boater_movement_model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ci_rvm.html">
+   ci_rvm
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ci_rvm/ci_rvm.ci_rvm.html">
+     ci_rvm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ci_rvm/ci_rvm.test_ci_rvm.html">
+     test_ci_rvm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lopaths.html">
+   lopaths
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.graph.html">
+     graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.graph_utils.html">
+     graph_utils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.sig_fig_rounding.html">
+     sig_fig_rounding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.test_graph.html">
+     test_graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.test_routes.html">
+     test_routes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../vemomoto_core.html">
+   vemomoto_core
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="vemomoto_core.concurrent.html">
+     concurrent
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="concurrent/vemomoto_core.concurrent.concurrent_futures_ext.html">
+       concurrent_futures_ext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="concurrent/vemomoto_core.concurrent.nicepar.html">
+       nicepar
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html">
+       sharedmem_ext
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     npcollections
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">
+       FixedOrderedIntDict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html">
+       intquickheapdict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html">
+       npext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html">
+       npextc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html">
+       sparse3d
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="vemomoto_core.tools.html">
+     tools
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tools/vemomoto_core.tools.hrprint.html">
+       hrprint
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tools/vemomoto_core.tools.iterext.html">
+       iterext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tools/vemomoto_core.tools.saveobject.html">
+       saveobject
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tools/vemomoto_core.tools.simprofile.html">
+       simprofile
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tools/vemomoto_core.tools.tee.html">
+       tee
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="tools/vemomoto_core.tools.doc_utils.html">
+       doc_utils
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/vemomoto_core/vemomoto_core.npcollections.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Package: npcollections</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <section id="package-npcollections">
-<h1>Package: npcollections<a class="headerlink" href="#package-npcollections" title="Permalink to this heading">¶</a></h1>
+<h1>Package: npcollections<a class="headerlink" href="#package-npcollections" title="Permalink to this headline">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">FixedOrderedIntDict</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict.items"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict.items()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict.key_array"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict.key_array</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict.keys"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict.keys()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict.new"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict.new()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict.value_array"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict.value_array</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html#vemomoto_core.npcollections.FixedOrderedIntDict.FixedOrderedIntDict.values"><code class="docutils literal notranslate"><span class="pre">FixedOrderedIntDict.values()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html">intquickheapdict</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict"><code class="docutils literal notranslate"><span class="pre">intquickheapdict</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict.get"><code class="docutils literal notranslate"><span class="pre">intquickheapdict.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict.getitem"><code class="docutils literal notranslate"><span class="pre">intquickheapdict.getitem()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict.items"><code class="docutils literal notranslate"><span class="pre">intquickheapdict.items()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict.peekitem"><code class="docutils literal notranslate"><span class="pre">intquickheapdict.peekitem()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict.popitem"><code class="docutils literal notranslate"><span class="pre">intquickheapdict.popitem()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html#vemomoto_core.npcollections.intquickheapdict.intquickheapdict.setitem"><code class="docutils literal notranslate"><span class="pre">intquickheapdict.setitem()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html">npext</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray"><code class="docutils literal notranslate"><span class="pre">FlexibleArray</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.add"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.add_fields"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.add_fields()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.cut"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.cut()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.exists"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.exists()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.expand"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.expand()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.extend"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.get_array"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.get_array()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.get_array_indices"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.get_array_indices()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.is_contiguous"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.is_contiguous()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.make_contiguous"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.make_contiguous()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.quick_add"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.quick_add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.quick_add_tuple"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.quick_add_tuple()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArray.remove_fields"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.remove_fields()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.add"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.exists"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.exists()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.extend"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.get"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.getColumnView"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.getColumnView()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.get_item_count"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.get_item_count()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.quick_add"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.quick_add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDict.quick_add_tuple"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.quick_add_tuple()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.add"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.add_fields"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.add_fields()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.expand"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.expand()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.extend"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.new"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.new()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.quick_add"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.quick_add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayDictColumnView.remove_fields"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.remove_fields()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.FlexibleArrayIterator"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayIterator</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.add_alias"><code class="docutils literal notranslate"><span class="pre">add_alias()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.add_fields"><code class="docutils literal notranslate"><span class="pre">add_fields()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.add_names"><code class="docutils literal notranslate"><span class="pre">add_names()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.as_dtype"><code class="docutils literal notranslate"><span class="pre">as_dtype()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.binary_ceil"><code class="docutils literal notranslate"><span class="pre">binary_ceil()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.binary_floor"><code class="docutils literal notranslate"><span class="pre">binary_floor()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.convert_R_0_1"><code class="docutils literal notranslate"><span class="pre">convert_R_0_1()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.convert_R_0_1_reverse"><code class="docutils literal notranslate"><span class="pre">convert_R_0_1_reverse()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.convert_R_pos"><code class="docutils literal notranslate"><span class="pre">convert_R_pos()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.convert_R_pos_reverse"><code class="docutils literal notranslate"><span class="pre">convert_R_pos_reverse()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.csr_list_to_csr_matrix"><code class="docutils literal notranslate"><span class="pre">csr_list_to_csr_matrix()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.csr_matrix_nd"><code class="docutils literal notranslate"><span class="pre">csr_matrix_nd</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.csr_matrix_nd.HighDimAccessError"><code class="docutils literal notranslate"><span class="pre">csr_matrix_nd.HighDimAccessError</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.fields_view"><code class="docutils literal notranslate"><span class="pre">fields_view()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.get_chunks"><code class="docutils literal notranslate"><span class="pre">get_chunks()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.get_precision_binary_digits"><code class="docutils literal notranslate"><span class="pre">get_precision_binary_digits()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.in1d"><code class="docutils literal notranslate"><span class="pre">in1d()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.in1d2d"><code class="docutils literal notranslate"><span class="pre">in1d2d()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.list_to_csr_matrix"><code class="docutils literal notranslate"><span class="pre">list_to_csr_matrix()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.merge_arrays"><code class="docutils literal notranslate"><span class="pre">merge_arrays()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.remove_fields"><code class="docutils literal notranslate"><span class="pre">remove_fields()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsepower"><code class="docutils literal notranslate"><span class="pre">sparsepower()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsepowersum"><code class="docutils literal notranslate"><span class="pre">sparsepowersum()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsepowersum2D"><code class="docutils literal notranslate"><span class="pre">sparsepowersum2D()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparseprod"><code class="docutils literal notranslate"><span class="pre">sparseprod()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsesum"><code class="docutils literal notranslate"><span class="pre">sparsesum()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsesum_chosen"><code class="docutils literal notranslate"><span class="pre">sparsesum_chosen()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsesum_chosen_rows"><code class="docutils literal notranslate"><span class="pre">sparsesum_chosen_rows()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsesum_chosen_rows_fact"><code class="docutils literal notranslate"><span class="pre">sparsesum_chosen_rows_fact()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html#vemomoto_core.npcollections.npext.sparsesum_row_prod"><code class="docutils literal notranslate"><span class="pre">sparsesum_row_prod()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html">npextc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray"><code class="docutils literal notranslate"><span class="pre">FlexibleArray</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.add"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.add()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.add_by_keywords"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.add_by_keywords()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.add_fields"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.add_fields()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.add_tuple"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.add_tuple()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.array"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.array</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.changeIndex"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.changeIndex</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.considered"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.considered</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.cut"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.cut()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.exists"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.exists()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.expand"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.expand()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.extend"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.get_array"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.get_array()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.get_array_indices"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.get_array_indices()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.isRecArray"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.isRecArray</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.isStructured"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.isStructured</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.is_contiguous"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.is_contiguous()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.make_contiguous"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.make_contiguous()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.new"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.new()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.remove_fields"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.remove_fields()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.setitem"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.setitem()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.setitem_by_keywords"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.setitem_by_keywords()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.setitem_flexible"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.setitem_flexible()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.shape"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.shape</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.size"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.size</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArray.space"><code class="docutils literal notranslate"><span class="pre">FlexibleArray.space</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.exists"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.exists()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.extend"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.extend()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.get"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.getColumnView"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.getColumnView()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.indexDict"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.indexDict</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.new"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.new()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.setitem"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.setitem()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.setitem_by_keywords"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.setitem_by_keywords()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDict.setitem_flexible"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDict.setitem_flexible()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDictColumnView"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayDictColumnView.new"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayDictColumnView.new()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.FlexibleArrayIterator"><code class="docutils literal notranslate"><span class="pre">FlexibleArrayIterator</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.add_alias"><code class="docutils literal notranslate"><span class="pre">add_alias()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.add_names"><code class="docutils literal notranslate"><span class="pre">add_names()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.fields_view"><code class="docutils literal notranslate"><span class="pre">fields_view()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.find_next_nonzero2d"><code class="docutils literal notranslate"><span class="pre">find_next_nonzero2d()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.get_chunks"><code class="docutils literal notranslate"><span class="pre">get_chunks()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.get_common_element2d"><code class="docutils literal notranslate"><span class="pre">get_common_element2d()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_prod"><code class="docutils literal notranslate"><span class="pre">pointer_prod()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum"><code class="docutils literal notranslate"><span class="pre">pointer_sum()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum3D"><code class="docutils literal notranslate"><span class="pre">pointer_sum3D()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum3DX"><code class="docutils literal notranslate"><span class="pre">pointer_sum3DX()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum3DY"><code class="docutils literal notranslate"><span class="pre">pointer_sum3DY()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum_chosen"><code class="docutils literal notranslate"><span class="pre">pointer_sum_chosen()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum_chosen_rows"><code class="docutils literal notranslate"><span class="pre">pointer_sum_chosen_rows()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum_chosen_rows_fact"><code class="docutils literal notranslate"><span class="pre">pointer_sum_chosen_rows_fact()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.pointer_sum_row_prod"><code class="docutils literal notranslate"><span class="pre">pointer_sum_row_prod()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.remove_fields"><code class="docutils literal notranslate"><span class="pre">remove_fields()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html#vemomoto_core.npcollections.npextc.unique_tol"><code class="docutils literal notranslate"><span class="pre">unique_tol()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html">sparse3d</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.Sparse3D"><code class="docutils literal notranslate"><span class="pre">Sparse3D</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.Sparse3D.imultiply"><code class="docutils literal notranslate"><span class="pre">Sparse3D.imultiply()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.Sparse3D.multiply"><code class="docutils literal notranslate"><span class="pre">Sparse3D.multiply()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.Sparse3D.sum"><code class="docutils literal notranslate"><span class="pre">Sparse3D.sum()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.Sparse3D.toarray"><code class="docutils literal notranslate"><span class="pre">Sparse3D.toarray()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.test1"><code class="docutils literal notranslate"><span class="pre">test1()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.test2"><code class="docutils literal notranslate"><span class="pre">test2()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html#vemomoto_core.npcollections.sparse3d.test3"><code class="docutils literal notranslate"><span class="pre">test3()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">FixedOrderedIntDict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html">intquickheapdict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html">npext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html">npextc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html">sparse3d</a></li>
 </ul>
 </div>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Module: vemomoto_core.concurrent.sharedmem_ext</p>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../hybrid_vector_model.html">hybrid_vector_model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ci_rvm.html">ci_rvm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lopaths.html">lopaths</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../vemomoto_core.html">vemomoto_core</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="vemomoto_core.concurrent.html">concurrent</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">npcollections</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">FixedOrderedIntDict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.intquickheapdict.html">intquickheapdict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npext.html">npext</a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.npextc.html">npextc</a></li>
-<li class="toctree-l3"><a class="reference internal" href="npcollections/vemomoto_core.npcollections.sparse3d.html">sparse3d</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="vemomoto_core.tools.html">tools</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html"
-                          title="previous chapter">Module: vemomoto_core.concurrent.sharedmem_ext</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html"
-                          title="next chapter">Module: vemomoto_core.npcollections.FixedOrderedIntDict</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/vemomoto_core/vemomoto_core.npcollections.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
+    </a>
+    <a class='right-next' id="next-link" href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module: vemomoto_core.npcollections.FixedOrderedIntDict</p>
     </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+            </footer>
         </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Samuel M. Fischer<br/>
+  
+      &copy; Copyright 2020, Samuel M. Fischer.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
       </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html" title="Module: vemomoto_core.npcollections.FixedOrderedIntDict"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="concurrent/vemomoto_core.concurrent.sharedmem_ext.html" title="Module: vemomoto_core.concurrent.sharedmem_ext"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Package: npcollections</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
-    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
   </body>
 </html>

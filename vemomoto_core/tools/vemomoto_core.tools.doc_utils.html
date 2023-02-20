@@ -4,49 +4,499 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Module: vemomoto_core.tools.doc_utils &#8212; Vector Movement Modelling Tools</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Module: vemomoto_core.tools.tee" href="vemomoto_core.tools.tee.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="vemomoto_core.tools.tee.html" title="Module: vemomoto_core.tools.tee"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../vemomoto_core.tools.html" accesskey="U">Package: vemomoto_core.vemomoto_core.tools</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Module: vemomoto_core.tools.doc_utils</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Module: vemomoto_core.tools.tee" href="vemomoto_core.tools.tee.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Vector Movement Modelling Tools</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../hybrid_vector_model.html">
+   hybrid_vector_model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html">
+     hybrid_vector_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html">
+     route_choice_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.statsutils.html">
+     statsutils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.traveltime_model.html">
+     traveltime_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html">
+     boater_movement_model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ci_rvm.html">
+   ci_rvm
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ci_rvm/ci_rvm.ci_rvm.html">
+     ci_rvm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ci_rvm/ci_rvm.test_ci_rvm.html">
+     test_ci_rvm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lopaths.html">
+   lopaths
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.graph.html">
+     graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.graph_utils.html">
+     graph_utils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.sig_fig_rounding.html">
+     sig_fig_rounding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.test_graph.html">
+     test_graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.test_routes.html">
+     test_routes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../vemomoto_core.html">
+   vemomoto_core
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core.concurrent.html">
+     concurrent
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../concurrent/vemomoto_core.concurrent.concurrent_futures_ext.html">
+       concurrent_futures_ext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../concurrent/vemomoto_core.concurrent.nicepar.html">
+       nicepar
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../concurrent/vemomoto_core.concurrent.sharedmem_ext.html">
+       sharedmem_ext
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core.npcollections.html">
+     npcollections
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">
+       FixedOrderedIntDict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.intquickheapdict.html">
+       intquickheapdict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.npext.html">
+       npext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.npextc.html">
+       npextc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.sparse3d.html">
+       sparse3d
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../vemomoto_core.tools.html">
+     tools
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.tools.hrprint.html">
+       hrprint
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.tools.iterext.html">
+       iterext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.tools.saveobject.html">
+       saveobject
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.tools.simprofile.html">
+       simprofile
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.tools.tee.html">
+       tee
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       doc_utils
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/vemomoto_core/tools/vemomoto_core.tools.doc_utils.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-inheriting-documentation-from-the-super-class">
+     Example 1: Inheriting documentation from the super class
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-inheriting-documentation-from-an-other-method">
+     Example 2: Inheriting documentation from an other method
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Module: vemomoto_core.tools.doc_utils</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-inheriting-documentation-from-the-super-class">
+     Example 1: Inheriting documentation from the super class
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-inheriting-documentation-from-an-other-method">
+     Example 2: Inheriting documentation from an other method
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <section id="module-vemomoto_core.tools.doc_utils">
-<span id="module-vemomoto-core-tools-doc-utils"></span><h1>Module: vemomoto_core.tools.doc_utils<a class="headerlink" href="#module-vemomoto_core.tools.doc_utils" title="Permalink to this heading">¶</a></h1>
+<span id="module-vemomoto-core-tools-doc-utils"></span><h1>Module: vemomoto_core.tools.doc_utils<a class="headerlink" href="#module-vemomoto_core.tools.doc_utils" title="Permalink to this headline">#</a></h1>
 <p>This module provides decorators and a superclass that allow methods to
 “inherit” documentation from other given methods or similar methods from
 super classes when a documentation is generated via Shinx.</p>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
 <p>If documentation shall be ‘inherited’ from super classes, the base class must
 inherit from the meta-class <a class="reference internal" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="vemomoto_core.tools.doc_utils.DocMetaSuperclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocMetaSuperclass</span></code></a>.
 Otherwise, the source of the documentation
@@ -93,7 +543,7 @@ methods (via decorators). The two can be combined.</p></li>
 </ul>
 </div></blockquote>
 <section id="example-1-inheriting-documentation-from-the-super-class">
-<h3>Example 1: Inheriting documentation from the super class<a class="headerlink" href="#example-1-inheriting-documentation-from-the-super-class" title="Permalink to this heading">¶</a></h3>
+<h3>Example 1: Inheriting documentation from the super class<a class="headerlink" href="#example-1-inheriting-documentation-from-the-super-class" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vemomoto_core.tools.doc_utils</span> <span class="kn">import</span> <span class="n">DocMetaSuperclass</span><span class="p">,</span> <span class="n">inherit_doc</span>
 
 <span class="k">class</span> <span class="nc">BaseClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">DocMetaSuperclass</span><span class="p">)</span>
@@ -156,7 +606,7 @@ methods (via decorators). The two can be combined.</p></li>
 </div>
 </section>
 <section id="example-2-inheriting-documentation-from-an-other-method">
-<h3>Example 2: Inheriting documentation from an other method<a class="headerlink" href="#example-2-inheriting-documentation-from-an-other-method" title="Permalink to this heading">¶</a></h3>
+<h3>Example 2: Inheriting documentation from an other method<a class="headerlink" href="#example-2-inheriting-documentation-from-an-other-method" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vemomoto_core.tools.doc_utils</span> <span class="kn">import</span> <span class="n">inherit_doc</span>
 
 <span class="k">def</span> <span class="nf">method1</span><span class="p">(</span><span class="n">arg1</span><span class="p">):</span>
@@ -203,10 +653,12 @@ methods (via decorators). The two can be combined.</p></li>
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-</section>
 <p><strong>Classes:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="vemomoto_core.tools.doc_utils.DocMetaSuperclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DocMetaSuperclass</span></code></a>(classname, bases, cls_dict)</p></td>
 <td><p>Meta-class providing the opportunity to inherit documentation from super classes.</p></td>
@@ -214,7 +666,11 @@ methods (via decorators). The two can be combined.</p></li>
 </tbody>
 </table>
 <p><strong>Functions:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="vemomoto_core.tools.doc_utils.add_parent_doc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_parent_doc</span></code></a>(child, parent)</p></td>
 <td><p></p></td>
@@ -259,7 +715,7 @@ methods (via decorators). The two can be combined.</p></li>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.DocMetaSuperclass">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DocMetaSuperclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#DocMetaSuperclass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DocMetaSuperclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#DocMetaSuperclass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.DocMetaSuperclass" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
 <p>Meta-class providing the opportunity to inherit documentation
 from super classes.</p>
@@ -267,59 +723,59 @@ from super classes.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.add_parent_doc">
-<span class="sig-name descname"><span class="pre">add_parent_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#add_parent_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_parent_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#add_parent_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.add_parent_doc" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.adjust_indent">
-<span class="sig-name descname"><span class="pre">adjust_indent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#adjust_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.adjust_indent" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">adjust_indent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">difference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#adjust_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.adjust_indent" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.get_indent">
-<span class="sig-name descname"><span class="pre">get_indent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_indent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.get_indent_multi">
-<span class="sig-name descname"><span class="pre">get_indent_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent_multi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent_multi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_indent_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#get_indent_multi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.get_indent_multi" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.inherit_doc">
-<span class="sig-name descname"><span class="pre">inherit_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">fromfuncs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#inherit_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.inherit_doc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">inherit_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">fromfuncs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#inherit_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.inherit_doc" title="Permalink to this definition">#</a></dt>
 <dd><p>Decorator: Copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever
 the documentation of the decorated method is not given.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.merge">
-<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent_diff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joinstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.merge" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent_diff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joinstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.merge" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.should_append">
-<span class="sig-name descname"><span class="pre">should_append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_append" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">should_append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_append" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.should_ignore">
-<span class="sig-name descname"><span class="pre">should_ignore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_ignore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_ignore" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">should_ignore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_ignore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_ignore" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.should_insert">
-<span class="sig-name descname"><span class="pre">should_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_insert" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">should_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#should_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.should_insert" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.split_variables_numpy">
-<span class="sig-name descname"><span class="pre">split_variables_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripPrivate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#split_variables_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.split_variables_numpy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">split_variables_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripPrivate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#split_variables_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.split_variables_numpy" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.staticmethod_inherit_doc">
-<span class="sig-name descname"><span class="pre">staticmethod_inherit_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">fromfuncs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#staticmethod_inherit_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">staticmethod_inherit_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">fromfuncs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#staticmethod_inherit_doc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.staticmethod_inherit_doc" title="Permalink to this definition">#</a></dt>
 <dd><p>Decorator: Declare the decorated method as a static method and
 copy elements from the docstrings of the <code class="docutils literal notranslate"><span class="pre">fromfuncs</span></code> wherever
 the documentation of the decorated method is not given.</p>
@@ -327,93 +783,56 @@ the documentation of the decorated method is not given.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.strip_lines">
-<span class="sig-name descname"><span class="pre">strip_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_lines" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">strip_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_lines" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.tools.doc_utils.strip_private">
-<span class="sig-name descname"><span class="pre">strip_private</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_private"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_private" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">strip_private</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/tools/doc_utils.html#strip_private"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.tools.doc_utils.strip_private" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
+</section>
+</section>
 
 
-            <div class="clearer"></div>
-          </div>
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="vemomoto_core.tools.tee.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Module: vemomoto_core.tools.tee</p>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../../index.html">Table of Contents</a></h3>
-    <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../hybrid_vector_model.html">hybrid_vector_model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ci_rvm.html">ci_rvm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lopaths.html">lopaths</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../vemomoto_core.html">vemomoto_core</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../vemomoto_core.concurrent.html">concurrent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../vemomoto_core.npcollections.html">npcollections</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../vemomoto_core.tools.html">tools</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.tools.hrprint.html">hrprint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.tools.iterext.html">iterext</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.tools.saveobject.html">saveobject</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.tools.simprofile.html">simprofile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.tools.tee.html">tee</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">doc_utils</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="vemomoto_core.tools.tee.html"
-                          title="previous chapter">Module: vemomoto_core.tools.tee</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/vemomoto_core/tools/vemomoto_core.tools.doc_utils.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+            </footer>
         </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Samuel M. Fischer<br/>
+  
+      &copy; Copyright 2020, Samuel M. Fischer.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
       </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="vemomoto_core.tools.tee.html" title="Module: vemomoto_core.tools.tee"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../vemomoto_core.tools.html" >Package: vemomoto_core.vemomoto_core.tools</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Module: vemomoto_core.tools.doc_utils</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
-    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
   </body>
 </html>

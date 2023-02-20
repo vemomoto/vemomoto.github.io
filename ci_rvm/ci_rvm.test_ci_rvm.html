@@ -4,51 +4,442 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Module: ci_rvm.test_ci_rvm &#8212; Vector Movement Modelling Tools</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Package: lopaths" href="../lopaths.html" />
-    <link rel="prev" title="Module: ci_rvm.ci_rvm" href="ci_rvm.ci_rvm.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="../lopaths.html" title="Package: lopaths"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="ci_rvm.ci_rvm.html" title="Module: ci_rvm.ci_rvm"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../ci_rvm.html" accesskey="U">Package: ci_rvm</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Module: ci_rvm.test_ci_rvm</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Module: ci_rvm.ci_rvm" href="ci_rvm.ci_rvm.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Vector Movement Modelling Tools</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../hybrid_vector_model.html">
+   hybrid_vector_model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html">
+     hybrid_vector_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.route_choice_model.html">
+     route_choice_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.statsutils.html">
+     statsutils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.traveltime_model.html">
+     traveltime_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html">
+     boater_movement_model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../ci_rvm.html">
+   ci_rvm
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ci_rvm.ci_rvm.html">
+     ci_rvm
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     test_ci_rvm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lopaths.html">
+   lopaths
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.graph.html">
+     graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.graph_utils.html">
+     graph_utils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.sig_fig_rounding.html">
+     sig_fig_rounding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.test_graph.html">
+     test_graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lopaths/lopaths.test_routes.html">
+     test_routes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../vemomoto_core.html">
+   vemomoto_core
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core/vemomoto_core.concurrent.html">
+     concurrent
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/concurrent/vemomoto_core.concurrent.concurrent_futures_ext.html">
+       concurrent_futures_ext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/concurrent/vemomoto_core.concurrent.nicepar.html">
+       nicepar
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/concurrent/vemomoto_core.concurrent.sharedmem_ext.html">
+       sharedmem_ext
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core/vemomoto_core.npcollections.html">
+     npcollections
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">
+       FixedOrderedIntDict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.intquickheapdict.html">
+       intquickheapdict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.npext.html">
+       npext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.npextc.html">
+       npextc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/npcollections/vemomoto_core.npcollections.sparse3d.html">
+       sparse3d
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core/vemomoto_core.tools.html">
+     tools
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.hrprint.html">
+       hrprint
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.iterext.html">
+       iterext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.saveobject.html">
+       saveobject
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.simprofile.html">
+       simprofile
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.tee.html">
+       tee
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../vemomoto_core/tools/vemomoto_core.tools.doc_utils.html">
+       doc_utils
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/ci_rvm/ci_rvm.test_ci_rvm.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Module: ci_rvm.test_ci_rvm</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <section id="module-ci_rvm.test_ci_rvm">
-<span id="module-ci-rvm-test-ci-rvm"></span><h1>Module: ci_rvm.test_ci_rvm<a class="headerlink" href="#module-ci_rvm.test_ci_rvm" title="Permalink to this heading">¶</a></h1>
+<span id="module-ci-rvm-test-ci-rvm"></span><h1>Module: ci_rvm.test_ci_rvm<a class="headerlink" href="#module-ci_rvm.test_ci_rvm" title="Permalink to this headline">#</a></h1>
 <p>Created on 18.09.2019</p>
 <p>&#64;author: Samuel</p>
 <p><strong>Classes:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTester</span></code></a>()</p></td>
 <td><p></p></td>
@@ -68,7 +459,11 @@
 </tbody>
 </table>
 <p><strong>Functions:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.benchmark" title="ci_rvm.test_ci_rvm.benchmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">benchmark</span></code></a>(methods[, nsim])</p></td>
 <td><p></p></td>
@@ -143,10 +538,14 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.BaseTester">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseTester</span></span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseTester</span></span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><strong>Attributes:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester.MLE" title="ci_rvm.test_ci_rvm.BaseTester.MLE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLE</span></code></a></p></td>
 <td><p></p></td>
@@ -157,7 +556,11 @@
 </tbody>
 </table>
 <p><strong>Methods:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester.convertPos" title="ci_rvm.test_ci_rvm.BaseTester.convertPos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertPos</span></code></a>(x)</p></td>
 <td><p></p></td>
@@ -172,37 +575,41 @@
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.BaseTester.MLE">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MLE</span></span><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.MLE" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MLE</span></span><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.MLE" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.BaseTester.convertPos">
-<span class="sig-name descname"><span class="pre">convertPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester.convertPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.convertPos" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester.convertPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.convertPos" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.BaseTester.convertPosInv">
-<span class="sig-name descname"><span class="pre">convertPosInv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester.convertPosInv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.convertPosInv" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertPosInv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester.convertPosInv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.convertPosInv" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.BaseTester.funs">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">funs</span></span><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.funs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">funs</span></span><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.funs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.BaseTester.get_funs">
-<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.get_funs" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#BaseTester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.BaseTester.get_funs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DynamicalSystemTester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sim_args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">sim_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTester</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DynamicalSystemTester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sim_args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">sim_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ci_rvm.test_ci_rvm.BaseTester</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.f_constr" title="ci_rvm.test_ci_rvm.DynamicalSystemTester.f_constr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_constr</span></code></a>(f, t, y, dim, fact, target, tol)</p></td>
 <td><p></p></td>
@@ -229,47 +636,51 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.f_constr">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">f_constr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fact</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.f_constr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.f_constr" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">f_constr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fact</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.f_constr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.f_constr" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.f_prime">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">f_prime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.f_prime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.f_prime" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">f_prime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.f_prime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.f_prime" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.get_funs">
-<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.get_funs" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.get_funs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.get_funs_constr">
-<span class="sig-name descname"><span class="pre">get_funs_constr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.get_funs_constr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.get_funs_constr" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_funs_constr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.get_funs_constr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.get_funs_constr" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.get_rss">
-<span class="sig-name descname"><span class="pre">get_rss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.get_rss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.get_rss" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_rss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.get_rss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.get_rss" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.rss_dyn">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rss_dyn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.rss_dyn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.rss_dyn" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rss_dyn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.rss_dyn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.rss_dyn" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.DynamicalSystemTester.simulate">
-<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.simulate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tEnd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#DynamicalSystemTester.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.DynamicalSystemTester.simulate" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.H14Tester">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H14Tester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fixed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[25]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#H14Tester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.H14Tester" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTester</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H14Tester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fixed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[25]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#H14Tester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.H14Tester" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ci_rvm.test_ci_rvm.BaseTester</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.H14Tester.get_funs" title="ci_rvm.test_ci_rvm.H14Tester.get_funs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_funs</span></code></a>()</p></td>
 <td><p></p></td>
@@ -278,17 +689,21 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.H14Tester.get_funs">
-<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#H14Tester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.H14Tester.get_funs" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#H14Tester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.H14Tester.get_funs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.LogRegressTester">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LogRegressTester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sim_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">sim_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTester</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LogRegressTester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sim_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">sim_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ci_rvm.test_ci_rvm.BaseTester" title="ci_rvm.test_ci_rvm.BaseTester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ci_rvm.test_ci_rvm.BaseTester</span></code></a></p>
 <p><strong>Methods:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.test_ci_rvm.LogRegressTester.get_funs" title="ci_rvm.test_ci_rvm.LogRegressTester.get_funs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_funs</span></code></a>()</p></td>
 <td><p></p></td>
@@ -303,219 +718,189 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.LogRegressTester.get_funs">
-<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester.get_funs" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_funs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester.get_funs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester.get_funs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.LogRegressTester.simulate">
-<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testDataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">powers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'3'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester.simulate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testDataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">powers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'3'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester.simulate" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.LogRegressTester.simulate_">
-<span class="sig-name descname"><span class="pre">simulate_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">powers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester.simulate_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester.simulate_" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">simulate_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">powers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#LogRegressTester.simulate_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.LogRegressTester.simulate_" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.TrackFun">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TrackFun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#TrackFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.TrackFun" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TrackFun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#TrackFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.TrackFun" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.benchmark">
-<span class="sig-name descname"><span class="pre">benchmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">simkwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#benchmark"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.benchmark" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">benchmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">simkwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#benchmark"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.benchmark" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.benchmark_">
-<span class="sig-name descname"><span class="pre">benchmark_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simkwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#benchmark_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.benchmark_" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">benchmark_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simkwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#benchmark_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.benchmark_" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.binsearch">
-<span class="sig-name descname"><span class="pre">binsearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkNo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#binsearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.binsearch" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">binsearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkNo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#binsearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.binsearch" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.bisection">
-<span class="sig-name descname"><span class="pre">bisection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constrainedMin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#bisection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.bisection" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">bisection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constrainedMin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#bisection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.bisection" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.constrained_max">
-<span class="sig-name descname"><span class="pre">constrained_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#constrained_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.constrained_max" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">constrained_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#constrained_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.constrained_max" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.convertPos">
-<span class="sig-name descname"><span class="pre">convertPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPos" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPos" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.convertPosInv">
-<span class="sig-name descname"><span class="pre">convertPosInv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPosInv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPosInv" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertPosInv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPosInv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPosInv" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.convertPosInv_">
-<span class="sig-name descname"><span class="pre">convertPosInv_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPosInv_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPosInv_" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertPosInv_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPosInv_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPosInv_" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.convertPos_">
-<span class="sig-name descname"><span class="pre">convertPos_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPos_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPos_" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">convertPos_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#convertPos_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.convertPos_" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.create_plot">
-<span class="sig-name descname"><span class="pre">create_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">considered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['RVM']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#create_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.create_plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">considered</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">methods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['RVM']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#create_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.create_plot" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.find_CI">
-<span class="sig-name descname"><span class="pre">find_CI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RVM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_track</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#find_CI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.find_CI" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_CI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RVM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_track</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#find_CI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.find_CI" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.find_CIs">
-<span class="sig-name descname"><span class="pre">find_CIs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RVM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printCI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiprocessing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#find_CIs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.find_CIs" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_CIs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RVM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printCI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiprocessing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#find_CIs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.find_CIs" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.fixedFun">
-<span class="sig-name descname"><span class="pre">fixedFun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origArg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#fixedFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.fixedFun" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fixedFun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origArg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#fixedFun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.fixedFun" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.gridsearch">
-<span class="sig-name descname"><span class="pre">gridsearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#gridsearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.gridsearch" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">gridsearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#gridsearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.gridsearch" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.mixed_min">
-<span class="sig-name descname"><span class="pre">mixed_min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#mixed_min"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.mixed_min" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">mixed_min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#mixed_min"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.mixed_min" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.root">
-<span class="sig-name descname"><span class="pre">root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'df-sane'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.root" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'df-sane'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.root" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.test_H14">
-<span class="sig-name descname"><span class="pre">test_H14</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_H14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_H14" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_H14</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_H14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_H14" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.test_LogRegress">
-<span class="sig-name descname"><span class="pre">test_LogRegress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_LogRegress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_LogRegress" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_LogRegress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_LogRegress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_LogRegress" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.test_LogRegress_pred">
-<span class="sig-name descname"><span class="pre">test_LogRegress_pred</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_LogRegress_pred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_LogRegress_pred" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_LogRegress_pred</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_LogRegress_pred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_LogRegress_pred" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.test_dynamical_system">
-<span class="sig-name descname"><span class="pre">test_dynamical_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_dynamical_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_dynamical_system" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_dynamical_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_dynamical_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_dynamical_system" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.test_find_CI">
-<span class="sig-name descname"><span class="pre">test_find_CI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_find_CI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_find_CI" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_find_CI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#test_find_CI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.test_find_CI" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.venzon_moolgavkar">
-<span class="sig-name descname"><span class="pre">venzon_moolgavkar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#venzon_moolgavkar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.venzon_moolgavkar" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">venzon_moolgavkar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#venzon_moolgavkar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.venzon_moolgavkar" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.test_ci_rvm.wald">
-<span class="sig-name descname"><span class="pre">wald</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#wald"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.wald" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">wald</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/test_ci_rvm.html#wald"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.test_ci_rvm.wald" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ci_rvm.ci_rvm.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Module: ci_rvm.ci_rvm</p>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../hybrid_vector_model.html">hybrid_vector_model</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../ci_rvm.html">ci_rvm</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ci_rvm.ci_rvm.html">ci_rvm</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">test_ci_rvm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../lopaths.html">lopaths</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vemomoto_core.html">vemomoto_core</a></li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="ci_rvm.ci_rvm.html"
-                          title="previous chapter">Module: ci_rvm.ci_rvm</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="../lopaths.html"
-                          title="next chapter">Package: lopaths</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/ci_rvm/ci_rvm.test_ci_rvm.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
+    </a>
+    <a class='right-next' id="next-link" href="../lopaths.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Package: lopaths</p>
     </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+            </footer>
         </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Samuel M. Fischer<br/>
+  
+      &copy; Copyright 2020, Samuel M. Fischer.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
       </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="../lopaths.html" title="Package: lopaths"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="ci_rvm.ci_rvm.html" title="Module: ci_rvm.ci_rvm"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../ci_rvm.html" >Package: ci_rvm</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Module: ci_rvm.test_ci_rvm</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
-    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
   </body>
 </html>

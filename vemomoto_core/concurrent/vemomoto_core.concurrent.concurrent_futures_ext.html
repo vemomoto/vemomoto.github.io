@@ -4,52 +4,442 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Module: vemomoto_core.concurrent.concurrent_futures_ext &#8212; Vector Movement Modelling Tools</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Module: vemomoto_core.concurrent.nicepar" href="vemomoto_core.concurrent.nicepar.html" />
-    <link rel="prev" title="Package: vemomoto_core.concurrent" href="../vemomoto_core.concurrent.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="vemomoto_core.concurrent.nicepar.html" title="Module: vemomoto_core.concurrent.nicepar"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../vemomoto_core.concurrent.html" title="Package: vemomoto_core.concurrent"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../vemomoto_core.concurrent.html" accesskey="U">Package: vemomoto_core.concurrent</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Module: vemomoto_core.concurrent.concurrent_futures_ext</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Package: vemomoto_core.concurrent" href="../vemomoto_core.concurrent.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Vector Movement Modelling Tools</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../hybrid_vector_model.html">
+   hybrid_vector_model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.hybrid_vector_model.html">
+     hybrid_vector_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.route_choice_model.html">
+     route_choice_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.statsutils.html">
+     statsutils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.traveltime_model.html">
+     traveltime_model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../hybrid_vector_model/hybrid_vector_model.boater_movement_model.html">
+     boater_movement_model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ci_rvm.html">
+   ci_rvm
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ci_rvm/ci_rvm.ci_rvm.html">
+     ci_rvm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ci_rvm/ci_rvm.test_ci_rvm.html">
+     test_ci_rvm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lopaths.html">
+   lopaths
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.graph.html">
+     graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.graph_utils.html">
+     graph_utils
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.sig_fig_rounding.html">
+     sig_fig_rounding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.test_graph.html">
+     test_graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lopaths/lopaths.test_routes.html">
+     test_routes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../vemomoto_core.html">
+   vemomoto_core
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../vemomoto_core.concurrent.html">
+     concurrent
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       concurrent_futures_ext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.concurrent.nicepar.html">
+       nicepar
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vemomoto_core.concurrent.sharedmem_ext.html">
+       sharedmem_ext
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core.npcollections.html">
+     npcollections
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.FixedOrderedIntDict.html">
+       FixedOrderedIntDict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.intquickheapdict.html">
+       intquickheapdict
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.npext.html">
+       npext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.npextc.html">
+       npextc
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../npcollections/vemomoto_core.npcollections.sparse3d.html">
+       sparse3d
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../vemomoto_core.tools.html">
+     tools
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tools/vemomoto_core.tools.hrprint.html">
+       hrprint
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tools/vemomoto_core.tools.iterext.html">
+       iterext
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tools/vemomoto_core.tools.saveobject.html">
+       saveobject
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tools/vemomoto_core.tools.simprofile.html">
+       simprofile
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tools/vemomoto_core.tools.tee.html">
+       tee
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../tools/vemomoto_core.tools.doc_utils.html">
+       doc_utils
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/vemomoto_core/concurrent/vemomoto_core.concurrent.concurrent_futures_ext.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Module: vemomoto_core.concurrent.concurrent_futures_ext</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <section id="module-vemomoto_core.concurrent.concurrent_futures_ext">
-<span id="module-vemomoto-core-concurrent-concurrent-futures-ext"></span><h1>Module: vemomoto_core.concurrent.concurrent_futures_ext<a class="headerlink" href="#module-vemomoto_core.concurrent.concurrent_futures_ext" title="Permalink to this heading">¶</a></h1>
+<span id="module-vemomoto-core-concurrent-concurrent-futures-ext"></span><h1>Module: vemomoto_core.concurrent.concurrent_futures_ext<a class="headerlink" href="#module-vemomoto_core.concurrent.concurrent_futures_ext" title="Permalink to this headline">#</a></h1>
 <p>Created on 03.01.2017</p>
 <p>&#64;author: Samuel</p>
 <p><strong>Classes:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor" title="vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProcessPoolExecutor</span></code></a>([max_workers, ...])</p></td>
 <td><p>classdocs</p></td>
@@ -57,7 +447,11 @@
 </tbody>
 </table>
 <p><strong>Functions:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.concurrent.concurrent_futures_ext.get_cpu_chunk_counts" title="vemomoto_core.concurrent.concurrent_futures_ext.get_cpu_chunk_counts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cpu_chunk_counts</span></code></a>(task_length[, ...])</p></td>
 <td><p></p></td>
@@ -66,11 +460,15 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ProcessPoolExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">const_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_np_arrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#ProcessPoolExecutor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessPoolExecutor</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ProcessPoolExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">const_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_np_arrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#ProcessPoolExecutor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">concurrent.futures.process.ProcessPoolExecutor</span></code></p>
 <p>classdocs</p>
 <p><strong>Methods:</strong></p>
-<table class="autosummary longtable docutils align-default">
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.get_shared_arrays" title="vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.get_shared_arrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_shared_arrays</span></code></a>()</p></td>
 <td><p></p></td>
@@ -82,15 +480,15 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.get_shared_arrays">
-<span class="sig-name descname"><span class="pre">get_shared_arrays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#ProcessPoolExecutor.get_shared_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.get_shared_arrays" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_shared_arrays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#ProcessPoolExecutor.get_shared_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.get_shared_arrays" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.map">
-<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">iterables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasklength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunknumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chunksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#ProcessPoolExecutor.map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.map" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">iterables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasklength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunknumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chunksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#ProcessPoolExecutor.map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.ProcessPoolExecutor.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns an iterator equivalent to map(fn, iter).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fn</strong> – A callable that will take as many arguments as there are
 passed iterables.</p></li>
@@ -104,14 +502,14 @@ and the chunksize will be adjusted approprietly, if they are not
 explicietely given.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>map(func, <a href="#id1"><span class="problematic" id="id2">*</span></a>iterables) but the calls may
 be evaluated out-of-order.</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>An iterator equivalent to</p>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>TimeoutError</strong> – If the entire result iterator could not be generated
     before the given timeout.</p></li>
@@ -125,93 +523,56 @@ be evaluated out-of-order.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vemomoto_core.concurrent.concurrent_futures_ext.get_cpu_chunk_counts">
-<span class="sig-name descname"><span class="pre">get_cpu_chunk_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#get_cpu_chunk_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.get_cpu_chunk_counts" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_cpu_chunk_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/vemomoto_core/concurrent/concurrent_futures_ext.html#get_cpu_chunk_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vemomoto_core.concurrent.concurrent_futures_ext.get_cpu_chunk_counts" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../vemomoto_core.concurrent.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Package: vemomoto_core.concurrent</p>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../../index.html">Table of Contents</a></h3>
-    <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../hybrid_vector_model.html">hybrid_vector_model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ci_rvm.html">ci_rvm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lopaths.html">lopaths</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../vemomoto_core.html">vemomoto_core</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../vemomoto_core.concurrent.html">concurrent</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">concurrent_futures_ext</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.concurrent.nicepar.html">nicepar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vemomoto_core.concurrent.sharedmem_ext.html">sharedmem_ext</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../vemomoto_core.npcollections.html">npcollections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../vemomoto_core.tools.html">tools</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="../vemomoto_core.concurrent.html"
-                          title="previous chapter">Package: vemomoto_core.concurrent</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="vemomoto_core.concurrent.nicepar.html"
-                          title="next chapter">Module: vemomoto_core.concurrent.nicepar</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/vemomoto_core/concurrent/vemomoto_core.concurrent.concurrent_futures_ext.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
+    </a>
+    <a class='right-next' id="next-link" href="vemomoto_core.concurrent.nicepar.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module: vemomoto_core.concurrent.nicepar</p>
     </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+            </footer>
         </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Samuel M. Fischer<br/>
+  
+      &copy; Copyright 2020, Samuel M. Fischer.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
       </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="vemomoto_core.concurrent.nicepar.html" title="Module: vemomoto_core.concurrent.nicepar"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../vemomoto_core.concurrent.html" title="Package: vemomoto_core.concurrent"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">VeMoMoTo</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../vemomoto_core.html" >Namespace package: vemomoto_core</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../vemomoto_core.concurrent.html" >Package: vemomoto_core.concurrent</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Module: vemomoto_core.concurrent.concurrent_futures_ext</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Samuel M. Fischer.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
-    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
   </body>
 </html>
