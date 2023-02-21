@@ -463,13 +463,22 @@ title="Print to PDF"
 <tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_CI_bound</span></code></a>(x0, fun, index, direction[, ...])</p></td>
 <td><p>Finds an end point of a profile likelihood confidence interval.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_ci" title="ci_rvm.ci_rvm.find_ci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_ci</span></code></a>(x0, fun[, jac, hess, indices, ...])</p></td>
+<td><p>Returns the profile likelihood confidence interval(s) for one or multiple parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_ci_bound" title="ci_rvm.ci_rvm.find_ci_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_ci_bound</span></code></a>(x0, fun, index, direction[, ...])</p></td>
+<td><p>Finds an end point of a profile likelihood confidence interval.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_function_CI" title="ci_rvm.ci_rvm.find_function_CI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_function_CI</span></code></a>(x0, function, logL[, ...])</p></td>
 <td><p>Returns the profile likelihood confidence interval(s) for a function of parameters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.get_independent_row_indices" title="ci_rvm.ci_rvm.get_independent_row_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_independent_row_indices</span></code></a>(M[, jac, tol])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.find_function_ci" title="ci_rvm.ci_rvm.find_function_ci"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_function_ci</span></code></a>(x0, function, logL[, ...])</p></td>
+<td><p>Returns the profile likelihood confidence interval(s) for a function of parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.get_independent_row_indices" title="ci_rvm.ci_rvm.get_independent_row_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_independent_row_indices</span></code></a>(M[, jac, tol])</p></td>
 <td><p>Returns a boolean array arr with arr[i]==True if and only if the i-th row of M is linearly independent of all other rows j with arr[j]==True.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.is_negative_definite" title="ci_rvm.ci_rvm.is_negative_definite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_negative_definite</span></code></a>(M[, tol])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ci_rvm.ci_rvm.is_negative_definite" title="ci_rvm.ci_rvm.is_negative_definite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_negative_definite</span></code></a>(M[, tol])</p></td>
 <td><p>Returns whether the given Matrix is negative definite.</p></td>
 </tr>
 </tbody>
@@ -591,8 +600,114 @@ be ignored.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="ci_rvm.ci_rvm.find_ci">
+<span class="sig-name descname"><span class="pre">find_ci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_full_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_success</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ci_rvm.ci_rvm.find_ci" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the profile likelihood confidence interval(s) for one or
+multiple parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>fun</strong> (<em>callable</em>) – Log-likelihood function.</p></li>
+<li><p><strong>jac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>hess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>indices</strong> (<em>int</em><em>[</em><em>]</em>) – Indices of the parameters of interest. If not given, all paramters
+will be considered.</p></li>
+<li><p><strong>directions</strong> (<em>float</em><em>[</em><em>]</em><em>[</em><em>]</em>) – Search directions. If not given, both end points of the confidence
+intervals will be determined. If given as a scalar, only lower
+end points will be returned if <code class="docutils literal notranslate"><span class="pre">directions&lt;=0</span></code> and upper end points
+otherwise. If given as an array, the confidence interval end points
+specified in row <code class="docutils literal notranslate"><span class="pre">i</span></code> will be returned for parameter <code class="docutils literal notranslate"><span class="pre">i</span></code>. Entries <code class="docutils literal notranslate"><span class="pre">&lt;=0</span></code>
+indicate that lower end points are desired, whereas positive entries
+will result in upper end points.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Desired confidence level. Must be in <code class="docutils literal notranslate"><span class="pre">(0,1)</span></code></p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, results will be computed in parallel using <code class="docutils literal notranslate"><span class="pre">multiprocessing.Pool</span></code>.
+Note that this requires that all arguments are pickable.</p></li>
+<li><p><strong>return_full_results</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, an <code class="docutils literal notranslate"><span class="pre">OptimizeResult</span></code> object will be returned for each
+confidence interval bound. Otherwise, only the confidence interval
+bounds for the parameters in question will be returned.</p></li>
+<li><p><strong>return_success</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, an array of the same shape as the result will be returned
+in addition, indicating for each confidence interval bound whether it
+was determined successfully.</p></li>
+<li><p><strong>**kwargs</strong> (<em>keyword arguments</em>) – Other keyword arguments passed to <a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_CI_bound()</span></code></a>. Look at
+the documentation there.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ci_rvm.ci_rvm.find_ci_bound">
+<span class="sig-name descname"><span class="pre">find_ci_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jac0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hess0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">customTarget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nchecks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">65</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apprxtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resulttol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radiusFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxRadius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ci_rvm.ci_rvm.find_ci_bound" title="Permalink to this definition">#</a></dt>
+<dd><p>Finds an end point of a profile likelihood confidence interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>fun</strong> (<em>callable</em>) – Log-likelihood function.</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – Index of the parameter of interest.</p></li>
+<li><p><strong>direction</strong> (<em>int</em><em> or </em><em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">&lt;=0</span></code>, the lower end point of the confidence interval is sought,
+else the upper end point is sought.</p></li>
+<li><p><strong>jac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>hess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Desired confidence level. Must be in <code class="docutils literal notranslate"><span class="pre">(0,1)</span></code></p></li>
+<li><p><strong>fun0</strong> (<em>float</em>) – log-likelihood at the MLE.</p></li>
+<li><p><strong>jac0</strong> (<em>float</em><em>[</em><em>]</em>) – Gradient of the log-liekelihood at the MLE.</p></li>
+<li><p><strong>hess0</strong> (<em>float</em><em>[</em><em>]</em><em>[</em><em>]</em>) – Hessian of the log-likelihood at the MLE.</p></li>
+<li><p><strong>customTarget</strong> (<em>float</em>) – Custom target log-likelihood l*. If this is given, <code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha</span></code> will
+be ignored.</p></li>
+<li><p><strong>nmax</strong> (<em>int</em>) – Maximal number of iterations.</p></li>
+<li><p><strong>nchecks</strong> (<em>int</em>) – Maximal number of trust-region changes per iteration.</p></li>
+<li><p><strong>apprxtol</strong> (<em>float</em>) – Relative tolerance between <code class="xref py py-obj docutils literal notranslate"><span class="pre">fun</span></code> and its approximation.</p></li>
+<li><p><strong>resulttol</strong> (<em>float</em>) – Tolerance of the result (<code class="docutils literal notranslate"><span class="pre">fun</span></code> and <code class="docutils literal notranslate"><span class="pre">norm(jac)</span></code>).</p></li>
+<li><p><strong>singtol</strong> (<em>float</em>) – Tolerance for singularity checks.</p></li>
+<li><p><strong>minstep</strong> (<em>int</em>) – Controls the minimal radius of the trust region.</p></li>
+<li><p><strong>radiusFactor</strong> (<em>float</em>) – Controls how quickly the trust region decreases. Must be in <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>.</p></li>
+<li><p><strong>infstep</strong> (<em>float</em>) – Stepsize after which a parameter is deemed unestimbale.</p></li>
+<li><p><strong>maxRadius</strong> (<em>float</em>) – Rradius of the trust region in the last iteration.</p></li>
+<li><p><strong>disp</strong> (<em>bool</em>) – Whether to print a status message in each iteration.</p></li>
+<li><p><strong>track_x</strong> (<em>bool</em>) – Whether to return the parameter trace.</p></li>
+<li><p><strong>track_f</strong> (<em>bool</em>) – Whether to return the log-likelihood trace.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="ci_rvm.ci_rvm.find_function_CI">
 <span class="sig-name descname"><span class="pre">find_function_CI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionJac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionHess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logLJac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logLHess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relativeError</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ci_rvm/ci_rvm.html#find_function_CI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ci_rvm.ci_rvm.find_function_CI" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the profile likelihood confidence interval(s) for a function
+of parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>float</em><em>[</em><em>]</em>) – Maximum likelihood estimate (MLE) of the paramters.</p></li>
+<li><p><strong>function</strong> (<em>callable</em>) – Function of the parameters for which the confidence interval shall be
+computed</p></li>
+<li><p><strong>logL</strong> (<em>callable</em>) – Log-likelihood function.</p></li>
+<li><p><strong>functionJac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>functionHess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>logLJac</strong> (<em>callable</em>) – Gradient of <code class="xref py py-obj docutils literal notranslate"><span class="pre">logL</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>logLHess</strong> (<em>callable</em>) – Hessian of <code class="xref py py-obj docutils literal notranslate"><span class="pre">logL</span></code>. If <cite>None</cite>, it will be computed based on
+finite differences using numdifftools.</p></li>
+<li><p><strong>relativeError</strong> (<em>float</em>) – Permitted relative error in the confidence interval bound.</p></li>
+<li><p><strong>**kwargs</strong> (<em>keyword arguments</em>) – Other keyword arguments passed to <a class="reference internal" href="#ci_rvm.ci_rvm.find_CI" title="ci_rvm.ci_rvm.find_CI"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_CI()</span></code></a> and
+<a class="reference internal" href="#ci_rvm.ci_rvm.find_CI_bound" title="ci_rvm.ci_rvm.find_CI_bound"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_CI_bound()</span></code></a>. Look at the documentation there.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ci_rvm.ci_rvm.find_function_ci">
+<span class="sig-name descname"><span class="pre">find_function_ci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionJac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionHess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logLJac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logLHess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relativeError</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ci_rvm.ci_rvm.find_function_ci" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the profile likelihood confidence interval(s) for a function
 of parameters.</p>
 <dl class="field-list simple">
