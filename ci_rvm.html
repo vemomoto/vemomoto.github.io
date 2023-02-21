@@ -615,32 +615,39 @@ title="Print to PDF"
 <h2>Usage from R<a class="headerlink" href="#usage-from-r" title="Permalink to this headline">#</a></h2>
 <p>The package can also be used from R, if the package <cite>reticulate</cite> is available.
 You may install this package via the following command:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">packages.install</span><span class="p">(</span><span class="s">&quot;reticulate&quot;</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;reticulate&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If python is not yet installed on your system, you will be asked
-to install Miniconda when loading the package. I advise you to do this.
-If python is installed already, make sure it is in the PATH
+<p>Load the package.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Optional</strong>: If you want to use a python installation that already
+exists on your system, make sure it is in the PATH
 environment variable so that it can be found by R. Otherwise,
 specify your python executable via</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">use_python</span><span class="p">(</span><span class="s">&quot;/my/path/to/python&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If you use python via Anaconda, activate your environment of preference, e.g.</p>
+<p><strong>Optional</strong>: If you use python via Anaconda, you can activate your environment of
+preference via the command below. If you are not sure what this
+does, you are presumably fine and can omit this line.</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">use_virtualenv</span><span class="p">(</span><span class="s">&quot;base&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where “base” is the name of the environment.</p>
-<p>If the package with the algorithm is not installed on the system yet, run</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">py_install</span><span class="p">(</span><span class="s">&quot;ci-rvm&quot;</span><span class="p">)</span>
+<p>Here, “base” is the name of the environment.</p>
+<hr class="docutils" />
+<p>If the package with the algorithm is not installed on your system yet, run</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">py_install</span><span class="p">(</span><span class="s">&quot;ci-rvm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pip</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>If python is not yet installed on your system, you will be asked
+to install Miniconda when loading the package. We advise you to do this.</p>
 <p>Now everything should be set up for using the algorithm.
 Below you can find an example R script.</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># ========== imports ===========</span>
 
 <span class="c1"># We start by importing the library that builds a bridge to python.</span>
-<span class="c1"># If the package is not installed yet, run</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
 
 <span class="c1"># Now we import the python package to compute profile likelihood confidence</span>
@@ -670,6 +677,7 @@ Below you can find an example R script.</p>
 <span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="p">}</span>
 
+
 <span class="c1"># ========== defining gradient and Hessian of the log-likelihood ===========</span>
 
 <span class="c1"># Maximizing the likelihood and finding confidence intervals requires knowledge</span>
@@ -681,6 +689,7 @@ Below you can find an example R script.</p>
 <span class="c1"># If we do not provide gradient and Hessian, the package will compute them</span>
 <span class="c1"># for us, but this could potentially be less efficient when working from R.</span>
 
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;numDeriv&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># omit this line, if the library is already installed</span>
 <span class="nf">library</span><span class="p">(</span><span class="s">&quot;numDeriv&quot;</span><span class="p">)</span>
 
 <span class="n">gradientLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -690,6 +699,7 @@ Below you can find an example R script.</p>
 <span class="n">hessianLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
 <span class="p">}</span>
+
 
 <span class="c1"># ========== maximizing the likelihood ===========</span>
 
@@ -746,7 +756,6 @@ Below you can find an example R script.</p>
 <span class="w">    </span><span class="n">return_full_results</span><span class="o">=</span><span class="kc">TRUE</span><span class="w"> </span><span class="c1"># If we want to access details on the result</span>
 <span class="w">    </span><span class="p">)</span>
 
-
 <span class="c1"># The resulting object also contains information on what the other parameters</span>
 <span class="c1"># were when the parameter under consideration assumed its extreme value.</span>
 <span class="c1"># This information can be helpful to detect connections between parameters.</span>
@@ -777,7 +786,6 @@ Below you can find an example R script.</p>
 <span class="w">  </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
 <span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">meanWeight</span><span class="p">))</span>
 <span class="p">}</span>
-
 
 <span class="n">gradientMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
