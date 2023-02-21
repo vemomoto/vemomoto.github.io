@@ -439,6 +439,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-from-r">
+   Usage from R
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scientific-publication">
    Scientific Publication
   </a>
@@ -470,6 +475,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#usage">
    Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-from-r">
+   Usage from R
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -598,6 +608,191 @@ title="Print to PDF"
 <span class="n">CIs</span> <span class="o">=</span> <span class="n">find_CI</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">logL</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">hess</span><span class="o">=</span><span class="n">hess</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
               <span class="n">disp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># the disp argument lets the algorithm print</span>
                          <span class="c1"># status messages.</span>
+</pre></div>
+</div>
+</section>
+<section id="usage-from-r">
+<h2>Usage from R<a class="headerlink" href="#usage-from-r" title="Permalink to this headline">#</a></h2>
+<p>The package can also be used from R, if the package <cite>reticulate</cite> is available.
+You may install this package via the following command:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">packages.install</span><span class="p">(</span><span class="s">&quot;reticulate&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If python is not yet installed on your system, you will be asked
+to install Miniconda when loading the package. I advise you to do this.
+If python is installed already, make sure it is in the PATH
+environment variable so that it can be found by R. Otherwise,
+specify your python executable via</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">use_python</span><span class="p">(</span><span class="s">&quot;/my/path/to/python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you use python via Anaconda, activate your environment of preference, e.g.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">use_virtualenv</span><span class="p">(</span><span class="s">&quot;base&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where “base” is the name of the environment.</p>
+<p>If the package with the algorithm is not installed on the system yet, run</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">py_install</span><span class="p">(</span><span class="s">&quot;ci-rvm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now everything should be set up for using the algorithm.
+Below you can find an example R script.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># ========== imports ===========</span>
+
+<span class="c1"># We start by importing the library that builds a bridge to python.</span>
+<span class="c1"># If the package is not installed yet, run</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+
+<span class="c1"># Now we import the python package to compute profile likelihood confidence</span>
+<span class="c1"># intervals.</span>
+<span class="n">ci_rvm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">import</span><span class="p">(</span><span class="s">&quot;ci_rvm&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ========== loading data and defining likelihood function ===========</span>
+
+<span class="c1"># We consider the built-in data on height an weight of women. We assume that the</span>
+<span class="c1"># weight is normally distributed around a polynomial function of the height:</span>
+<span class="c1"># meanWeight = a + b * height^c</span>
+<span class="c1"># where a, b, and c are parameters.</span>
+<span class="c1"># We assume that the variance is proportional to the mean height:</span>
+<span class="c1"># varianceWeight = d * meanWeight</span>
+<span class="c1"># The log-likelihood function looks as follows (up to a constant)</span>
+
+<span class="n">logLikelihood</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
+<span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+<span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">3</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
+<span class="w">  </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
+<span class="w">  </span><span class="n">varianceWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meanWeight</span>
+
+<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">varianceWeight</span><span class="p">))</span><span class="o">/</span><span class="m">2</span>
+<span class="w">         </span><span class="o">-</span><span class="nf">sum</span><span class="p">((</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;weight&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">meanWeight</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">varianceWeight</span><span class="p">)))</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># ========== defining gradient and Hessian of the log-likelihood ===========</span>
+
+<span class="c1"># Maximizing the likelihood and finding confidence intervals requires knowledge</span>
+<span class="c1"># of the gradient (vector of first derivatives) and Hessian</span>
+<span class="c1"># (matrix of second derivatives) of the log-likelihood function.</span>
+<span class="c1"># For the considered example, we could compute these by hand on paper. However,</span>
+<span class="c1"># to show how we could proceed in more complicated cases, we use packages to</span>
+<span class="c1"># compute the derivatives.</span>
+<span class="c1"># If we do not provide gradient and Hessian, the package will compute them</span>
+<span class="c1"># for us, but this could potentially be less efficient when working from R.</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;numDeriv&quot;</span><span class="p">)</span>
+
+<span class="n">gradientLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">hessianLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># ========== maximizing the likelihood ===========</span>
+
+<span class="c1"># define initial guess</span>
+<span class="n">guess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># maximize the likelihood</span>
+<span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">optim</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span><span class="w"> </span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">gr</span><span class="o">=</span><span class="n">gradientLL</span><span class="p">,</span>
+<span class="w">               </span><span class="n">control</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">fnscale</span><span class="o">=</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="n">maxit</span><span class="o">=</span><span class="m">3000</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="o">=</span><span class="m">0</span><span class="p">))</span>
+
+<span class="c1"># estimated parameters</span>
+<span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="o">$</span><span class="n">par</span>
+
+<span class="c1"># check the result by plotting estimated mean and data</span>
+<span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">])</span><span class="m">-5</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">])</span><span class="m">+5</span><span class="p">)</span>
+<span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">estimate</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="o">^</span><span class="n">estimate</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">use.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">),</span><span class="w"> </span><span class="nf">unlist</span><span class="p">(</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;weight&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">use.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">))</span>
+
+
+<span class="c1"># ========== computing profile likelihood confidence intervals ===========</span>
+
+<span class="c1"># Compute all confidence intervals at once. We obtain a matrix with a row for</span>
+<span class="c1"># each parameter and the lower and upper confidence interval limit as columns.</span>
+<span class="c1"># If return_success=TRUE, a second matrix will be returned, indicating which</span>
+<span class="c1"># of the bounds have been found with success.</span>
+<span class="c1"># Set disp=TRUE to print status information. Especially if something goes wrong</span>
+<span class="c1"># (which could, e.g., happen if the provided estimate is not close to the actual</span>
+<span class="c1"># maximum), this information can be very useful.</span>
+<span class="c1"># alpha denotes the desired confidence level (0.95 by default)</span>
+<span class="n">confidenceIntervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci_rvm</span><span class="o">$</span><span class="nf">find_CI</span><span class="p">(</span><span class="n">estimate</span><span class="p">,</span><span class="w"> </span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">gradientLL</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">hessianLL</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">disp</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">return_success</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">confidenceIntervals</span><span class="p">)</span>
+
+<span class="c1"># Note that automatic parallel search for multiple confidence interval bounds</span>
+<span class="c1"># does not work if the code is called from R. You will have to do the</span>
+<span class="c1"># parallelization manually from within R. To that end, you can determine an</span>
+<span class="c1"># individual confidence interval bound as follows.</span>
+
+<span class="c1"># Set the index of the parameter under investigation. Note that python indices</span>
+<span class="c1"># start at 0.</span>
+<span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># Set the search direction. Use a positive value or TRUE to find the upper</span>
+<span class="c1"># end point of the confidence interval and a negative value or FALSE to find</span>
+<span class="c1"># the lower end point.</span>
+<span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span>
+
+<span class="c1"># Now execute the search.</span>
+<span class="n">confidenceInterval1Lower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci_rvm</span><span class="o">$</span><span class="nf">find_CI</span><span class="p">(</span><span class="n">estimate</span><span class="p">,</span><span class="w"> </span><span class="n">logLikelihood</span><span class="p">,</span>
+<span class="w">    </span><span class="n">gradientLL</span><span class="p">,</span><span class="w"> </span><span class="n">hessianLL</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">disp</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">track_x</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">            </span><span class="c1"># If we want to track what the algorithm did</span>
+<span class="w">    </span><span class="n">return_full_results</span><span class="o">=</span><span class="kc">TRUE</span><span class="w"> </span><span class="c1"># If we want to access details on the result</span>
+<span class="w">    </span><span class="p">)</span>
+
+
+<span class="c1"># The resulting object also contains information on what the other parameters</span>
+<span class="c1"># were when the parameter under consideration assumed its extreme value.</span>
+<span class="c1"># This information can be helpful to detect connections between parameters.</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="c1"># ------- Additional fun stuff ---------</span>
+
+<span class="c1"># Similarly, we could plot the trajectory of the search, This requires that</span>
+<span class="c1"># track_x=TRUE when searching the confidence interval.</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span>
+<span class="w">     </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Weight factor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Weight exponent&quot;</span><span class="p">)</span>
+
+<span class="c1"># The line above seems to be super straight and we may wonder why so many</span>
+<span class="c1"># steps were needed to find the confidence interval end point.</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span>
+<span class="w">     </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Weight factor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Variance factor&quot;</span><span class="p">)</span>
+
+<span class="c1"># We see the search trajectory is curved - a sign that the likelihood surface</span>
+<span class="c1"># is not trivial.</span>
+
+<span class="c1"># We can also compute the confidence interval for a function of parameters,</span>
+<span class="c1"># such as the mean expected value of the distribution</span>
+
+<span class="n">meanExpectedValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
+<span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+<span class="w">  </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">meanWeight</span><span class="p">))</span>
+<span class="p">}</span>
+
+
+<span class="n">gradientMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">hessianMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">ciOfMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci_rvm</span><span class="o">$</span><span class="nf">find_function_CI</span><span class="p">(</span><span class="n">estimate</span><span class="p">,</span><span class="w"> </span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">logLikelihood</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">gradientMean</span><span class="p">,</span><span class="w"> </span><span class="n">hessianMean</span><span class="p">,</span><span class="w"> </span><span class="n">gradientLL</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">hessianLL</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">disp</span><span class="o">=</span><span class="kc">FALSE</span>
+<span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">ciOfMean</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
