@@ -666,15 +666,15 @@ Below you can find an example R script.</p>
 <span class="c1"># The log-likelihood function looks as follows (up to a constant)</span>
 
 <span class="n">logLikelihood</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
-<span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
-<span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">3</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
-<span class="w">  </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
-<span class="w">  </span><span class="n">varianceWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meanWeight</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">3</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
+<span class="w">    </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
+<span class="w">    </span><span class="n">varianceWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meanWeight</span>
 
-<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">varianceWeight</span><span class="p">))</span><span class="o">/</span><span class="m">2</span>
-<span class="w">         </span><span class="o">-</span><span class="nf">sum</span><span class="p">((</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;weight&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">meanWeight</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">varianceWeight</span><span class="p">)))</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">varianceWeight</span><span class="p">))</span><span class="o">/</span><span class="m">2</span>
+<span class="w">              </span><span class="o">-</span><span class="nf">sum</span><span class="p">((</span><span class="n">women</span><span class="p">[</span><span class="s">&quot;weight&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">meanWeight</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">varianceWeight</span><span class="p">)))</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="p">}</span>
 
 
@@ -693,11 +693,11 @@ Below you can find an example R script.</p>
 <span class="nf">library</span><span class="p">(</span><span class="s">&quot;numDeriv&quot;</span><span class="p">)</span>
 
 <span class="n">gradientLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="n">hessianLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">logLikelihood</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
 <span class="p">}</span>
 
 
@@ -762,37 +762,53 @@ Below you can find an example R script.</p>
 <span class="nf">print</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x</span><span class="p">)</span>
 
 
-<span class="c1"># ------- Additional fun stuff ---------</span>
+<span class="c1"># ------- additional fun stuff ---------</span>
 
 <span class="c1"># Similarly, we could plot the trajectory of the search, This requires that</span>
 <span class="c1"># track_x=TRUE when searching the confidence interval.</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span>
+<span class="c1"># First, we plot the relationship between the first two parameters.</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span>
 <span class="w">     </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Weight factor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Weight exponent&quot;</span><span class="p">)</span>
 
 <span class="c1"># The line above seems to be super straight and we may wonder why so many</span>
 <span class="c1"># steps were needed to find the confidence interval end point.</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span>
+<span class="c1"># Let us consider the relationship between the first and the third parameter.</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">confidenceInterval1Lower</span><span class="o">$</span><span class="n">x_track</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span>
 <span class="w">     </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Weight factor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Variance factor&quot;</span><span class="p">)</span>
 
 <span class="c1"># We see the search trajectory is curved - a sign that the likelihood surface</span>
 <span class="c1"># is not trivial.</span>
 
+<span class="c1"># When we compute the Wald confidence intervals for comparison, we see that</span>
+<span class="c1"># they are good for the first two parameters, but not as good for the last</span>
+<span class="c1"># one:</span>
+<span class="n">deviation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="o">-</span><span class="nf">diag</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="nf">hessianLL</span><span class="p">(</span><span class="n">estimate</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">qchisq</span><span class="p">(</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+<span class="n">waldCI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">estimate</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">deviation</span><span class="p">,</span><span class="w"> </span><span class="n">estimate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deviation</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Wald CI&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">waldCI</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Profile CI&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">confidenceIntervals</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Relative Error&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">waldCI</span><span class="o">/</span><span class="n">confidenceIntervals</span><span class="p">)</span>
+
+<span class="c1"># ------------</span>
+
 <span class="c1"># We can also compute the confidence interval for a function of parameters,</span>
 <span class="c1"># such as the mean expected value of the distribution</span>
 
 <span class="n">meanExpectedValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
-<span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
-<span class="w">  </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">meanWeight</span><span class="p">))</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="c1"># constrain this parameter to the positive range</span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">meanWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">women</span><span class="p">[</span><span class="s">&quot;height&quot;</span><span class="p">]</span><span class="o">^</span><span class="n">b</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">meanWeight</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="n">gradientMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">grad</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="n">hessianMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">hessian</span><span class="p">(</span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="n">ciOfMean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci_rvm</span><span class="o">$</span><span class="nf">find_function_CI</span><span class="p">(</span><span class="n">estimate</span><span class="p">,</span><span class="w"> </span><span class="n">meanExpectedValue</span><span class="p">,</span><span class="w"> </span><span class="n">logLikelihood</span><span class="p">,</span>
